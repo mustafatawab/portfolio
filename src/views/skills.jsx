@@ -1,0 +1,16 @@
+import React from 'react'
+import { skills } from '@/lib/skills'
+import SkillCard from '@/components/SkillCard'
+const Skills = () => {
+    
+  return (
+    <section className="py-20">
+      <div className="p-5 w-full md:w-4/5  mx-auto">
+            <h3 className='text-4xl font-bold text-center'>My Skills</h3>
+            <SkillCard />
+      </div>
+    </section>
+  )
+}
+
+export default Skills
