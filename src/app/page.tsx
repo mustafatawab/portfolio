@@ -2,6 +2,7 @@ import HeroSection from "@/views/hero"
 import AboutSection from '@/views/about'
 import Skills from '@/views/skills'
 import Services from '@/views/services'
+import Projects from '@/views/projects'
 export default function Home() {
   
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <AboutSection />
         <Skills />
         <Services />
+        <Projects />
    </>
   );
 }
