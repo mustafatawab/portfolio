@@ -29,7 +29,7 @@ const ProjectCard = ({ project }) => {
         <div className='flex justify-between items-center'>
           <h4 className='text-lg font-semibold'>{project.title}</h4>
           <div className='flex  gap-3'>
-            <Link href={'#'}>
+            <Link href={'https://www.github.com/mustafatawab'}>
               <BsGithub className='text-gray-500' />
             </Link>
             <Link href={project.link}>

@@ -17,7 +17,7 @@ const Projects = () => {
             }
           })}
         </div>
-        <Link href='/projects' className='flex gap-2 rounded-md border-2 px-4 py-2 bg-black/90 text-white dark:bg-white/90 dark:text-black hover:bg-white hover:text-black '>Vew All Projects <ArrowBigRight /></Link>
+        <Link href='/projects' className='flex gap-2 rounded-md border-2 px-4 py-2 duration-500 bg-black/90 text-white dark:bg-white/90 dark:text-black hover:bg-white hover:text-black '>Vew All Projects <ArrowBigRight /></Link>
       </div>
     </section>
   )

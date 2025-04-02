@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
-
+import Link from "next/link";
 const Navbar = () => {
   const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -27,10 +27,10 @@ const Navbar = () => {
       } rounded-b-xl`}
     >
       <nav className="flex items-center justify-between p-5 w-full md:w-4/5  mx-auto">
-        <div className="text-2xl font-semibold">
+        <Link href='/' className="text-2xl font-semibold">
           <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
           Tawab
-        </div>
+        </Link>
         <div className={` hidden md:flex gap-10 justify-center items-center`}>
           {links.map((link, i) => (
             <a
