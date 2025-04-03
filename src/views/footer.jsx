@@ -4,7 +4,7 @@ import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import { Mail } from 'lucide-react';
 const Footer = () => {
     return (
-        <footer id='footer' className="py-10 bg-[#f1f5f9] dark:bg-slate-900 ">
+        <footer id='footer' className="py-10 bg-[#f1f5f9] dark:bg-black ">
             <div className="p-5 w-full md:w-4/5  mx-auto">
                 <div className='flex justify-between items-start  flex-wrap md:flex-nowrap gap-10 '>
                     <div className='md:basis-1/4'>
