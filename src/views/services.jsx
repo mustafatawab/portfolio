@@ -34,7 +34,7 @@ const Services = () => {
     },
   ];
   return (
-    <section className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
+    <section className="py-20 bg-white dark:bg-slate-900 "> 
       <div className="p-5 w-full md:w-4/5  mx-auto">
         <h2 className="text-4xl font-bold text-center py-5">What I offer?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-10 py-5">
