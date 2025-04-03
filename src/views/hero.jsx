@@ -1,6 +1,5 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { FaLinkedinIn } from "react-icons/fa6";
 
 import Link from "next/link";
