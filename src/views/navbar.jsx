@@ -18,10 +18,10 @@ const Navbar = () => {
     { label: "About", url: "#about" },
     { label: "Skills", url: "#skills" },
     { label: "Projects", url: "#projects" },
-    { label: "Portfolio", url: "#portfolio" },
+    { label: "Contact", url: "#contact" },
   ];
   return (
-    <header
+    <header id="header"
       className={`dark:bg-gray-950 dark:border-b-[1px] ${
         toggle && "bg-black text-white pb-5"
       } rounded-b-xl`}

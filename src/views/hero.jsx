@@ -7,18 +7,18 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="py-20">
+    <section id="hero" className="py-20">
       <div className="p-5 w-full md:w-4/5  mx-auto">
         <div className="flex flex-col items-start gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
           </Badge>
-          <div>
-            <h2 className="text-4xl md:text-6xl font-bold">
+          <div className="text-xl sm:text-4xl md:text-6xl font-bold">
+            <h2>
               Hi, I am
               <span className="text-nowrap text-blue-600"> Mustafa Tawab </span>
             </h2>
-            <h2 className="text-4xl md:text-6xl font-bold">
+            <h2>
               Modern Full Stack Developer
             </h2>
           </div>
