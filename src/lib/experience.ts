@@ -11,7 +11,7 @@ export const experiences = [
         company : 'YODO',
         from : "Jan 2024",
         to : "March 2024",
-        designation : "Web Developer",
+        designation : "Web Developer Intern",
         description : "Designed websites using custom css and html while using git with the team. Performed wordpress website creation task till deadline. Worked on Wordpress customization using PHP. Learned Lumen API developement"
     },
 
