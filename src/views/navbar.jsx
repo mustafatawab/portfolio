@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Moon } from "lucide-react";
+import { Download, Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
@@ -43,10 +43,11 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex items-center gap-5">
           <div className="cursor-pointer" onClick={toggleTheme}>
             {dark ? <Moon /> : <Sun />}
           </div>
+          <Link href={'https://docs.google.com/document/d/1ltXr0MfIVQBlGN2mLsPOMuuFvaU22aUy1wjPbb2blog/edit?tab=t.0'} className="flex items-center gap-2 border-2 border-white hover:border-blue-600  text-blue-600 py-1 px-2 rounded-lg">Resume</Link>
           <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
             <Menu />
           </div>
