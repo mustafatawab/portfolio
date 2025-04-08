@@ -28,6 +28,9 @@ export default function RootLayout({
   
   return (
     <html lang="en">
+    <head>
+        <link rel="icon" href="/me.png" sizes="any" />
+    </head>
       <body
         className={` antialiased dark:bg-gray-950`}
       >

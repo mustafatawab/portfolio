@@ -15,10 +15,10 @@ const Navbar = () => {
   };
 
   const links = [
-    { label: "About", url: "#about" },
-    { label: "Skills", url: "#skills" },
-    { label: "Projects", url: "#projects" },
-    { label: "Contact", url: "#contact" },
+    { label: "About", url: "/#about" },
+    { label: "Skills", url: "/#skills" },
+    { label: "Projects", url: "/#projects" },
+    { label: "Contact", url: "/#contact" },
   ];
   return (
     <header id="header"

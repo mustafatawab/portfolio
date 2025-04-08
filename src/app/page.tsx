@@ -4,8 +4,9 @@ import Skills from '@/views/skills'
 import Services from '@/views/services'
 import Projects from '@/views/projects'
 import Contact from '@/views/contact'
+import Experience from '@/views/experience'
+
 export default function Home() {
-  
   return (
    <>
         <HeroSection />
@@ -13,6 +14,7 @@ export default function Home() {
         <Skills />
         <Services />
         <Projects />
+        <Experience />
         <Contact />
    </>
   );
