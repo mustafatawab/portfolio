@@ -32,10 +32,8 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post("/api/send", form).then((res) => {
-      console.log(form)
       console.log(res)
     }).catch((error) => {
-      console.log(form) 
       console.log(error)
     })
 
