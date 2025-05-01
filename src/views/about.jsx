@@ -6,8 +6,8 @@ const AboutSection = () => {
   return (
     <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
       <div className="p-5 w-full md:w-4/5  mx-auto flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
-        <div className="card ">
-          <Image src={me} width={"500"} height={500} className="" />
+        <div className="card  ">
+          <Image src={me} width={""} height={""} className="" />
         </div>
 
         <div className="basis-full md:basis-1/2 flex flex-col gap-5 ">

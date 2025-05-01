@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Download, Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
@@ -8,11 +8,14 @@ const Navbar = () => {
   const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
 
-  
+  const [scrolled, setScrolled] = useState(false);
+
+
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setDark(!dark);
   };
+
 
   const links = [
     { label: "About", url: "/#about" },
@@ -20,11 +23,29 @@ const Navbar = () => {
     { label: "Projects", url: "/#projects" },
     { label: "Contact", url: "/#contact" },
   ];
+
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <header id="header"
-      className={`dark:bg-gray-950 dark:border-b-[1px] ${
-        toggle && "bg-black text-white pb-5"
-      } rounded-b-xl`}
+      className={`dark:bg-gray-950 dark:border-b-[1px]  ${scrolled
+        ? "bg-white/90 dark:bg-gray-900 shadow-md backdrop-blur-sm"
+        : "bg-transparent"
+        } ${toggle && "bg-black text-white pb-5"
+        } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
     >
       <nav className="flex items-center justify-between p-5 w-full md:w-4/5  mx-auto">
         <Link href='/' className="text-2xl font-semibold">
