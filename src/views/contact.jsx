@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
@@ -9,10 +9,37 @@ import { Mail } from 'lucide-react'
 import { BsGithub } from 'react-icons/bs'
 import { FaLinkedin } from 'react-icons/fa'
 import Link from 'next/link'
-const Contact = () => {
+import axios from 'axios'
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
+
+const Contact = () => {
+  const [form, setForm] = useState({
+    name: '',
+    email: "",
+    message: ""
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((pre) => ({
+      ...pre,
+      [name]: value
+    }))
+
+    console.log(form)
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("/api/send", form).then((res) => {
+      console.log(form)
+      console.log(res)
+    }).catch((error) => {
+      console.log(form) 
+      console.log(error)
+    })
+
+  
   }
 
   return (
@@ -23,40 +50,40 @@ const Contact = () => {
         <main className='flex justify-center items-center'>
 
           <Card className='p-10 grid grid-cols-1 sm:grid-cols-2 gap-10 w-full   lg:w-2/3'>
-            <div className='space-y-5'> 
+            <div className='space-y-5'>
               <h4 className='text-2xl font-bold'>Contact Information</h4>
               <p className='text-gray-700 text-sm'>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
               <div className='flex items-center gap-2 '>
-                <Mail size={'20'} className='text-blue-600'/>
+                <Mail size={'20'} className='text-blue-600' />
                 <Link href='mailto:tawab05@gmail.com' className='hover:text-blue-600'>tawab05@gmail.com</Link>
               </div>
 
 
               <div className='flex items-center gap-2'>
-                <BsGithub  size={'20'} className='text-blue-600'/>
+                <BsGithub size={'20'} className='text-blue-600' />
                 <Link href={'https://github.com/mustafatawab'} className='hover:text-blue-600' >github.com/mustafatawab</Link>
               </div>
 
               <div className='flex items-center gap-2'>
-                <FaLinkedin  size={'20'} className='text-blue-600'/>
+                <FaLinkedin size={'20'} className='text-blue-600' />
                 <Link href='https://www.linkedin.com/in/mustafa-tawab/' className='hover:text-blue-600'>linkedin.com/in/mustafa-tawab</Link>
               </div>
             </div>
             <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
               <span className='space-y-2'>
                 <Label htmlFor='name'>Name</Label>
-                <Input type='text' name='name' id='name' placeholder='Enter your full name' className='' />
+                <Input type='text' name='name' id='name' placeholder='Enter your full name' className='' onChange={handleChange} />
               </span>
 
               <span className='space-y-2'>
                 <Label htmlFor='email'>Email</Label>
-                <Input type='email' name='email' id='email' placeholder='Enter your email address' />
+                <Input type='email' name='email' id='email' placeholder='Enter your email address' onChange={handleChange} />
               </span>
 
 
               <span className='space-y-2'>
                 <Label htmlFor='message'>Message</Label>
-                <Textarea placeholder="Type your message here." id='message' name='message' />
+                <Textarea placeholder="Type your message here." id='message' name='message' onChange={handleChange} />
               </span>
               <Button type='submit' className='bg-blue-600 hover:bg-blue-500 cursor-pointer'>Send Message</Button>
             </form>
