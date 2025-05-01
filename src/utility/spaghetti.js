@@ -3,7 +3,7 @@ document.documentElement.classList.toggle(
   "dark",
   localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+      window.matchMedia("(prefers-color-scheme: dark)").matches),
 );
 // Whenever the user explicitly chooses light mode
 localStorage.theme = "light";
