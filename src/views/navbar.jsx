@@ -52,7 +52,7 @@ const Navbar = () => {
           <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
           Tawab
         </Link>
-        <div className={` hidden md:flex gap-10 justify-center items-center`}>
+        <div className={` hidden md:flex gap-2 justify-center items-center`}>
           {links.map((link, i) => (
             <a
               className="py-2 px-4 dark:border-0 rounded-full hover:text-blue-600 hover:border hover:border-blue-600 duration-300 border border-white"
@@ -68,7 +68,7 @@ const Navbar = () => {
           <div className="cursor-pointer" onClick={toggleTheme}>
             {dark ? <Moon /> : <Sun />}
           </div>
-          <Link href={'https://docs.google.com/document/d/1ltXr0MfIVQBlGN2mLsPOMuuFvaU22aUy1wjPbb2blog/edit?tab=t.0'} className="flex items-center gap-2 border-2 border-white hover:border-blue-600  text-blue-600 py-1 px-2 rounded-lg">Resume</Link>
+          <Link href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'} className="flex items-center gap-2 border-2 border-white hover:border-blue-600  text-blue-600 py-1 px-2 rounded-lg">Resume</Link>
           <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
             <Menu />
           </div>
