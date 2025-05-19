@@ -4,6 +4,7 @@ import { Download, Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { BsDownload } from "react-icons/bs";
 const Navbar = () => {
   const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -21,6 +22,7 @@ const Navbar = () => {
     { label: "About", url: "/#about" },
     { label: "Skills", url: "/#skills" },
     { label: "Projects", url: "/#projects" },
+    { label: "Courses", url: "/courses" },
     { label: "Contact", url: "/#contact" },
   ];
 
@@ -68,7 +70,7 @@ const Navbar = () => {
           <div className="cursor-pointer" onClick={toggleTheme}>
             {dark ? <Moon /> : <Sun />}
           </div>
-          <Link href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'} className="flex items-center gap-2 border-2 border-white hover:border-blue-600  text-blue-600 py-1 px-2 rounded-lg">Resume</Link>
+          <Link target="_blank" href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'} className="flex items-center gap-2 border-2 border-white   text-blue-600 py-1 px-2 rounded-lg"><BsDownload />   Resume</Link>
           <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
             <Menu />
           </div>
