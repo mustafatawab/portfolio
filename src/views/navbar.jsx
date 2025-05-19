@@ -15,11 +15,12 @@ const Navbar = () => {
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setDark(!dark);
+    localStorage.setItem("dark" , dark)
   };
 
 
   const links = [
-    { label: "About Us", url: "/#about" },
+    { label: "About", url: "/#about" },
     { label: "Projects", url: "/projects" },
     { label: "Courses", url: "/courses" },
     { label: "Contact", url: "/#contact" },
@@ -49,7 +50,7 @@ const Navbar = () => {
         } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
     >
       <nav className="flex items-center justify-between p-5 w-full md:w-4/5  mx-auto">
-        <Link href='/' className="text-2xl font-semibold">
+        <Link href='/' className="text-2xl font-semibold text-black dark:text-white">
           <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
           Tawab
         </Link>
@@ -69,7 +70,7 @@ const Navbar = () => {
           <div className="cursor-pointer" onClick={toggleTheme}>
             {dark ? <Moon /> : <Sun />}
           </div>
-          <Link target="_blank" href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'} className="flex items-center gap-2 border-2 border-white   text-blue-600 py-1 px-2 rounded-lg"><BsDownload />   Resume</Link>
+          <Link target="_blank" href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'} className="flex items-center gap-2    text-blue-600 py-1 px-2 rounded-lg"><BsDownload />   Resume</Link>
           <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
             <Menu />
           </div>
@@ -77,7 +78,7 @@ const Navbar = () => {
       </nav>
 
       {toggle && (
-        <div className="block md:hidden transition delay-150 duration-300 ease-in-out">
+        <div className="block md:hidden transition delay-150 duration-300 ease-in-out text-black dark:text-white">
           {links.map((link, i) => (
             <a
               className="block py-2 px-5 border-0   hover:text-blue-600 hover:border hover:border-blue-600 duration-30"
