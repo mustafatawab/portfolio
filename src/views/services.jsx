@@ -7,19 +7,20 @@ import desktop from "@/assets/desktop.png";
 import web from "@/assets/web-development.png";
 import wordress from "@/assets/wordpress.png";
 import Image from "next/image";
+import { Book, BookAIcon, BookDashedIcon, BookHeadphonesIcon } from "lucide-react";
 const Services = () => {
   const services = [
     {
-      title: "Web Development",
+      title: "Full Stack Web Apps",
       content:
-        "Creating full responsive and fully functional websites and web applications using different technologies.",
+        "Creating full responsive and fully functional websites and web applications like Ecommerce store , admin dashboard , static sites and dymanic sites.",
       img: web,
     },
 
     {
-      title: "WordPress Developement",
+      title: "AI Based Web Apps",
       content:
-        "Desing your website for your business , agency and blogging site using differenct content management system (Wix, Wordpress, Framer)",
+        "Integration of Generative AI and Agents with different LLMS (OpenAI, Gemini , Deepseek , Anthropic)",
       img: wordress,
     },
 
@@ -31,18 +32,17 @@ const Services = () => {
     },
 
     {
-      title: "Desktop Apps",
+      title: "Custom Software Development",
       content:
-        "Increase your sale by developing POS software and other billing softwares",
+        "Increase your sale by developing POS software and other billing softwares with your requirements.",
       img: desktop,
     },
 
     {
-      title: "DevOps",
-      content:
-        "Facing problem with your running applications? Docker and Kubernetes will solve this problem. Make your app fully automated and containerize.",
-      img: devops,
-    },
+      title : "Agents Development",
+      content : "We will help you create your own multiple agents with your favorite Large Language Model using Crew AI , Langchain , Google SDK , Open AI SDK and automate your work."
+    }
+
   ];
   return (
     <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
@@ -55,10 +55,10 @@ const Services = () => {
               className="shadow-none p-10 hover:bg-blue-100 dark:hover:bg-transparent"
             >
               <CardHeader className="text-lg font-semibold space-y-5">
-                <Image src={service.img} width={'100'} height={''} alt={service.title}/>
-                {/* <p>
+                {/* <Image src={service.img} width={'100'} height={''} alt={service.title}/> */} 
+                  <p>
                   {service.title}
-                  </p> */}
+                  </p>
               </CardHeader>
 
               <CardContent className="text-gray-700 dark:text-gray-400">

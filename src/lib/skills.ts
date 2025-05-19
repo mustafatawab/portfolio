@@ -30,10 +30,6 @@ export const skills: any = [
         tooltip: "Frontend developement",
       },
 
-      {
-        label: "Quasar Framework",
-        tooltip: "Mobile/Desktop App Development",
-      },
 
       {
         label: "Shadcn UI",
@@ -57,19 +53,42 @@ export const skills: any = [
 
       {
         label: "Express.js",
-        tooltip: "API Development",
+        tooltip: "API Development using JS",
       },
 
       {
         label: "Laravel",
-        tooltip: "PHP Backend Technlogy",
+        tooltip: "PHP Based web framework",
       },
 
       {
-        label: "PHP",
-        tooltip: "Server Side Scripting",
+        label: "Fast API",
+        tooltip: "Python based Microservice developement",
       },
     ],
+  },
+
+  {
+    label : "Artificial Intelligence",
+    stack : [
+      {
+        label : "Generative AI",
+        tootip : "Generative AI"
+      },
+      {
+        label : "AI Agents",
+        tooltip : "Developing Agents"
+      },
+      {
+        label : "Crew AI",
+        tooltip : "Multi Agent Framework"
+      },
+
+      {
+        label : "Langchain & Langraph",
+        tooltip : "Agentic Workflow and Agents Development"
+      }
+    ]
   },
 
   {
@@ -83,6 +102,11 @@ export const skills: any = [
       {
         label: "MySQL",
         tooltip: "SQL Database",
+      },
+
+      {
+        label : "Pincorn",
+        tooltip : "Vector database for AI"
       },
 
       {

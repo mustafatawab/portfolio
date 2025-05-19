@@ -19,9 +19,8 @@ const Navbar = () => {
 
 
   const links = [
-    { label: "About", url: "/#about" },
-    { label: "Skills", url: "/#skills" },
-    { label: "Projects", url: "/#projects" },
+    { label: "About Us", url: "/#about" },
+    { label: "Projects", url: "/projects" },
     { label: "Courses", url: "/courses" },
     { label: "Contact", url: "/#contact" },
   ];

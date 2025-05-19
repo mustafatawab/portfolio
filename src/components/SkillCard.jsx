@@ -25,17 +25,16 @@ export default function SkillCard() {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Badge
-                        className={` dark:text-white px-3 py-1 rounded-xl cursor-alias duration-500 hover:-translate-y-1
+                        className={` dark:text-white px-3 py-1 rounded-xl cursor-alias  duration-500 hover:-translate-y-1
                             
-                            ${
-                              skill.label === "Frontend Technologies"
-                                ? "bg-blue-200  dark:text-blue-900 text-blue-900 "
-                                : skill.label === "Backend Technologies"
-                                ? "bg-green-200 text-green-900 dark:text-green-900"
-                                : "bg-purple-200 text-purple-900 dark:text-purple-900"
-                            }
+                            ${skill.label === "Frontend Technologies"
+                            ? "bg-blue-200  dark:text-blue-900 text-blue-900 "
+                            : skill.label === "Backend Technologies"
+                              ? "bg-green-200 text-green-900 dark:text-green-900"
+                              : skill.label == "Artificial Intelligence" ? 'bg-blue-200  dark:text-blue-900 text-blue-900' : "bg-purple-200 text-purple-900 dark:text-purple-900"
+                          }
                             `}
-                      >
+                      > 
                         {stack.label}
                       </Badge>
                     </TooltipTrigger>
