@@ -35,7 +35,7 @@ export default function RootLayout({
         className={` antialiased dark:bg-gray-950`}
       >
           <WhatsAppButton
-        phoneNumber="+92347300572"
+        phoneNumber="+923475300572"
         message="Hello! I have a question about your skills training programs."
       />
         <Navbar />
