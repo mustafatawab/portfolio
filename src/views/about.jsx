@@ -5,7 +5,7 @@ import "@/styles/card-animation.css";
 const AboutSection = () => {
   return (
     <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
-      <div className="p-5 w-full md:w-[90%] mx-auto ">
+      <div className="p-5 container mx-auto ">
       <div className=" flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
 
 

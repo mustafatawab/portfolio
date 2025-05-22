@@ -8,7 +8,7 @@ export default function LearnSkillsPage() {
     {
       title: "Web Development Fundamentals",
       description: "Learn HTML, CSS, and JavaScript to build the foundation of modern web development.",
-      icon: <BookOpen className="h-6 w-6 text-emerald-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Beginner",
       duration: "4 weeks",
       topics: ["HTML5", "CSS3", "JavaScript Basics", "Responsive Design", "Web Accessibility"],
@@ -32,7 +32,7 @@ export default function LearnSkillsPage() {
     {
       title: "Vue.js Development",
       description: "Learn Vue.js to build reactive, component-based web applications.",
-      icon: <BookOpen className="h-6 w-6 text-green-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Intermediate",
       duration: "6 weeks",
       topics: ["Vue.js Fundamentals", "Vue Router", "Vuex", "Composition API", "Vue 3 Features"],
@@ -41,7 +41,7 @@ export default function LearnSkillsPage() {
     {
       title: "Quasar Framework",
       description: "Build high-performance Vue.js applications with the Quasar Framework.",
-      icon: <BookOpen className="h-6 w-6 text-purple-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Intermediate",
       duration: "5 weeks",
       topics: ["Quasar CLI", "UI Components", "Layouts", "Quasar Plugins", "Mobile Development"],
@@ -50,7 +50,7 @@ export default function LearnSkillsPage() {
     {
       title: "Python Programming",
       description: "Learn Python for backend development, data analysis, and automation.",
-      icon: <BookOpen className="h-6 w-6 text-yellow-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Beginner to Intermediate",
       duration: "8 weeks",
       topics: ["Python Basics", "Data Structures", "OOP in Python", "Web Scraping", "API Development"],
@@ -59,7 +59,7 @@ export default function LearnSkillsPage() {
     {
       title: "AI Agent Development",
       description: "Build autonomous AI agents that can perform complex tasks and solve problems.",
-      icon: <BookOpen className="h-6 w-6 text-red-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Advanced",
       duration: "10 weeks",
       topics: ["Agent Architecture", "LLM Integration", "Tool Use", "Memory Systems", "Multi-agent Systems"],
@@ -68,7 +68,7 @@ export default function LearnSkillsPage() {
     {
       title: "Generative AI Integration",
       description: "Learn to integrate and fine-tune generative AI models in your applications.",
-      icon: <BookOpen className="h-6 w-6 text-indigo-600" />,
+      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
       level: "Advanced",
       duration: "8 weeks",
       topics: ["LLM Fundamentals", "Prompt Engineering", "AI SDK", "Fine-tuning Models", "Multimodal AI"],
@@ -121,7 +121,7 @@ export default function LearnSkillsPage() {
                   <ul className="space-y-1">
                     {skill.topics.map((topic, i) => (
                       <li key={i} className="flex items-start text-sm">
-                        <CheckCircle className="h-4 w-4 mr-2 text-emerald-500 mt-0.5" />
+                        <CheckCircle className="h-4 w-4 mr-2 text-blue-600 mt-0.5" />
                         <span>{topic}</span>
                       </li>
                     ))}
@@ -194,9 +194,9 @@ export default function LearnSkillsPage() {
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
             Browse my courses and start your journey to becoming a skilled developer today.
           </p>
-          <Link href="/courses">
-            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600">
-              View All Courses <ArrowRight className="ml-2 h-4 w-4" />
+          <Link href="/#contact">
+            <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
+              Contact Us <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>

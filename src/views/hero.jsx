@@ -7,7 +7,7 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <section id="hero" className="py-20">
-      <div className="p-5 w-full md:w-[90%]  mx-auto">
+      <div className="p-5 container  mx-auto">
         <div className="flex flex-col items-start gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work

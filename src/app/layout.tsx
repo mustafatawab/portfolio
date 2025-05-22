@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/views/navbar";
 import Footer from '@/views/footer'
-
+import WhatsAppButton from "@/components/whatsAppButton";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -34,6 +34,10 @@ export default function RootLayout({
       <body
         className={` antialiased dark:bg-gray-950`}
       >
+          <WhatsAppButton
+        phoneNumber="+92347300572"
+        message="Hello! I have a question about your skills training programs."
+      />
         <Navbar />
         {children}
        <Footer />

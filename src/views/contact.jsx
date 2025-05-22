@@ -43,7 +43,7 @@ const Contact = () => {
   return (
     //bg-[#f1f5f9]
     <section id='contact' className="py-20 dark:bg-slate-900 ">
-      <div className="p-5 w-full md:w-[90%]  mx-auto space-y-5">
+      <div className="p-5 container  mx-auto space-y-5">
         <h3 className='text-center text-4xl font-bold'>Book a demo call</h3>
         <main className='flex justify-center items-center'>
 
@@ -61,6 +61,12 @@ const Contact = () => {
                 <BsGithub size={'20'} className='text-blue-600' />
                 <Link href={'https://github.com/mustafatawab'} className='hover:text-blue-600' >github.com/mustafatawab</Link>
               </div>
+
+              <div className='flex items-center gap-2'>
+                <FaLinkedin size={'20'} className='text-blue-600' />
+                <Link href='https://www.linkedin.com/in/mustafa-tawab/' className='hover:text-blue-600'>linkedin.com/in/mustafa-tawab</Link>
+              </div>
+
 
               <div className='flex items-center gap-2'>
                 <FaLinkedin size={'20'} className='text-blue-600' />

@@ -15,14 +15,14 @@ const Navbar = () => {
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
     setDark(!dark);
-    localStorage.setItem("dark" , dark)
+    localStorage.setItem("dark", dark)
   };
 
 
   const links = [
     { label: "About", url: "/#about" },
     { label: "Projects", url: "/projects" },
-    { label: "Courses", url: "/courses" },
+    { label: "Learn", url: "/learn-skills" },
     { label: "Contact", url: "/#contact" },
   ];
 
@@ -49,7 +49,7 @@ const Navbar = () => {
         } ${toggle && "bg-black text-white pb-5"
         } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
     >
-      <nav className="flex items-center justify-between p-5 w-full md:w-[90%]  mx-auto">
+      <nav className="flex items-center justify-between p-5 container  mx-auto">
         <Link href='/' className="text-2xl font-semibold text-black dark:text-white">
           <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
           Tawab
