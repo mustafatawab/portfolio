@@ -5,12 +5,15 @@ import "@/styles/card-animation.css";
 const AboutSection = () => {
   return (
     <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
-      <div className="p-5 w-full md:w-4/5  mx-auto flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
-        <div className="card  hidden md:block">
+      <div className="p-5 w-full md:w-[90%] mx-auto ">
+      <div className=" flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
+
+
+        <div className="card  ">
           <Image src={me} width={""} height={""} className="" />
         </div>
 
-        <div className="basis-full md:basis-1/2 flex flex-col gap-5 ">
+        <div className="basis-full lg:basis-1/2 flex flex-col gap-5 ">
           <h3 className="text-4xl font-bold mb-5">About Me</h3>
           <p className="text-gray-800 dark:text-gray-400 text-md">
             I'm a passionate Full Stack Developer with expertise in building
@@ -31,6 +34,7 @@ const AboutSection = () => {
             development.
           </p>
         </div>
+      </div>
       </div>
     </section>
   );

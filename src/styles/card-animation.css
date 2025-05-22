@@ -11,7 +11,8 @@
     
     
 }
-  
+
+
  .card img{
     z-index: 10;
     padding-top: 50px;
@@ -51,3 +52,9 @@
    */
 
 
+/* Hide card on screens smaller than 550px */
+@media (max-width: 549px) {
+  .card {
+    display: none;
+  }
+}

@@ -1,69 +1,43 @@
+'use client'
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import mobile from "@/assets/mobile-app.png";
-import devops from "@/assets/devops.png";
-import desktop from "@/assets/desktop.png";
-import web from "@/assets/web-development.png";
-import wordress from "@/assets/wordpress.png";
-import Image from "next/image";
-import { Book, BookAIcon, BookDashedIcon, BookHeadphonesIcon } from "lucide-react";
+import { services } from "@/lib/services";
+import { FaCheckCircle } from "react-icons/fa";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 const Services = () => {
-  const services = [
-    {
-      title: "Full Stack Web Apps",
-      content:
-        "Creating full responsive and fully functional websites and web applications like Ecommerce store , admin dashboard , static sites and dymanic sites.",
-      img: web,
-    },
 
-    {
-      title: "AI Based Web Apps",
-      content:
-        "Integration of Generative AI and Agents with different LLMS (OpenAI, Gemini , Deepseek , Anthropic)",
-      img: wordress,
-    },
-
-    {
-      title: "Mobile App Development",
-      content:
-        "Build cross plat mobile apps for IOS and Android with publishing to you Play Store and Apple Store",
-      img: mobile,
-    },
-
-    {
-      title: "Custom Software Development",
-      content:
-        "Increase your sale by developing POS software and other billing softwares with your requirements.",
-      img: desktop,
-    },
-
-    {
-      title : "Agents Development",
-      content : "We will help you create your own multiple agents with your favorite Large Language Model using Crew AI , Langchain , Google SDK , Open AI SDK and automate your work."
-    }
-
-  ];
   return (
     <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
-      <div className="p-5 w-full md:w-4/5  mx-auto">
-        <h2 className="text-4xl font-bold text-center py-5">What I offer?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-10 py-5">
+      <div className="p-5 w-full md:w-[90%]  mx-auto">
+        <h2 className="text-4xl font-bold text-center py-5">Services I offer?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2  gap-10 py-5">
           {services.map((service, i) => (
             <Card
               key={i}
-              className="shadow-none p-10 hover:bg-blue-100 dark:hover:bg-transparent"
+              className="shadow-none p-5 hover:bg-blue-100 dark:hover:bg-transparent border-t-8 border-t-blue-600"
             >
-              <CardHeader className="text-lg font-semibold space-y-5">
-                {/* <Image src={service.img} width={'100'} height={''} alt={service.title}/> */} 
-                  <p>
-                  {service.title}
-                  </p>
+              <CardHeader>
+                <CardTitle>
+
+                  <div className="text-black font-semibold text-xl  dark:text-white">{service.title}</div>
+                </CardTitle>
+              <CardDescription>
+
+                <div className="text-gray-600 dark:text-gray-400">{service.content}</div>
+              </CardDescription>
               </CardHeader>
 
-              <CardContent className="text-gray-700 dark:text-gray-400">
-                {service.content}
+              <CardContent className=" flex flex-col">
+                <ul >
+                  {service.points && service.points.map((pt, i) => <li key={i} className="flex items-center gap-2"> <span className=""> <FaCheckCircle className="text-blue-600 " /> </span> <p> {pt}</p></li>)}
+                </ul>
               </CardContent>
+
+              <CardFooter>
+                <Link className="flex items-center gap-2 text-blue-600 group" href="#">Learn More <FaArrowRightLong className="group-hover:ml-1 duration-300"/>  </Link>
+              </CardFooter>
             </Card>
           ))}
         </div>

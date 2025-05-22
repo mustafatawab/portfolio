@@ -5,7 +5,7 @@ const Skills = () => {
     
   return (
     <section id='skills' className="py-20">
-      <div className="p-5 w-full md:w-4/5  mx-auto">
+      <div className="p-5 w-full md:w-[90%]  mx-auto">
             <h3 className='text-4xl font-bold text-center'>My Skills</h3>
             <SkillCard />
       </div>

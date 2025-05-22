@@ -2,8 +2,8 @@ export const experiences = [
     {
         company : "NodeSol Corp",
         from : "April 2024",
-        to : 'Present',
-        designation : "Software Engineer",
+        to : 'May 2025',
+        designation : "Front End Developer",
         description  : "Collabrate with big developer team for various projects. Devlivered every task before deadline. Worked on different technologies for front end and backend. Vuejs, Quasar Framework, Nextjs, Typescript , Laravel, Python and docker as well"
     },
 
