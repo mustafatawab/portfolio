@@ -22,7 +22,6 @@ const Navbar = () => {
   const links = [
     { label: "About", url: "/#about" },
     { label: "Projects", url: "/projects" },
-    { label: "Learn", url: "/learn-skills" },
     { label: "Contact", url: "/#contact" },
   ];
 
@@ -57,7 +56,7 @@ const Navbar = () => {
         <div className={` hidden md:flex gap-2 justify-center items-center`}>
           {links.map((link, i) => (
             <a
-              className="py-2 px-4 dark:border-0 rounded-full hover:text-blue-600 hover:border hover:border-blue-600 duration-300 border border-white"
+              className="py-2 px-4 dark:border-0 rounded-full hover:text-blue-600 hover:border hover:border-blue-600 duration-300 border border-transparent"
               key={i}
               href={link.url}
             >

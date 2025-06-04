@@ -12,7 +12,7 @@ const Services = () => {
     <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
       <div className="p-5 container  mx-auto">
         <h2 className="text-4xl font-bold text-center py-5">Services I offer?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2  gap-10 py-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-10 py-5">
           {services.map((service, i) => (
             <Card
               key={i}
