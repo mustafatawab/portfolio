@@ -5,6 +5,7 @@ import myscribe from '@/assets/project/myscribe.png'
 import triton from '@/assets/project/triton.png'
 import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
+import nextron from '@/assets/project/nextron.png'
 
 export const projects = [
     {
@@ -14,6 +15,14 @@ export const projects = [
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
         githubLink : "",
         link : "https://mal-blogs.vercel.app/blogs",
+    },
+
+    {
+        image : nextron,
+        title : "Nextron Technologies",
+        description : "Nextron Technology is software agency which is service based company. They develope Web apps with full cloud support.",
+        tags : ['nextjs', "tailwind css", "shadcn ui", 'typescript' , 'react19' , 'resend'],
+        link : "https://nextron-tech.vercel.app"
     },
 
     {
@@ -35,9 +44,9 @@ export const projects = [
     {
         image: portfolio,
         title : "Portoflio Website",
-        description : "A simple landing page for developers and designers to showcase their skills. It is just a landing page.",
+        description : "A portofolio website for developers and designers to showcase their skills. It is just a landing page.",
         tags : ['nexjts', 'typescript', 'tailwind css'],
-        link : "https://ezitech.vercel.app/",
+        link : "https://v0-stunning-portfolio.vercel.app/",
         
     },
 
