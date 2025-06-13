@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import SkillCard from "@/components/SkillCard";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   SiReact,
@@ -15,7 +16,7 @@ import {
   SiAmazonwebservices,
   SiTensorflow,
   SiPytorch,
-  SiFastapi
+  SiFastapi,
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
@@ -89,39 +90,52 @@ const skills: SkillProps[] = [
 ];
 
 const Skills = () => {
-  const [viewMore , setViewMore] = useState(false)
-  const displayedSkills = viewMore ? skills : skills.slice(0 , 3)
+  const [viewMore, setViewMore] = useState(false);
+  const displayedSkills = viewMore ? skills : skills.slice(0, 3);
   return (
     <section id="skills" className="py-20">
-      <div className="p-5 container  mx-auto space-y-5">
-        <h3 className="text-4xl font-bold text-center"> Skills and Technologies</h3>
+      <div className="p-5 container  mx-auto space-y-7">
+        <h3 className="text-4xl font-bold text-center">
+          Skills and Technologies
+        </h3>
         {/* <SkillCard /> */}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedSkills.map((skill, index) => (
-            <Card
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
               className="bg-blue-600/10 rounded-lg px-4 py-6 border border-blue-600"
             >
-              <CardContent className="space-y-4">
+              <div className="space-y-4">
                 <div className="flex items-center ">
                   <div className="mr-3">{skill.icon}</div>
                   <h3 className="text-lg font-medium">{skill.name}</h3>
                 </div>
-                <div className={`w-full bg-blue-300 rounded-full h-2.5`}>
-                  <div className={`bg-indigo-600 h-2.5 rounded-full`}></div>
+                <div className={`w-full bg-blue-200 rounded-full h-2.5`}>
+                  <motion.div
+                    className={`bg-indigo-600 h-2.5 rounded-full`}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  ></motion.div>
                 </div>
                 <div className="flex justify-end mt-2">
                   <span className="text-sm text-gray-400">{skill.level}%</span>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </motion.div>
           ))}
         </div>
-          <div className="flex justify-end">
-
-          <Button onClick={() => setViewMore(!viewMore)} className="">{viewMore ? 'View Less' : "View More"}</Button>
-          </div>
+        <div className="flex justify-end">
+          <Button onClick={() => setViewMore(!viewMore)} className="">
+            {viewMore ? "View Less" : "View More"}
+          </Button>
+        </div>
       </div>
     </section>
   );
