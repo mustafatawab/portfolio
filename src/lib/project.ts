@@ -18,14 +18,6 @@ export const projects = [
     },
 
     {
-        image : nextron,
-        title : "Nextron Technologies",
-        description : "Nextron Technology is software agency which is service based company. They develope Web apps with full cloud support.",
-        tags : ['nextjs', "tailwind css", "shadcn ui", 'typescript' , 'react19' , 'resend'],
-        link : "https://nextron-tech.vercel.app"
-    },
-
-    {
         image : msp,
         title : "MSP Tech Stack",
         description : 'The app is Business to Business marketplace. It has user login system and company login system.',
