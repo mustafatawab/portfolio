@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import SkillCard from "@/components/SkillCard";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -16,6 +17,7 @@ import {
   SiPytorch,
   SiFastapi
 } from "react-icons/si";
+import { Button } from "@/components/ui/button";
 
 interface SkillProps {
   name: string;
@@ -87,6 +89,8 @@ const skills: SkillProps[] = [
 ];
 
 const Skills = () => {
+  const [viewMore , setViewMore] = useState(false)
+  const displayedSkills = viewMore ? skills : skills.slice(0 , 3)
   return (
     <section id="skills" className="py-20">
       <div className="p-5 container  mx-auto space-y-5">
@@ -94,7 +98,7 @@ const Skills = () => {
         {/* <SkillCard /> */}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill, index) => (
+          {displayedSkills.map((skill, index) => (
             <Card
               key={index}
               className="bg-blue-600/10 rounded-lg px-4 py-6 border border-blue-600"
@@ -114,6 +118,10 @@ const Skills = () => {
             </Card>
           ))}
         </div>
+          <div className="flex justify-end">
+
+          <Button onClick={() => setViewMore(!viewMore)} className="">{viewMore ? 'View Less' : "View More"}</Button>
+          </div>
       </div>
     </section>
   );
