@@ -1,7 +1,8 @@
+'use client'
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { FaLinkedinIn } from "react-icons/fa6";
-
+import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -15,10 +16,26 @@ const HeroSection = () => {
           <div className="text-xl sm:text-4xl md:text-6xl font-bold">
             <h2>
               Hi, I am
-              <span className="text-nowrap text-blue-600"> Mustafa Tawab </span>
+              <h1 className="text-nowrap text-blue-600 italic inline"> Mustafa Tawab </h1>
             </h2>
             <h2>
-              Modern Full Stack Developer
+              <TypeAnimation
+              className="text-blue-600"
+                sequence={[
+                  // Same substring at the start will only be typed out once, initially
+                  "Frontend Developer",
+                  1000, // wait 1s before replacing "Mice" with "Hamsters"
+                  "Modern Web Application Developer",
+                  1000,
+                  "Python Developer",
+                  1000,
+                  "Agentic AI Developer",
+                  1000,
+                ]}
+                wrapper="h1"
+                speed={50}
+                repeat={Infinity}
+              />
             </h2>
           </div>
           <p className="text-gray-500">
