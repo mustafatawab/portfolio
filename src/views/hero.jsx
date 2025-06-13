@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -14,13 +14,15 @@ const HeroSection = () => {
             Available for work
           </Badge>
           <div className="text-xl sm:text-4xl md:text-6xl font-bold">
-            <h2>
-              Hi, I am
-              <h1 className="text-nowrap text-blue-600 italic inline"> Mustafa Tawab </h1>
-            </h2>
+            <div className="">
+              Hi, I am 
+              <h1 className="ml-3 text-nowrap text-blue-600 italic inline">
+                 Mustafa Tawab
+              </h1>
+            </div>
             <h2>
               <TypeAnimation
-              className="text-blue-600"
+                className="text-blue-600"
                 sequence={[
                   // Same substring at the start will only be typed out once, initially
                   "Frontend Developer",
@@ -32,14 +34,15 @@ const HeroSection = () => {
                   "Agentic AI Developer",
                   1000,
                 ]}
-                wrapper="h1"
+                wrapper="span"
                 speed={50}
                 repeat={Infinity}
               />
             </h2>
           </div>
           <p className="text-gray-500">
-            I build exceptional and accessible digital experiences for the web.
+            I build exceptional and accessible digital experiences for the web
+            and AI.
           </p>
           <div className="flex gap-5">
             <Link

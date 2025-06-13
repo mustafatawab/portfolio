@@ -21,7 +21,8 @@ const Navbar = () => {
 
   const links = [
     { label: "About", url: "/#about" },
-    { label: "Projects", url: "/projects" },
+    { label: "Work", url: "/projects" },
+    { label: "Services", url: "/services" },
     { label: "Contact", url: "/#contact" },
   ];
 

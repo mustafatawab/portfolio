@@ -36,7 +36,7 @@ export default function RootLayout({
       >
           <WhatsAppButton
         phoneNumber="+923475300572"
-        message="Hello! I have a question about your skills training programs."
+        message="Hello! Can I get more info about your services?."
       />
         <Navbar />
         {children}
