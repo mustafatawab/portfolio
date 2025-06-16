@@ -1,4 +1,19 @@
-export const experiences = [
+interface ExpericeType  {
+    company : String,
+    from : String,
+    to : String,
+    designation:String,
+    description : String
+}
+
+export const experiences : ExpericeType[] = [
+    {
+        company : "Panacloud",
+        from : "May 2023",
+        to : "Present",
+        designation : 'Agentic AI Developer',
+        description : "Nextjs as a fullstack framework with seamless integration with Sanity , Contentfull and Strapi. Typescript and Python programming language with type hints for planet scale application. AI Integration with Open AI, Gemini and other LLMs into the nextjs apps. Chainlit and Streamlit for conversation UI to interact with different LLMs. Developed agents usin Open AI Agent SDK , Openrouter, CrewAI and Langraph "
+    },
     {
         company : "NodeSol Corp",
         from : "April 2024",
@@ -16,11 +31,5 @@ export const experiences = [
     },
 
 
-    // {
-    //     company : 'Panacloud',
-    //     from : "Jan 2023",
-    //     to : "Nov 2023",
-    //     designation : "Full Stack Developer",
-    //     description : "It's like a program for youth to learn IT skills and I did. Nextjs as a full stack web framework with mongodb connectivity. Created full stack web app first time which was e-commerce store. Designed multiple landing pages and portofolio sites using tailwind css and typescript. Integration of some headless CMS (Sanity , Contentfull , Payload CMS, Strapi). Integration of strip payment integration in to e-commerce store"
-    // }
+    
 ]

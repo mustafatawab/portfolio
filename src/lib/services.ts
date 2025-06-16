@@ -1,18 +1,13 @@
-import mobile from "@/assets/mobile-app.png";
-import devops from "@/assets/devops.png";
-import desktop from "@/assets/desktop.png";
-import web from "@/assets/web-development.png";
-import wordress from "@/assets/wordpress.png";
-import Image from "next/image";
-import {
-  Book,
-  BookAIcon,
-  BookDashedIcon,
-  BookHeadphonesIcon,
-} from "lucide-react";
-import { ArrowRight, Cpu, Database, Globe, Layers, Users } from "lucide-react";
 
-export const services = [
+interface ServiceType {
+  title : string,
+  content : string,
+  points : string[],
+  icon : string
+}
+
+
+export const services : ServiceType[] = [
   {
     title: "Web Application Development",
     content:
@@ -84,7 +79,6 @@ export const services = [
     title: "API Development",
     content:
       "Develop secure and efficient APIs to enable seamless application communication.",
-    img: "wordress",
     points: [
       "RESTful API design",
       "GraphQL implementation",

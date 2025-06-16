@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import me from "@/assets/me.jpg";
+import wordprocess from "@/assets/workProcess.png";
 import "@/styles/card-animation.css";
 const AboutSection = () => {
   return (
@@ -38,6 +39,11 @@ const AboutSection = () => {
               web development.
             </p>
           </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-5 mt-10">
+        <h2 className="text-4xl  font-bold">My <span className="text-blue-600">Work</span> Process</h2>
+        <Image src={wordprocess} alt="Word Process" width={1000} height={1000}/>
         </div>
       </div>
     </section>

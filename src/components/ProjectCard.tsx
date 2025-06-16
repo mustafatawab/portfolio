@@ -20,13 +20,24 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ProjectCard = ({ project }) => {
+interface ProjectPropType {
+    image : any,
+    title : string,
+    description : string,
+    tags : string[],
+    githubLink? : string,
+    link : string,
+    more? : string[] 
+
+}
+
+const ProjectCard = ({ project } : {project : ProjectPropType}) => {
   return (
     <Card className="p-0 shadow-md h-full">
       <Image
         src={project.image}
         alt=""
-        width={""}
+        width={200}
         height={200}
         className=" rounded-t-2xl w-full"
       />
@@ -62,7 +73,9 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-const MoreLinks = ({ links }) => {
+
+
+const MoreLinks = ({ links } : { links : string[]}) => {
   return (
     <>
       <Accordion type="single" collapsible className="w-full">

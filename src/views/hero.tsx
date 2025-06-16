@@ -8,7 +8,19 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <section id="hero" className="py-20">
-      <div className="p-5 container  mx-auto">
+
+       {/* Animated Background */}
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
+      </div> */}
+
+      {/* Content */}
+      <div className="p-5 container   ">
         <div className="flex flex-col items-start gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
@@ -25,14 +37,16 @@ const HeroSection = () => {
                 className="text-blue-600"
                 sequence={[
                   // Same substring at the start will only be typed out once, initially
-                  "Frontend Developer",
+                  "Next.js Developer",
                   1000, // wait 1s before replacing "Mice" with "Hamsters"
-                  "Modern Web Application Developer",
+                  "Modern Web App Developer",
                   1000,
-                  "Python Developer",
+                  "Generative AI",
                   1000,
                   "Agentic AI Developer",
                   1000,
+                  "Frontend Developer",
+                  1000
                 ]}
                 wrapper="span"
                 speed={50}
@@ -40,9 +54,8 @@ const HeroSection = () => {
               />
             </h2>
           </div>
-          <p className="text-gray-500">
-            I build exceptional and accessible digital experiences for the web
-            and AI.
+          <p className="text-gray-500 w-full lg:w-2/3">
+            Welcome to the digital realm of Mustafa Tawab - where innovative software engineering meets cutting-edge web development. As a seasoned Full Stack Developer and Next.js expert, I bring your ideas to life with precision, creativity, and a touch of generative AI magic. Let's build something extraordinary together!.
           </p>
           <div className="flex gap-5">
             <Link
@@ -52,11 +65,13 @@ const HeroSection = () => {
               <FaLinkedinIn /> LinkedIn
             </Link>
             <Link
-              href="#projects"
+              target="_blank"
+              href={'https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing'}
               className="px-3 py-2 border-[1px] dark:text-blue-600 dark:bg-transparent dark:border-blue-600  rounded-lg text-blue-600  hover:border-[1px] hover:border-blue-600 bg-blue-100 hover:bg-white "
             >
-              My Projects
+              Resume
             </Link>
+
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ const Contact = () => {
     message: ""
   })
 
-  const handleChange = (e) => {
+  const handleChange = (e : any) => {
     const { name, value } = e.target;
 
     setForm((pre) => ({
@@ -29,7 +29,7 @@ const Contact = () => {
 
     console.log(form)
   }
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault();
     await axios.post("/api/send", form).then((res) => {
       console.log(res)
@@ -50,7 +50,7 @@ const Contact = () => {
           <Card className='p-10 grid grid-cols-1 sm:grid-cols-2 gap-10 w-full   lg:w-2/3'>
             <div className='space-y-5'>
               <h4 className='text-2xl font-bold'>Contact Information</h4>
-              <p className='text-gray-700 text-sm'>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+              <p className='text-gray-700 text-sm dark:text-gray-400'>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
               <div className='flex items-center gap-2 '>
                 <Mail size={'20'} className='text-blue-600' />
                 <Link href='mailto:tawab05@gmail.com' className='hover:text-blue-600'>tawab05@gmail.com</Link>
@@ -68,10 +68,6 @@ const Contact = () => {
               </div>
 
 
-              <div className='flex items-center gap-2'>
-                <FaLinkedin size={'20'} className='text-blue-600' />
-                <Link href='https://www.linkedin.com/in/mustafa-tawab/' className='hover:text-blue-600'>linkedin.com/in/mustafa-tawab</Link>
-              </div>
             </div>
             <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
               <span className='space-y-2'>

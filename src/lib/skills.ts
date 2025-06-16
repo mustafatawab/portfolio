@@ -1,4 +1,13 @@
-export const skills: any = [
+interface Stack {
+  label : string,
+  tooltip : string,
+}
+
+interface SkillType {
+  label : string,
+  stack : Stack[],
+}
+export const skills: SkillType[] = [
   {
     label: "Frontend Technologies",
     stack: [
@@ -73,7 +82,7 @@ export const skills: any = [
     stack : [
       {
         label : "Generative AI",
-        tootip : "Generative AI"
+        tooltip : "Generative AI"
       },
       {
         label : "AI Agents",

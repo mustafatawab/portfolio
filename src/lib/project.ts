@@ -7,7 +7,17 @@ import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
 import nextron from '@/assets/project/nextron.png'
 
-export const projects = [
+interface ProjectType {
+    image : any,
+    title : string,
+    description : string,
+    tags : string[],
+    githubLink? : string,
+    link : string,
+    more? : string[] 
+}
+
+export const projects : ProjectType[] = [
     {
         image : malblogs,
         title : "Car Finance",
@@ -22,6 +32,7 @@ export const projects = [
         title : "MSP Tech Stack",
         description : 'The app is Business to Business marketplace. It has user login system and company login system.',
         tags : ['tailwind css', 'nextjs' , 'typescript', 'mongodb' , 'nodejs'],
+        githubLink : "",
         link : "https://msp-tech-stack.vercel.app/",
     },
 
@@ -30,6 +41,7 @@ export const projects = [
         title : "Elygance",
         description : "A luxury e-commerce platform for premium fragrances with elegant design and seamless shopping experience.",
         tags : ['nexjts', 'typescript' , 'redux toolkit', 'tailwind css'],
+        githubLink : "",
         link : "https://elygance.vercel.app/",
     },
     
@@ -37,6 +49,7 @@ export const projects = [
         image: portfolio,
         title : "Portoflio Website",
         description : "A portofolio website for developers and designers to showcase their skills. It is just a landing page.",
+        githubLink : "",
         tags : ['nexjts', 'typescript', 'tailwind css'],
         link : "https://v0-stunning-portfolio.vercel.app/",
         
@@ -47,6 +60,7 @@ export const projects = [
         image : myscribe,
         title : "My Scribe",
         description : "Transcribe, Summarize, and Streamline the medical notes to focus on what truly matters — patient care.",
+        githubLink : "",
         tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
         link : "https://www.myscribe.us/",
     },
@@ -55,6 +69,7 @@ export const projects = [
         image : triton,
         title : "Triton",
         description : " ",
+        githubLink : "",
         tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
         more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
         link : "https://www.tritoncg.com/",
@@ -67,6 +82,7 @@ export const projects = [
         title : "Truspilot Clone",
         description : "Trustpilot clone and still in progress. Some feature might not work right now but the UI is completed. ",
         tags : ['tailwind css' , 'nextjs' , 'typscript' , 'mongodb'],
+        githubLink : "",
         link : "https://trustpilot-xi.vercel.app/",
     },
 

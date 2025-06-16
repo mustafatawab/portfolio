@@ -17,6 +17,8 @@ import {
   SiTensorflow,
   SiPytorch,
   SiFastapi,
+  SiOpenai,
+  SiShadcnui
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
@@ -34,8 +36,18 @@ const skills: SkillProps[] = [
   },
   {
     name: "Next.js",
-    icon: <SiNextdotjs className="text-white" size={24} />,
+    icon: <SiNextdotjs className="text-black dark:text-white" size={24} />,
     level: 85,
+  },
+  {
+    name: "Python",
+    icon: <SiPython className="text-yellow-500" size={24} />,
+    level: 75,
+  },
+  {
+    name : "Open AI",
+    icon : <SiOpenai className="text-black dark:text-white" size={24} />,
+    level : 92
   },
   {
     name: "TypeScript",
@@ -46,11 +58,6 @@ const skills: SkillProps[] = [
     name: "Node.js",
     icon: <SiNodedotjs className="text-green-500" size={24} />,
     level: 85,
-  },
-  {
-    name: "Python",
-    icon: <SiPython className="text-yellow-500" size={24} />,
-    level: 75,
   },
   {
     name: "MongoDB",
@@ -65,6 +72,12 @@ const skills: SkillProps[] = [
   {
     name: "Tailwind CSS",
     icon: <SiTailwindcss className="text-cyan-400" size={24} />,
+    level: 90,
+  },
+
+  {
+    name: "Shadcn UI",
+    icon: <SiShadcnui className="text-black dark:text-white" size={24} />,
     level: 90,
   },
   {
@@ -91,7 +104,7 @@ const skills: SkillProps[] = [
 
 const Skills = () => {
   const [viewMore, setViewMore] = useState(false);
-  const displayedSkills = viewMore ? skills : skills.slice(0, 3);
+  const displayedSkills = viewMore ? skills : skills.slice(0, 4);
   return (
     <section id="skills" className="py-20">
       <div className="p-5 container  mx-auto space-y-7">
@@ -100,7 +113,7 @@ const Skills = () => {
         </h3>
         {/* <SkillCard /> */}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 px-4 w-full lg:w-2/3 mx-auto gap-8 bg-blue-600/10   rounded-lg">
           {displayedSkills.map((skill, index) => (
             <motion.div
               key={index}
@@ -108,12 +121,19 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-blue-600/10 rounded-lg px-4 py-6 border border-blue-600"
+              className="  px-4 py-6 "
             >
               <div className="space-y-4">
-                <div className="flex items-center ">
-                  <div className="mr-3">{skill.icon}</div>
-                  <h3 className="text-lg font-medium">{skill.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="mr-3">{skill.icon}</div>
+                    <h3 className="text-lg font-medium">{skill.name}</h3>
+                  </div>
+                  <div className="flex justify-end mt-2">
+                    <span className="text-sm text-gray-700 dark:text-gray-400">
+                      {skill.level}%
+                    </span>
+                  </div>
                 </div>
                 <div className={`w-full bg-blue-200 rounded-full h-2.5`}>
                   <motion.div
@@ -124,14 +144,12 @@ const Skills = () => {
                     viewport={{ once: true }}
                   ></motion.div>
                 </div>
-                <div className="flex justify-end mt-2">
-                  <span className="text-sm text-gray-400">{skill.level}%</span>
-                </div>
               </div>
             </motion.div>
           ))}
+          
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-center items-center">
           <Button onClick={() => setViewMore(!viewMore)} className="">
             {viewMore ? "View Less" : "View More"}
           </Button>
