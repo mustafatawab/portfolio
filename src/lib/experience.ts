@@ -1,4 +1,4 @@
-interface ExpericeType  {
+interface ExperieceType  {
     company : String,
     from : String,
     to : String,
@@ -6,14 +6,14 @@ interface ExpericeType  {
     description : String
 }
 
-export const experiences : ExpericeType[] = [
-    {
-        company : "Panacloud",
-        from : "May 2023",
-        to : "Present",
-        designation : 'Agentic AI Developer',
-        description : "Nextjs as a fullstack framework with seamless integration with Sanity , Contentfull and Strapi. Typescript and Python programming language with type hints for planet scale application. AI Integration with Open AI, Gemini and other LLMs into the nextjs apps. Chainlit and Streamlit for conversation UI to interact with different LLMs. Developed agents usin Open AI Agent SDK , Openrouter, CrewAI and Langraph "
-    },
+export const experiences : ExperieceType[] = [
+    // {
+    //     company : "Panacloud",
+    //     from : "May 2023",
+    //     to : "Present",
+    //     designation : 'Agentic AI Developer',
+    //     description : "Nextjs as a fullstack framework with seamless integration with Sanity , Contentfull and Strapi. Typescript and Python programming language with type hints for planet scale application. AI Integration with Open AI, Gemini and other LLMs into the nextjs apps. Chainlit and Streamlit for conversation UI to interact with different LLMs. Developed agents usin Open AI Agent SDK , Openrouter, CrewAI and Langraph "
+    // },
     {
         company : "NodeSol Corp",
         from : "April 2024",
@@ -33,3 +33,4 @@ export const experiences : ExpericeType[] = [
 
     
 ]
+
