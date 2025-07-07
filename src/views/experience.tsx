@@ -11,7 +11,7 @@ const Experience = () => {
     <section id="experience" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
       <div className="p-5 container  mx-auto">
         <main className="flex flex-col justify-center lg:flex-row   lg:justify-between  items-center gap-5">
-          <div className="space-y-2 md:mx-auto lg:mx-0 max-w-4/5">
+          <div className="space-y-2 mx-auto lg:mx-0 md:max-w-4/5">
             <h2 className="text-4xl font-bold px-5 text-center">
               Industry Experience
             </h2>
@@ -31,7 +31,7 @@ const Experience = () => {
             </div>
           </div>
 
-          <div className="space-y-2 md:mx-auto lg:mx-0 max-w-4/5">
+          <div className="space-y-2 mx-auto lg:mx-0 md:max-w-4/5">
             <h2 className="text-4xl font-bold px-5 text-center">Education</h2>
             <div className=" space-y-5">
               {education.map((edu, index) => (
