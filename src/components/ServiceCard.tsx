@@ -28,6 +28,8 @@ import {
   LineChart,
   Shield,
   Smartphone,
+  Box,
+   Package
 } from "lucide-react";
 
 interface ServiceCardProps {
@@ -68,6 +70,10 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
         return <Shield size={32} />;
       case "smartphone":
         return <Smartphone size={32} />;
+      case "box":
+         return <Box size={32} />;
+      case "package":
+         return <Package size={32} />;
       default:
         return <Code size={32} />;
     }

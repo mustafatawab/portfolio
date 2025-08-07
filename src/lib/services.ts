@@ -96,6 +96,6 @@ export const services: ServiceType[] = [
       "CI/CD integration for automated deployments",
       "Production-ready architecture setup",
     ],
-    icon: "server", // You already have this in your icon set
+    icon: "package", // You already have this in your icon set
   },
 ];
