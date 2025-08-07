@@ -1,91 +1,101 @@
-
 interface ServiceType {
-  title : string,
-  content : string,
-  points : string[],
-  icon : string
+  title: string;
+  content: string;
+  points: string[];
+  icon: string;
 }
 
-
-export const services : ServiceType[] = [
+export const services: ServiceType[] = [
   {
-    title: "Web Application Development",
+    title: "AI Agent Development",
     content:
-      "Modern, responsive web applications built with the latest technologies",
+      "Build intelligent AI agents and multi-agent systems using OpenAI Agents SDK and LangChain.",
     points: [
-      "Single-page applications (SPAs)",
-      "Progressive web apps (PWAs)",
-      "E-commerce platforms",
-      "Content management systems",
+      "Autonomous AI workflows",
+      "Task-specific and multi-agent systems",
+      "Memory and context-aware agents",
+      "Agent orchestration with CrewAI / AgentOps",
+      "Custom AI tools for business use cases",
     ],
-    icon: "layout",
-  },
-
-  {
-    title: "Frontend Development",
-    content: "Creating beautiful, interactive user interfaces with modern frameworks like React, Next.js, and Tailwind CSS.",
-    points: [
-      "Responsive UI design",
-      "Interactive web components",
-      "Modern JavaScript frameworks",
-      "Performance optimization",
-      "Cross-browser compatibility",
-    ],
-    icon: "monitor",
+    icon: "bot",
   },
   {
-    title: "Fullstack Development",
+    title: "AI SaaS MVP Development",
     content:
-      "End-to-end application development with modern frontend frameworks and robust backend solutions.",
+      "Launch AI-powered SaaS MVPs fast using modern web technologies and scalable backend architecture.",
     points: [
-      "End-to-end application development",
-      "API design and integration",
-      "Database management and optimization",
-      "Server-side logic implementation",
-      "Frontend-backend synchronization",
+      "Authentication, billing, and dashboard setup",
+      "AI feature integration (chat, summarization, etc.)",
+      "FastAPI + Supabase backend",
+      "Next.js frontend with Tailwind & shadcn/ui",
+      "Full deployment to Vercel / Railway / Fly.io",
+    ],
+    icon: "rocket",
+  },
+  {
+    title: "Custom AI Tool Integration",
+    content:
+      "Integrate AI features into your existing or new web applications to boost efficiency and automate tasks.",
+    points: [
+      "OpenAI API integration",
+      "Document Q&A and knowledge bots",
+      "Generative AI features (text, code, summaries)",
+      "Data processing & automation tools",
+      "Fine-tuned AI behavior for business needs",
+    ],
+    icon: "zap",
+  },
+  {
+    title: "Fullstack Web Development",
+    content:
+      "End-to-end modern web applications with seamless frontend-backend integration.",
+    points: [
+      "Next.js (App Router) + Tailwind + shadcn/ui",
+      "FastAPI + Supabase backend",
+      "RESTful and async API integration",
+      "Database modeling and querying",
+      "Deployment and version control with Git",
     ],
     icon: "code",
   },
   {
-    title: "Custom Agent Development",
+    title: "Frontend Development",
     content:
-      "Implementing intelligent solutions using machine learning and AI technologies to solve complex problems.",
+      "Responsive and accessible UI design using modern component libraries and best practices.",
     points: [
-      "Autonomous agent architecture",
-      "Multi-agent systems",
-      "Task automation agents",
-      "Conversational AI agents",
-      "Custom agent development",
+      "Next.js with App Router",
+      "Tailwind CSS & shadcn/ui",
+      "State management (Zustand, context, hooks)",
+      "SEO & performance optimization",
+      "Component-driven design",
     ],
-    icon: "cpu",
+    icon: "monitor",
+  },
+  {
+    title: "API & Backend Development",
+    content:
+      "Secure and scalable backend systems built with FastAPI and Supabase.",
+    points: [
+      "FastAPI with async endpoints",
+      "Supabase auth, database, and storage",
+      "RESTful & webhook integrations",
+      "Auth guards and JWT management",
+      "Database schema & migrations",
+    ],
+    icon: "server",
   },
 
   {
-    title: "Database Design",
+    title: "Containerization & Deployment",
     content:
-      "Create efficient and scalable database architectures for optimal data management.",
+      "Deploy and scale applications reliably using Docker, Kubernetes, and modern DevOps tools.",
     points: [
-      "Relational database modeling",
-      "Schema design and normalization",
-      "Query optimization and indexing",
-      "Data integrity and security",
-      "Scalable NoSQL solutions",
+      "Dockerfile and containerized app setup",
+      "Multi-service orchestration with Docker Compose",
+      "Kubernetes (K8s) deployment and scaling",
+      "CI/CD integration for automated deployments",
+      "Production-ready architecture setup",
     ],
-
-    icon: "database",
-  },
-
-  {
-    title: "API Development",
-    content:
-      "Develop secure and efficient APIs to enable seamless application communication.",
-    points: [
-      "RESTful API design",
-      "GraphQL implementation",
-      "Authentication and authorization",
-      "API documentation and testing",
-      "Rate limiting and scalability",
-    ],
-    icon: "settings",
+    icon: "server", // You already have this in your icon set
   },
 ];

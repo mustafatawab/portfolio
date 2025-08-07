@@ -27,25 +27,26 @@ const HeroSection = () => {
           </Badge>
           <div className="text-xl sm:text-4xl md:text-6xl font-bold">
             <div className="">
-              Hi, I am 
+              Welcome, I am 
               <h1 className="ml-3 text-nowrap text-blue-600 italic inline">
                  Mustafa Tawab
               </h1>
             </div>
             <h2>
+               
               <TypeAnimation
-                className="text-blue-600"
+                className="text-blue-600 text-lg sm:text-4xl  md:text-5xl "
                 sequence={[
                   // Same substring at the start will only be typed out once, initially
-                  "Next.js Developer",
+                  "Software Engineer",
                   1000, // wait 1s before replacing "Mice" with "Hamsters"
-                  "Modern Web App Developer",
+                  "Agentic AI Engineer",
                   1000,
-                  "Generative AI",
+                  "Generative AI Engineer",
                   1000,
-                  "Agentic AI Developer",
+                  "Python Developer",
                   1000,
-                  "Frontend Developer",
+                  "Nextjs Developer",
                   1000
                 ]}
                 wrapper="span"
@@ -55,8 +56,8 @@ const HeroSection = () => {
             </h2>
           </div>
           <p className="text-gray-500 w-full lg:w-2/3">
-            Welcome to the digital realm of Mustafa Tawab - where innovative software engineering meets cutting-edge web development. As a seasoned Full Stack Developer and Next.js expert, I bring your ideas to life with precision, creativity, and a touch of generative AI magic. Let's build something extraordinary together!.
-          </p>
+           I build custom AI tools, SaaS MVPs, and automation workflows using OpenAI, FastAPI, and Next.js.
+           </p>
           <div className="flex gap-5">
             <Link
               href="#"

@@ -1,5 +1,5 @@
 import React from "react";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -14,6 +14,10 @@ import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import {
+  Bot,
+  Rocket,
+  Zap,
+  Server,
   Code,
   Layout,
   Monitor,
@@ -36,6 +40,14 @@ interface ServiceCardProps {
 const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
+      case "bot":
+        return <Bot size={32} />;
+      case "rocket":
+        return <Rocket size={32} />;
+      case "zap":
+        return <Zap size={32} />;
+      case "server":
+        return <Server size={32} />;
       case "code":
         return <Code size={32} />;
       case "layout":
