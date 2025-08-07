@@ -6,6 +6,7 @@ import triton from '@/assets/project/triton.png'
 import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
 import nextron from '@/assets/project/nextron.png'
+import gallery from '@/assets/project/gallery.png'
 
 interface ProjectType {
     image : any,
@@ -23,16 +24,25 @@ export const projects : ProjectType[] = [
         title : "Car Finance",
         description : "A blogging website where user can post the blogs from the admin dashboard.",
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
+        link : "https://mal-blogs.vercel.app",
+    },
+
+    {
+        image : gallery,
+        title : "Gallery",
+        description : "A gallery website where user can post the images and see pictures in the home page.",
+        tags : ['tailwind css' , 'nextjs' , 'typescript' , 'supabase'],
         githubLink : "",
-        link : "https://mal-blogs.vercel.app/blogs",
+        link : "https://user-gallery-website.vercel.app/",
     },
 
     {
         image : msp,
         title : "MSP Tech Stack",
         description : 'The app is Business to Business marketplace. It has user login system and company login system.',
-        tags : ['tailwind css', 'nextjs' , 'typescript', 'mongodb' , 'nodejs'],
-        githubLink : "",
+        tags : ['nextjs' , 'typescript', 'mongodb' , 'nodejs' , "JWT Auth" , "Tailwind CSS"],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/MSPTech_Stack",
         link : "https://msp-tech-stack.vercel.app/",
     },
 
@@ -40,8 +50,8 @@ export const projects : ProjectType[] = [
         image : elygance,
         title : "Elygance",
         description : "A luxury e-commerce platform for premium fragrances with elegant design and seamless shopping experience.",
-        tags : ['nexjts', 'typescript' , 'redux toolkit', 'tailwind css'],
-        githubLink : "",
+        tags : ['nexjts', 'postreSQL ' , 'supabase', 'tailwind css'],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/elygance",
         link : "https://elygance.vercel.app/",
     },
     
@@ -49,7 +59,7 @@ export const projects : ProjectType[] = [
         image: portfolio,
         title : "Portoflio Website",
         description : "A portofolio website for developers and designers to showcase their skills. It is just a landing page.",
-        githubLink : "",
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         tags : ['nexjts', 'typescript', 'tailwind css'],
         link : "https://v0-stunning-portfolio.vercel.app/",
         
@@ -82,7 +92,7 @@ export const projects : ProjectType[] = [
         title : "Truspilot Clone",
         description : "Trustpilot clone and still in progress. Some feature might not work right now but the UI is completed. ",
         tags : ['tailwind css' , 'nextjs' , 'typscript' , 'mongodb'],
-        githubLink : "",
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/trustpilot",
         link : "https://trustpilot-xi.vercel.app/",
     },
 
