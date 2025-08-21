@@ -1,4 +1,4 @@
-import malblogs from '@/assets/project/car-finance.png'
+import malblogs from '@/assets/project/mal-blogs.png'
 import elygance from '@/assets/project/elygance.png'
 import msp from '@/assets/project/msp-tech.png'
 import myscribe from '@/assets/project/myscribe.png'
@@ -6,7 +6,8 @@ import triton from '@/assets/project/triton.png'
 import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
 import nextron from '@/assets/project/nextron.png'
-import gallery from '@/assets/project/gallery.png'
+import gallery from '@/assets/project/user-gallery.png'
+import snapbook from '@/assets/project/snapbook.png'
 
 interface ProjectType {
     image : any,
@@ -22,7 +23,7 @@ export const projects : ProjectType[] = [
     {
         image : malblogs,
         title : "Car Finance",
-        description : "A blogging website where user can post the blogs from the admin dashboard.",
+        description : "MAL-Blogs is a minimalistic personal blog platform where I share my development journey, technical insights, and experiments with modern tools and frameworks. Built with a clean, distraction-free design, it allows me to focus on creating and publishing content using Markdown/MDX while providing readers with a smooth reading experience.",
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
         link : "https://mal-blogs.vercel.app",
@@ -31,12 +32,19 @@ export const projects : ProjectType[] = [
     {
         image : gallery,
         title : "Gallery",
-        description : "A gallery website where user can post the images and see pictures in the home page.",
+        description : "This gallery is not just about displaying images—it elevates visual storytelling by combining clean design, metadata richness, and fast performance. It's a testament to creating intuitive, performant experiences for creative content.",
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'supabase'],
         githubLink : "",
         link : "https://user-gallery-website.vercel.app/",
     },
-
+    {
+        image: snapbook,
+        title: "Snapbook",
+        description : "Snapbook is a full-stack social networking application inspired by platforms like Facebook and Instagram but designed with a fresh, modern approach. Built with Next.js, React, Tailwind CSS, TypeScript, and FastAPI, it offers an intuitive and responsive interface that delivers a seamless user experience across devices.",
+        tags : ["Nextjs" , "Shadcn UI", "Neon DB" , "Prisma"],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/snapbook",
+        link : "https://snapbook-latest.vercel.app/feed"
+    },
     {
         image : msp,
         title : "MSP Tech Stack",
@@ -69,7 +77,7 @@ export const projects : ProjectType[] = [
     {
         image : myscribe,
         title : "My Scribe",
-        description : "Transcribe, Summarize, and Streamline the medical notes to focus on what truly matters — patient care.",
+        description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems—especially in fast-paced, high-stakes environments like healthcare.",
         githubLink : "",
         tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
         link : "https://www.myscribe.us/",
@@ -78,7 +86,7 @@ export const projects : ProjectType[] = [
     {
         image : triton,
         title : "Triton",
-        description : " ",
+        description : "TritonCG is a large-scale web ecosystem powered by a robust CMS built with Pyload CMS. The platform is designed to manage and maintain a network of client websites efficiently, offering scalability, reliability, and seamless content management. TritonCG showcases the power of building a scalable CMS-driven ecosystem where dozens of live websites can be managed and updated efficiently. This project highlights my expertise in developing enterprise-grade solutions with a strong focus on scalability, maintainability, and client satisfaction.",
         githubLink : "",
         tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
         more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],

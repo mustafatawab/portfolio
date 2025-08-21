@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -32,14 +33,16 @@ interface ProjectPropType {
 }
 
 const ProjectCard = ({ project } : {project : ProjectPropType}) => {
+  const [open, setIsOpen] = useState(false)
+
   return (
-    <Card className="p-0 shadow-md h-full">
+    <Card className="p-0 shadow-md h-full overflow-hidden">
       <Image
         src={project.image}
         alt=""
         width={200}
         height={200}
-        className=" rounded-t-2xl w-full"
+        className={`rounded-t-2xl w-full h-1/2 max-h-1/2   object-cover`}
       />
 
       <CardContent className="space-y-2 pb-3">
@@ -54,11 +57,14 @@ const ProjectCard = ({ project } : {project : ProjectPropType}) => {
             </Link>
           </div>
         </div>
-        {project.more && <MoreLinks links={project.more} />}
-        <p className="text-gray-700 dark:text-gray-100 text-sm">
+        
+
+          <p className={`text-gray-700 dark:text-gray-100 text-sm ${open && project.title == 'Triton' ? 'hidden' : "block"}`}>
           {project.description}
         </p>
-        <div className="flex gap-2 flex-wrap py-2">
+        
+        {project.more && <MoreLinks open={open} setIsOpen={setIsOpen} links={project.more} />}
+        <div className={`flex gap-2 flex-wrap py-2 ${open ? 'hidden' : 'flex'}`}>
           {project.tags.map((tag, i) => (
             <Badge
               key={i}
@@ -75,12 +81,12 @@ const ProjectCard = ({ project } : {project : ProjectPropType}) => {
 
 
 
-const MoreLinks = ({ links } : { links : string[]}) => {
+const MoreLinks = ({ links, open , setIsOpen } : { links : string[] , open : boolean , setIsOpen : Function}) => {
   return (
     <>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger>More</AccordionTrigger>
+          <AccordionTrigger onClick={() => setIsOpen(!open)}>More</AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col">
               {links &&
