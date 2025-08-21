@@ -49,7 +49,7 @@ const ProjectCard = ({ project } : {project : ProjectPropType}) => {
         <div className="flex justify-between items-center">
           <h4 className="text-lg font-semibold">{project.title}</h4>
           <div className="flex  gap-3">
-            <Link href={"https://www.github.com/mustafatawab"}>
+            <Link href={project.githubLink || "https://www.github.com/mustafatawab"}>
               <BsGithub className="text-gray-500" />
             </Link>
             <Link href={project.link}>
