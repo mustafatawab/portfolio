@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <header
       id="header"
-      className={`dark:bg-gray-950 dark:border-b-[1px]  ${
+      className={`dark:bg-gray-950 dark:border-b-[1px]  z-10 ${
         scrolled
           ? "bg-white/90 dark:bg-gray-900 shadow-md backdrop-blur-sm"
           : "bg-transparent"

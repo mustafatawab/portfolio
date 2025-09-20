@@ -4,11 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="py-20">
-
+    <section id="hero" className="h-[90vh]" >
+      
+      {/* <video className="w-screen h-screen" controls autoPlay>
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"/>
+      </video> */}
       {/* Animated Background */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -20,8 +24,8 @@ const HeroSection = () => {
       </div> */}
 
       {/* Content */}
-      <div className="p-5 container   mx-auto">
-        <div className="flex flex-col items-start gap-4">
+      <div className="p-5 container   mx-auto  h-full flex ">
+        <div className="flex flex-col justify-center items-start gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
           </Badge>
