@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="h-[70vh] w-full" >
+    <section id="hero" className="md:h-[70vh] w-full" >
       
       {/* <video className="w-screen h-screen" controls autoPlay>
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"/>
