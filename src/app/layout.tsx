@@ -20,7 +20,7 @@ export default function RootLayout({
         <link rel="icon" href="/me.png" sizes="any" />
       </head>
       <body className={` antialiased dark:bg-gray-950 relative`}>
-      <Image  src={'/bg.webp'} alt="" width={'400'} height={'400'} className="w-screen h-screen absolute top-0 left-0 -z-10 opacity-90" />
+      {/* <Image  src={'/bg.webp'} alt="" width={'400'} height={'400'} className="w-screen h-screen absolute top-0 left-0 -z-10 opacity-80 bg-black" /> */}
 
         <Navbar />
         {children}

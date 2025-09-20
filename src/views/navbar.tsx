@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <header
       id="header"
-      className={`dark:bg-gray-950 dark:border-b-[1px]  z-10 ${
+      className={`dark:bg-gray-950 dark:border-b-[1px]  z-10  ${
         scrolled
           ? "bg-white/90 dark:bg-gray-900 shadow-md backdrop-blur-sm"
           : "bg-transparent"
@@ -52,7 +52,7 @@ const Navbar = () => {
         toggle && "bg-black text-white pb-5"
       } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
     >
-      <nav className="flex items-center justify-between p-5 container  mx-auto">
+      <nav className="flex items-center justify-between p-5 container  mx-auto ">
         <Link
           href="/"
           className="text-2xl font-semibold text-black dark:text-white"
