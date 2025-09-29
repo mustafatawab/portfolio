@@ -4,6 +4,7 @@ import {  Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "next-themes"
 
 type LinkType = {
   url : string,
@@ -14,6 +15,8 @@ const Navbar = () => {
   const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const { setTheme } = useTheme()
 
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");

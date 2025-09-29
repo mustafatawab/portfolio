@@ -42,7 +42,7 @@ const ProjectCard = ({ project } : {project : ProjectPropType}) => {
         alt=""
         width={200}
         height={200}
-        className={`rounded-t-2xl w-full h-1/2 max-h-1/2   object-cover`}
+        className={` w-full h-1/2 max-h-1/2 object-fill`}
       />
 
       <CardContent className="space-y-2 pb-3">

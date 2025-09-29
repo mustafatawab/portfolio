@@ -8,38 +8,32 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="md:h-[70vh] w-full" >
+    <section id="hero" className="md:h-[80vh] w-full relative overflow-hidden" >
       
-      {/* <video className="w-screen h-screen" controls autoPlay>
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"/>
-      </video> */}
-      {/* Animated Background */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
-      </div> */}
+      {/*  Background Video */}
+      <div className="absolute inset-0 -z-10 ">
+        <video loop autoPlay muted>
+          <source src="./Generate_a_seamless.mp4" className="object-cover"/>
+        </video>
+      </div>
 
       {/* Content */}
-      <div className="p-5 container   mx-auto  h-full flex ">
+      <div className="p-5 container   mx-auto  h-full flex z-10">
         <div className="flex flex-col justify-center items-start gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
           </Badge>
-          <div className="text-xl sm:text-4xl md:text-6xl font-bold">
+          <div className="text-xl sm:text-4xl md:text-6xl font-bold text-white">
             <div className="">
-              Welcome, I am 
-              <h1 className="ml-3 text-nowrap text-blue-600 italic inline">
+              Welcome here, I am 
+              {/* <h1 className="ml-3 text-nowrap  inline">
                  Mustafa Tawab
-              </h1>
+              </h1> */}
             </div>
             <h2>
                
               <TypeAnimation
-                className="text-blue-600 text-lg sm:text-4xl  md:text-5xl "
+                className="text-blue-400 text-lg sm:text-4xl  md:text-5xl "
                 sequence={[
                   // Same substring at the start will only be typed out once, initially
                   "Software Engineer",
@@ -59,7 +53,7 @@ const HeroSection = () => {
               />
             </h2>
           </div>
-          <p className="text-gray-500 w-full lg:w-2/3">
+          <p className="text-gray-300 w-full lg:w-2/3">
            I build custom AI tools, SaaS MVPs, and automation workflows using OpenAI, FastAPI, and Next.js.
            </p>
           <div className="flex gap-5">

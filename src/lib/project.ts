@@ -6,7 +6,7 @@ import triton from '@/assets/project/triton.png'
 import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
 import nextron from '@/assets/project/nextron.png'
-import gallery from '@/assets/project/user-gallery.png'
+import gallery from '@/assets/project/gallery.png'
 import snapbook from '@/assets/project/snapbook.png'
 
 interface ProjectType {

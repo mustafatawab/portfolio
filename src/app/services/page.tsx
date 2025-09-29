@@ -5,7 +5,13 @@ import { services } from "@/lib/services";
 const page = () => {
   return (
     <main>
-      <section className="bg-slate-900 text-white py-20">
+      <section className=" text-white py-20 relative flex justify-center items-center md:h-[50vh] overflow-hidden">
+        <div className="absolute inset-0 -z-10 ">
+          <video loop autoPlay muted>
+            <source src="./Generate_a_seamless.mp4" className="object-cover" />
+          </video>
+        </div>
+
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">My Services</h1>
           <p className="text-xl text-slate-300 max-w-2xl">
