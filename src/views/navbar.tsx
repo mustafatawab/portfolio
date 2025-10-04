@@ -16,7 +16,6 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const { setTheme } = useTheme()
 
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
@@ -32,6 +31,8 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
+    document.documentElement.classList.toggle("dark");
+    
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
@@ -79,7 +80,8 @@ const Navbar = () => {
             <div className="cursor-pointer" onClick={toggleTheme}>
               {dark ? <Moon /> : <Sun />}
             </div>
-            <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
+
+            <div className="block md:hidden text-black" onClick={() => setToggle(!toggle)}>
               <Menu />
             </div>
           </div>

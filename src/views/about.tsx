@@ -5,7 +5,12 @@ import wordprocess from "@/assets/workProcess.png";
 import "@/styles/card-animation.css";
 const AboutSection = () => {
   return (
-    <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
+    <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-gray-950 ">
+      <div className="text-center py-10 mb-10">
+
+      <h3 className="text-4xl font-bold mb-5 text-center">About Me</h3>
+      <p className="text-gray-500">Passionate about creating intelligent systems that can think, learn, and act autonomously</p>
+      </div>
       <div className="p-5 container mx-auto ">
         <div className=" flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
           <div className="">
@@ -19,11 +24,11 @@ const AboutSection = () => {
           </div>
 
           <div className="basis-full lg:basis-1/2 flex flex-col gap-5 ">
-            <h3 className="text-4xl font-bold mb-5">About Me</h3>
+            
             <p className="text-gray-800 dark:text-gray-400 text-md">
               I'm a dedicated <b>Agentic AI Engineer</b> and{" "}
               <b>Full Stack Developer</b> with a focus on building intelligent,
-              AI-powered applications. With 2+ years of experience in frontend
+              AI-powered applications. With 3+ years of experience in frontend
               and backend development, I now specialize in crafting <b>custom AI
               workflows, automation tools, and SaaS MVPs</b> using technologies like 
               <b> OpenAI Agents SDK, FastAPI, Supabase, and Next.js.</b>
@@ -40,10 +45,23 @@ const AboutSection = () => {
               technical blogs, and constantly leveling up my skills to stay
               ahead in this rapidly evolving space.
             </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
+                <span className="text-3xl text-blue-600 font-bold">20+</span>
+                <span >Projects Completed</span>
+              </div>
+
+
+               <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
+                <span className="text-3xl text-blue-600 font-bold">3+</span>
+                <span>Years of Experience</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-5 mt-10">
+        {/* <div className="flex flex-col items-center justify-center gap-5 mt-10">
           <h2 className="text-4xl  font-bold">
             My <span className="text-blue-600">Work</span> Process
           </h2>
@@ -53,7 +71,7 @@ const AboutSection = () => {
             width={1000}
             height={1000}
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

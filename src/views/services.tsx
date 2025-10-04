@@ -5,7 +5,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { motion } from "framer-motion";
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-slate-900 ">
+    <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-gray-950 ">
       <div className="p-5 container  mx-auto">
         <h2 className="text-4xl font-bold text-center py-5">What I offer</h2>
         <motion.div

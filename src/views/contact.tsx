@@ -42,7 +42,7 @@ const Contact = () => {
 
   return (
     //bg-[#f1f5f9]
-    <section id='contact' className="py-20 dark:bg-slate-900 ">
+    <section id='contact' className="py-20 dark:bg-gray-950 ">
       <div className="p-5 container  mx-auto space-y-5">
         <h3 className='text-center text-4xl font-bold'>Book a demo call</h3>
         <main className='flex justify-center items-center'>
