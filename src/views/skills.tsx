@@ -42,7 +42,7 @@ const skills: SkillProps[] = [
   {
     name: "Python",
     icon: <SiPython className="text-yellow-500" size={24} />,
-    level: 75,
+    level: 98,
   },
   {
     name : "Open AI",
@@ -104,16 +104,16 @@ const skills: SkillProps[] = [
 
 const Skills = () => {
   const [viewMore, setViewMore] = useState(false);
-  const displayedSkills = viewMore ? skills : skills.slice(0, 4);
+  const displayedSkills = viewMore ? skills : skills.slice(0, 5);
   return (
     <section id="skills" className="py-20">
       <div className="p-5 container  mx-auto space-y-7">
         <h3 className="text-4xl font-bold text-center">
-          Skills and Technologies
+          Skills
         </h3>
         {/* <SkillCard /> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 px-4 w-full lg:w-2/3 mx-auto gap-8 bg-blue-600/10   rounded-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-4 w-full  mx-auto gap-8    rounded-lg">
           {displayedSkills.map((skill, index) => (
             <motion.div
               key={index}

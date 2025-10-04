@@ -130,3 +130,8 @@
 #hero{
    background-image: url('/public/bg.webp');
 }
+
+
+.container{
+  padding: 20px 50px;
+}
