@@ -19,7 +19,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="p-5 container   h-full flex z-10 ">
-        <div className="flex flex-col justify-center items-start gap-4">
+        <div className="flex flex-col justify-center items-center mx-auto gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
           </Badge>
