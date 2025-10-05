@@ -7,7 +7,7 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-[#f1f5f9] dark:bg-gray-950 ">
       <div className="p-5 container  mx-auto">
-        <h2 className="text-4xl font-bold text-center py-5">What I offer</h2>
+        <h2 className="text-4xl font-bold text-center py-5">Services</h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

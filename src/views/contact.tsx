@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Mail, SendIcon } from "lucide-react";
+import { Mail, SendIcon, Linkedin, Github } from "lucide-react";
 import { BsGithub } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
@@ -20,6 +20,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+
+
+const socialLinks = [
+    { icon: Mail, label: "Email", href: "mailto:tawab05@gmail.com" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/mustafa-tawab/" },
+    { icon: Github, label: "GitHub", href: "https://github.com/mustafatawab" },
+  ];
+
+
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -83,45 +93,33 @@ const Contact = () => {
 
         <main className="contianer flex flex-wrap-reverse lg:flex-nowrap justify-center gap-20 items-center mt-20">
           <div className="space-y-5 lg:w-1/2 ">
-            <h4 className="text-2xl font-bold">Contact Information</h4>
+            <h4 className="text-2xl font-bold">Let's connect</h4>
             <p className="text-gray-700 text-sm dark:text-gray-400">
-              Feel free to reach out if you're looking for a developer, have a
-              question, or just want to connect.
+              I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!
             </p>
-            <div className="flex items-center gap-2 ">
-              <Mail size={"20"} className="text-blue-600" />
-              <Link
-                href="mailto:tawab05@gmail.com"
-                className="hover:text-blue-600"
-              >
-                tawab05@gmail.com
-              </Link>
-            </div>
+            
 
-            <div className="flex items-center gap-2">
-              <BsGithub size={"20"} className="text-blue-600" />
-              <Link
-                href={"https://github.com/mustafatawab"}
-                className="hover:text-blue-600"
-              >
-                github.com/mustafatawab
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaLinkedin size={"20"} className="text-blue-600" />
-              <Link
-                href="https://www.linkedin.com/in/mustafa-tawab/"
-                className="hover:text-blue-600"
-              >
-                linkedin.com/in/mustafa-tawab
-              </Link>
+             <div className="space-y-4">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="flex items-center gap-4 p-4 rounded-lg border hover:border-blue-600 border-border transition-smooth group"
+                >
+                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-smooth">
+                    <link.icon className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <span className="text-foreground/90 group-hover:text-foreground transition-smooth">
+                    {link.label}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
 
-          <Card className="p-10 dark:bg-gray-900/70 lg:w-1/2">
+          <Card className="p-10 dark:bg-gray-900/70 w-full lg:w-1/2">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="flex gap-3 justify-between">
+              <div className="flex flex-col md:flex-row gap-3 justify-between">
                 <span className="space-y-2 w-full">
                   <Label htmlFor="first_name">
                     First Name <span className="text-red-400">*</span>
@@ -179,7 +177,7 @@ const Contact = () => {
                 />
               </span>
 
-              <div className="flex gap-3 justify-between">
+              <div className="flex flex-col md:flex-row gap-3 justify-between">
                 <span className="flex flex-col gap-2 w-full">
                   <Label htmlFor="proj-type">
                     Project Type <span className="text-red-400">*</span>

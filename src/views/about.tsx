@@ -46,7 +46,7 @@ const AboutSection = () => {
               ahead in this rapidly evolving space.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
               <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
                 <span className="text-3xl text-blue-600 font-bold">20+</span>
                 <span >Projects Completed</span>
@@ -56,6 +56,18 @@ const AboutSection = () => {
                <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
                 <span className="text-3xl text-blue-600 font-bold">3+</span>
                 <span>Years of Experience</span>
+              </div>
+
+
+              <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
+                <span className="text-3xl text-blue-600 font-bold">25+</span>
+                <span>Happy Clients</span>
+              </div>
+
+
+              <div className=" flex flex-col  bg-gray-400 dark:bg-gray-900 p-5 rounded-xl gap-3">
+                <span className="text-3xl text-blue-600 font-bold">100%</span>
+                <span>Success Rate</span>
               </div>
             </div>
           </div>
