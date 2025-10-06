@@ -1,7 +1,8 @@
 'use client'
 import React from 'react';
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
-
+import logo from '../../public/mustafa_logo.png'
+import Image from 'next/image';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -24,17 +25,15 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="py-3 bg-[#f1f5f9] dark:bg-black ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="footer" className="py-3 bg-[#f1f5f9] dark:bg-black  container">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 grid md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-2">
               {/* bg-clip-text */}
-              <h3 className="text-2xl font-bold text-blue-600">
-                Mustafa Tawab
-              </h3>
+               <Image src={logo} width={150} height={50} alt="Mustafa Tawab"/>
             </div>
             <p className="text-gray-700 dark:text-gray-400 leading-relaxed max-w-md">
               Creative developer passionate about building exceptional digital experiences. 

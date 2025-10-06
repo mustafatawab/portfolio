@@ -5,7 +5,8 @@ import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes"
-
+import logo from '../../public/mustafa_logo.png'
+import Image from "next/image";
 type LinkType = {
   url : string,
   label : string
@@ -57,12 +58,18 @@ const Navbar = () => {
       } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
     >
       <nav className="flex items-center justify-between p-5 container  mx-auto ">
-        <Link
+        {/* <Link
           href="/"
           className="text-2xl font-semibold text-black dark:text-white"
         >
           <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
           Tawab
+        </Link> */}
+        <Link
+          href="/"
+          className="text-2xl font-semibold text-black dark:text-white"
+        >
+        <Image src={logo} width={150} height={50} alt="Mustafa Tawab"/>
         </Link>
         <div className={` hidden md:flex gap-5 justify-center items-center`}>
           <div>
