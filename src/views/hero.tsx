@@ -19,12 +19,12 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="p-5 container   h-full flex z-10  mx-auto">
+      <div className="p-5 container text-center   h-full flex z-10  ">
         <div className="flex flex-col justify-center items-center mx-auto gap-4">
           <Badge className="bg-blue-200 text-blue-600 px-2">
             Available for work
           </Badge>
-          <div className="text-xl sm:text-5xl md:text-7xl font-bold text-white">
+          <div className="text-2xl sm:text-5xl md:text-7xl font-bold text-white">
             <div className="">
               Welcome here, I am 
               {/* <h1 className="ml-3 text-nowrap  inline">
@@ -47,7 +47,7 @@ const HeroSection = () => {
               />
             </h2>
           </div>
-          <p className="text-gray-300 w-full lg:w-2/3 text-lg">
+          <p className="text-gray-300 w-full lg:w-2/3 text-sm md:text-lg">
           Crafting autonomous AI systems and modern full-stack applications that transform businesses with intelligent automation.
             </p>
           <div className="flex flex-col sm:flex-row gap-5">
