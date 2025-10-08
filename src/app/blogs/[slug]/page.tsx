@@ -14,16 +14,15 @@ async function getBlogs() {
   }
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+const Page = async ({ params }: { params: Promise<{ slug: string }>  }) => {
+    const { slug } = await params;
   const blogs = await getBlogs();
   const fileteredBlogs = blogs.items.find(
-    (item: any) => item.fields.slug == params.slug
+    (item: any) => item.fields.slug == slug
   );
 
   return (
       <div className="text-center flex flex-col justify-center items-center gap-10 ">
-       
-
         <div>
           {blogs.includes.Asset.map((img: any, i: number) => {
             return (
