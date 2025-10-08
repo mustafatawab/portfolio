@@ -12,10 +12,8 @@ const HeroSection = () => {
     <section id="hero" className="md:h-[80vh] w-full relative overflow-hidden" >
       
       {/*  Background Video */}
-      <div className="absolute inset-0 -z-10 ">
-        <video loop autoPlay muted>
-          <source src="./Generate_a_seamless.mp4" className="object-cover"/>
-        </video>
+      <div className="absolute inset-0 -z-10 bg-black">
+        <Image src={"/bg.webp"} width={500} height={500} alt="" className="w-full h-full object-cover opacity-55"/>
       </div>
 
       {/* Content */}

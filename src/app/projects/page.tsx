@@ -2,17 +2,21 @@ import React from "react";
 import { projects } from "@/lib/project";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
+import Image from "next/image";
 const page = () => {
   return (
     <main>
       <section className=" text-white py-20 overflow-hidden relative md:h-[60vh] flex items-center justify-center text-center">
-
-      {/*  Background Video */}
-      <div className="absolute inset-0 -z-10 ">
-        <video loop autoPlay muted>
-          <source src="./Generate_a_seamless.mp4" className="object-cover"/>
-        </video>
-      </div>
+        {/*  Background Video */}
+        <div className="absolute inset-0 -z-10 bg-black">
+          <Image
+            src={"/bg.webp"}
+            width={500}
+            height={500}
+            alt=""
+            className="w-full h-full object-cover opacity-55"
+          />
+        </div>
 
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
