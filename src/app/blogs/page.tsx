@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Link from "next/link";
 const posts = [
   {
     id: 1,
@@ -36,40 +38,68 @@ const posts = [
   },
 ];
 
-export default function BlogPage() {
+async function getBlogs() {
+  const res = await fetch(
+    `https://cdn.contentful.com/spaces/${process.env.CONTENTFULL_SPACE_ID}/entries?access_token=${process.env.CONTENTFULL_API_KEY}&content_type=portfolio`
+  );
+
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export default async function BlogPage() {
+  const blogs = await getBlogs();
+  console.log(blogs);
   return (
     <section className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-2">Latest Articles</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Insights, tutorials, and updates on web development, design, and technology.
+          Insights, tutorials, and updates on web development, design, and
+          technology.
         </p>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-48 object-cover"
-            />
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold line-clamp-2">
-                {post.title}
-              </CardTitle>
-              <p className="text-sm text-muted-foreground mt-1">{post.date}</p>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4 line-clamp-3">
-                {post.description}
-              </p>
-              <Button asChild variant="outline" size="sm">
-                <a href={`/blog/${post.id}`}>Read More</a>
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {blogs.items.map((blog: any) => {
+          const imageAsset = blogs.includes.Asset.find(
+            (asset: any) => blog.fields.image.sys.id === asset.sys.id
+          );
+          const imageUrl = imageAsset
+            ? "https:" + imageAsset.fields.file.url
+            : null;
+
+          return (
+            <div
+              key={blog.sys.id}
+              className="  overflow-hidden rounded-xl shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl"
+            >
+              {imageUrl && (
+                <Image
+                  src={imageUrl}
+                  alt={blog.fields.title}
+                  width={500}
+                  height={500}
+                  className="transition-transform duration-500 ease-in-out group-hover:scale-105 h-[70%] w-full object-cover"
+                />
+              )}
+
+              <div className=" p-4">
+                <h2 className="text-xl font-bold text-black transition-colors duration-300 group-hover:text-blue-600">
+                  {blog.fields.title}
+                </h2>
+                <Link href={`/blogs/${blog.fields.slug}`}>
+                  <Button>Read More</Button>
+                </Link>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

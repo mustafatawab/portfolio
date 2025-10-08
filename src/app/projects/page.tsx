@@ -5,7 +5,7 @@ import Link from "next/link";
 const page = () => {
   return (
     <main>
-      <section className=" text-white py-20 overflow-hidden relative md:h-[50vh] flex items-center justify-center text-center">
+      <section className=" text-white py-20 overflow-hidden relative md:h-[60vh] flex items-center justify-center text-center">
 
       {/*  Background Video */}
       <div className="absolute inset-0 -z-10 ">
