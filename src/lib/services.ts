@@ -6,19 +6,7 @@ interface ServiceType {
 }
 
 export const services: ServiceType[] = [
-  {
-    title: "AI Agent Development",
-    content:
-      "Build intelligent AI agents and multi-agent systems using OpenAI Agents SDK and LangChain.",
-    points: [
-      "Autonomous AI workflows",
-      "Task-specific and multi-agent systems",
-      "Memory and context-aware agents",
-      "Agent orchestration with CrewAI / AgentOps",
-      "Custom AI tools for business use cases",
-    ],
-    icon: "bot",
-  },
+  
   {
     title: "AI SaaS MVP Development",
     content:
@@ -70,6 +58,19 @@ export const services: ServiceType[] = [
       "Component-driven design",
     ],
     icon: "monitor",
+  },
+  {
+    title: "AI Agent Development",
+    content:
+      "Build intelligent AI agents and multi-agent systems using OpenAI Agents SDK and LangChain.",
+    points: [
+      "Autonomous AI workflows",
+      "Task-specific and multi-agent systems",
+      "Memory and context-aware agents",
+      "Agent orchestration with OpenAI Agents SDK and N8N",
+      "Custom AI tools for business use cases",
+    ],
+    icon: "bot",
   },
   {
     title: "API & Backend Development",

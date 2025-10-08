@@ -12,7 +12,7 @@ const Experience = () => {
             Work <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            My journey in AI and machine learning
+            My journey in Full Stack Development
           </p>
         </div>
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 const page = () => {
   return (
     <main>
-      <section className=" text-white py-20 overflow-hidden relative md:h-[50vh] flex items-center justify-center">
+      <section className=" text-white py-20 overflow-hidden relative md:h-[50vh] flex items-center justify-center text-center">
 
       {/*  Background Video */}
       <div className="absolute inset-0 -z-10 ">
@@ -16,14 +16,14 @@ const page = () => {
 
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
-          <p className="text-xl text-slate-300 max-w-2xl">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Explore my portfolio of web applications, mobile apps, and
             AI-powered solutions that solve real-world problems.
           </p>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 dark:bg-slate-950">
         <div className="p-5 container  mx-auto flex flex-col justify-center items-center gap-10">
           <h2 className="text-4xl tect-center font-bold text-center">
             Projects

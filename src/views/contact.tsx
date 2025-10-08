@@ -21,18 +21,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-
-
 const socialLinks = [
-    { icon: Mail, label: "Email", href: "mailto:tawab05@gmail.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/mustafa-tawab/" },
-    { icon: Github, label: "GitHub", href: "https://github.com/mustafatawab" },
-  ];
-
-
+  { icon: Mail, label: "Email", href: "mailto:tawab05@gmail.com" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/mustafa-tawab/",
+  },
+  { icon: Github, label: "GitHub", href: "https://github.com/mustafatawab" },
+];
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [other, setOther] = useState(false);
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
@@ -41,6 +42,7 @@ const Contact = () => {
     project_type: "",
     budget: "",
     company: "",
+    other : ""
   });
 
   const handleChange = (e: any) => {
@@ -68,6 +70,7 @@ const Contact = () => {
           project_type: "",
           budget: "",
           company: "",
+          other : ""
         });
         toast.success("Thanks for contact me. We will get back to you asap");
         setLoading(false);
@@ -75,7 +78,7 @@ const Contact = () => {
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        toast.error(error)
+        toast.error(error);
       });
   };
 
@@ -87,7 +90,7 @@ const Contact = () => {
           <h3 className="text-center text-5xl font-bold">Contact</h3>
           <p className="text-gray-400">
             Ready to build the next generation of intelligent systems? Let's
-            discuss your AI project
+            discuss your project
           </p>
         </div>
 
@@ -95,11 +98,12 @@ const Contact = () => {
           <div className="space-y-5 lg:w-1/2 ">
             <h4 className="text-2xl font-bold">Let's connect</h4>
             <p className="text-gray-700 text-sm dark:text-gray-400">
-              I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!
+              I'm always interested in hearing about new projects and
+              opportunities. Whether you have a question or just want to say hi,
+              feel free to reach out!
             </p>
-            
 
-             <div className="space-y-4">
+            <div className="space-y-4">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
@@ -196,21 +200,36 @@ const Contact = () => {
                     <SelectContent className="w-full">
                       <SelectGroup>
                         <SelectLabel>Project Type</SelectLabel>
-                        <SelectItem value="Custom AI Solution">
-                          Custom AI Solution
+                        <SelectItem value="Simple Website">
+                          Simple Website
                         </SelectItem>
-                        <SelectItem value="Custom Software">
-                          Custom Software
+                        <SelectItem value="Web Application">
+                          Web Application
                         </SelectItem>
-                        <SelectItem value="Custom Web App">
-                          Custom Web Apps
+                        <SelectItem value="AI Integration">
+                          AI Integration
                         </SelectItem>
-                        <SelectItem value="Wordpress">WordPress</SelectItem>
-                        <SelectItem value="UI/UX">UI/UX</SelectItem>
-                        <SelectItem value="Other">Other</SelectItem>
+                        <SelectItem value="Mobile App">Mobile App</SelectItem>
+                        <SelectItem
+                          value="Other"
+                          onSelect={() => setOther(true)}
+                        >
+                          Other
+                        </SelectItem>
                       </SelectGroup>
                     </SelectContent>
                   </Select>
+                  {form.project_type == "Other" && (
+                    <Input
+                      value={form.other}
+                      type="text"
+                      name="other"
+                      id="other"
+                      placeholder="Please Specify your project type"
+                      onChange={handleChange}
+                      required
+                    />
+                  )}
                 </span>
 
                 <span className="space-y-2 w-full">
@@ -256,7 +275,7 @@ const Contact = () => {
               <Button
                 disabled={loading}
                 type="submit"
-                className="bg-blue-600 hover:bg-blue-500 cursor-pointer text-white font-semibold flex items-center justify-center shadow-2xl inset-shadow-transparent shadow-blue-600 hover:shadow-lg"
+                className="bg-blue-600 hover:bg-blue-500 cursor-pointer text-white font-semibold flex items-center justify-center shadow-2xl inset-shadow-transparent shadow-blue-600 hover:shadow-lg duration-500"
               >
                 {loading ? (
                   "Sending...."

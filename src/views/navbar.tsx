@@ -1,22 +1,22 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {  Moon } from "lucide-react";
+import { Moon } from "lucide-react";
 import { Sun } from "lucide-react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useTheme } from "next-themes"
-import logo from '../../public/mustafa_logo.png'
+import { useTheme } from "next-themes";
+import logo from "../../public/mustafa_logo.png";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 type LinkType = {
-  url : string,
-  label : string
-}
+  url: string;
+  label: string;
+};
 
 const Navbar = () => {
   const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
 
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
@@ -24,7 +24,7 @@ const Navbar = () => {
     localStorage.setItem("dark", JSON.stringify(dark));
   };
 
-  const links : LinkType[] = [
+  const links: LinkType[] = [
     { label: "About", url: "/#about" },
     { label: "Work", url: "/projects" },
     { label: "Services", url: "/services" },
@@ -32,8 +32,8 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark");
-    
+    // document.documentElement.classList.toggle("dark");
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
@@ -69,11 +69,11 @@ const Navbar = () => {
           href="/"
           className="text-2xl font-semibold text-black dark:text-white"
         >
-        <Image src={logo} width={150} height={50} alt="Mustafa Tawab"/>
+          <Image src={logo} width={150} height={50} alt="Mustafa Tawab" />
         </Link>
         <div className={` hidden md:flex gap-5 justify-center items-center`}>
           <div>
-            {links.map((link : LinkType) => (
+            {links.map((link: LinkType) => (
               <a
                 className="py-1 px-4   hover:text-blue-600 hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent"
                 key={link.label}
@@ -83,21 +83,37 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-5">
-            <div className="cursor-pointer" onClick={toggleTheme}>
-              {dark ? <Moon /> : <Sun />}
-            </div>
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="cursor-pointer" onClick={toggleTheme}>
+            {dark ? <Moon /> : <Sun />}
+          </div>
+          <Link
+            href={
+              "https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
+            }
+            target="_blank"
+            className="hidden sm:block"
+          >
+            {" "}
+            <Button
+              className="dark:hover:border-blue-600 hover:border-blue-600 hover:text-blue-600 bg-blue-600 dark:bg-blue-600 dark:hover:text-blue-600 text-white cursor-pointer"
+              variant={"outline"}
+            >
+              {" "}
+              Hire Me
+            </Button>
+          </Link>
 
-            <div className="block md:hidden text-black" onClick={() => setToggle(!toggle)}>
-              <Menu />
-            </div>
+          <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
+            <Menu />
           </div>
         </div>
       </nav>
 
       {toggle && (
-        <div className="block md:hidden transition delay-150 duration-300 ease-in-out text-black dark:text-white">
-          {links.map((link : LinkType) => (
+        <div className="container flex md:hidden transition delay-150 duration-300 ease-in-out text-black dark:text-white  flex-col">
+          {links.map((link: LinkType) => (
             <a
               className="block py-2 px-5 border-0   hover:text-blue-600 hover:border hover:border-blue-600 duration-30"
               key={link.label}
@@ -106,6 +122,27 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+
+
+          <div className="px-5 flex flex-col gap-3">
+            
+            <Link
+              href={
+                "https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
+              }
+              target="_blank"
+              className="w-full"
+            >
+              {" "}
+              <Button
+                className="dark:hover:border-blue-600 hover:border-blue-600 hover:text-blue-600 bg-blue-600 dark:bg-blue-600 dark:hover:text-blue-600 text-white cursor-pointer w-full"
+                variant={"outline"}
+              >
+                {" "}
+                Hire Me
+              </Button>
+            </Link>
+          </div>
         </div>
       )}
     </header>

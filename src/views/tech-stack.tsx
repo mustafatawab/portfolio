@@ -31,13 +31,13 @@ const TechStack = () => {
           {technologies.map((tech, index) => (
             <div
               key={index}
-              className="flex flex-col items-center gap-3 p-6 rounded-lg border border-border hover:border-primary/50 transition-smooth hover:scale-110 group animate-fade-in"
+              className="flex flex-col items-center gap-3 p-6 rounded-lg border border-border hover:border-blue-600/50 transition-smooth hover:scale-110 group animate-fade-in duration-500"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <img
                 src={tech.logo}
                 alt={tech.name}
-                className="w-12 h-12 group-hover:scale-110 transition-smooth"
+                className="w-12 h-12 group-hover:scale-110 transition-smooth duration-300"
               />
               <span className="text-sm text-muted-foreground group-hover:text-foreground transition-smooth">
                 {tech.name}

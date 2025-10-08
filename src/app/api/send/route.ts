@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
     project_type,
     email,
     message,
+    other
   } = await req.json();
 
   try {
@@ -20,7 +21,7 @@ export async function POST(req: NextRequest) {
       to: ["tawab05@gmail.com"], // Must match the email linked to your Resend account
       subject: `New message from ${first_name} ${last_name && last_name}`,
       html: `
-            <div className='text-blue-700 border-2 border-blue-600 p-20 w-full'>
+            <div className='text-blue-700 border-2 border-blue-600 p-20 w-full bg-blue-200'>
                 
                 <div>
                         Name :  ${first_name} ${last_name && last_name}
@@ -35,8 +36,11 @@ export async function POST(req: NextRequest) {
                 </div>
 
                 <div>
-                    Project Type : ${project_type}
+                    Project Type : ${project_type == "Other" ? `${other}` : project_type}
+                    
                 </div>
+
+
 
                 <div>
                     Budget  : ${budget}

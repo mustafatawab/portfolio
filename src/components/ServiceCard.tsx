@@ -81,7 +81,7 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
 
   return (
     <>
-      <Card className="shadow-none p-5 hover:bg-blue-100 dark:hover:bg-transparent border-t-8 border-t-blue-600">
+      <Card className="shadow-none hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] p-5  hover:border-blue-600 duration-500 animate-fade-in ">
         <CardHeader>
           <CardTitle>
             <div className="w-16 h-16 rounded-full bg-blue-600/30 flex items-center justify-center mb-6 text-blue-600">
