@@ -8,6 +8,9 @@ import portfolio from '@/assets/project/portfolio.png'
 import nextron from '@/assets/project/nextron.png'
 import gallery from '@/assets/project/gallery.png'
 import snapbook from '@/assets/project/snapbook.png'
+import uswah from '@/assets/project/uswah-saeed.png'
+import farsightsysmte from '@/assets/project/farsight-system.png'
+import parkease from '@/assets/project/parkease.png'
 
 interface ProjectType {
     image : any,
@@ -20,6 +23,30 @@ interface ProjectType {
 }
 
 export const projects : ProjectType[] = [
+    {
+        image : farsightsysmte,
+        title : "Farsight System",
+        description : "Software Agency who provides different solutions in the software industry. From AI-powered applications to custom web development, we help businesses transform their operations and achieve their digital goals with cutting-edge technology.",
+        tags : ['tailwind css' , 'css' , "html" , "javascript"],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
+        link : "https://www.farsightsystem.com",
+    },
+     {
+        image : parkease,
+        title : "Parkease",
+        description : "Find & Reserve Parking Spots Instantly. Skip the hassle of searching for parking. Book guaranteed spots in advance and save up to 60% on parking fees in prime locations.",
+        tags : ['tailwind css', "Vercel" , "Next.js" , "Typescript"],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
+        link : "https://v0-car-parking-website-flax.vercel.app/",
+    },
+    {
+        image : uswah,
+        title : "Portfolio - Uswah Saeed",
+        description : "A landing page which is a portfolio website for a game designer  with a background in computer science and professional experience in game development and user experience and interface",
+        tags : ['tailwind css' , 'css' , "html" , "javascript"],
+        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
+        link : "https://uswah-saeed.vercel.app/",
+    },
     {
         image : malblogs,
         title : "Car Finance",
