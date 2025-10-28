@@ -71,11 +71,11 @@ const Navbar = () => {
         >
           <Image src={logo} width={150} height={50} alt="Mustafa Tawab" />
         </Link>
-        <div className={` hidden md:flex gap-5 justify-center items-center`}>
+        <div className={` hidden md:flex gap-2 justify-center items-center`}>
           <div>
             {links.map((link: LinkType) => (
               <a
-                className="py-1 px-4   hover:text-blue-600 hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent"
+                className="mx-4 px-1  font-semibold hover:text-blue-600 hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent"
                 key={link.label}
                 href={link.url}
               >
@@ -83,6 +83,8 @@ const Navbar = () => {
               </a>
             ))}
           </div>
+
+          <Link target="_blank" className="mx-3 px-1 font-semibold text-blue-600 cursor-pointer hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent" href={"https://mustafa-mko4.onrender.com/"}>Personal Bot</Link>
         </div>
         <div className="flex items-center gap-5">
           <div className="cursor-pointer" onClick={toggleTheme}>
@@ -114,15 +116,14 @@ const Navbar = () => {
       {toggle && (
         <div className="container flex md:hidden transition delay-150 duration-300 ease-in-out text-black dark:text-white  flex-col">
           {links.map((link: LinkType) => (
-            <a
+            <Link
               className="block py-2 px-5 border-0   hover:text-blue-600 hover:border hover:border-blue-600 duration-30"
               key={link.label}
               href={link.url}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-
 
           <div className="px-5 flex flex-col gap-3">
             
