@@ -24,7 +24,7 @@ const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="services" className="py-32 bg-black relative min-h-[800px] flex items-center">
+    <section id="services" className="pt-32 pb-16 bg-black relative min-h-[800px] flex items-center">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-24 lg:hidden">
           <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>

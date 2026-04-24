@@ -14,27 +14,27 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
     offset: ["start end", "end start"]
   });
 
-  const yImage = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const yContent = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const yImage = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const yContent = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center py-20 overflow-hidden">
-      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-0`}>
+    <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden">
+      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
-        <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap`}>
+        <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap`}>
           {project.title.toUpperCase()}
         </div>
 
         {/* Image Stage */}
         <motion.div 
-          style={{ y: yImage }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? yImage : 0 }}
           className="w-full lg:w-[60%] relative aspect-video group"
         >
-          <div className="absolute inset-0 bg-neon-cyan/20 rounded-[2rem] translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700" />
-          <div className="relative h-full w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+          <div className="absolute inset-0 bg-neon-cyan/20 rounded-2xl md:rounded-[2rem] translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700" />
+          <div className="relative h-full w-full rounded-2xl md:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
             <Image 
               src={project.image} 
               fill 
@@ -47,42 +47,42 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
         {/* Content Card */}
         <motion.div 
-          style={{ y: yContent }}
+          style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? yContent : 0 }}
           className={`w-full lg:w-[45%] lg:-ml-[10%] ${!isEven && 'lg:-mr-[10%] lg:ml-0'} z-20`}
         >
-          <div className="glass-card p-10 md:p-16 rounded-[2.5rem] border-white/10 hover:neon-glow-cyan transition-all duration-500 space-y-8">
-            <div className="space-y-4">
+          <div className="glass-card p-6 md:p-16 rounded-2xl md:rounded-[2.5rem] border-white/10 hover:neon-glow-cyan transition-all duration-500 space-y-6 md:space-y-8">
+            <div className="space-y-2 md:space-y-4">
               <div className="text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase">Deployment 0{index + 1}</div>
-              <h3 className="text-4xl md:text-6xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors">
+              <h3 className="text-3xl md:text-6xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors">
                 {project.title}
               </h3>
             </div>
 
-            <p className="text-white/60 text-lg leading-relaxed">
+            <p className="text-white/60 text-sm md:text-lg leading-relaxed">
               {project.description}
             </p>
 
             <div className="flex flex-wrap gap-2">
               {project.tags.slice(0, 5).map((tag: string, i: number) => (
-                <Badge key={i} className="bg-white/5 border-white/10 text-[10px] font-mono tracking-widest uppercase px-3 py-1 text-white/40">
+                <Badge key={i} className="bg-white/5 border-white/10 text-[9px] md:text-[10px] font-mono tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 text-white/40">
                   {tag}
                 </Badge>
               ))}
             </div>
 
-            <div className="flex gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2 md:pt-4">
               <Link 
                 href={project.link}
-                className="group flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-neon-cyan hover:text-white transition-colors"
+                className="group flex items-center justify-center sm:justify-start gap-3 font-mono text-xs tracking-widest uppercase text-neon-cyan hover:text-white transition-colors p-2 sm:p-0 border border-neon-cyan/20 sm:border-none rounded-lg"
               >
-                Launch System <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
+                Launch System <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
               </Link>
               {project.githubLink && (
                 <Link 
                   href={project.githubLink}
-                  className="group flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors"
+                  className="group flex items-center justify-center sm:justify-start gap-3 font-mono text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors p-2 sm:p-0 border border-white/10 sm:border-none rounded-lg"
                 >
-                  Source <Github size={16} />
+                  Source <Github size={14} />
                 </Link>
               )}
             </div>
@@ -100,8 +100,8 @@ const Projects = () => {
          <div className="w-[800px] h-[800px] bg-neon-cyan/5 blur-[150px] rounded-full animate-pulse-slow" />
       </div>
 
-      <div className="relative z-10 pt-32">
-        <div className="container text-center mb-32">
+      <div className="relative z-10 pt-16 md:pt-32">
+        <div className="container text-center mb-16 md:mb-32">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -109,7 +109,7 @@ const Projects = () => {
           >
             Curated Archive
           </motion.h3>
-          <h2 className="text-5xl md:text-8xl font-bold font-display tracking-tighter">SYSTEM <span className="text-gradient">WORKS</span></h2>
+          <h2 className="text-4xl md:text-8xl font-bold font-display tracking-tighter leading-none">SYSTEM <span className="text-gradient">WORKS</span></h2>
         </div>
 
         {projects && projects.slice(0, 5).map((project, index) => (

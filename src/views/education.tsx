@@ -22,7 +22,7 @@ const Education = () => {
   return (
     <section id="education" ref={containerRef} className="py-32 relative bg-black overflow-hidden">
       <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-32">
+        <div className="text-center space-y-4 mb-20 md:mb-32">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -30,7 +30,7 @@ const Education = () => {
           >
             Evolutionary Logic
           </motion.h3>
-          <h2 className="text-5xl md:text-8xl font-bold font-display tracking-tighter">
+          <h2 className="text-4xl md:text-8xl font-bold font-display tracking-tighter leading-none">
             NEURAL <span className="text-gradient">PATH</span>
           </h2>
         </div>
@@ -43,7 +43,7 @@ const Education = () => {
             className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
           />
           
-          <div className="space-y-32">
+          <div className="space-y-16 md:space-y-32">
             {education.map((edu, index) => {
               const Icon = edu.icon;
               const isEven = index % 2 === 0;
@@ -51,8 +51,8 @@ const Education = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true, margin: "-100px" }}
                   className={`relative flex flex-col md:flex-row items-start md:items-center ${
@@ -66,51 +66,51 @@ const Education = () => {
                   </div>
 
                   {/* Content Container */}
-                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-24 text-left md:text-right' : 'md:pl-24 text-left'}`}>
+                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-12 lg:pr-24 text-left md:text-right' : 'md:pl-12 lg:pl-24 text-left'}`}>
                     <div className="group relative">
                       <div className={`hidden md:block absolute top-1/2 ${isEven ? '-right-4' : '-left-4'} w-8 h-[2px] bg-white/10 group-hover:bg-neon-cyan/50 transition-colors`} />
                       
-                      <div className="glass-card p-10 rounded-[2rem] border-white/5 hover:neon-glow-purple transition-all duration-500 relative overflow-hidden">
-                        <div className="flex items-center gap-4 mb-6 md:justify-inherit">
-                            <div className={`p-3 rounded-xl bg-white/5 text-neon-cyan ${isEven ? 'md:order-2' : ''}`}>
+                      <div className="glass-card p-6 md:p-10 rounded-2xl md:rounded-[2rem] border-white/5 hover:neon-glow-purple transition-all duration-500 relative overflow-hidden">
+                        <div className={`flex items-center gap-4 mb-4 md:mb-6 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                            <div className="p-3 rounded-xl bg-white/5 text-neon-cyan flex-shrink-0">
                                 <Icon size={24} />
                             </div>
-                            <div className={`text-[10px] font-mono tracking-widest text-white/40 uppercase ${isEven ? 'md:order-1' : ''}`}>
+                            <div className="text-[10px] font-mono tracking-widest text-white/40 uppercase">
                                 {edu.period}
                             </div>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-2 md:space-y-4">
                             {edu.link ? (
                                 <Link 
                                     href={edu.link} 
                                     target="_blank" 
                                     className={`group/link inline-flex items-center gap-2 ${isEven ? 'md:flex-row-reverse' : ''}`}
                                 >
-                                    <h3 className="text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
+                                    <h3 className="text-xl md:text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
                                         {edu.degree}
                                     </h3>
-                                    <ExternalLink size={18} className="text-white/20 group-hover/link:text-neon-cyan transition-colors" />
+                                    <ExternalLink size={16} className="text-white/20 group-hover/link:text-neon-cyan transition-colors" />
                                 </Link>
                             ) : (
-                                <h3 className="text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
+                                <h3 className="text-xl md:text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
                                     {edu.degree}
                                 </h3>
                             )}
-                            <p className="text-neon-purple font-mono text-xs tracking-widest uppercase italic">
+                            <p className="text-neon-purple font-mono text-[10px] md:text-xs tracking-widest uppercase italic">
                                 {edu.institution}
                             </p>
                         </div>
                         
-                        <p className="text-white/40 text-sm mt-6 leading-relaxed">
+                        <p className="text-white/40 text-xs md:text-sm mt-4 md:mt-6 leading-relaxed">
                             {edu.description}
                         </p>
                         
-                        <div className={`flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5 ${isEven ? 'md:justify-end' : ''}`}>
+                        <div className={`flex flex-wrap gap-2 mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/5 ${isEven ? 'md:justify-end' : ''}`}>
                             {edu.achievements.map((achievement, i) => (
                                 <Badge
                                     key={i}
-                                    className="bg-white/5 border-white/10 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/30"
+                                    className="bg-white/5 border-white/10 text-[9px] md:text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/30"
                                 >
                                     {achievement}
                                 </Badge>
