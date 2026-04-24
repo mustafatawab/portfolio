@@ -1,37 +1,47 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { projects } from "@/lib/project";
-import ProjectCard from "@/components/ProjectCard";
-import { motion } from "framer-motion";
+import ProjectArchiveCard from "@/components/ProjectArchiveCard";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
+const categories = ["All", "Full Stack", "Web App", "Software"];
+
+// Helper to determine categorization (can be improved by adding explicit category to lib/project.ts)
+const getProjectCategory = (project: any) => {
+    const tags = project.tags.join(' ').toLowerCase();
+    if (tags.includes('nextjs') || tags.includes('react') || tags.includes('fullstack')) return "Full Stack";
+    if (tags.includes('software') || tags.includes('system') || tags.includes('automation')) return "Software";
+    return "Web App";
+};
 
 const ProjectsPage = () => {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = filter === "All" 
+    ? projects 
+    : projects.filter(p => getProjectCategory(p) === filter);
+
   return (
     <main className="bg-black min-h-screen">
-      {/* Hero Header Section */}
-      <section className="relative pt-48 pb-32 flex items-center justify-center overflow-hidden">
-        {/* Cinematic Background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
-          <Image
-            src="/bg.webp"
-            fill
-            priority
-            alt=""
-            className="object-cover opacity-30 scale-105 animate-pulse-slow"
-          />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-cyan/5 blur-[120px] rounded-full" />
-        </div>
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.02),transparent_70%)]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon-purple/5 blur-[120px] rounded-full" />
+      </div>
 
-        <div className="container relative z-20 text-center space-y-8">
+      {/* Header */}
+      <section className="relative pt-48 pb-20 flex flex-col items-center justify-center overflow-hidden z-10">
+        <div className="container text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Project Archive</h3>
+            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Central Database</h3>
             <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
-              SYSTEM <span className="text-gradient">DEPLOYMENTS</span>
+              NEURAL <span className="text-gradient">VAULT</span>
             </h1>
           </motion.div>
 
@@ -39,36 +49,63 @@ const ProjectsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+            className="text-white/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
           >
-            An exhaustive catalog of autonomous systems, sophisticated web architectures, 
-            and intelligent applications engineered for the digital frontier.
+            A high-integrity repository of production architectures and specialized software deployments.
           </motion.p>
         </div>
       </section>
 
-      {/* Projects Grid Section */}
-      <section className="py-20 relative">
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {projects &&
-              projects.map((project, index) => (
+      {/* Filtering */}
+      <section className="sticky top-20 z-30 py-8 backdrop-blur-md border-y border-white/5 bg-black/40">
+        <div className="container flex flex-wrap justify-center gap-4">
+          {categories.map((cat) => (
+            <Button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              variant={filter === cat ? "default" : "ghost"}
+              className={`rounded-full px-6 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
+                filter === cat 
+                ? "bg-neon-cyan text-black" 
+                : "text-white/40 hover:text-neon-cyan hover:bg-neon-cyan/5"
+              }`}
+            >
+              {cat}
+            </Button>
+          ))}
+        </div>
+      </section>
+
+      {/* Grid */}
+      <section className="py-20 relative z-10">
+        <div className="container">
+          <motion.div 
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  viewport={{ once: true }}
+                    key={project.title}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4 }}
+                    className={index % 5 === 0 ? "lg:col-span-2 lg:row-span-2" : ""}
                 >
-                  <ProjectCard project={project} />
+                  <ProjectArchiveCard project={project} index={index} />
                 </motion.div>
               ))}
-          </div>
+            </AnimatePresence>
+          </motion.div>
         </div>
-
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle_at_80%_80%,rgba(188,19,254,0.03),transparent_40%)] -z-10" />
       </section>
+
+      {/* Footer Decoration */}
+      <div className="container py-32 flex justify-center">
+         <div className="w-[1px] h-32 bg-gradient-to-b from-neon-cyan to-transparent opacity-20" />
+      </div>
     </main>
   );
 };
