@@ -1,51 +1,76 @@
+"use client";
 import React from "react";
 import { projects } from "@/lib/project";
 import ProjectCard from "@/components/ProjectCard";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import Image from "next/image";
-const page = () => {
+
+const ProjectsPage = () => {
   return (
-    <main>
-      <section className=" text-white py-20 overflow-hidden relative md:h-[60vh] flex items-center justify-center text-center">
-        {/*  Background Video */}
-        <div className="absolute inset-0 -z-10 bg-black">
+    <main className="bg-black min-h-screen">
+      {/* Hero Header Section */}
+      <section className="relative pt-48 pb-32 flex items-center justify-center overflow-hidden">
+        {/* Cinematic Background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
           <Image
-            src={"/bg.webp"}
-            width={500}
-            height={500}
+            src="/bg.webp"
+            fill
+            priority
             alt=""
-            className="w-full h-full object-cover opacity-55"
+            className="object-cover opacity-30 scale-105 animate-pulse-slow"
           />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-cyan/5 blur-[120px] rounded-full" />
         </div>
 
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Explore my portfolio of web applications, mobile apps, and
-            AI-powered solutions that solve real-world problems.
-          </p>
+        <div className="container relative z-20 text-center space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Project Archive</h3>
+            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
+              NEURAL <span className="text-gradient">DEPLOYMENTS</span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+          >
+            An exhaustive catalog of autonomous systems, sophisticated web architectures, 
+            and intelligent applications engineered for the digital frontier.
+          </motion.p>
         </div>
       </section>
 
-      <section className="py-20 dark:bg-slate-950">
-        <div className="p-5 container  mx-auto flex flex-col justify-center items-center gap-10">
-          <h2 className="text-4xl tect-center font-bold text-center">
-            Projects
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Projects Grid Section */}
+      <section className="py-20 relative">
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projects &&
-              projects.map((project, index) => {
-                return (
-                  <div key={index} className="h-full">
-                    <ProjectCard project={project} />
-                  </div>
-                );
-              })}
+              projects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
+              ))}
           </div>
         </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle_at_80%_80%,rgba(188,19,254,0.03),transparent_40%)] -z-10" />
       </section>
     </main>
   );
 };
 
-export default page;
+export default ProjectsPage;

@@ -6,97 +6,52 @@ interface ServiceType {
 }
 
 export const services: ServiceType[] = [
-  
   {
-    title: "AI SaaS MVP Development",
-    content:
-      "Launch AI-powered SaaS MVPs fast using modern web technologies and scalable backend architecture.",
+    title: "Full Stack Development",
+    content: "End-to-end modern web applications with seamless frontend-backend integration and high performance.",
     points: [
-      "Authentication, billing, and dashboard setup",
-      "AI feature integration (chat, summarization, etc.)",
-      "FastAPI + Supabase backend",
-      "Next.js frontend with Tailwind & shadcn/ui",
-      "Full deployment to Vercel / Railway / Fly.io",
-    ],
-    icon: "rocket",
-  },
-  {
-    title: "Custom AI Tool Integration",
-    content:
-      "Integrate AI features into your existing or new web applications to boost efficiency and automate tasks.",
-    points: [
-      "OpenAI API integration",
-      "Document Q&A and knowledge bots",
-      "Generative AI features (text, code, summaries)",
-      "Data processing & automation tools",
-      "Fine-tuned AI behavior for business needs",
-    ],
-    icon: "zap",
-  },
-  {
-    title: "Fullstack Web Development",
-    content:
-      "End-to-end modern web applications with seamless frontend-backend integration.",
-    points: [
-      "Next.js (App Router) + Tailwind + shadcn/ui",
-      "FastAPI + Supabase backend",
-      "RESTful and async API integration",
-      "Database modeling and querying",
-      "Deployment and version control with Git",
+      "Next.js (App Router) & React expertise",
+      "Tailwind CSS & Shadcn UI design",
+      "State management & client-side logic",
+      "SEO & Core Web Vitals optimization",
+      "Responsive, mobile-first architectures"
     ],
     icon: "code",
   },
   {
-    title: "Frontend Development",
-    content:
-      "Responsive and accessible UI design using modern component libraries and best practices.",
+    title: "Software Development",
+    content: "Custom software solutions tailored to solve complex business problems with clean, maintainable code.",
     points: [
-      "Next.js with App Router",
-      "Tailwind CSS & shadcn/ui",
-      "State management (Zustand, context, hooks)",
-      "SEO & performance optimization",
-      "Component-driven design",
+      "Custom business logic implementation",
+      "Third-party API integrations",
+      "Legacy system modernization",
+      "Scalable system architecture design",
+      "Rigorous testing and QA protocols"
     ],
-    icon: "monitor",
+    icon: "cpu",
   },
   {
-    title: "AI Agent Development",
-    content:
-      "Build intelligent AI agents and multi-agent systems using OpenAI Agents SDK and LangChain.",
+    title: "Backend Engineering",
+    content: "Secure, scalable, and high-performance backend systems built for reliability and speed.",
     points: [
-      "Autonomous AI workflows",
-      "Task-specific and multi-agent systems",
-      "Memory and context-aware agents",
-      "Agent orchestration with OpenAI Agents SDK and N8N",
-      "Custom AI tools for business use cases",
-    ],
-    icon: "bot",
-  },
-  {
-    title: "API & Backend Development",
-    content:
-      "Secure and scalable backend systems built with FastAPI and Supabase.",
-    points: [
-      "FastAPI with async endpoints",
-      "Supabase auth, database, and storage",
-      "RESTful & webhook integrations",
-      "Auth guards and JWT management",
-      "Database schema & migrations",
+      "FastAPI & Node.js high-concurrency APIs",
+      "PostgreSQL & MongoDB database design",
+      "Auth guards & JWT security protocols",
+      "Asynchronous task processing",
+      "Microservices & Serverless architecture"
     ],
     icon: "server",
   },
-
   {
-    title: "Containerization & Deployment",
-    content:
-      "Deploy and scale applications reliably using Docker, Kubernetes, and modern DevOps tools.",
+    title: "MVP SaaS Development",
+    content: "Rapid development and deployment of SaaS MVPs to help you launch and validate your business ideas quickly.",
     points: [
-      "Dockerfile and containerized app setup",
-      "Multi-service orchestration with Docker Compose",
-      "Kubernetes (K8s) deployment and scaling",
-      "CI/CD integration for automated deployments",
-      "Production-ready architecture setup",
+      "Authentication & Billing (Stripe) setup",
+      "Multi-tenant database architecture",
+      "Rapid prototyping and iterative delivery",
+      "Deployment to Vercel, Railway, or Fly.io",
+      "Scalable infrastructure from day one"
     ],
-    icon: "package", // You already have this in your icon set
+    icon: "rocket",
   },
 ];

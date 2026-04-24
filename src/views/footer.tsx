@@ -23,8 +23,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           
           <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="inline-block">
-              <Image src={logo} width={150} height={50} alt="Mustafa Tawab" className="brightness-125" />
+            <Link href="/" className="inline-block group">
+              <div className="text-2xl font-bold font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg">
+                <span className="text-neon-cyan font-mono">{`{`}</span>
+                <span className="text-white">MUSTAFA</span>
+                <span className="text-neon-cyan font-mono">{`}`}</span>
+              </div>
             </Link>
             <p className="text-white/40 leading-relaxed max-w-sm font-mono text-sm">
               Architecting the next generation of autonomous AI systems and high-performance digital environments.

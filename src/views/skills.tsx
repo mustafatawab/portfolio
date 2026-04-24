@@ -11,11 +11,14 @@ import {
   SiPostgresql,
   SiTailwindcss,
   SiDocker,
-  SiAmazonwebservices,
   SiFastapi,
-  SiOpenai,
   SiShadcnui,
-  SiPytorch,
+  SiKubernetes,
+  SiGit,
+  SiGithub,
+  SiLinux,
+  SiVercel,
+  SiRailway,
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
@@ -23,12 +26,10 @@ interface SkillProps {
   name: string;
   icon: React.ReactNode;
   level: number;
-  category: "Frontend" | "Backend" | "AI & Tools";
+  category: "Frontend" | "Backend" | "DevOps";
 }
 
 const skills: SkillProps[] = [
-  { name: "Python", icon: <SiPython size={24} />, level: 98, category: "AI & Tools" },
-  { name: "Open AI", icon: <SiOpenai size={24} />, level: 92, category: "AI & Tools" },
   { name: "React", icon: <SiReact size={24} />, level: 90, category: "Frontend" },
   { name: "Next.js", icon: <SiNextdotjs size={24} />, level: 95, category: "Backend" },
   { name: "FastAPI", icon: <SiFastapi size={24} />, level: 85, category: "Backend" },
@@ -37,9 +38,12 @@ const skills: SkillProps[] = [
   { name: "Node.js", icon: <SiNodedotjs size={24} />, level: 85, category: "Backend" },
   { name: "MongoDB", icon: <SiMongodb size={24} />, level: 80, category: "Backend" },
   { name: "PostgreSQL", icon: <SiPostgresql size={24} />, level: 85, category: "Backend" },
-  { name: "Docker", icon: <SiDocker size={24} />, level: 75, category: "AI & Tools" },
-  { name: "AWS", icon: <SiAmazonwebservices size={24} />, level: 70, category: "AI & Tools" },
-  { name: "PyTorch", icon: <SiPytorch size={24} />, level: 65, category: "AI & Tools" },
+  { name: "Docker", icon: <SiDocker size={24} />, level: 85, category: "DevOps" },
+  { name: "Kubernetes", icon: <SiKubernetes size={24} />, level: 75, category: "DevOps" },
+  { name: "Git & Github", icon: <SiGithub size={24} />, level: 95, category: "DevOps" },
+  { name: "Linux", icon: <SiLinux size={24} />, level: 80, category: "DevOps" },
+  { name: "Vercel", icon: <SiVercel size={24} />, level: 90, category: "DevOps" },
+  { name: "Railway", icon: <SiRailway size={24} />, level: 85, category: "DevOps" },
   { name: "Shadcn UI", icon: <SiShadcnui size={24} />, level: 95, category: "Frontend" },
 ];
 
@@ -62,7 +66,7 @@ const Skills = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {["All", "Frontend", "Backend", "AI & Tools"].map((cat) => (
+          {["All", "Frontend", "Backend", "DevOps"].map((cat) => (
             <Button
               key={cat}
               onClick={() => setFilter(cat)}

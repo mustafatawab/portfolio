@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/me.png" sizes="any" />
+        <link rel="icon" href="/logo.png" sizes="any" />
       </head>
       <body className={`${syncopate.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white relative overflow-x-hidden`}>
           <div className="noise-overlay" />
