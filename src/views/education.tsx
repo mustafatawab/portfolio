@@ -1,82 +1,136 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { education } from "@/lib/edu";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 const Education = () => {
+  const containerRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <section id="education" className="py-32 relative bg-black overflow-hidden">
+    <section id="education" ref={containerRef} className="py-32 relative bg-black overflow-hidden">
       <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center space-y-4 mb-32">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
           >
-            Academic Nodes
+            Evolutionary Logic
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
-            KNOWLEDGE <span className="text-gradient">BASE</span>
+          <h2 className="text-5xl md:text-8xl font-bold font-display tracking-tighter">
+            NEURAL <span className="text-gradient">PATH</span>
           </h2>
         </div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-          {education.map((edu, index) => {
-            const Icon = edu.icon;
-            
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass-card p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500 relative overflow-hidden"
-              >
-                {/* Decorative background element */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-neon-cyan/5 rounded-full blur-3xl group-hover:bg-neon-cyan/10 transition-colors" />
-                
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="p-4 rounded-2xl bg-white/5 text-neon-cyan group-hover:scale-110 group-hover:bg-neon-cyan/10 transition-all duration-500">
-                    <Icon className="w-8 h-8" />
+        <div className="relative max-w-6xl mx-auto">
+          {/* Central Neural Spine */}
+          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 md:-ml-[1px]" />
+          <motion.div 
+            style={{ scaleY, originY: 0 }}
+            className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
+          />
+          
+          <div className="space-y-32">
+            {education.map((edu, index) => {
+              const Icon = edu.icon;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className={`relative flex flex-col md:flex-row items-start md:items-center ${
+                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  {/* Branching Node */}
+                  <div className="absolute left-[21px] md:left-1/2 top-10 md:top-1/2 w-5 h-5 -ml-[10px] md:-mt-[10px] z-30">
+                    <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-20" />
+                    <div className="relative w-full h-full bg-black border-2 border-neon-cyan rounded-full shadow-[0_0_10px_#00f2ff]" />
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <div className="text-[10px] font-mono tracking-widest text-neon-purple uppercase">
-                      {edu.period}
+
+                  {/* Content Container */}
+                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-24 text-left md:text-right' : 'md:pl-24 text-left'}`}>
+                    <div className="group relative">
+                      <div className={`hidden md:block absolute top-1/2 ${isEven ? '-right-4' : '-left-4'} w-8 h-[2px] bg-white/10 group-hover:bg-neon-cyan/50 transition-colors`} />
+                      
+                      <div className="glass-card p-10 rounded-[2rem] border-white/5 hover:neon-glow-purple transition-all duration-500 relative overflow-hidden">
+                        <div className="flex items-center gap-4 mb-6 md:justify-inherit">
+                            <div className={`p-3 rounded-xl bg-white/5 text-neon-cyan ${isEven ? 'md:order-2' : ''}`}>
+                                <Icon size={24} />
+                            </div>
+                            <div className={`text-[10px] font-mono tracking-widest text-white/40 uppercase ${isEven ? 'md:order-1' : ''}`}>
+                                {edu.period}
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            {edu.link ? (
+                                <Link 
+                                    href={edu.link} 
+                                    target="_blank" 
+                                    className={`group/link inline-flex items-center gap-2 ${isEven ? 'md:flex-row-reverse' : ''}`}
+                                >
+                                    <h3 className="text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
+                                        {edu.degree}
+                                    </h3>
+                                    <ExternalLink size={18} className="text-white/20 group-hover/link:text-neon-cyan transition-colors" />
+                                </Link>
+                            ) : (
+                                <h3 className="text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
+                                    {edu.degree}
+                                </h3>
+                            )}
+                            <p className="text-neon-purple font-mono text-xs tracking-widest uppercase italic">
+                                {edu.institution}
+                            </p>
+                        </div>
+                        
+                        <p className="text-white/40 text-sm mt-6 leading-relaxed">
+                            {edu.description}
+                        </p>
+                        
+                        <div className={`flex flex-wrap gap-2 mt-8 pt-6 border-t border-white/5 ${isEven ? 'md:justify-end' : ''}`}>
+                            {edu.achievements.map((achievement, i) => (
+                                <Badge
+                                    key={i}
+                                    className="bg-white/5 border-white/10 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/30"
+                                >
+                                    {achievement}
+                                </Badge>
+                            ))}
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-white/60 font-mono text-sm tracking-tight italic">
-                      {edu.institution}
-                    </p>
                   </div>
-                </div>
-                
-                <p className="text-white/40 text-sm mb-8 leading-relaxed font-sans">
-                  {edu.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-                  {edu.achievements.map((achievement, i) => (
-                    <Badge
-                      key={i}
-                      className="bg-white/5 border-white/10 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/40 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
-                    >
-                      {achievement}
-                    </Badge>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
+
+                  {/* Empty space for layout balance */}
+                  <div className="hidden md:block w-1/2" />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Background depth detail */}
-      <div className="absolute top-1/4 -left-64 w-[500px] h-[500px] bg-neon-cyan/5 blur-[150px] rounded-full" />
-      <div className="absolute bottom-1/4 -right-64 w-[500px] h-[500px] bg-neon-purple/5 blur-[150px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(188,19,254,0.02),transparent_70%)]" />
     </section>
   );
 };

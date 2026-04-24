@@ -1,13 +1,14 @@
-import { GraduationCap, School, Laptop, Award } from "lucide-react";
+import { GraduationCap, Award } from "lucide-react";
 
 interface EduType  {
-    degree: String;
-    institution: String;
-    period: String;
-    description: String;
-    achievements: String[];
+    degree: string;
+    institution: string;
+    period: string;
+    description: string;
+    achievements: string[];
     icon: any;
-    color: string
+    color: string;
+    link?: string;
 }
 
 export const education: EduType[] = [
@@ -24,42 +25,29 @@ export const education: EduType[] = [
       icon: GraduationCap,
       color: "blue",
     },
-    // {
-    //   degree: "M.S. in Machine Learning",
-    //   institution: "Carnegie Mellon University",
-    //   period: "2009 - 2011",
-    //   description: "Advanced coursework in deep learning, neural networks, and statistical learning theory. Thesis on \"Hierarchical Reinforcement Learning for Complex Decision Making\"",
-    //   achievements: [
-    //     "GPA: 3.95/4.0",
-    //     "Teaching Assistant",
-    //     "Dean's List",
-    //   ],
-    //   icon: School,
-    //   color: "green",
-    // },
-    
     {
-      degree: "Certified Agentic and Robotic Engineer",
+      degree: "Certified Agentic AI Developer",
       institution: "Panaversity",
       period: "2025 - Present",
-      description: "Ongoing professional development through advanced certifications and specialized training programs in emerging AI technologies and Agentic AI Developement.",
+      description: "Ongoing professional development through advanced certifications and specialized training programs in emerging AI technologies and Agentic AI Development.",
       achievements: [
         "Modern Python",
         "FastAPI",
         "OpenAI Agent SDK",
         "N8N",
-        "Prompt Engnineering",
+        "Prompt Engineering",
         "Context Engineering",
       ],
       icon: Award,
       color: "orange",
+      link: "https://panaversity.org/p/tawab05-vr5v/c/7810"
     },
 
     {
       degree: "Certified Metaverse and Web3 Program",
       institution: "PIAIC",
       period: "2023 - 2024",
-      description: "Strong foundation in algorithms, data structures, and software engineering. Minor in Mathematics with focus on linear algebra and optimization theory. Completed Full stack developement using modern and latest technology",
+      description: "Strong foundation in algorithms, data structures, and software engineering. Minor in Mathematics with focus on linear algebra and optimization theory. Completed Full stack development using modern and latest technology",
       achievements: [
         "Nextjs",
         "Tailwind CSS",
