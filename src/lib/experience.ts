@@ -9,6 +9,14 @@ interface ExperieceType  {
 
  export const experiences: ExperieceType[] = [
     {
+      title: "Full Stack Developer",
+      company: "Atlas Solution",
+      period: "March 2026 - Present",
+      description: "Building scalable digital platforms and custom software solutions for startups and enterprises. Focusing on full-stack development with Next.js and FastAPI, integrating AI-driven workflows to automate business processes.",
+      tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "TanStack"],
+      dotColor: "bg-purple-600",
+    },
+    {
       title: "Lead Frontend Developer",
       company: "Nodesol Corp Pvt Ltd",
       period: "1 Year",

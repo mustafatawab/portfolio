@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import SkillCard from "@/components/SkillCard";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   SiReact,
   SiNextdotjs,
@@ -14,11 +12,10 @@ import {
   SiTailwindcss,
   SiDocker,
   SiAmazonwebservices,
-  SiTensorflow,
-  SiPytorch,
   SiFastapi,
   SiOpenai,
-  SiShadcnui
+  SiShadcnui,
+  SiPytorch,
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
@@ -26,135 +23,108 @@ interface SkillProps {
   name: string;
   icon: React.ReactNode;
   level: number;
+  category: "Frontend" | "Backend" | "AI & Tools";
 }
 
 const skills: SkillProps[] = [
-  {
-    name: "React",
-    icon: <SiReact className="text-blue-400" size={24} />,
-    level: 90,
-  },
-  {
-    name: "Next.js",
-    icon: <SiNextdotjs className="text-black dark:text-white" size={24} />,
-    level: 85,
-  },
-  {
-    name: "Python",
-    icon: <SiPython className="text-yellow-500" size={24} />,
-    level: 98,
-  },
-  {
-    name : "Open AI",
-    icon : <SiOpenai className="text-black dark:text-white" size={24} />,
-    level : 92
-  },
-  {
-    name: "TypeScript",
-    icon: <SiTypescript className="text-blue-500" size={24} />,
-    level: 80,
-  },
-  {
-    name: "Node.js",
-    icon: <SiNodedotjs className="text-green-500" size={24} />,
-    level: 85,
-  },
-  {
-    name: "MongoDB",
-    icon: <SiMongodb className="text-green-400" size={24} />,
-    level: 80,
-  },
-  {
-    name: "PostgreSQL",
-    icon: <SiPostgresql className="text-blue-400" size={24} />,
-    level: 75,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-cyan-400" size={24} />,
-    level: 90,
-  },
-
-  {
-    name: "Shadcn UI",
-    icon: <SiShadcnui className="text-black dark:text-white" size={24} />,
-    level: 90,
-  },
-  {
-    name: "Docker",
-    icon: <SiDocker className="text-blue-500" size={24} />,
-    level: 70,
-  },
-  {
-    name: "AWS",
-    icon: <SiAmazonwebservices className="text-yellow-400" size={24} />,
-    level: 65,
-  },
-  {
-    name: "FastAPI",
-    icon: <SiFastapi className="text-orange-500" size={24} />,
-    level: 60,
-  },
-  {
-    name: "PyTorch",
-    icon: <SiPytorch className="text-red-500" size={24} />,
-    level: 55,
-  },
+  { name: "Python", icon: <SiPython size={24} />, level: 98, category: "AI & Tools" },
+  { name: "Open AI", icon: <SiOpenai size={24} />, level: 92, category: "AI & Tools" },
+  { name: "React", icon: <SiReact size={24} />, level: 90, category: "Frontend" },
+  { name: "Next.js", icon: <SiNextdotjs size={24} />, level: 95, category: "Backend" },
+  { name: "FastAPI", icon: <SiFastapi size={24} />, level: 85, category: "Backend" },
+  { name: "TypeScript", icon: <SiTypescript size={24} />, level: 88, category: "Frontend" },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={24} />, level: 95, category: "Frontend" },
+  { name: "Node.js", icon: <SiNodedotjs size={24} />, level: 85, category: "Backend" },
+  { name: "MongoDB", icon: <SiMongodb size={24} />, level: 80, category: "Backend" },
+  { name: "PostgreSQL", icon: <SiPostgresql size={24} />, level: 85, category: "Backend" },
+  { name: "Docker", icon: <SiDocker size={24} />, level: 75, category: "AI & Tools" },
+  { name: "AWS", icon: <SiAmazonwebservices size={24} />, level: 70, category: "AI & Tools" },
+  { name: "PyTorch", icon: <SiPytorch size={24} />, level: 65, category: "AI & Tools" },
+  { name: "Shadcn UI", icon: <SiShadcnui size={24} />, level: 95, category: "Frontend" },
 ];
 
 const Skills = () => {
-  const [viewMore, setViewMore] = useState(false);
-  const displayedSkills = viewMore ? skills : skills.slice(0, 5);
-  return (
-    <section id="skills" className="py-20">
-      <div className="p-5 container  mx-auto space-y-7">
-        <h3 className="text-4xl font-bold text-center">
-          Skills
-        </h3>
-        {/* <SkillCard /> */}
+  const [filter, setFilter] = useState<string>("All");
+  const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-4 w-full  mx-auto gap-8    rounded-lg">
-          {displayedSkills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="  px-4 py-6 "
+  return (
+    <section id="skills" className="py-32 relative bg-black overflow-hidden">
+      <div className="container relative z-10">
+        <div className="text-center space-y-4 mb-20">
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase"
+          >
+            Capabilities
+          </motion.h3>
+          <h2 className="text-4xl md:text-6xl font-bold font-display">TECH <span className="text-gradient">STACK</span></h2>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {["All", "Frontend", "Backend", "AI & Tools"].map((cat) => (
+            <Button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              variant={filter === cat ? "default" : "outline"}
+              className={`rounded-full px-8 py-6 font-mono text-xs tracking-widest uppercase transition-all duration-300 ${
+                filter === cat 
+                ? "bg-neon-cyan text-black hover:bg-neon-cyan/80" 
+                : "border-white/10 text-white/60 hover:border-neon-cyan/50 hover:text-white"
+              }`}
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="mr-3">{skill.icon}</div>
-                    <h3 className="text-lg font-medium">{skill.name}</h3>
-                  </div>
-                  <div className="flex justify-end mt-2">
-                    <span className="text-sm text-gray-700 dark:text-gray-400">
-                      {skill.level}%
-                    </span>
-                  </div>
-                </div>
-                <div className={`w-full bg-blue-200 rounded-full h-2.5`}>
-                  <motion.div
-                    className={`bg-indigo-600 h-2.5 rounded-full`}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  ></motion.div>
-                </div>
-              </div>
-            </motion.div>
+              {cat}
+            </Button>
           ))}
-          
         </div>
-        <div className="flex justify-center items-center">
-          <Button onClick={() => setViewMore(!viewMore)} className="">
-            {viewMore ? "View Less" : "View More"}
-          </Button>
-        </div>
+
+        <motion.div 
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                className="glass-card p-6 rounded-2xl group hover:neon-glow-cyan transition-all duration-500"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-white/5 text-neon-cyan group-hover:scale-110 transition-transform duration-300">
+                    {skill.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg group-hover:text-neon-cyan transition-colors">{skill.name}</h4>
+                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-tighter">{skill.category}</span>
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between text-[10px] font-mono text-white/40">
+                    <span>PROFICIENCY</span>
+                    <span>{skill.level}%</span>
+                  </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                      className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
+
+      {/* Background patterns */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent_50%)]" />
     </section>
   );
 };

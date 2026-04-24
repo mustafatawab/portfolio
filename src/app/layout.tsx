@@ -1,12 +1,30 @@
 import type { Metadata } from "next";
+import { Syncopate, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/views/navbar";
 import Footer from "@/views/footer";
 import WhatsAppButton from "@/components/whatsAppButton";
 import { Toaster } from "react-hot-toast";
+
+const syncopate = Syncopate({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-syncopate",
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Mustafa Tawab",
-  description: "A Full Stack Developer",
+  title: "Mustafa Tawab | Agentic AI & Full Stack Engineer",
+  description: "Senior Full Stack Developer specializing in Agentic AI and Intelligent Automation.",
 };
 
 export default function RootLayout({
@@ -15,21 +33,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/me.png" sizes="any" />
       </head>
-      <body className={` antialiased dark:bg-black relative`}>
-        {/* <Image  src={'/bg.webp'} alt="" width={'400'} height={'400'} className="w-screen h-screen absolute top-0 left-0 -z-10 opacity-80 bg-black" /> */}
+      <body className={`${syncopate.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white relative overflow-x-hidden`}>
+          <div className="noise-overlay" />
           <Navbar />
-          {children}
+          <main className="relative z-10">
+            {children}
+          </main>
           <Footer />
           <WhatsAppButton
             phoneNumber="+923475300572"
             message="Hello! Can I get more info about your services?."
           />
-
-          <Toaster/>
+          <Toaster position="bottom-right" />
       </body>
     </html>
   );

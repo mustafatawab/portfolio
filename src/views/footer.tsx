@@ -3,6 +3,7 @@ import React from 'react';
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
 import logo from '../../public/mustafa_logo.png'
 import Image from 'next/image';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -12,103 +13,88 @@ const Footer = () => {
     { icon: Mail, href: 'mailto:tawab05@gmail.com', label: 'Email' },
   ];
 
-  const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer id="footer" className="py-3 bg-[#f1f5f9] dark:bg-black  container">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-12 grid md:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center space-x-2">
-              {/* bg-clip-text */}
-               <Image src={logo} width={150} height={50} alt="Mustafa Tawab"/>
-            </div>
-            <p className="text-gray-700 dark:text-gray-400 leading-relaxed max-w-md">
-              Creative developer passionate about building exceptional digital experiences. 
-              Let's work together to bring your ideas to life with modern technology and thoughtful design.
+    <footer id="footer" className="py-20 bg-black border-t border-white/5 relative overflow-hidden">
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          
+          <div className="lg:col-span-2 space-y-8">
+            <Link href="/" className="inline-block">
+              <Image src={logo} width={150} height={50} alt="Mustafa Tawab" className="brightness-125" />
+            </Link>
+            <p className="text-white/40 leading-relaxed max-w-sm font-mono text-sm">
+              Architecting the next generation of autonomous AI systems and high-performance digital environments.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-110"
+                  className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-white/40 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 dark:text-white">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-700 dark:text-gray-400 hover:text-blue-400 transition-colors duration-200 text-sm"
-                  >
-                    {link.name}
+            <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-white/20 mb-8">Navigation</h4>
+            <ul className="space-y-4">
+              {['About', 'Work', 'Tech', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a href={`/#${item.toLowerCase()}`} className="text-sm font-mono text-white/60 hover:text-neon-cyan transition-colors uppercase tracking-widest">
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 dark:text-white">Get In Touch</h4>
-            <div className="space-y-2 text-sm">
-              <p className="text-gray-700 dark:text-gray-400">
-                <span className="text-gray-500 ">Email:</span><br />
-                tawab05@gmail.com
-              </p>
-              <p className="text-gray-700 dark:text-gray-400">
-                <span className="text-gray-500">Phone:</span><br />
-                +92 347 530 0572
-              </p>
-              <p className="text-gray-700 dark:text-gray-400">
-                <span className="text-gray-500">Location:</span><br />
-                Pakistan
-              </p>
+            <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-white/20 mb-8">Base of Operations</h4>
+            <div className="space-y-6 font-mono text-sm">
+              <div className="space-y-1">
+                <div className="text-white/20 uppercase text-[10px]">Transmission</div>
+                <div className="text-white/60 hover:text-neon-cyan transition-colors">tawab05@gmail.com</div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-white/20 uppercase text-[10px]">Coordinate</div>
+                <div className="text-white/60">Islamabad, PK</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 py-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-400 mb-4 md:mb-0">
-            <span>© {currentYear} Mustafa Tawab. Made with</span>
-            <Heart size={16} className="text-red-500 animate-pulse" />
-            <span>and lots of coffee.</span>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-white/20">
+            <span>© {currentYear} MUSTAFA TAWAB</span>
+            <span className="w-1 h-1 bg-neon-purple rounded-full mx-2" />
+            <span>ENCRYPTED PORTFOLIO</span>
+            <Heart size={12} className="text-neon-purple animate-pulse ml-2" />
           </div>
           
           <button
             onClick={scrollToTop}
-            className="group flex items-center space-x-2 text-sm text-gray-400 hover:text-blue-400 transition-colors duration-200"
+            className="group flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-white/40 hover:text-neon-cyan transition-colors"
           >
-            <span>Back to top</span>
-            <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform duration-200" />
+            Terminal Top <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>
+
+      {/* Background visual detail */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-neon-purple/5 blur-[120px] rounded-full -mb-48 -mr-48" />
     </footer>
   );
 };
+
+// Add Link to imports since I used it
+import Link from 'next/link';
 
 export default Footer;

@@ -1,86 +1,95 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 import me from "@/assets/me.jpg";
-import wordprocess from "@/assets/workProcess.png";
-import "@/styles/card-animation.css";
+
+const stats = [
+  { label: "Neural Projects", value: "20+", suffix: "" },
+  { label: "Industry Cycles", value: "3+", suffix: "Years" },
+  { label: "Global Nodes", value: "25+", suffix: "Clients" },
+];
+
 const AboutSection = () => {
   return (
-    <section id="#about" className="py-20 bg-[#f1f5f9] dark:bg-gray-950 ">
-      <div className="text-center py-10 mb-10">
-        <h3 className="text-4xl font-bold mb-5 text-center">About Me</h3>
-        <p className="text-gray-500">
-          Passionate about creating intelligent systems that can think, learn,
-          and act autonomously and make your life easier.
-        </p>
-      </div>
-      <div className="p-5 container mx-auto ">
-        <div className=" flex flex-wrap lg:flex-nowrap gap-32 justify-center items-start">
-          <div className="">
+    <section id="about" className="py-32 relative overflow-hidden bg-black">
+      <div className="container relative z-10">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative group w-full lg:w-1/3 aspect-[4/5]"
+          >
+            <div className="absolute inset-0 border-2 border-neon-cyan/30 rounded-2xl -translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-neon-cyan/20 rounded-2xl mix-blend-overlay z-10" />
             <Image
-              className="rounded-xl"
               src={me}
-              width={400}
-              height={400}
+              fill
               alt="Mustafa Tawab"
+              className="rounded-2xl object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
-          </div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-r-2 border-b-2 border-neon-purple rounded-br-2xl" />
+          </motion.div>
 
-          <div className="basis-full lg:basis-1/2 flex flex-col gap-5 ">
-            <p className="text-gray-800 dark:text-gray-400 text-md">
-              I'm a dedicated <b>Agentic AI Engineer</b> and{" "}
-              <b>Full Stack Developer</b> with a focus on building intelligent,
-              AI-powered applications. With 3+ years of experience in frontend
-              and backend development, I now specialize in crafting{" "}
-              <b>custom AI workflows, automation tools, and SaaS MVPs</b> using
-              technologies like
-              <b> OpenAI Agents SDK, FastAPI, Supabase, and Next.js.</b>
-            </p>
-            <p className="text-gray-800 dark:text-gray-400 text-md">
-              My journey began in college with a passion for building on the
-              web. Over time, that evolved into a mission to help businesses
-              integrate AI into real-world products — from internal automation
-              tools to production-ready AI dashboards.
-            </p>
+          <div className="flex-1 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase">Core Identity</h3>
+              <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
+                MERGING <span className="text-gradient">INTELLIGENCE</span><br />
+                WITH ARCHITECTURE
+              </h2>
+              <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-2xl">
+                I'm a dedicated <span className="text-white font-semibold italic text-mono">Agentic AI Engineer</span> and 
+                <span className="text-white font-semibold italic text-mono"> Full Stack Developer</span> focused on 
+                building autonomous, AI-powered ecosystems. I specialize in crafting 
+                custom AI workflows and SaaS MVPs using the bleeding edge of the 
+                OpenAI stack.
+              </p>
+            </motion.div>
 
-            <p className="text-gray-800 dark:text-gray-400 text-md">
-              Beyond coding, I enjoy exploring new AI frameworks, reading
-              technical blogs, and constantly leveling up my skills to stay
-              ahead in this rapidly evolving space.
-            </p>
-
-
-
-            <div className="flex flex-wrap md:flex-nowrap gap-x-10 gap-y-3  justify-center">
-              <div className=" flex flex-col justify-center items-center border-2 dark:border-blue-900  p-5 rounded-xl gap-3 w-full">
-                <span className="text-3xl text-blue-600 font-bold">20+</span>
-                <span>Projects Completed</span>
-              </div>
-
-              <div className=" flex flex-col border-2 justify-center items-center dark:border-blue-900 p-5 rounded-xl gap-3 w-full">
-                <span className="text-3xl text-blue-600 font-bold">3+</span>
-                <span>Years of Experience</span>
-              </div>
-
-              <div className=" flex flex-col justify-center items-center  border-2 dark:border-blue-900 p-5 rounded-xl gap-3 w-full">
-                <span className="text-3xl text-blue-600 font-bold">25+</span>
-                <span>Happy Clients</span>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="glass-card p-8 rounded-2xl group hover:neon-glow-cyan transition-all duration-500"
+                >
+                  <div className="text-4xl font-bold text-white mb-2 font-display">{stat.value}</div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-white/40 group-hover:text-neon-cyan transition-colors">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
             </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-white/40 italic font-mono text-sm border-l-2 border-neon-purple pl-6 py-2"
+            >
+              "My mission is to help businesses integrate AI into real-world products — 
+              from internal automation tools to production-ready AI dashboards."
+            </motion.p>
           </div>
         </div>
-
-        {/* <div className="flex flex-col items-center justify-center gap-5 mt-10">
-          <h2 className="text-4xl  font-bold">
-            My <span className="text-blue-600">Work</span> Process
-          </h2>
-          <Image
-            src={wordprocess}
-            alt="Word Process"
-            width={1000}
-            height={1000}
-          />
-        </div> */}
       </div>
+
+      {/* Background visual elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-purple/5 to-transparent -z-10" />
     </section>
   );
 };

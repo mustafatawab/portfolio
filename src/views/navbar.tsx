@@ -1,151 +1,129 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Moon } from "lucide-react";
-import { Sun } from "lucide-react";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import logo from "../../public/mustafa_logo.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+
 type LinkType = {
   url: string;
   label: string;
 };
 
 const Navbar = () => {
-  const [dark, setDark] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-    setDark(!dark);
-    localStorage.setItem("dark", JSON.stringify(dark));
-  };
-
   const links: LinkType[] = [
-    { label: "About", url: "/#about" },
-    { label: "Work", url: "/projects" },
-    { label: "Services", url: "/services" },
-    { label: "Contact", url: "/#contact" },
+    { label: "ABOUT", url: "/#about" },
+    { label: "WORK", url: "/projects" },
+    { label: "TECH", url: "/#skills" },
+    { label: "CONTACT", url: "/#contact" },
   ];
 
   useEffect(() => {
-    // document.documentElement.classList.toggle("dark");
-
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      id="header"
-      className={`dark:bg-gray-950 dark:border-b-[1px]  z-10  ${
-        scrolled
-          ? "bg-white/90 dark:bg-gray-900 shadow-md backdrop-blur-sm"
-          : "bg-transparent"
-      } ${
-        toggle && "bg-black text-white pb-5"
-      } rounded-b-xl sticky top-0 z-50 transition-all duration-300`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "py-4" : "py-8"
+      }`}
     >
-      <nav className="flex items-center justify-between p-5 container  mx-auto ">
-        {/* <Link
-          href="/"
-          className="text-2xl font-semibold text-black dark:text-white"
-        >
-          <span className="text-blue-600 font-bold text-3xl">M</span>ustafa
-          Tawab
-        </Link> */}
-        <Link
-          href="/"
-          className="text-2xl font-semibold text-black dark:text-white"
-        >
-          <Image src={logo} width={150} height={50} alt="Mustafa Tawab" />
-        </Link>
-        <div className={` hidden md:flex gap-2 justify-center items-center`}>
-          <div>
-            {links.map((link: LinkType) => (
+      <nav className={`container mx-auto px-6`}>
+        <div className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-white/5 shadow-2xl transition-all duration-500 ${
+          scrolled ? "bg-black/60 scale-95" : "bg-transparent border-transparent shadow-none"
+        }`}>
+          <Link href="/" className="relative group">
+            <Image src={logo} width={130} height={40} alt="Mustafa Tawab" className="brightness-110" />
+            <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan group-hover:w-full transition-all duration-300" />
+          </Link>
+
+          <div className="hidden md:flex items-center gap-2">
+            {links.map((link) => (
               <a
-                className="mx-4 px-1  font-semibold hover:text-blue-600 hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent"
                 key={link.label}
                 href={link.url}
+                className="px-5 py-2 text-[10px] font-mono tracking-[0.2em] text-white/60 hover:text-neon-cyan transition-colors"
               >
                 {link.label}
               </a>
             ))}
-          </div>
-
-          <Link target="_blank" className="mx-3 px-1 font-semibold text-blue-600 cursor-pointer hover:border-b-2 hover:border-blue-600 duration-500 border-b-2 border-transparent" href={"https://mustafa-mko4.onrender.com/"}>Personal Bot</Link>
-        </div>
-        <div className="flex items-center gap-5">
-          <div className="cursor-pointer" onClick={toggleTheme}>
-            {dark ? <Moon /> : <Sun />}
-          </div>
-          <Link
-            href={
-              "https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
-            }
-            target="_blank"
-            className="hidden sm:block"
-          >
-            {" "}
-            <Button
-              className="dark:hover:border-blue-600 hover:border-blue-600 hover:text-blue-600 bg-blue-600 dark:bg-blue-600 dark:hover:text-blue-600 text-white cursor-pointer"
-              variant={"outline"}
+            <div className="h-4 w-[1px] bg-white/10 mx-4" />
+            <Link 
+              href="https://mustafa-mko4.onrender.com/" 
+              target="_blank"
+              className="text-[10px] font-mono tracking-[0.2em] text-neon-purple hover:text-neon-purple/80 transition-colors"
             >
-              {" "}
-              Hire Me
-            </Button>
-          </Link>
+              NEURAL BOT
+            </Link>
+          </div>
 
-          <div className="block md:hidden" onClick={() => setToggle(!toggle)}>
-            <Menu />
+          <div className="flex items-center gap-6">
+            <Link
+              href="https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
+              target="_blank"
+              className="hidden sm:block"
+            >
+              <Button
+                variant="outline"
+                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-black transition-all duration-300 px-6 font-mono text-[10px] tracking-widest"
+              >
+                HIRE ENGINEER
+              </Button>
+            </Link>
+
+            <button 
+              className="md:hidden text-white p-2"
+              onClick={() => setToggle(!toggle)}
+            >
+              {toggle ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </nav>
 
-      {toggle && (
-        <div className="container flex md:hidden transition delay-150 duration-300 ease-in-out text-black dark:text-white  flex-col">
-          {links.map((link: LinkType) => (
-            <Link
-              className="block py-2 px-5 border-0   hover:text-blue-600 hover:border hover:border-blue-600 duration-30"
-              key={link.label}
-              href={link.url}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <div className="px-5 flex flex-col gap-3">
-            
-            <Link
-              href={
-                "https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
-              }
-              target="_blank"
-              className="w-full"
-            >
-              {" "}
-              <Button
-                className="dark:hover:border-blue-600 hover:border-blue-600 hover:text-blue-600 bg-blue-600 dark:bg-blue-600 dark:hover:text-blue-600 text-white cursor-pointer w-full"
-                variant={"outline"}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {toggle && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-6 right-6 mt-4 md:hidden"
+          >
+            <div className="glass-card rounded-3xl p-8 border-white/10 flex flex-col gap-6">
+              {links.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.url}
+                  onClick={() => setToggle(false)}
+                  className="text-sm font-mono tracking-[0.3em] text-white/60 hover:text-neon-cyan transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="h-[1px] w-full bg-white/10" />
+              <Link
+                href="https://www.fiverr.com/mustafatawab"
+                target="_blank"
+                className="w-full"
               >
-                {" "}
-                Hire Me
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
+                <Button className="w-full bg-neon-cyan text-black font-bold rounded-xl">
+                  HIRE ME
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

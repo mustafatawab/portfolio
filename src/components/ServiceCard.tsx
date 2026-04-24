@@ -1,18 +1,11 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { FaCheckCircle } from "react-icons/fa";
-import Link from "next/link";
-import { FaArrowRightLong } from "react-icons/fa6";
-
 import {
   Bot,
   Rocket,
@@ -29,7 +22,8 @@ import {
   Shield,
   Smartphone,
   Box,
-   Package
+  Package,
+  CheckCircle2
 } from "lucide-react";
 
 interface ServiceCardProps {
@@ -42,75 +36,52 @@ interface ServiceCardProps {
 const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "bot":
-        return <Bot size={32} />;
-      case "rocket":
-        return <Rocket size={32} />;
-      case "zap":
-        return <Zap size={32} />;
-      case "server":
-        return <Server size={32} />;
-      case "code":
-        return <Code size={32} />;
-      case "layout":
-        return <Layout size={32} />;
-      case "monitor":
-        return <Monitor size={32} />;
-      case "cpu":
-        return <Cpu size={32} />;
-      case "database":
-        return <Database size={32} />;
-      case "settings":
-        return <Settings size={32} />;
-      case "globe":
-        return <Globe size={32} />;
-      case "chart":
-        return <LineChart size={32} />;
-      case "shield":
-        return <Shield size={32} />;
-      case "smartphone":
-        return <Smartphone size={32} />;
-      case "box":
-         return <Box size={32} />;
-      case "package":
-         return <Package size={32} />;
-      default:
-        return <Code size={32} />;
+      case "bot": return <Bot size={28} />;
+      case "rocket": return <Rocket size={28} />;
+      case "zap": return <Zap size={28} />;
+      case "server": return <Server size={28} />;
+      case "code": return <Code size={28} />;
+      case "layout": return <Layout size={28} />;
+      case "monitor": return <Monitor size={28} />;
+      case "cpu": return <Cpu size={28} />;
+      case "database": return <Database size={28} />;
+      case "settings": return <Settings size={28} />;
+      case "globe": return <Globe size={28} />;
+      case "chart": return <LineChart size={28} />;
+      case "shield": return <Shield size={28} />;
+      case "smartphone": return <Smartphone size={28} />;
+      case "box": return <Box size={28} />;
+      case "package": return <Package size={28} />;
+      default: return <Code size={28} />;
     }
   };
 
   return (
-    <>
-      <Card className="shadow-none hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] p-5  hover:border-blue-600 duration-500 animate-fade-in ">
-        <CardHeader>
-          <CardTitle>
-            <div className="w-16 h-16 rounded-full bg-blue-600/30 flex items-center justify-center mb-6 text-blue-600">
-              {getIcon(icon)}
-            </div>
-            <div className="text-black font-semibold text-xl  dark:text-white">
-              {title}
-            </div>
-          </CardTitle>
-          <CardDescription>
-            <div className="text-gray-600 dark:text-gray-400">{content}</div>
-          </CardDescription>
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="h-full"
+    >
+      <Card className="glass-card border-white/5 h-full p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500">
+        <CardHeader className="p-0 mb-8">
+          <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 text-neon-cyan group-hover:scale-110 group-hover:bg-neon-cyan/10 transition-all duration-500">
+            {getIcon(icon)}
+          </div>
+          <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors">{title}</h3>
+          <p className="text-white/40 text-sm leading-relaxed mt-2">{content}</p>
         </CardHeader>
 
-        <CardContent className=" flex flex-col">
-          <ul>
-            {points &&
-              points.map((pt, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <span className="">
-                    <FaCheckCircle className="text-blue-600 " />
-                  </span>
-                  <p>{pt}</p>
-                </li>
-              ))}
+        <CardContent className="p-0">
+          <ul className="space-y-4">
+            {points && points.map((pt, i) => (
+              <li key={i} className="flex items-start gap-3 group/item">
+                <CheckCircle2 size={16} className="text-neon-purple mt-1 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
+                <span className="text-sm text-white/60 group-hover/item:text-white transition-colors">{pt}</span>
+              </li>
+            ))}
           </ul>
         </CardContent>
       </Card>
-    </>
+    </motion.div>
   );
 };
 

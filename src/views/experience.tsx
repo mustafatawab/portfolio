@@ -1,55 +1,68 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { experiences } from "@/lib/experience";
 
-
 const Experience = () => {
-  
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work <span className="gradient-text">Experience</span>
+    <section id="experience" className="py-32 relative bg-black overflow-hidden">
+      <div className="container relative z-10">
+        <div className="text-center space-y-4 mb-24">
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
+          >
+            Temporal Log
+          </motion.h3>
+          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
+            CAREER <span className="text-gradient">TRAJECTORY</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            My journey in Full Stack Development
-          </p>
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
-          {/* Center Timeline Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-cyan via-primary to-purple-500 hidden lg:block" />
-
+        <div className="relative max-w-5xl mx-auto">
+          {/* Neon Timeline Path */}
+          <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent opacity-20" />
+          
           <div className="space-y-24">
             {experiences.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`relative animate-fade-in ${
-                  index % 2 === 0 ? 'lg:pr-[50%]' : 'lg:pl-[50%]'
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className={`relative flex flex-col md:flex-row gap-12 ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                {/* Timeline Dot */}
-                <div className={`absolute left-1/2 top-8 w-4 h-4 rounded-full ${exp.dotColor} -ml-2 z-10 hidden lg:block animate-pulse`} />
+                {/* Glowing Node */}
+                <div className="absolute left-[13px] md:left-1/2 top-0 w-4 h-4 -ml-2 z-20">
+                  <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-50" />
+                  <div className="relative w-4 h-4 bg-neon-cyan rounded-full shadow-[0_0_15px_rgba(0,242,255,1)]" />
+                </div>
 
-                {/* Card */}
-                <div className={`relative ${index % 2 === 0 ? 'lg:mr-12' : 'lg:ml-12'}`}>
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] group">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {exp.title}
-                    </h3>
-                    <p className="text-accent-cyan text-lg mb-4">
-                      {exp.company} <span className="text-muted-foreground">• {exp.period}</span>
-                    </p>
-                    <p className="text-foreground/80 leading-relaxed mb-6">
+                {/* Content Card */}
+                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
+                  <div className="glass-card p-8 rounded-2xl hover:neon-glow-purple transition-all duration-500 group">
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                      <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} w-full`}>
+                        <span className="text-xs font-mono text-neon-cyan mb-2 tracking-widest">{exp.period}</span>
+                        <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors">{exp.title}</h3>
+                        <p className="text-white/60 font-mono text-sm">{exp.company}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-white/40 leading-relaxed mb-8 text-sm md:text-base">
                       {exp.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    
+                    <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                       {exp.tags.map((tag, i) => (
                         <Badge
                           key={i}
-                          variant="secondary"
-                          className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+                          className="bg-white/5 border-white/10 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/60 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
                         >
                           {tag}
                         </Badge>
@@ -57,11 +70,18 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+
+                {/* Desktop Empty Space for alignment */}
+                <div className="hidden md:block w-1/2" />
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Background depth elements */}
+      <div className="absolute top-1/4 -left-64 w-[500px] h-[500px] bg-neon-cyan/5 blur-[150px] rounded-full" />
+      <div className="absolute bottom-1/4 -right-64 w-[500px] h-[500px] bg-neon-purple/5 blur-[150px] rounded-full" />
     </section>
   );
 };

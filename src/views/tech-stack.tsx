@@ -1,7 +1,10 @@
-import openai from '@/assets/openai.webp'
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+
 const TechStack = () => {
   const technologies = [
-    { name: "OpenAI", logo: "@/assets/openai.webp" },
+    { name: "OpenAI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" },
     { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
     { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
@@ -16,36 +19,48 @@ const TechStack = () => {
   ];
 
   return (
-    <section id="tech-stack" className="py-24">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Tech <span className="gradient-text">Stack</span>
+    <section id="tech-stack" className="py-32 bg-black relative overflow-hidden">
+      <div className="container relative z-10">
+        <div className="text-center space-y-4 mb-20">
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
+          >
+            Core Infrastructure
+          </motion.h3>
+          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
+            NEURAL <span className="text-gradient">NETWORK</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Powerful technologies powering intelligent and scalable solutions
-          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {technologies.map((tech, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex flex-col items-center gap-3 p-6 rounded-lg border border-border hover:border-blue-600/50 transition-smooth hover:scale-110 group animate-fade-in duration-500"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              viewport={{ once: true }}
+              className="glass-card p-8 flex flex-col items-center justify-center gap-4 group hover:neon-glow-cyan transition-all duration-500 rounded-3xl"
             >
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                className="w-12 h-12 group-hover:scale-110 transition-smooth duration-300"
-              />
-              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-smooth">
+              <div className="relative w-12 h-12 grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110">
+                <img
+                  src={tech.logo}
+                  alt={tech.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-[10px] font-mono tracking-widest uppercase text-white/30 group-hover:text-neon-cyan transition-colors">
                 {tech.name}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Background depth detail */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(188,19,254,0.02),transparent_70%)]" />
     </section>
   );
 };

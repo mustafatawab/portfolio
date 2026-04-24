@@ -4,38 +4,57 @@ import { motion } from "framer-motion";
 import { projects } from "@/lib/project";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
 const Projects = () => {
   return (
-    <section id="projects" className="py-20">
-      <div className="p-5 container  mx-auto flex flex-col justify-center items-center gap-10">
-        <h2 className="text-4xl tect-center font-bold text-center">Projects</h2>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 * 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {projects &&
-              projects.map((project, index) => {
-                if (index < 3) {
-                  return (
-                    <div key={index} className="">
-                      <ProjectCard project={project} />
-                    </div>
-                  );
-                }
-              })}
+    <section id="projects" className="py-32 bg-black relative">
+      <div className="container relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+          <div className="space-y-4">
+            <motion.h3 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
+            >
+              System Deployments
+            </motion.h3>
+            <h2 className="text-4xl md:text-6xl font-bold font-display">SELECTED <span className="text-gradient">WORKS</span></h2>
           </div>
-        </motion.div>
-        <Link
-          href="/projects"
-          className="flex gap-2 rounded-md border-2 px-4 py-2 duration-500 bg-black/90 text-white dark:bg-white/90 dark:text-black hover:bg-white hover:text-black "
-        >
-          Vew All Projects <ArrowBigRight />
-        </Link>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href="/projects"
+              className="group flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-white/60 hover:text-neon-cyan transition-colors"
+            >
+              Explore Full Archive <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects &&
+            projects.slice(0, 6).map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+        </div>
       </div>
+
+      {/* Background visual detail */}
+      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,rgba(188,19,254,0.03),transparent_40%)]" />
     </section>
   );
 };

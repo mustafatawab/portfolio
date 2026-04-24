@@ -1,25 +1,15 @@
 'use client'
-import React, { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { projects } from "@/lib/project";
 import { BsGithub } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 interface ProjectPropType {
     image : any,
@@ -29,77 +19,62 @@ interface ProjectPropType {
     githubLink? : string,
     link : string,
     more? : string[] 
-
 }
 
 const ProjectCard = ({ project } : {project : ProjectPropType}) => {
-  const [open, setIsOpen] = useState(false)
-
   return (
-    <Card className="p-0 shadow-md h-full overflow-hidden">
-      <Image
-        src={project.image}
-        alt=""
-        width={200}
-        height={200}
-        className={` w-full h-1/2 max-h-1/2 object-fill`}
-      />
-
-      <CardContent className="space-y-2 pb-3">
-        <div className="flex justify-between items-center">
-          <h4 className="text-lg font-semibold">{project.title}</h4>
-          <div className="flex  gap-3">
-            <Link href={project.githubLink || "https://www.github.com/mustafatawab"}>
-              <BsGithub className="text-gray-500" />
+    <motion.div
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.3 }}
+      className="h-full"
+    >
+      <Card className="glass-card p-0 border-white/5 h-full overflow-hidden group hover:neon-glow-cyan transition-all duration-500 rounded-3xl">
+        <div className="relative aspect-video overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[0.5] group-hover:grayscale-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+          
+          <div className="absolute top-4 right-4 flex gap-2">
+            <Link 
+              href={project.githubLink || "https://www.github.com/mustafatawab"}
+              className="p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/70 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all"
+            >
+              <BsGithub size={18} />
             </Link>
-            <Link href={project.link}>
-              <FaExternalLinkAlt className="text-gray-500" />
+            <Link 
+              href={project.link}
+              className="p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/70 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all"
+            >
+              <FaExternalLinkAlt size={16} />
             </Link>
           </div>
         </div>
-        
 
-          <p className={`text-gray-700 dark:text-gray-100 text-sm ${open && project.title == 'Triton' ? 'hidden' : "block"}`}>
-          {project.description}
-        </p>
-        
-        {project.more && <MoreLinks open={open} setIsOpen={setIsOpen} links={project.more} />}
-        <div className={`flex gap-2 flex-wrap py-2 ${open ? 'hidden' : 'flex'}`}>
-          {project.tags.map((tag, i) => (
-            <Badge
-              key={i}
-              className="px-3 py-1 bg-transparent text-black dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-full"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
-
-
-const MoreLinks = ({ links, open , setIsOpen } : { links : string[] , open : boolean , setIsOpen : Function}) => {
-  return (
-    <>
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger onClick={() => setIsOpen(!open)}>More</AccordionTrigger>
-          <AccordionContent>
-            <div className="flex flex-col">
-              {links &&
-                links.map((link) => (
-                  <Link className="pl-3 hover:underline" href={link} key={link}>
-                    {link}
-                  </Link>
-                ))}
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </>
+        <CardContent className="p-8 space-y-4">
+          <div className="space-y-2">
+            <h4 className="text-2xl font-bold tracking-tight group-hover:text-neon-cyan transition-colors">{project.title}</h4>
+            <p className="text-white/50 text-sm leading-relaxed line-clamp-3 group-hover:text-white/70 transition-colors">
+              {project.description}
+            </p>
+          </div>
+          
+          <div className="flex gap-2 flex-wrap pt-2">
+            {project.tags.slice(0, 4).map((tag, i) => (
+              <Badge
+                key={i}
+                className="bg-white/5 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/40 border-white/10 group-hover:border-neon-cyan/30 transition-colors"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
