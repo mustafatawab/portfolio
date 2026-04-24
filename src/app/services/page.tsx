@@ -31,7 +31,7 @@ const ServicesPage = () => {
           >
             <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase mb-4">Service Protocols</h3>
             <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
-              NEURAL <span className="text-gradient">CAPABILITIES</span>
+              SYSTEM <span className="text-gradient">CAPABILITIES</span>
             </h1>
           </motion.div>
 

@@ -31,7 +31,7 @@ const ProjectsPage = () => {
           >
             <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Project Archive</h3>
             <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
-              NEURAL <span className="text-gradient">DEPLOYMENTS</span>
+              SYSTEM <span className="text-gradient">DEPLOYMENTS</span>
             </h1>
           </motion.div>
 

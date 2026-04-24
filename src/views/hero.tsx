@@ -50,17 +50,19 @@ const HeroSection = () => {
             className="space-y-4"
           >
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
-              NEURAL <span className="text-gradient">SYSTEMS</span><br />
+              ADVANCED <span className="text-gradient">SYSTEMS</span><br />
               ARCHITECT
             </h1>
             <div className="text-xl md:text-3xl font-mono text-white/80 h-12">
               <TypeAnimation
                 sequence={[
-                  "Agentic AI Engineer",
+                  "Senior Full Stack Engineer",
                   2000,
-                  "Full Stack Developer",
+                  "Frontend Specialist (React/Vue)",
                   2000,
-                  "Automation Specialist",
+                  "Backend Architect (Node/FastAPI)",
+                  2000,
+                  "AI-Driven Developer",
                   2000,
                 ]}
                 wrapper="span"
@@ -76,8 +78,8 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed"
           >
-            Engineering autonomous AI ecosystems and sophisticated digital architectures 
-            that redefine how businesses operate through intelligent automation.
+            Engineering production-grade digital ecosystems and high-performance full-stack 
+            architectures with a focus on scalability, reliability, and modern AI integration.
           </motion.p>
 
           <motion.div

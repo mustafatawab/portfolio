@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mustafa Tawab | Agentic AI & Full Stack Engineer",
-  description: "Senior Full Stack Developer specializing in Agentic AI and Intelligent Automation.",
+  title: "Mustafa Tawab | Senior Full Stack Engineer",
+  description: "Specializing in high-performance digital architectures and AI-driven development.",
 };
 
 export default function RootLayout({

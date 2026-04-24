@@ -31,7 +31,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-white/40 leading-relaxed max-w-sm font-mono text-sm">
-              Architecting the next generation of autonomous AI systems and high-performance digital environments.
+              Architecting high-performance digital environments and scalable full-stack ecosystems.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
