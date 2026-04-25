@@ -73,6 +73,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2 md:pt-4">
               <Link 
                 href={project.link}
+                target="_blank"
                 className="group flex items-center justify-center sm:justify-start gap-3 font-mono text-xs tracking-widest uppercase text-neon-cyan hover:text-white transition-colors p-2 sm:p-0 border border-neon-cyan/20 sm:border-none rounded-lg"
               >
                 Launch System <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
@@ -96,7 +97,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 const Projects = () => {
   return (
     <section id="projects" className="bg-black relative">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center pointer-events-none z-0">
+      <div className="absolute top-0 left-0 z-0 h-screen w-full flex items-center justify-center pointer-events-none ">
          <div className="w-[800px] h-[800px] bg-neon-cyan/5 blur-[150px] rounded-full animate-pulse-slow" />
       </div>
 
@@ -119,6 +120,7 @@ const Projects = () => {
         <div className="container py-32 text-center">
           <Link
             href="/projects"
+            target=""
             className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-white/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"
           >
             <span className="font-mono text-sm tracking-[0.3em] uppercase">Initialize Full Archive Access</span>

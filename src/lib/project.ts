@@ -31,14 +31,6 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://www.farsightsystem.com",
     },
-     {
-        image : parkease,
-        title : "Parkease",
-        description : "Find & Reserve Parking Spots Instantly. Skip the hassle of searching for parking. Book guaranteed spots in advance and save up to 60% on parking fees in prime locations.",
-        tags : ['tailwind css', "Vercel" , "Next.js" , "Typescript"],
-        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
-        link : "https://v0-car-parking-website-flax.vercel.app/",
-    },
     {
         image : uswah,
         title : "Portfolio - Uswah Saeed",
@@ -96,7 +88,7 @@ export const projects : ProjectType[] = [
         description : "A portofolio website for developers and designers to showcase their skills. It is just a landing page.",
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         tags : ['nexjts', 'typescript', 'tailwind css'],
-        link : "https://v0-stunning-portfolio.vercel.app/",
+        link : "https://mustafatawab.vercel.app",
         
     },
 
@@ -120,16 +112,6 @@ export const projects : ProjectType[] = [
         link : "https://www.tritoncg.com/",
     },
 
-
-
-    {
-        image : trustpilot,
-        title : "Truspilot Clone",
-        description : "Trustpilot clone and still in progress. Some feature might not work right now but the UI is completed. ",
-        tags : ['tailwind css' , 'nextjs' , 'typscript' , 'mongodb'],
-        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/trustpilot",
-        link : "https://trustpilot-xi.vercel.app/",
-    },
 
 
 ]
