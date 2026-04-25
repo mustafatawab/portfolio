@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import me from "@/assets/me.jpg";
+import me from "@/assets/mustafa.png";
 
 const stats = [
   { label: "Neural Projects", value: "20+", suffix: "" },
@@ -29,7 +29,7 @@ const AboutSection = () => {
               src={me}
               fill
               alt="Mustafa Tawab"
-              className="rounded-2xl object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="rounded-2xl object-cover transition-all duration-700"
             />
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-r-2 border-b-2 border-neon-purple rounded-br-2xl" />
           </motion.div>
