@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Syncopate, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/views/navbar";
 import Footer from "@/views/footer";
 import WhatsAppButton from "@/components/whatsAppButton";
 import { Toaster } from "react-hot-toast";
-
-const syncopate = Syncopate({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-syncopate",
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +31,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
       </head>
-      <body className={`${syncopate.variable} ${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white relative overflow-x-hidden`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white relative overflow-x-hidden`}>
           <div className="noise-overlay" />
           <Navbar />
           <main className="relative z-10">

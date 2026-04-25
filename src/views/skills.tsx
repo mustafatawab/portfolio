@@ -62,7 +62,7 @@ const Skills = () => {
           >
             Capabilities
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display">TECH <span className="text-gradient">STACK</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold font-display uppercase tracking-tight">TECHNICAL <span className="text-gradient">INFRASTRUCTURE</span></h2>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
