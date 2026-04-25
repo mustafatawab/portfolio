@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from "@/lib/project";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { ArrowRight, Github, ExternalLink, Hash } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const ProjectSection = ({ project, index }: { project: any, index: number }) => {
@@ -21,11 +21,11 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
   return (
     <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden">
-      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-0`}>
+      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
-        <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap`}>
-          {project.title.toUpperCase()}
+        <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap uppercase`}>
+          {project.title}
         </div>
 
         {/* Image Stage */}
@@ -45,24 +45,27 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
           </div>
         </motion.div>
 
-        {/* Content Card */}
+        {/* Content Card (Unified with Archive Card styling) */}
         <motion.div 
           style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? yContent : 0 }}
           className={`w-full lg:w-[45%] lg:-ml-[10%] ${!isEven && 'lg:-mr-[10%] lg:ml-0'} z-20`}
         >
-          <div className="glass-card p-6 md:p-16 rounded-2xl md:rounded-[2.5rem] border-white/10 hover:neon-glow-cyan transition-all duration-500 space-y-6 md:space-y-8">
-            <div className="space-y-2 md:space-y-4">
-              <div className="text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase">Deployment 0{index + 1}</div>
-              <h3 className="text-3xl md:text-6xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors">
+          <div className="glass-card p-8 md:p-12 rounded-[2rem] border-white/10 hover:neon-glow-cyan transition-all duration-500 space-y-6">
+            <div className="space-y-3">
+              <div className={`flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? 'md:justify-end' : ''}`}>
+                <Hash size={12} />
+                <span>Segment 0{index + 1}</span>
+              </div>
+              <h3 className={`text-3xl md:text-5xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors ${isEven ? 'md:text-right' : ''}`}>
                 {project.title}
               </h3>
             </div>
 
-            <p className="text-white/60 text-sm md:text-lg leading-relaxed">
+            <p className={`text-white/60 text-sm md:text-lg leading-relaxed font-sans ${isEven ? 'md:text-right' : ''}`}>
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className={`flex flex-wrap gap-2 pt-2 ${isEven ? 'md:justify-end' : ''}`}>
               {project.tags.slice(0, 5).map((tag: string, i: number) => (
                 <Badge key={i} className="bg-white/5 border-white/10 text-[9px] md:text-[10px] font-mono tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 text-white/40">
                   {tag}
@@ -70,20 +73,21 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-2 md:pt-4">
+            <div className={`flex flex-col sm:flex-row gap-6 pt-6 border-t border-white/5 ${isEven ? 'md:justify-end' : ''}`}>
               <Link 
                 href={project.link}
                 target="_blank"
-                className="group flex items-center justify-center sm:justify-start gap-3 font-mono text-xs tracking-widest uppercase text-neon-cyan hover:text-white transition-colors p-2 sm:p-0 border border-neon-cyan/20 sm:border-none rounded-lg"
+                className="group flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-neon-cyan hover:text-white transition-colors"
               >
-                Launch System <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
+                LAUNCH SYSTEM <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
               </Link>
               {project.githubLink && (
                 <Link 
                   href={project.githubLink}
-                  className="group flex items-center justify-center sm:justify-start gap-3 font-mono text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors p-2 sm:p-0 border border-white/10 sm:border-none rounded-lg"
+                  target="_blank"
+                  className="group flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-white/30 hover:text-white transition-colors"
                 >
-                  Source <Github size={14} />
+                  SOURCE <Github size={14} />
                 </Link>
               )}
             </div>
@@ -120,7 +124,6 @@ const Projects = () => {
         <div className="container py-32 text-center">
           <Link
             href="/projects"
-            target=""
             className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-white/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"
           >
             <span className="font-mono text-sm tracking-[0.3em] uppercase">Initialize Full Archive Access</span>
