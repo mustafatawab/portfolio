@@ -9,7 +9,7 @@ import { ArrowRight, DownloadIcon } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20 bg-background">
+    <section id="hero" className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20 bg-background transition-colors duration-500">
       
       {/* Background with cinematic depth */}
       <div className="absolute inset-0 -z-10">
@@ -76,7 +76,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-foreground/70 text-lg md:text-xl max-w-2xl leading-relaxed"
+            className="text-foreground/70 text-lg md:text-xl max-w-2xl leading-relaxed font-sans"
           >
             Engineering production-grade digital ecosystems and high-performance full-stack 
             architectures with a focus on scalability, reliability, and modern AI integration.
@@ -90,7 +90,7 @@ const HeroSection = () => {
           >
             <Link
               href="/projects"
-              className="group relative px-10 py-4 bg-neon-cyan text-black font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] active:scale-95 flex items-center justify-center gap-2"
+              className="group relative px-10 py-4 bg-neon-cyan text-background font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] active:scale-95 flex items-center justify-center gap-2"
             >
               EXPLORE SYSTEMS <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
