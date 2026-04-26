@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from "@/lib/project";
 import Link from "next/link";
@@ -9,6 +9,15 @@ import { Badge } from "@/components/ui/badge";
 
 const ProjectSection = ({ project, index }: { project: any, index: number }) => {
   const containerRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -20,7 +29,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden">
+    <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
       <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
@@ -30,7 +39,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
         {/* Image Stage */}
         <motion.div 
-          style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? yImage : 0 }}
+          style={{ y: isDesktop ? yImage : 0 }}
           className="w-full lg:w-[60%] relative aspect-video group"
         >
           <div className="absolute inset-0 bg-neon-cyan/20 rounded-2xl md:rounded-[2rem] translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700" />
@@ -47,7 +56,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
         {/* Content Card (Unified with Archive Card styling) */}
         <motion.div 
-          style={{ y: typeof window !== 'undefined' && window.innerWidth > 1024 ? yContent : 0 }}
+          style={{ y: isDesktop ? yContent : 0 }}
           className={`w-full lg:w-[45%] lg:-ml-[10%] ${!isEven && 'lg:-mr-[10%] lg:ml-0'} z-20`}
         >
           <div className="glass-card p-8 md:p-12 rounded-[2rem] border-border hover:neon-glow-cyan transition-all duration-500 space-y-6">
@@ -114,7 +123,7 @@ const Projects = () => {
           >
             Curated Archive
           </motion.h3>
-          <h2 className="text-4xl md:text-8xl font-bold font-display tracking-tighter leading-none text-foreground uppercase">System <span className="text-gradient">Works</span></h2>
+          <h2 className="text-4xl md:text-8xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">System Works</h2>
         </div>
 
         {projects && projects.slice(0, 5).map((project, index) => (

@@ -9,14 +9,14 @@
   --foreground: #0a0a0a;
   --card: rgba(255, 255, 255, 0.7);
   --card-foreground: #0a0a0a;
-  --primary: #00f2ff;
+  --primary: #009bb0; /* Deep Ink Cyan for visibility */
   --primary-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.08);
   --ring: #bc13fe;
 
   /* Neural Palette Base */
-  --neon-cyan: #00f2ff;
-  --neon-purple: #bc13fe;
+  --neon-cyan: #009bb0; /* Grounded Cyan */
+  --neon-purple: #9d17bd; /* Deepened Purple */
   --deep-obsidian: #050505;
 }
 
@@ -25,10 +25,14 @@
   --foreground: #f8fafc;
   --card: rgba(15, 15, 20, 0.7);
   --card-foreground: #f8fafc;
-  --primary: #00f2ff;
+  --primary: #00f2ff; /* Original Neon Cyan */
   --primary-foreground: #020202;
   --border: rgba(255, 255, 255, 0.1);
   --ring: #bc13fe;
+
+  /* Re-bind Dark Neon */
+  --neon-cyan: #00f2ff;
+  --neon-purple: #bc13fe;
 }
 
 @theme inline {
