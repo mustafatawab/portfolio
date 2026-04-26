@@ -66,7 +66,7 @@ const ProjectsPage = () => {
               variant={filter === cat ? "default" : "ghost"}
               className={`rounded-full px-6 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
                 filter === cat 
-                ? "bg-neon-cyan text-black" 
+                ? "bg-neon-cyan text-background" 
                 : "text-foreground/40 hover:text-neon-cyan hover:bg-neon-cyan/5"
               }`}
             >

@@ -61,13 +61,13 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
       whileHover={{ y: -5 }}
       className="h-full"
     >
-      <Card className="glass-card border-white/5 h-full p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500">
+      <Card className="glass-card border-border h-full p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500">
         <CardHeader className="p-0 mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 text-neon-cyan group-hover:scale-110 group-hover:bg-neon-cyan/10 transition-all duration-500">
+          <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center mb-6 text-neon-cyan group-hover:scale-110 group-hover:bg-neon-cyan/10 transition-all duration-500">
             {getIcon(icon)}
           </div>
-          <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors">{title}</h3>
-          <p className="text-white/40 text-sm leading-relaxed mt-2">{content}</p>
+          <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors text-foreground">{title}</h3>
+          <p className="text-foreground/60 text-sm leading-relaxed mt-2">{content}</p>
         </CardHeader>
 
         <CardContent className="p-0">
@@ -75,7 +75,7 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
             {points && points.map((pt, i) => (
               <li key={i} className="flex items-start gap-3 group/item">
                 <CheckCircle2 size={16} className="text-neon-purple mt-1 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
-                <span className="text-sm text-white/60 group-hover/item:text-white transition-colors">{pt}</span>
+                <span className="text-sm text-foreground/70 group-hover/item:text-foreground transition-colors">{pt}</span>
               </li>
             ))}
           </ul>

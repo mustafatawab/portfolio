@@ -1,23 +1,26 @@
-import Link from "next/link"
-import { ArrowRight, BookOpen, CheckCircle, Clock, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+"use client";
+import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, BookOpen, CheckCircle, Clock, Star, Hash } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function LearnSkillsPage() {
   const skills = [
     {
       title: "Web Development Fundamentals",
       description: "Learn HTML, CSS, and JavaScript to build the foundation of modern web development.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Beginner",
       duration: "4 weeks",
       topics: ["HTML5", "CSS3", "JavaScript Basics", "Responsive Design", "Web Accessibility"],
-      link: "/courses/web-development",
+      link: "/#contact",
     },
     {
       title: "React & Next.js Development",
       description: "Master React and Next.js to build modern, performant web applications.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "8 weeks",
       topics: [
@@ -27,180 +30,141 @@ export default function LearnSkillsPage() {
         "Server Components",
         "API Integration",
       ],
-      link: "/courses/nextjs-reactjs",
+      link: "/#contact",
     },
     {
       title: "Vue.js Development",
       description: "Learn Vue.js to build reactive, component-based web applications.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "6 weeks",
       topics: ["Vue.js Fundamentals", "Vue Router", "Vuex", "Composition API", "Vue 3 Features"],
-      link: "/courses/vuejs",
+      link: "/#contact",
     },
     {
       title: "Quasar Framework",
       description: "Build high-performance Vue.js applications with the Quasar Framework.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "5 weeks",
       topics: ["Quasar CLI", "UI Components", "Layouts", "Quasar Plugins", "Mobile Development"],
-      link: "/courses/quasar-framework",
+      link: "/#contact",
     },
     {
       title: "Python Programming",
       description: "Learn Python for backend development, data analysis, and automation.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Beginner to Intermediate",
       duration: "8 weeks",
       topics: ["Python Basics", "Data Structures", "OOP in Python", "Web Scraping", "API Development"],
-      link: "/courses/python",
+      link: "/#contact",
     },
     {
       title: "AI Agent Development",
       description: "Build autonomous AI agents that can perform complex tasks and solve problems.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
+      icon: <BookOpen className="h-6 w-6" />,
       level: "Advanced",
       duration: "10 weeks",
       topics: ["Agent Architecture", "LLM Integration", "Tool Use", "Memory Systems", "Multi-agent Systems"],
-      link: "/courses/ai-agents",
+      link: "/#contact",
     },
-    {
-      title: "Generative AI Integration",
-      description: "Learn to integrate and fine-tune generative AI models in your applications.",
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
-      level: "Advanced",
-      duration: "8 weeks",
-      topics: ["LLM Fundamentals", "Prompt Engineering", "AI SDK", "Fine-tuning Models", "Multimodal AI"],
-      link: "/courses/generative-ai",
-    },
-  ]
+  ];
 
   return (
-    <main className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Learn In-Demand Skills</h1>
-          <p className="text-xl text-slate-300 max-w-2xl">
-            Master the technologies and skills that will help you build innovative applications and advance your career.
-          </p>
+    <main className="bg-background min-h-screen pb-32 transition-colors duration-500">
+      {/* Cinematic Header */}
+      <section className="relative pt-48 pb-20 flex flex-col items-center justify-center overflow-hidden z-10">
+        <div className="fixed inset-0 -z-10 dark:opacity-20 opacity-5">
+          <Image src="/bg.webp" fill alt="" className="object-cover scale-110 animate-pulse-slow" />
+        </div>
+        
+        <div className="container text-center space-y-8 text-foreground uppercase tracking-tight">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase mb-4">Training Protocols</h3>
+            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight uppercase">
+              SKILLS <span className="text-gradient">ACQUISITION</span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-foreground/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
+          >
+            Systematic learning paths engineered to master modern full-stack development and AI integration.
+          </motion.p>
         </div>
       </section>
 
-      {/* Skills Overview Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Skills You Can Learn</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Comprehensive learning paths designed to help you master modern development and AI skills
-            </p>
-          </div>
-
+      {/* Grid */}
+      <section className="py-20 relative z-10">
+        <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skills.map((skill, index) => (
-              <Card key={index} className="border-slate-200 hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <div className="bg-slate-100 p-3 rounded-lg w-fit mb-4">{skill.icon}</div>
-                  <CardTitle>{skill.title}</CardTitle>
-                  <CardDescription>{skill.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
-                    <div className="flex items-center">
-                      <Star className="h-4 w-4 mr-1 text-amber-500" />
-                      {skill.level}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1 text-slate-500" />
-                      {skill.duration}
-                    </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-card p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500 flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-8">
+                   <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan group-hover:scale-110 transition-transform">
+                      {skill.icon}
+                   </div>
+                   <div className="flex items-center gap-1 text-foreground/20 font-mono text-[10px] tracking-widest">
+                      <Hash size={10} />
+                      <span>MODULE_0{index + 1}</span>
+                   </div>
+                </div>
+
+                <div className="space-y-4 flex-1">
+                  <h3 className="text-2xl font-bold text-foreground leading-tight">{skill.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-relaxed font-sans">{skill.description}</p>
+                  
+                  <div className="flex gap-4 pt-2">
+                     <div className="flex items-center gap-1 text-[10px] font-mono text-neon-purple uppercase tracking-widest">
+                        <Star size={12} /> {skill.level}
+                     </div>
+                     <div className="flex items-center gap-1 text-[10px] font-mono text-foreground/30 uppercase tracking-widest">
+                        <Clock size={12} /> {skill.duration}
+                     </div>
                   </div>
-                  <h4 className="font-medium mb-2">What you'll learn:</h4>
-                  <ul className="space-y-1">
-                    {skill.topics.map((topic, i) => (
-                      <li key={i} className="flex items-start text-sm">
-                        <CheckCircle className="h-4 w-4 mr-2 text-blue-600 mt-0.5" />
-                        <span>{topic}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Link href={skill.link} className="w-full">
-                    <Button className="w-full">
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
+
+                  <div className="pt-6 border-t border-border space-y-4">
+                    <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">Curriculum Node</div>
+                    <ul className="space-y-2">
+                      {skill.topics.map((topic, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors">
+                          <CheckCircle size={14} className="text-neon-cyan" />
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <Link href={skill.link} className="mt-10">
+                  <Button className="w-full bg-neon-cyan text-background font-bold rounded-xl hover:scale-[1.02] transition-transform">
+                    INITIATE LEARNING <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Learning Approach Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">My Teaching Approach</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Learn through a combination of theory, practical examples, and hands-on projects
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="bg-emerald-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="h-6 w-6 text-emerald-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Comprehensive Curriculum</h3>
-              <p className="text-slate-600">
-                Structured learning paths that cover both fundamentals and advanced concepts, ensuring a solid
-                understanding of the subject matter.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="bg-blue-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Practical Projects</h3>
-              <p className="text-slate-600">
-                Learn by doing with real-world projects that reinforce concepts and build your portfolio while you
-                learn.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="bg-purple-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Industry Best Practices</h3>
-              <p className="text-slate-600">
-                Learn not just how to code, but how to write clean, maintainable code following industry standards and
-                best practices.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-slate-900 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to start learning?</h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-            Browse my courses and start your journey to becoming a skilled developer today.
-          </p>
-          <Link href="/#contact">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
-              Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* Decorative footer element */}
+      <div className="container py-32 flex justify-center">
+         <div className="w-[1px] h-32 bg-gradient-to-b from-neon-purple to-transparent opacity-20" />
+      </div>
     </main>
-  )
+  );
 }

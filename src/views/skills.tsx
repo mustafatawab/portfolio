@@ -52,7 +52,7 @@ const Skills = () => {
   const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
 
   return (
-    <section id="skills" className="py-32 relative bg-black overflow-hidden">
+    <section id="skills" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-20">
           <motion.h3 
@@ -62,7 +62,7 @@ const Skills = () => {
           >
             Capabilities
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display uppercase tracking-tight">TECHNICAL <span className="text-gradient">INFRASTRUCTURE</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold font-display uppercase tracking-tight text-foreground">TECHNICAL <span className="text-gradient">INFRASTRUCTURE</span></h2>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
@@ -73,8 +73,8 @@ const Skills = () => {
               variant={filter === cat ? "default" : "outline"}
               className={`rounded-full px-8 py-6 font-mono text-xs tracking-widest uppercase transition-all duration-300 ${
                 filter === cat 
-                ? "bg-neon-cyan text-black hover:bg-neon-cyan/80" 
-                : "border-white/10 text-white/60 hover:border-neon-cyan/50 hover:text-white"
+                ? "bg-neon-cyan text-background hover:bg-neon-cyan/80" 
+                : "border-border text-foreground/60 hover:border-neon-cyan/50 hover:text-foreground"
               }`}
             >
               {cat}
@@ -98,21 +98,21 @@ const Skills = () => {
                 className="glass-card p-6 rounded-2xl group hover:neon-glow-cyan transition-all duration-500"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-white/5 text-neon-cyan group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan group-hover:scale-110 transition-transform duration-300">
                     {skill.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg group-hover:text-neon-cyan transition-colors">{skill.name}</h4>
-                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-tighter">{skill.category}</span>
+                    <h4 className="font-bold text-lg group-hover:text-neon-cyan transition-colors text-foreground">{skill.name}</h4>
+                    <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-tighter">{skill.category}</span>
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <div className="flex justify-between text-[10px] font-mono text-white/40">
+                  <div className="flex justify-between text-[10px] font-mono text-foreground/40">
                     <span>PROFICIENCY</span>
                     <span>{skill.level}%</span>
                   </div>
-                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-1 w-full bg-foreground/5 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}

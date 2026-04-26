@@ -39,13 +39,13 @@ const Navbar = () => {
       }`}
     >
       <nav className={`container mx-auto px-6`}>
-        <div className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-white/5 shadow-2xl transition-all duration-500 ${
-          scrolled ? "bg-black/60 scale-95" : "bg-transparent border-transparent shadow-none"
+        <div className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
+          scrolled ? "bg-background/60 scale-95" : "bg-transparent border-transparent shadow-none"
         }`}>
           <Link href="/" className="relative group">
-            <div className="text-xl font-bold font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg">
+            <div className="text-xl font-bold font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
               <span className="text-neon-cyan font-mono">{`{`}</span>
-              <span className="text-white group-hover:text-neon-cyan transition-colors">MUSTAFA</span>
+              <span className="group-hover:text-neon-cyan transition-colors">MUSTAFA</span>
               <span className="text-neon-cyan font-mono">{`}`}</span>
             </div>
             <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan group-hover:w-full transition-all duration-300" />
@@ -56,12 +56,12 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.url}
-                className="px-5 py-2 text-[10px] font-mono tracking-[0.2em] text-white/60 hover:text-neon-cyan transition-colors"
+                className="px-5 py-2 text-[10px] font-mono tracking-[0.2em] text-foreground/60 hover:text-neon-cyan transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <div className="h-4 w-[1px] bg-white/10 mx-4" />
+            <div className="h-4 w-[1px] bg-foreground/10 mx-4" />
             <Link 
               href="https://mustafa-mko4.onrender.com/" 
               target="_blank"
@@ -80,14 +80,14 @@ const Navbar = () => {
             >
               <Button
                 variant="outline"
-                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-black transition-all duration-300 px-6 font-mono text-[10px] tracking-widest"
+                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-background transition-all duration-300 px-6 font-mono text-[10px] tracking-widest"
               >
                 HIRE ENGINEER
               </Button>
             </Link>
 
             <button 
-              className="md:hidden text-white p-2"
+              className="md:hidden text-foreground p-2"
               onClick={() => setToggle(!toggle)}
             >
               {toggle ? <X size={24} /> : <Menu size={24} />}
@@ -105,24 +105,24 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-6 right-6 mt-4 md:hidden"
           >
-            <div className="glass-card rounded-3xl p-8 border-white/10 flex flex-col gap-6">
+            <div className="glass-card rounded-3xl p-8 border-border flex flex-col gap-6">
               {links.map((link) => (
                 <Link
                   key={link.label}
                   href={link.url}
                   onClick={() => setToggle(false)}
-                  className="text-sm font-mono tracking-[0.3em] text-white/60 hover:text-neon-cyan transition-colors"
+                  className="text-sm font-mono tracking-[0.3em] text-foreground/60 hover:text-neon-cyan transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="h-[1px] w-full bg-white/10" />
+              <div className="h-[1px] w-full bg-foreground/10" />
               <Link
                 href="https://www.fiverr.com/mustafatawab"
                 target="_blank"
                 className="w-full"
               >
-                <Button className="w-full bg-neon-cyan text-black font-bold rounded-xl">
+                <Button className="w-full bg-neon-cyan text-background font-bold rounded-xl">
                   HIRE ME
                 </Button>
               </Link>

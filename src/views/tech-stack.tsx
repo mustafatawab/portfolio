@@ -19,8 +19,8 @@ const TechStack = () => {
   ];
 
   return (
-    <section id="tech-stack" className="py-32 bg-black relative overflow-hidden">
-      <div className="container relative z-10">
+    <section id="tech-stack" className="py-32 bg-background relative overflow-hidden transition-colors duration-500">
+      <div className="container relative z-10 text-foreground">
         <div className="text-center space-y-4 mb-20">
           <motion.h3 
             initial={{ opacity: 0 }}
@@ -29,8 +29,8 @@ const TechStack = () => {
           >
             Core Infrastructure
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
-            NEURAL <span className="text-gradient">NETWORK</span>
+          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight uppercase tracking-tight">
+            TECHNICAL <span className="text-gradient">NETWORK</span>
           </h2>
         </div>
 
@@ -51,7 +51,7 @@ const TechStack = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-white/30 group-hover:text-neon-cyan transition-colors">
+              <span className="text-[10px] font-mono tracking-widest uppercase text-foreground/30 group-hover:text-neon-cyan transition-colors">
                 {tech.name}
               </span>
             </motion.div>
