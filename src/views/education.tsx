@@ -102,15 +102,15 @@ const Education = () => {
                             </p>
                         </div>
                         
-                        <p className="text-white/40 text-xs md:text-sm mt-4 md:mt-6 leading-relaxed">
+                        <p className="text-white/60 text-xs md:text-sm mt-4 md:mt-6 leading-relaxed">
                             {edu.description}
                         </p>
-                        
+
                         <div className={`flex flex-wrap gap-2 mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/5 ${isEven ? 'md:justify-end' : ''}`}>
                             {edu.achievements.map((achievement, i) => (
                                 <Badge
                                     key={i}
-                                    className="bg-white/5 border-white/10 text-[9px] md:text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/30"
+                                    className="bg-white/10 border-white/10 text-[9px] md:text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/50"
                                 >
                                     {achievement}
                                 </Badge>

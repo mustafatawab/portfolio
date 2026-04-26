@@ -47,11 +47,11 @@ const AboutSection = () => {
                 MERGING <span className="text-gradient">INTELLIGENCE</span><br />
                 WITH ARCHITECTURE
               </h2>
-              <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-2xl">
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
                 I'm a dedicated <span className="text-white font-semibold italic text-mono">Senior Full Stack Engineer</span> with over 
                 3 years of industrial experience building production-ready applications. 
                 My expertise lies in architecting scalable systems using 
-                <span className="text-white font-semibold italic text-mono"> Vue.js, Next.js, and FastAPI</span>. 
+                <span className="text-neon-cyan font-semibold italic text-mono"> Vue.js, Next.js, and FastAPI</span>. 
                 I combine traditional software excellence with a specialization in AI-driven 
                 development tools and context engineering.
               </p>
