@@ -9,17 +9,17 @@ import { ArrowRight, DownloadIcon } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20">
+    <section id="hero" className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20 bg-background">
       
       {/* Background with cinematic depth */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10" />
         <Image 
           src="/bg.webp" 
           fill
           priority
           alt="" 
-          className="object-cover opacity-40 scale-110 animate-pulse-slow"
+          className="object-cover scale-110 animate-pulse-slow dark:opacity-40 opacity-10"
         />
         {/* Neural blur orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/10 blur-[120px] rounded-full animate-blob" />
@@ -49,11 +49,11 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-4"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-display tracking-tighter leading-tight text-foreground">
               ADVANCED <span className="text-gradient">SYSTEMS</span><br />
               ARCHITECT
             </h1>
-            <div className="text-xl md:text-3xl font-mono text-white/80 h-12">
+            <div className="text-xl md:text-3xl font-mono text-foreground/80 h-12">
               <TypeAnimation
                 sequence={[
                   "Senior Full Stack Engineer",
@@ -76,7 +76,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed"
+            className="text-foreground/70 text-lg md:text-xl max-w-2xl leading-relaxed"
           >
             Engineering production-grade digital ecosystems and high-performance full-stack 
             architectures with a focus on scalability, reliability, and modern AI integration.
@@ -98,7 +98,7 @@ const HeroSection = () => {
             <Link
               target="_blank"
               href="https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing"
-              className="px-10 py-4 border border-white/10 hover:border-white/30 bg-white/5 backdrop-blur-md text-white font-bold rounded-full transition-all duration-300 hover:bg-white/10 hover:scale-[1.03] flex items-center justify-center gap-2 group"
+              className="px-10 py-4 border border-border hover:border-foreground/30 bg-foreground/5 backdrop-blur-md text-foreground font-bold rounded-full transition-all duration-300 hover:bg-foreground/10 hover:scale-[1.03] flex items-center justify-center gap-2 group"
             >
               INTEL BRIEF <DownloadIcon size={18} className="group-hover:translate-y-0.5 transition-transform" />
             </Link>
@@ -113,7 +113,7 @@ const HeroSection = () => {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono">Decipher Scroll</span>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/30 font-mono">Decipher Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-neon-cyan to-transparent animate-bounce-slow" />
       </motion.div>
     </section>

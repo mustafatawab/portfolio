@@ -21,28 +21,37 @@ export const metadata: Metadata = {
   description: "Specializing in high-performance digital architectures and AI-driven development.",
 };
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white relative overflow-x-hidden`}>
-          <div className="noise-overlay" />
-          <Navbar />
-          <main className="relative z-10">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton
-            phoneNumber="+923475300572"
-            message="Hello! Can I get more info about your services?."
-          />
-          <Toaster position="bottom-right" />
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden transition-colors duration-500`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="noise-overlay" />
+            <Navbar />
+            <main className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+            <WhatsAppButton
+              phoneNumber="+923475300572"
+              message="Hello! Can I get more info about your services?."
+            />
+            <Toaster position="bottom-right" />
+          </ThemeProvider>
       </body>
     </html>
   );

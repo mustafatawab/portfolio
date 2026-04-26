@@ -6,7 +6,7 @@ import { experiences } from "@/lib/experience";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 relative bg-black overflow-hidden">
+    <section id="experience" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-24">
           <motion.h3 
@@ -16,7 +16,7 @@ const Experience = () => {
           >
             Temporal Log
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight text-foreground uppercase tracking-tight">
             CAREER <span className="text-gradient">TRAJECTORY</span>
           </h2>
         </div>
@@ -45,16 +45,16 @@ const Experience = () => {
 
                 {/* Content Card */}
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
-                  <div className="glass-card p-8 rounded-2xl hover:neon-glow-purple transition-all duration-500 group">
+                  <div className="glass-card p-8 rounded-2xl hover:neon-glow-purple transition-all duration-500 group border-border">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
                       <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} w-full`}>
                         <span className="text-xs font-mono text-neon-cyan mb-2 tracking-widest">{exp.period}</span>
-                        <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors">{exp.title}</h3>
-                        <p className="text-white/60 font-mono text-sm">{exp.company}</p>
+                        <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors text-foreground">{exp.title}</h3>
+                        <p className="text-foreground/60 font-mono text-sm uppercase tracking-tight">{exp.company}</p>
                       </div>
                     </div>
                     
-                    <p className="text-white/40 leading-relaxed mb-8 text-sm md:text-base">
+                    <p className="text-foreground/50 leading-relaxed mb-8 text-sm md:text-base font-sans">
                       {exp.description}
                     </p>
                     
@@ -62,7 +62,7 @@ const Experience = () => {
                       {exp.tags.map((tag, i) => (
                         <Badge
                           key={i}
-                          className="bg-white/5 border-white/10 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-white/60 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
+                          className="bg-foreground/5 border-border text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-foreground/40 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
                         >
                           {tag}
                         </Badge>

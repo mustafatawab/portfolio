@@ -6,6 +6,7 @@ import logo from "../../public/mustafa_logo.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { ModeToggle } from "@/components/ModeToggle";
 
 type LinkType = {
   url: string;
@@ -71,6 +72,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-6">
+            <ModeToggle />
             <Link
               href="https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
               target="_blank"

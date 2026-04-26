@@ -24,7 +24,7 @@ const ProjectsPage = () => {
     : projects.filter(p => getProjectCategory(p) === filter);
 
   return (
-    <main className="bg-black min-h-screen">
+    <main className="bg-background min-h-screen transition-colors duration-500">
       {/* Dynamic Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.02),transparent_70%)]" />
@@ -33,14 +33,14 @@ const ProjectsPage = () => {
 
       {/* Header */}
       <section className="relative pt-48 pb-20 flex flex-col items-center justify-center overflow-hidden z-10">
-        <div className="container text-center space-y-8">
+        <div className="container text-center space-y-8 text-foreground">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Central Database</h3>
-            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight">
+            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight uppercase">
               NEURAL <span className="text-gradient">VAULT</span>
             </h1>
           </motion.div>
@@ -49,7 +49,7 @@ const ProjectsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
+            className="text-foreground/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
           >
             A high-integrity repository of production architectures and specialized software deployments.
           </motion.p>
@@ -57,7 +57,7 @@ const ProjectsPage = () => {
       </section>
 
       {/* Filtering */}
-      <section className="sticky top-20 z-30 py-8 backdrop-blur-md border-y border-white/5 bg-black/40">
+      <section className="sticky top-20 z-30 py-8 backdrop-blur-md border-y border-border bg-background/40">
         <div className="container flex flex-wrap justify-center gap-4">
           {categories.map((cat) => (
             <Button
@@ -67,7 +67,7 @@ const ProjectsPage = () => {
               className={`rounded-full px-6 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
                 filter === cat 
                 ? "bg-neon-cyan text-black" 
-                : "text-white/40 hover:text-neon-cyan hover:bg-neon-cyan/5"
+                : "text-foreground/40 hover:text-neon-cyan hover:bg-neon-cyan/5"
               }`}
             >
               {cat}

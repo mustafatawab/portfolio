@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { services } from "@/lib/services";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Bot, Rocket, Zap, Server, Code, Layout, Monitor, Cpu, 
-  Database, Settings, Globe, LineChart, Shield, Smartphone, 
-  Box, Package, CheckCircle2, ArrowRight
+  Bot, Rocket, Zap, Server, Code, Cpu, 
+  CheckCircle2, ArrowRight
 } from "lucide-react";
 
 const getIcon = (iconName: string) => {
@@ -24,11 +23,11 @@ const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="services" className="pt-32 pb-16 bg-black relative min-h-[800px] flex items-center">
+    <section id="services" className="pt-32 pb-16 bg-background relative min-h-[800px] flex items-center transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-24 lg:hidden">
           <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-          <h2 className="text-4xl font-bold font-display leading-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
+          <h2 className="text-4xl font-bold font-display leading-tight text-foreground uppercase">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-20 items-start">
@@ -36,7 +35,7 @@ const Services = () => {
           <div className="w-full lg:w-1/2 space-y-2">
             <div className="hidden lg:block space-y-4 mb-16">
               <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-              <h2 className="text-5xl font-bold font-display leading-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
+              <h2 className="text-5xl font-bold font-display leading-tight text-foreground uppercase">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
             </div>
             
             {services.map((service, index) => (
@@ -44,7 +43,7 @@ const Services = () => {
                 key={index}
                 onMouseEnter={() => setActiveIndex(index)}
                 className={`relative p-8 cursor-pointer rounded-2xl transition-all duration-500 group ${
-                  activeIndex === index ? 'bg-white/5 border border-white/10' : 'opacity-40 hover:opacity-100'
+                  activeIndex === index ? 'bg-foreground/5 border border-border' : 'opacity-40 hover:opacity-100'
                 }`}
               >
                 {activeIndex === index && (
@@ -55,11 +54,11 @@ const Services = () => {
                 )}
                 <div className="flex justify-between items-center">
                   <h3 className={`text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300 ${
-                    activeIndex === index ? 'text-neon-cyan' : 'text-white'
+                    activeIndex === index ? 'text-neon-cyan' : 'text-foreground'
                   }`}>
                     {service.title}
                   </h3>
-                  <ArrowRight className={`transition-transform duration-300 ${
+                  <ArrowRight className={`text-foreground transition-transform duration-300 ${
                     activeIndex === index ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
                   }`} />
                 </div>
@@ -76,7 +75,7 @@ const Services = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="glass-card p-12 rounded-[2rem] border-white/5 relative overflow-hidden group"
+                className="glass-card p-12 rounded-[2rem] border-border relative overflow-hidden group"
               >
                 {/* Tech scanline effect */}
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-neon-cyan/20 animate-scanline" />
@@ -88,27 +87,27 @@ const Services = () => {
                     </div>
                     <div>
                       <div className="text-[10px] font-mono text-neon-purple tracking-[0.3em] uppercase mb-1">Status: Operational</div>
-                      <h4 className="text-3xl font-bold">SYSTEM OVERVIEW</h4>
+                      <h4 className="text-3xl font-bold text-foreground uppercase tracking-tight">System Overview</h4>
                     </div>
                   </div>
 
-                  <p className="text-white/60 text-lg leading-relaxed font-mono italic">
+                  <p className="text-foreground/60 text-lg leading-relaxed font-mono italic">
                     "{services[activeIndex].content}"
                   </p>
 
                   <div className="space-y-6">
-                    <div className="text-xs font-mono text-white/20 uppercase tracking-[0.2em]">Deployment Specs</div>
+                    <div className="text-xs font-mono text-foreground/20 uppercase tracking-[0.2em]">Deployment Specs</div>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {services[activeIndex].points.map((pt, i) => (
                         <li key={i} className="flex items-start gap-3 group/item">
                           <CheckCircle2 size={16} className="text-neon-cyan mt-1 flex-shrink-0" />
-                          <span className="text-sm text-white/50 group-hover/item:text-white transition-colors">{pt}</span>
+                          <span className="text-sm text-foreground/50 group-hover/item:text-foreground transition-colors">{pt}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-8 border-t border-white/5 flex justify-between items-center text-[10px] font-mono text-white/20 tracking-widest">
+                  <div className="pt-8 border-t border-border flex justify-between items-center text-[10px] font-mono text-foreground/20 tracking-widest">
                     <span>ARCH_REF: 00{activeIndex + 1}</span>
                     <span>PROTO_TYPE: ALPHA</span>
                   </div>

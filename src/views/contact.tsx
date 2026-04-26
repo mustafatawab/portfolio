@@ -83,7 +83,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative bg-black overflow-hidden">
+    <section id="contact" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-20">
           <motion.h3 
@@ -93,14 +93,14 @@ const Contact = () => {
           >
             Communication Protocol
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display">INITIATE <span className="text-gradient">CONTACT</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold font-display text-foreground uppercase tracking-tight">INITIATE <span className="text-gradient">CONTACT</span></h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
             <div className="space-y-6">
-              <h4 className="text-3xl font-bold">Secure Connection</h4>
-              <p className="text-white/50 text-lg leading-relaxed max-w-md">
+              <h4 className="text-3xl font-bold text-foreground">Secure Connection</h4>
+              <p className="text-foreground/50 text-lg leading-relaxed max-w-md">
                 Ready to architect the next generation of intelligent systems? 
                 Open a channel to discuss your requirements.
               </p>
@@ -116,12 +116,12 @@ const Contact = () => {
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-6 p-6 glass-card rounded-2xl hover:neon-glow-cyan transition-all duration-500 group"
                 >
-                  <div className="p-4 rounded-xl bg-white/5 text-neon-cyan group-hover:scale-110 transition-transform">
+                  <div className="p-4 rounded-xl bg-foreground/5 text-neon-cyan group-hover:scale-110 transition-transform">
                     <link.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] mb-1">{link.label}</div>
-                    <div className="text-white font-mono group-hover:text-neon-cyan transition-colors">{link.value}</div>
+                    <div className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.2em] mb-1">{link.label}</div>
+                    <div className="text-foreground font-mono group-hover:text-neon-cyan transition-colors">{link.value}</div>
                   </div>
                 </motion.a>
               ))}
@@ -133,28 +133,28 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="glass-card p-10 rounded-3xl border-white/5">
+            <Card className="glass-card p-10 rounded-3xl border-border">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <Label htmlFor="first_name" className="text-[10px] font-mono uppercase tracking-widest text-white/40">First Name</Label>
+                    <Label htmlFor="first_name" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">First Name</Label>
                     <Input
                       name="first_name"
                       id="first_name"
                       placeholder="Identified As"
-                      className="bg-white/5 border-white/10 focus:border-neon-cyan/50 h-12 rounded-xl"
+                      className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground"
                       onChange={handleChange}
                       required
                       value={form.first_name}
                     />
                   </div>
                   <div className="space-y-3">
-                    <Label htmlFor="last_name" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Last Name</Label>
+                    <Label htmlFor="last_name" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Last Name</Label>
                     <Input
                       name="last_name"
                       id="last_name"
                       placeholder="Sub-Identifier"
-                      className="bg-white/5 border-white/10 focus:border-neon-cyan/50 h-12 rounded-xl"
+                      className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground"
                       onChange={handleChange}
                       value={form.last_name}
                     />
@@ -162,13 +162,13 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Label htmlFor="email" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Return Address (Email)</Label>
+                  <Label htmlFor="email" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Return Address (Email)</Label>
                   <Input
                     name="email"
                     id="email"
                     type="email"
                     placeholder="node@network.com"
-                    className="bg-white/5 border-white/10 focus:border-neon-cyan/50 h-12 rounded-xl"
+                    className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground"
                     onChange={handleChange}
                     required
                     value={form.email}
@@ -177,16 +177,16 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-white/40">Mission Type</Label>
+                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Mission Type</Label>
                     <Select
                       onValueChange={(value) => setForm((prev) => ({ ...prev, project_type: value }))}
                       required
                       value={form.project_type}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 focus:border-neon-cyan/50 h-12 rounded-xl">
+                      <SelectTrigger className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground">
                         <SelectValue placeholder="Select Objective" />
                       </SelectTrigger>
-                      <SelectContent className="glass-card border-white/10 text-white">
+                      <SelectContent className="glass-card border-border text-foreground">
                         <SelectItem value="AI Integration">Neural Integration</SelectItem>
                         <SelectItem value="Web Application">System Architecture</SelectItem>
                         <SelectItem value="Mobile App">Mobile Interface</SelectItem>
@@ -195,15 +195,15 @@ const Contact = () => {
                     </Select>
                   </div>
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-white/40">Resource Allocation</Label>
+                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Resource Allocation</Label>
                     <Select
                       value={form.budget}
                       onValueChange={(value) => setForm((prev) => ({ ...prev, budget: value }))}
                     >
-                      <SelectTrigger className="bg-white/5 border-white/10 focus:border-neon-cyan/50 h-12 rounded-xl">
+                      <SelectTrigger className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground">
                         <SelectValue placeholder="Project Scale" />
                       </SelectTrigger>
-                      <SelectContent className="glass-card border-white/10 text-white">
+                      <SelectContent className="glass-card border-border text-foreground">
                         <SelectItem value="Less than 1000$">&lt; 1,000 USD</SelectItem>
                         <SelectItem value="1000$ - 5000$">1k - 5k USD</SelectItem>
                         <SelectItem value="Greater than 5000$">&gt; 5k USD</SelectItem>
@@ -213,12 +213,12 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Label htmlFor="message" className="text-[10px] font-mono uppercase tracking-widest text-white/40">Briefing Message</Label>
+                  <Label htmlFor="message" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Briefing Message</Label>
                   <Textarea
                     name="message"
                     id="message"
                     placeholder="Enter mission details..."
-                    className="bg-white/5 border-white/10 focus:border-neon-cyan/50 min-h-[120px] rounded-xl"
+                    className="bg-foreground/5 border-border focus:border-neon-cyan/50 min-h-[120px] rounded-xl text-foreground"
                     onChange={handleChange}
                     value={form.message}
                   />
