@@ -92,7 +92,6 @@ const ProjectsPage = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
-                    className={index % 5 === 0 ? "lg:col-span-2 lg:row-span-2" : ""}
                 >
                   <ProjectArchiveCard project={project} index={index} />
                 </motion.div>
