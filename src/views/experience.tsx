@@ -16,7 +16,7 @@ const Experience = () => {
           >
             Temporal Log
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight text-foreground uppercase tracking-tight">
+          <h2 className="text-4xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">
             CAREER <span className="text-gradient">TRAJECTORY</span>
           </h2>
         </div>

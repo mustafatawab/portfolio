@@ -93,7 +93,7 @@ const Contact = () => {
           >
             Communication Protocol
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display text-foreground uppercase tracking-tight">INITIATE <span className="text-gradient">CONTACT</span></h2>
+          <h2 className="text-4xl md:text-7xl font-black font-display text-foreground uppercase tracking-tight">INITIATE <span className="text-gradient">CONTACT</span></h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">

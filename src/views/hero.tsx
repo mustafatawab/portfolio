@@ -49,7 +49,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-4"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-display tracking-tighter leading-tight text-foreground">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black font-display tracking-tighter leading-tight text-foreground">
               ADVANCED <span className="text-gradient">SYSTEMS</span><br />
               ARCHITECT
             </h1>

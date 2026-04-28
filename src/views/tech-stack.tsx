@@ -29,7 +29,7 @@ const TechStack = () => {
           >
             Core Infrastructure
           </motion.h3>
-          <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight uppercase tracking-tight">
+          <h2 className="text-4xl md:text-7xl font-black font-display leading-tight uppercase tracking-tight">
             TECHNICAL <span className="text-gradient">NETWORK</span>
           </h2>
         </div>

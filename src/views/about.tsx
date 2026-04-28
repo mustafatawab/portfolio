@@ -14,7 +14,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-32 relative overflow-hidden bg-background transition-colors duration-500">
       <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -43,7 +43,7 @@ const AboutSection = () => {
               className="space-y-6"
             >
               <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase">Core Identity</h3>
-              <h2 className="text-4xl md:text-6xl font-bold font-display leading-tight text-foreground">
+              <h2 className="text-4xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">
                 MERGING <span className="text-gradient">INTELLIGENCE</span><br />
                 WITH ARCHITECTURE
               </h2>

@@ -43,7 +43,7 @@ const Navbar = () => {
           scrolled ? "bg-background/60 scale-95" : "bg-transparent border-transparent shadow-none"
         }`}>
           <Link href="/" className="relative group">
-            <div className="text-xl font-bold font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
+            <div className="text-xl font-black font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
               <span className="text-neon-cyan font-mono">{`{`}</span>
               <span className="group-hover:text-neon-cyan transition-colors">MUSTAFA</span>
               <span className="text-neon-cyan font-mono">{`}`}</span>

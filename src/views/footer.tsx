@@ -25,7 +25,7 @@ const Footer = () => {
           
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="inline-block group">
-              <div className="text-2xl font-bold font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
+              <div className="text-2xl font-black font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
                 <span className="text-neon-cyan font-mono">{`{`}</span>
                 <span className="">MUSTAFA</span>
                 <span className="text-neon-cyan font-mono">{`}`}</span>

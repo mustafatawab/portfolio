@@ -30,7 +30,7 @@ const Education = () => {
           >
             Evolutionary Logic
           </motion.h3>
-          <h2 className="text-4xl md:text-8xl font-bold font-display tracking-tighter leading-none text-foreground uppercase">
+          <h2 className="text-4xl md:text-7xl font-black font-display tracking-tighter leading-none text-foreground uppercase">
             NEURAL <span className="text-gradient">PATH</span>
           </h2>
         </div>
@@ -102,7 +102,7 @@ const Education = () => {
                             </p>
                         </div>
                         
-                        <p className="text-foreground/60 text-xs md:text-sm mt-4 md:mt-6 leading-relaxed font-sans">
+                        <p className="text-foreground/60 text-sm md:text-base mt-4 md:mt-6 leading-relaxed font-sans">
                             {edu.description}
                         </p>
                         
