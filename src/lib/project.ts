@@ -3,14 +3,11 @@ import elygance from '@/assets/project/elygance.png'
 import msp from '@/assets/project/msp-tech.png'
 import myscribe from '@/assets/project/myscribe.png'
 import triton from '@/assets/project/triton.png'
-import trustpilot from '@/assets/project/trustpilot.png'
 import portfolio from '@/assets/project/portfolio.png'
-import nextron from '@/assets/project/nextron.png'
 import gallery from '@/assets/project/gallery.png'
-import snapbook from '@/assets/project/snapbook.png'
 import uswah from '@/assets/project/uswah-saeed.png'
-import farsightsysmte from '@/assets/project/farsight-system.png'
-import parkease from '@/assets/project/parkease.png'
+import farsightsysmte from '@/assets/project/farsight.png'
+import rukun from '@/assets/project/rukun.png'
 
 interface ProjectType {
     image : any,
@@ -23,6 +20,32 @@ interface ProjectType {
 }
 
 export const projects : ProjectType[] = [
+    {
+        image : myscribe,
+        title : "My Scribe",
+        description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems—especially in fast-paced, high-stakes environments like healthcare.",
+        githubLink : "",
+        tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
+        link : "https://www.myscribe.us/",
+    },
+
+    {
+        image : triton,
+        title : "Triton",
+        description : "TritonCG is a large-scale web ecosystem powered by a robust CMS built with Pyload CMS. The platform is designed to manage and maintain a network of client websites efficiently, offering scalability, reliability, and seamless content management. TritonCG showcases the power of building a scalable CMS-driven ecosystem where dozens of live websites can be managed and updated efficiently. This project highlights my expertise in developing enterprise-grade solutions with a strong focus on scalability, maintainability, and client satisfaction.",
+        githubLink : "",
+        tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
+        more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
+        link : "https://www.tritoncg.com/",
+    },
+    {
+        image: rukun,
+        title: "Rukun Al Zuhab",
+        description: "Rukun Al Zuhab Trading Co is a Saudi Arabian industrial supply company specializing in high-performance components and infrastructure solutions.",
+        githubLink: "",
+        tags: ['tailwind css', 'nextjs', "framer motion", "shadcn",'typescript'],
+        link: "https://rukun-al-zuhab.vercel.app/",
+    },
     {
         image : farsightsysmte,
         title : "Farsight System",
@@ -57,14 +80,6 @@ export const projects : ProjectType[] = [
         link : "https://user-gallery-website.vercel.app/",
     },
     {
-        image: snapbook,
-        title: "Snapbook",
-        description : "Snapbook is a full-stack social networking application inspired by platforms like Facebook and Instagram but designed with a fresh, modern approach. Built with Next.js, React, Tailwind CSS, TypeScript, and FastAPI, it offers an intuitive and responsive interface that delivers a seamless user experience across devices.",
-        tags : ["Nextjs" , "Shadcn UI", "Neon DB" , "Prisma"],
-        githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/snapbook",
-        link : "https://snapbook-latest.vercel.app/feed"
-    },
-    {
         image : msp,
         title : "MSP Tech Stack",
         description : 'The app is Business to Business marketplace. It has user login system and company login system.',
@@ -93,24 +108,6 @@ export const projects : ProjectType[] = [
     },
 
 
-    {
-        image : myscribe,
-        title : "My Scribe",
-        description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems—especially in fast-paced, high-stakes environments like healthcare.",
-        githubLink : "",
-        tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
-        link : "https://www.myscribe.us/",
-    },
-
-    {
-        image : triton,
-        title : "Triton",
-        description : "TritonCG is a large-scale web ecosystem powered by a robust CMS built with Pyload CMS. The platform is designed to manage and maintain a network of client websites efficiently, offering scalability, reliability, and seamless content management. TritonCG showcases the power of building a scalable CMS-driven ecosystem where dozens of live websites can be managed and updated efficiently. This project highlights my expertise in developing enterprise-grade solutions with a strong focus on scalability, maintainability, and client satisfaction.",
-        githubLink : "",
-        tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
-        more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
-        link : "https://www.tritoncg.com/",
-    },
 
 
 

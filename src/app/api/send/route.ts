@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     project_type,
     email,
     message,
-    other
+    other,
   } = await req.json();
 
   try {
