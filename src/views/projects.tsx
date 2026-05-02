@@ -30,7 +30,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
   return (
     <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
-      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-0`}>
+      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-5 sm:gap-7 md:gap-10  lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
         <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap uppercase text-foreground`}>
@@ -61,16 +61,16 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
         >
           <div className="glass-card p-8 md:p-12 rounded-[2rem] border-border hover:neon-glow-cyan transition-all duration-500 space-y-6">
             <div className="space-y-3">
-              <div className={`flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? 'md:justify-end' : ''}`}>
+              <div className={`flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? ' md:justify-end' : ''}`}>
                 <Hash size={12} />
                 <span>Segment 0{index + 1}</span>
               </div>
-              <h3 className={`text-3xl md:text-5xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors ${isEven ? 'md:text-right' : 'md:text-left'} text-foreground`}>
+              <h3 className={`text-3xl md:text-5xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors ${isEven ? 'lg:text-right' : 'md:text-left'} text-foreground`}>
                 {project.title}
               </h3>
             </div>
 
-            <p className={`text-foreground/70 text-sm md:text-lg leading-relaxed font-sans ${isEven ? 'md:text-right' : ''}`}>
+            <p className={`text-foreground/70 text-sm md:text-lg leading-relaxed font-sans ${isEven ? 'lg:text-right' : ''}`}>
               {project.description}
             </p>
 
@@ -123,7 +123,7 @@ const Projects = () => {
           >
             Curated Archive
           </motion.h3>
-          <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">System Works</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">Selected Works</h2>
         </div>
 
         {projects && projects.slice(0, 5).map((project, index) => (

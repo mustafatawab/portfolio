@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <footer id="footer" className="py-20 bg-background border-t border-border relative overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-16 mb-20">
           
           <div className="lg:col-span-2 space-y-8">
             <Link href="/" className="inline-block group">

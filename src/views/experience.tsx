@@ -8,7 +8,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-24">
+        <div className="text-center space-y-2 mb-10 lg:mb-20">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -23,9 +23,9 @@ const Experience = () => {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Neon Timeline Path */}
-          <div className="hidden md:block absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent opacity-20" />
+          <div className=" absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent opacity-20" />
           
-          <div className="space-y-24">
+          <div className="space-y-10">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -38,13 +38,13 @@ const Experience = () => {
                 }`}
               >
                 {/* Glowing Node */}
-                <div className="absolute left-[13px] md:left-1/2 top-0 w-4 h-4 -ml-2 z-20">
+                <div className="absolute left-[20px] md:left-1/2 top-0 w-4 h-4 -ml-2 z-20">
                   <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-50" />
                   <div className="relative w-4 h-4 bg-neon-cyan rounded-full shadow-[0_0_15px_rgba(0,242,255,1)]" />
                 </div>
 
                 {/* Content Card */}
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 text-left md:text-right' : 'md:pl-16 text-left'}`}>
+                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'pl-10 md:pl-0   lg:pr-16 text-left md:text-right' : 'pl-10 md:pl-0  lg:pl-16 text-left'}`}>
                   <div className="glass-card p-8 rounded-2xl hover:neon-glow-purple transition-all duration-500 group border-border">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
                       <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} w-full`}>

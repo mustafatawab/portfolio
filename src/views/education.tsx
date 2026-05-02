@@ -20,9 +20,9 @@ const Education = () => {
   });
 
   return (
-    <section id="education" ref={containerRef} className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="education" ref={containerRef} className="lg:py-30 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-20 md:mb-32">
+        <div className="text-center space-y-2 mb-10 md:mb-20">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -37,13 +37,13 @@ const Education = () => {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Central Neural Spine */}
-          <div className=" absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" />
+          {/* <div className=" absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" /> */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
-            className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
+            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
           />
           
-          <div className="space-y-16 md:space-y-32">
+          <div className="space-y-10">
             {education.map((edu, index) => {
               const Icon = edu.icon;
               const isEven = index % 2 === 0;
@@ -60,13 +60,13 @@ const Education = () => {
                   }`}
                 >
                   {/* Branching Node */}
-                  <div className="absolute left-[21px] md:left-1/2 top-10 md:top-1/2 w-5 h-5 -ml-[10px] md:-mt-[10px] z-30">
+                  <div className="absolute left-[20px] md:left-1/2 top-10 md:top-1/2 w-5 h-5 -ml-[10px] md:-mt-[10px] z-30">
                     <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-20" />
                     <div className="relative w-full h-full bg-background border-2 border-neon-cyan rounded-full shadow-[0_0_10px_#00f2ff]" />
                   </div>
 
                   {/* Content Container */}
-                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-12 lg:pr-24 text-left md:text-right' : 'md:pl-12 lg:pl-24 text-left'}`}>
+                  <div className={`w-full md:w-1/2 pl-10 lg:pl-16 md:pl-0 ${isEven ? 'md:pr-12 lg:pr-24 text-left md:text-right' : 'md:pl-12 lg:pl-24 text-left'}`}>
                     <div className="group relative">
                       <div className={`hidden md:block absolute top-1/2 ${isEven ? '-right-4' : '-left-4'} w-8 h-[2px] bg-foreground/10 group-hover:bg-neon-cyan/50 transition-colors`} />
                       

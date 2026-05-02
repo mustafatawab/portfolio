@@ -21,7 +21,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative group w-full lg:w-1/3 aspect-[4/5]"
+            className="relative group w-[90%] md:1/3  aspect-[4/5]"
           >
             <div className="absolute inset-0 border-2 border-neon-cyan/30 rounded-2xl -translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
             <div className="absolute inset-0 bg-neon-cyan/10 dark:bg-neon-cyan/20 rounded-2xl mix-blend-overlay z-10" />

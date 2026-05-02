@@ -52,7 +52,7 @@ const Skills = () => {
   const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
 
   return (
-    <section id="skills" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="skills" className="lg:py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-20">
           <motion.h3 
