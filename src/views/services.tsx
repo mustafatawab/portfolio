@@ -27,7 +27,7 @@ const Services = () => {
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-24 lg:hidden">
           <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-          <h2 className="text-4xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
+          <h2 className="text-3xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-20 items-start">
@@ -35,7 +35,7 @@ const Services = () => {
           <div className="w-full lg:w-1/2 space-y-2">
             <div className="hidden lg:block space-y-4 mb-16">
               <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-              <h2 className="text-4xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
+              <h2 className="text-3xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
             </div>
             
             {services.map((service, index) => (

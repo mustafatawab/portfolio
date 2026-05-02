@@ -103,9 +103,9 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-6 right-6 mt-4 md:hidden"
+            className="absolute top-full left-6 right-6 mt-4 md:hidden z-[60]"
           >
-            <div className="glass-card rounded-3xl p-8 border-border flex flex-col gap-6">
+            <div className="glass-card bg-background/95 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border-border flex flex-col gap-6">
               {links.map((link) => (
                 <Link
                   key={link.label}

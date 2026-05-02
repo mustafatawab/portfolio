@@ -21,10 +21,10 @@ export default function WhatsAppButton({
 
   // Define position classes based on the position prop
   const positionClasses = {
-    "bottom-right": "bottom-6 right-6",
-    "bottom-left": "bottom-6 left-6",
-    "top-right": "top-6 right-6",
-    "top-left": "top-6 left-6",
+    "bottom-right": "bottom-24 md:bottom-8 right-6 md:right-8",
+    "bottom-left": "bottom-24 md:bottom-8 left-6 md:left-8",
+    "top-right": "top-6 md:top-8 right-6 md:right-8",
+    "top-left": "top-6 md:top-8 left-6 md:left-8",
   }
 
   return (

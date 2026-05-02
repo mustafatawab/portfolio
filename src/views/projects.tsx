@@ -123,7 +123,7 @@ const Projects = () => {
           >
             Curated Archive
           </motion.h3>
-          <h2 className="text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">System Works</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">System Works</h2>
         </div>
 
         {projects && projects.slice(0, 5).map((project, index) => (
