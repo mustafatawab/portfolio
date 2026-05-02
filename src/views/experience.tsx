@@ -23,7 +23,7 @@ const Experience = () => {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Neon Timeline Path */}
-          <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent opacity-20" />
+          <div className="hidden md:block absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent opacity-20" />
           
           <div className="space-y-24">
             {experiences.map((exp, index) => (

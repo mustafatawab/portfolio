@@ -130,7 +130,7 @@ const Projects = () => {
           <ProjectSection key={index} project={project} index={index} />
         ))}
 
-        <div className="container py-32 text-center">
+        <div className="container  text-center">
           <Link
             href="/projects"
             className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-foreground/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"

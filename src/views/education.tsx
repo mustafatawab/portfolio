@@ -37,7 +37,7 @@ const Education = () => {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Central Neural Spine */}
-          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" />
+          <div className=" absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" />
           <motion.div 
             style={{ scaleY, originY: 0 }}
             className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
