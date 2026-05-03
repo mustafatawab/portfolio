@@ -133,7 +133,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Card className="glass-card p-10 rounded-3xl border-border">
+            <Card className="glass-card p-5 md:p-10 rounded-3xl border-border">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
@@ -227,7 +227,7 @@ const Contact = () => {
                 <Button
                   disabled={loading}
                   type="submit"
-                  className="w-full h-14 bg-neon-cyan text-black font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
+                  className=" w-full py-4 px-6 bg-neon-cyan text-black font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
                 >
                   {loading ? "TRANSMITTING..." : (
                     <span className="flex items-center gap-2">

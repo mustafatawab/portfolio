@@ -9,7 +9,7 @@ import {
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
-    case "bot": return <Bot size={40} />;
+    case "bot": return <Bot  size={40} />;
     case "rocket": return <Rocket size={40} />;
     case "zap": return <Zap size={40} />;
     case "server": return <Server size={40} />;
@@ -30,7 +30,7 @@ const Services = () => {
           <h2 className="text-3xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-20 items-start">
+        <div className="flex flex-col md:flex-row gap-20 items-start">
           {/* Left: Command List */}
           <div className="w-full lg:w-1/2 space-y-2">
             <div className="hidden lg:block space-y-4 mb-16">
@@ -75,14 +75,14 @@ const Services = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="glass-card p-12 rounded-[2rem] border-border relative overflow-hidden group"
+                className="glass-card p-5 md:p-12 rounded-[2rem] border-border relative overflow-hidden group"
               >
                 {/* Tech scanline effect */}
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-neon-cyan/20 animate-scanline" />
                 
                 <div className="relative z-10 space-y-10">
                   <div className="flex items-center gap-6">
-                    <div className="w-20 h-20 rounded-3xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan shadow-[0_0_30px_rgba(0,242,255,0.1)]">
+                    <div className="w-20 h-20 p-2 rounded-3xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan shadow-[0_0_30px_rgba(0,242,255,0.1)]">
                       {getIcon(services[activeIndex].icon)}
                     </div>
                     <div>
