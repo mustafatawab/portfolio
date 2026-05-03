@@ -62,9 +62,10 @@ const Certifications = () => {
               {certificationFiles.map((cert) => (
                 <CarouselItem key={cert.title} className="min-w-full">
                   <div className="rounded-[2rem] overflow-hidden border border-border bg-[#0b0d12] shadow-lg">
+                    
                     <iframe
                       src={cert.fileUrl}
-                      className="h-[80vh] w-full"
+                      className="h-[60vh] md:h-[80vh] w-full"
                       title={cert.title}
                     />
                   </div>
@@ -72,8 +73,8 @@ const Certifications = () => {
               ))}
             </CarouselContent>
 
-            <CarouselPrevious className="-left-6 md:-left-10" />
-            <CarouselNext className="-right-6 md:-right-10" />
+            <CarouselPrevious className="left-2 md:-left-10" />
+            <CarouselNext className="right-2 md:-right-10" />
           </Carousel>
         </motion.div>
       </div>
