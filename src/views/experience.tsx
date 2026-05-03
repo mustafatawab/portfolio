@@ -6,7 +6,7 @@ import { experiences } from "@/lib/experience";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="experience" className="py-32 mt-10 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-2 mb-10 lg:mb-20">
           <motion.h3 

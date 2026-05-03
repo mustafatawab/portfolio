@@ -29,7 +29,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={containerRef} className="relative min-h-[70vh] md:min-h-screen flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
+    <div ref={containerRef} className="relative min-h-[70vh]  flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
       <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-5 sm:gap-7 md:gap-10  lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
@@ -115,7 +115,7 @@ const Projects = () => {
       </div>
 
       <div className="relative z-10 pt-16 md:pt-32">
-        <div className="container text-center mb-16 md:mb-32">
+        <div className="container text-center mb-10 md:mb-20">
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -126,7 +126,7 @@ const Projects = () => {
           <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">Selected Works</h2>
         </div>
 
-        {projects && projects.slice(0, 5).map((project, index) => (
+        {projects && projects.slice(0, 3).map((project, index) => (
           <ProjectSection key={index} project={project} index={index} />
         ))}
 
