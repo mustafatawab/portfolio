@@ -31,7 +31,7 @@ interface ContactForm {
 }
 
 const socialLinks = [
-  { icon: Mail, label: "Neural Transmission", value: "tawab05@gmail.com", href: "mailto:tawab05@gmail.com" },
+  { icon: Mail, label: "Neural Transmission", value: "mustafa.tawab.dev@gmail.com", href: "mailto:mustafa.tawab.dev@gmail.com" },
   {
     icon: Linkedin,
     label: "Professional Node",

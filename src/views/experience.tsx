@@ -50,7 +50,8 @@ const Experience = () => {
                       <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} w-full`}>
                         <span className="text-xs font-mono text-neon-cyan mb-2 tracking-widest">{exp.period}</span>
                         <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors text-foreground">{exp.title}</h3>
-                        <p className="text-foreground/60 font-mono text-sm uppercase tracking-tight">{exp.company}</p>
+                        <p className="text-foreground/60 font-mono text-sm uppercase tracking-tight font-semibold">{exp.company}</p>
+                        <p className="text-foreground/60 font-mono text-sm capitalize italic">{exp.location}</p>
                       </div>
                     </div>
                     

@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   try {
     const data = await resend.emails.send({
       from: "Mustafa Tawab <onboarding@resend.dev>", // ✅ test mode
-      to: ["tawab05@gmail.com"], // Must match the email linked to your Resend account
+      to: ["mustafa.tawab.dev@gmail.com"], // Must match the email linked to your Resend account
       subject: `New message from ${first_name} ${last_name && last_name}`,
       html: `
             <div className='text-blue-700 border-2 border-blue-600 p-20 w-full bg-blue-200'>

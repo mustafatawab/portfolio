@@ -8,6 +8,8 @@ import gallery from '@/assets/project/gallery.png'
 import uswah from '@/assets/project/uswah-saeed.png'
 import farsightsysmte from '@/assets/project/farsight.png'
 import rukun from '@/assets/project/rukun.png'
+import maktab from "@/assets/project/maktab-one.png"
+import pharmacy from "@/assets/project/pharmacy.png"
 
 interface ProjectType {
     image : any,
@@ -21,12 +23,28 @@ interface ProjectType {
 
 export const projects : ProjectType[] = [
     {
+        image : maktab,
+        title: "Maktab One",
+        description : "Maktab One is a `School Management System` for those mid level schools who has to manage students fees and expenses easily in automatic way.",
+        githubLink :"",
+        tags : ["Next.js", "TanStack Query", "Node.js" , "Prisma" , "Neon DB" , "Resend" , "Mailtrap", "SMTP"],
+        link : "https://maktab-one-lemon.vercel.app/"
+    },
+    {
         image : myscribe,
         title : "My Scribe",
         description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems—especially in fast-paced, high-stakes environments like healthcare.",
         githubLink : "",
         tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
         link : "https://www.myscribe.us/",
+    },
+    {
+        image : pharmacy,
+        title : "Pharmacy Management System",
+        description : "Pharmacy Managment System is Multi-Tenant system for Pharmacy to manage all their Inventory and perform all POS actions using this custom software.",
+        githubLink : "https://github.com/mustafatawab/pharmacy_management_system",
+        tags : ["Next.js" , "FastAPI" , "SQLModel" , "TanStack Query" , "Typescript"],
+        link : "https://pharmacy-management-system-beta.vercel.app/login",
     },
 
     {

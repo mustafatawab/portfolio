@@ -11,7 +11,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/mustafatawab', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/mustafa-tawab/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:tawab05@gmail.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:mustafa.tawab.dev@gmail.com', label: 'Email' },
   ];
 
   const scrollToTop = () => {
@@ -66,7 +66,7 @@ const Footer = () => {
             <div className="space-y-6 font-mono text-sm">
               <div className="space-y-1">
                 <div className="text-foreground/20 uppercase text-[10px]">Transmission</div>
-                <div className="text-foreground/60 hover:text-neon-cyan transition-colors">tawab05@gmail.com</div>
+                <div className="text-foreground/60 hover:text-neon-cyan transition-colors">mustafa.tawab.dev@gmail.com</div>
               </div>
               <div className="space-y-1">
                 <div className="text-foreground/20 uppercase text-[10px]">Coordinate</div>
