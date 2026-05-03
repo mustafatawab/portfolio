@@ -1,14 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: {
-    appIsrStatus: false,
-    buildActivity: false,
-    buildActivityPosition: 'bottom-right',
+    position: 'bottom-right',
   },
-  env :{
-    CONTENTFULL_SPACE_ID : "viycukvlh0rc",
-    CONTENTFULL_API_KEY : '_4klXEsxP4aFBaKXZ4PvRsjVdckdiojre_BB1vUtnNw'
-  }, 
+  env: {
+    CONTENTFULL_SPACE_ID: "viycukvlh0rc",
+    CONTENTFULL_API_KEY: '_4klXEsxP4aFBaKXZ4PvRsjVdckdiojre_BB1vUtnw',
+  },
+
   images: {
     remotePatterns: [
       {

@@ -28,7 +28,7 @@ export const education: EduType[] = [
     {
       degree: "Certified Agentic AI Developer",
       institution: "Panaversity",
-      period: "2025 - Present",
+      period: "2025 - 2026",
       description: "Ongoing professional development through advanced certifications and specialized training programs in emerging AI technologies and Agentic AI Development.",
       achievements: [
         "Modern Python",

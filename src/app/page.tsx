@@ -6,6 +6,7 @@ import Projects from "@/views/projects";
 import Contact from "@/views/contact";
 import Experience from "@/views/experience";
 import Education from "@/views/education";
+import Certifications from "@/views/certifications";
 import TechStack from "@/views/tech-stack";
 
 export default function Home() {
@@ -16,8 +17,9 @@ export default function Home() {
       <Skills />
       <Services />
       <Projects />
-      <Experience />
       <Education />
+      <Certifications />
+      <Experience />
       <Contact />
     </>
   );
