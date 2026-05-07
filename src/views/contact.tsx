@@ -26,19 +26,28 @@ interface ContactForm {
   message: string;
   project_type: string;
   budget: string;
-  company: string;
   other: string;
 }
 
 const socialLinks = [
-  { icon: Mail, label: "Neural Transmission", value: "mustafa.tawab.dev@gmail.com", href: "mailto:mustafa.tawab.dev@gmail.com" },
+  {
+    icon: Mail,
+    label: "Neural Transmission",
+    value: "mustafa.tawab.dev@gmail.com",
+    href: "mailto:mustafa.tawab.dev@gmail.com",
+  },
   {
     icon: Linkedin,
     label: "Professional Node",
     value: "mustafa-tawab",
     href: "https://www.linkedin.com/in/mustafa-tawab/",
   },
-  { icon: Github, label: "Source Protocol", value: "mustafatawab", href: "https://github.com/mustafatawab" },
+  {
+    icon: Github,
+    label: "Source Protocol",
+    value: "mustafatawab",
+    href: "https://github.com/mustafatawab",
+  },
 ];
 
 const Contact = () => {
@@ -50,11 +59,12 @@ const Contact = () => {
     message: "",
     project_type: "",
     budget: "",
-    company: "",
-    other: ""
+    other: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -72,8 +82,7 @@ const Contact = () => {
         message: "",
         project_type: "",
         budget: "",
-        company: "",
-        other: ""
+        other: "",
       });
     } catch (error) {
       toast.error("Transmission Interrupted. Please retry.");
@@ -83,25 +92,32 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section
+      id="contact"
+      className="py-32 relative bg-background overflow-hidden transition-colors duration-500"
+    >
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-20">
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase"
           >
             Communication Protocol
           </motion.h3>
-          <h2 className="text-4xl md:text-7xl font-black font-display text-foreground uppercase tracking-tight">INITIATE <span className="text-gradient">CONTACT</span></h2>
+          <h2 className="text-4xl md:text-7xl font-black font-display text-foreground uppercase tracking-tight">
+            INITIATE <span className="text-gradient">CONTACT</span>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
             <div className="space-y-6">
-              <h4 className="text-3xl font-bold text-foreground">Secure Connection</h4>
+              <h4 className="text-3xl font-bold text-foreground">
+                Secure Connection
+              </h4>
               <p className="text-foreground/50 text-lg leading-relaxed max-w-md">
-                Ready to architect the next generation of intelligent systems? 
+                Ready to architect the next generation of intelligent systems?
                 Open a channel to discuss your requirements.
               </p>
             </div>
@@ -120,8 +136,12 @@ const Contact = () => {
                     <link.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.2em] mb-1">{link.label}</div>
-                    <div className="text-foreground font-mono group-hover:text-neon-cyan transition-colors">{link.value}</div>
+                    <div className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.2em] mb-1">
+                      {link.label}
+                    </div>
+                    <div className="text-foreground font-mono group-hover:text-neon-cyan transition-colors">
+                      {link.value}
+                    </div>
                   </div>
                 </motion.a>
               ))}
@@ -137,7 +157,12 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <Label htmlFor="first_name" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">First Name</Label>
+                    <Label
+                      htmlFor="first_name"
+                      className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                    >
+                      First Name
+                    </Label>
                     <Input
                       name="first_name"
                       id="first_name"
@@ -149,7 +174,12 @@ const Contact = () => {
                     />
                   </div>
                   <div className="space-y-3">
-                    <Label htmlFor="last_name" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Last Name</Label>
+                    <Label
+                      htmlFor="last_name"
+                      className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                    >
+                      Last Name
+                    </Label>
                     <Input
                       name="last_name"
                       id="last_name"
@@ -162,7 +192,12 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Label htmlFor="email" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Return Address (Email)</Label>
+                  <Label
+                    htmlFor="email"
+                    className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                  >
+                    Return Address (Email)
+                  </Label>
                   <Input
                     name="email"
                     id="email"
@@ -177,9 +212,13 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Mission Type</Label>
+                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
+                      Mission Type
+                    </Label>
                     <Select
-                      onValueChange={(value) => setForm((prev) => ({ ...prev, project_type: value }))}
+                      onValueChange={(value) =>
+                        setForm((prev) => ({ ...prev, project_type: value }))
+                      }
                       required
                       value={form.project_type}
                     >
@@ -187,33 +226,73 @@ const Contact = () => {
                         <SelectValue placeholder="Select Objective" />
                       </SelectTrigger>
                       <SelectContent className="glass-card border-border text-foreground">
-                        <SelectItem value="AI Integration">Neural Integration</SelectItem>
-                        <SelectItem value="Web Application">System Architecture</SelectItem>
-                        <SelectItem value="Mobile App">Mobile Interface</SelectItem>
-                        <SelectItem value="Other">Custom Protocol</SelectItem>
+                        <SelectItem value="AI Integration">
+                          AI Integration
+                        </SelectItem>
+                        <SelectItem value="Custom Website">
+                          Custom Website
+                        </SelectItem>
+                        <SelectItem value="Software Development">
+                          Software Development
+                        </SelectItem>
+                        <SelectItem value="Bug Fixing">Bug Fixing</SelectItem>
+
+                        <SelectItem value="Other">Other Protocol</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+                  {form.project_type === "Other" && (
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
+                        Specify Protocol
+                      </Label>
+                      <Input
+                        name="other"
+                        placeholder="Describe your objective..."
+                        className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground"
+                        onChange={handleChange}
+                        value={form.other}
+                      />
+                    </div>
+                  )}
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Resource Allocation</Label>
+                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
+                      Resource Allocation
+                    </Label>
                     <Select
                       value={form.budget}
-                      onValueChange={(value) => setForm((prev) => ({ ...prev, budget: value }))}
+                      onValueChange={(value) =>
+                        setForm((prev) => ({ ...prev, budget: value }))
+                      }
                     >
                       <SelectTrigger className="bg-foreground/5 border-border focus:border-neon-cyan/50 h-12 rounded-xl text-foreground">
                         <SelectValue placeholder="Project Scale" />
                       </SelectTrigger>
                       <SelectContent className="glass-card border-border text-foreground">
-                        <SelectItem value="Less than 1000$">&lt; 1,000 USD</SelectItem>
-                        <SelectItem value="1000$ - 5000$">1k - 5k USD</SelectItem>
-                        <SelectItem value="Greater than 5000$">&gt; 5k USD</SelectItem>
+                        <SelectItem value="100$ - 300$">
+                          100$ - 300$
+                        </SelectItem>
+                        <SelectItem value="300$ - 500$">
+                          300$ - 500$
+                        </SelectItem>
+                        <SelectItem value="500$ - 1000$">
+                          500$ - 1000$
+                        </SelectItem>
+                        <SelectItem value="1000$ - 2000$">
+                          1000$ - 2000$
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Label htmlFor="message" className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">Briefing Message</Label>
+                  <Label
+                    htmlFor="message"
+                    className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                  >
+                    Briefing Message
+                  </Label>
                   <Textarea
                     name="message"
                     id="message"
@@ -229,7 +308,9 @@ const Contact = () => {
                   type="submit"
                   className=" w-full py-4 px-6 bg-neon-cyan text-black font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
                 >
-                  {loading ? "TRANSMITTING..." : (
+                  {loading ? (
+                    "TRANSMITTING..."
+                  ) : (
                     <span className="flex items-center gap-2">
                       INITIATE TRANSMISSION <SendIcon size={16} />
                     </span>

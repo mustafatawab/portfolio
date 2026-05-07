@@ -39,13 +39,19 @@ const Navbar = () => {
       }`}
     >
       <nav className={`container mx-auto px-6`}>
-        <div className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
-          scrolled ? "bg-background/60 scale-95" : "bg-transparent border-transparent shadow-none"
-        }`}>
+        <div
+          className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
+            scrolled
+              ? "bg-background/60 scale-95"
+              : "bg-transparent border-transparent shadow-none"
+          }`}
+        >
           <Link href="/" className="relative group">
             <div className="text-xl font-black font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
               <span className="text-neon-cyan font-mono">{`{`}</span>
-              <span className="group-hover:text-neon-cyan transition-colors">MUSTAFA</span>
+              <span className="group-hover:text-neon-cyan transition-colors">
+                MUSTAFA
+              </span>
               <span className="text-neon-cyan font-mono">{`}`}</span>
             </div>
             <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan group-hover:w-full transition-all duration-300" />
@@ -61,20 +67,21 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <div className="h-4 w-[1px] bg-foreground/10 mx-4" />
-            <Link 
+            {/* <div className="h-4 w-[1px] bg-foreground/10 mx-4" /> */}
+            {/* <Link 
               href="https://mustafa-mko4.onrender.com/" 
               target="_blank"
               className="text-[10px] font-mono tracking-[0.2em] text-neon-purple hover:text-neon-purple/80 transition-colors"
             >
               NEURAL BOT
-            </Link>
+            </Link> */}
           </div>
 
           <div className="flex items-center gap-6">
             <ModeToggle />
             <Link
-              href="https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
+              // href="https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
+              href={"https://www.linkedin.com/in/mustafa-tawab/"}
               target="_blank"
               className="hidden sm:block"
             >
@@ -86,7 +93,7 @@ const Navbar = () => {
               </Button>
             </Link>
 
-            <button 
+            <button
               className="md:hidden text-foreground p-2"
               onClick={() => setToggle(!toggle)}
             >
