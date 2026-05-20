@@ -18,7 +18,8 @@ interface ProjectType {
     tags : string[],
     githubLink? : string,
     link : string,
-    more? : string[] 
+    more? : string[],
+    category: "Management Systems" | "Full-Stack Apps" | "Enterprise & Agency" | "Digital Experiences"
 }
 
 export const projects : ProjectType[] = [
@@ -28,7 +29,8 @@ export const projects : ProjectType[] = [
         description : "Maktab One is a `School Management System` for those mid level schools who has to manage students fees and expenses easily in automatic way.",
         githubLink :"",
         tags : ["Next.js", "TanStack Query", "Node.js" , "Prisma" , "Neon DB" , "Resend" , "Mailtrap", "SMTP"],
-        link : "https://maktab-one-lemon.vercel.app/"
+        link : "https://maktab-one-lemon.vercel.app/",
+        category: "Management Systems"
     },
     {
         image : myscribe,
@@ -37,6 +39,7 @@ export const projects : ProjectType[] = [
         githubLink : "",
         tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
         link : "https://www.myscribe.us/",
+        category: "Full-Stack Apps"
     },
     {
         image : pharmacy,
@@ -45,6 +48,7 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/pharmacy_management_system",
         tags : ["Next.js" , "FastAPI" , "SQLModel" , "TanStack Query" , "Typescript"],
         link : "https://pharmacy-management-system-beta.vercel.app/login",
+        category: "Management Systems"
     },
 
     {
@@ -55,6 +59,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
         more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
         link : "https://www.tritoncg.com/",
+        category: "Enterprise & Agency"
     },
     {
         image: rukun,
@@ -63,6 +68,7 @@ export const projects : ProjectType[] = [
         githubLink: "",
         tags: ['tailwind css', 'nextjs', "framer motion", "shadcn",'typescript'],
         link: "https://rukun-al-zuhab.vercel.app/",
+        category: "Digital Experiences"
     },
     {
         image : farsightsysmte,
@@ -71,6 +77,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'css' , "html" , "javascript"],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://www.farsightsystem.com",
+        category: "Enterprise & Agency"
     },
     {
         image : uswah,
@@ -79,6 +86,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'css' , "html" , "javascript"],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://uswah-saeed.vercel.app/",
+        category: "Digital Experiences"
     },
     {
         image : malblogs,
@@ -87,6 +95,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
         link : "https://mal-blogs.vercel.app",
+        category: "Digital Experiences"
     },
 
     {
@@ -96,6 +105,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'supabase'],
         githubLink : "",
         link : "https://user-gallery-website.vercel.app/",
+        category: "Full-Stack Apps"
     },
     {
         image : msp,
@@ -104,6 +114,7 @@ export const projects : ProjectType[] = [
         tags : ['nextjs' , 'typescript', 'mongodb' , 'nodejs' , "JWT Auth" , "Tailwind CSS"],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/MSPTech_Stack",
         link : "https://msp-tech-stack.vercel.app/",
+        category: "Full-Stack Apps"
     },
 
     {
@@ -113,6 +124,7 @@ export const projects : ProjectType[] = [
         tags : ['nexjts', 'postreSQL ' , 'supabase', 'tailwind css'],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/elygance",
         link : "https://elygance.vercel.app/",
+        category: "Full-Stack Apps"
     },
     
     {
@@ -122,7 +134,7 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         tags : ['nexjts', 'typescript', 'tailwind css'],
         link : "https://mustafatawab.vercel.app",
-        
+        category: "Digital Experiences"
     },
 
 

@@ -6,14 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-const categories = ["All", "Full Stack", "Web App", "Software"];
+const categories = ["All", "Management Systems", "Full-Stack Apps", "Enterprise & Agency", "Digital Experiences"];
 
-// Helper to determine categorization (can be improved by adding explicit category to lib/project.ts)
+// Helper to determine categorization
 const getProjectCategory = (project: any) => {
-    const tags = project.tags.join(' ').toLowerCase();
-    if (tags.includes('nextjs') || tags.includes('react') || tags.includes('fullstack')) return "Full Stack";
-    if (tags.includes('software') || tags.includes('system') || tags.includes('automation')) return "Software";
-    return "Web App";
+    return project.category;
 };
 
 const ProjectsPage = () => {
@@ -58,21 +55,43 @@ const ProjectsPage = () => {
 
       {/* Filtering */}
       <section className="sticky top-20 z-30 py-8 backdrop-blur-md border-y border-border bg-background/40">
-        <div className="container flex flex-wrap justify-center gap-4">
-          {categories.map((cat) => (
-            <Button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              variant={filter === cat ? "default" : "ghost"}
-              className={`rounded-full px-6 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
-                filter === cat 
-                ? "bg-neon-cyan text-background" 
-                : "text-foreground/40 hover:text-neon-cyan hover:bg-neon-cyan/5"
-              }`}
-            >
-              {cat}
-            </Button>
-          ))}
+        <div className="container flex flex-wrap justify-center gap-2 md:gap-4">
+          {categories.map((cat) => {
+            const count = cat === "All" 
+              ? projects.length 
+              : projects.filter(p => p.category === cat).length;
+            
+            return (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden ${
+                  filter === cat ? "text-background" : "text-foreground/40 hover:text-foreground"
+                }`}
+              >
+                {/* Background Highlight */}
+                {filter === cat && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-neon-cyan shadow-[0_0_20px_rgba(0,242,255,0.3)] rounded-sm"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                
+                <span className="relative z-10 flex items-center gap-2">
+                  {cat}
+                  <span className={`text-[8px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
+                    [{count}]
+                  </span>
+                </span>
+
+                {/* Hover Glow effect for inactive tabs */}
+                {filter !== cat && (
+                  <div className="absolute inset-0 bg-neon-cyan/0 group-hover:bg-neon-cyan/5 transition-colors duration-300" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </section>
 
