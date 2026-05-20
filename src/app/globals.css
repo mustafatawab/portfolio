@@ -133,3 +133,43 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-white/10 rounded-full hover:bg-neon-cyan/50 transition-colors;
 }
+
+/* Article Content Styles */
+.article-content pre {
+  @apply rounded-2xl overflow-hidden border border-border shadow-2xl bg-[#1a1b26] p-0;
+}
+
+.article-content pre code {
+  @apply block p-6 font-mono text-sm leading-relaxed overflow-x-auto bg-transparent;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.article-content :not(pre) > code::before,
+.article-content :not(pre) > code::after {
+  content: "";
+}
+
+.article-content table {
+  @apply w-full border-collapse my-8;
+}
+
+.article-content th {
+  @apply border border-border p-3 text-left text-foreground font-bold;
+}
+
+.article-content td {
+  @apply border border-border p-3 text-foreground/70;
+}
+
+.article-content blockquote p {
+  @apply text-foreground/50 italic;
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-scanline {
+  animation: scanline 3s ease-in-out infinite;
+}
