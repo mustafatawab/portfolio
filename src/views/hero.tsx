@@ -1,11 +1,17 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, DownloadIcon } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const Hero3DScene = dynamic(() => import("@/components/Hero3DScene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const HeroSection = () => {
   return (
@@ -15,7 +21,6 @@ const HeroSection = () => {
     >
       {/* Background with cinematic depth */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10" />
         <Image
           src="/bg.webp"
           fill
@@ -23,9 +28,13 @@ const HeroSection = () => {
           alt=""
           className="object-cover scale-110 animate-pulse-slow dark:opacity-40 opacity-10"
         />
+        <Suspense fallback={null}>
+          <Hero3DScene />
+        </Suspense>
         {/* Neural blur orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/10 blur-[120px] rounded-full animate-blob" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/10 blur-[120px] rounded-full animate-blob animation-delay-2000" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background z-10 pointer-events-none" />
       </div>
 
       <div className="container relative z-20 mt-7">

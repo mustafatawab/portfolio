@@ -33,7 +33,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden transition-colors duration-500`}>
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden transition-colors duration-500`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
