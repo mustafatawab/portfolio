@@ -6,12 +6,16 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, DownloadIcon } from "lucide-react";
+<<<<<<< HEAD
 import dynamic from "next/dynamic";
 
 const Hero3DScene = dynamic(() => import("@/components/Hero3DScene"), {
   ssr: false,
   loading: () => null,
 });
+=======
+import { TechBackground } from "@/components/TechBackground";
+>>>>>>> staging
 
 const HeroSection = () => {
   return (
@@ -19,6 +23,7 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20 bg-background transition-colors duration-500"
     >
+<<<<<<< HEAD
       {/* Background with cinematic depth */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -36,6 +41,11 @@ const HeroSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/10 blur-[120px] rounded-full animate-blob animation-delay-2000" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background z-10 pointer-events-none" />
       </div>
+=======
+      
+
+      <TechBackground />
+>>>>>>> staging
 
       <div className="container relative z-20 mt-7">
         <div className="flex flex-col justify-center items-center text-center gap-8 max-w-4xl mx-auto">
