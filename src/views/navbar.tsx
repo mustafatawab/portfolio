@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const links: LinkType[] = [
     { label: "ABOUT", url: "/#about" },
-    { label: "WORK", url: "/projects" },
+    { label: "WORK", url: "/work" },
     { label: "TECH", url: "/#skills" },
     { label: "CONTACT", url: "/#contact" },
   ];

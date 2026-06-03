@@ -82,21 +82,27 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
               ))}
             </div>
 
-            <div className={`flex flex-col sm:flex-row gap-8 pt-6 border-t border-border ${isEven ? 'md:justify-end' : ''}`}>
-              <Link 
-                href={project.link}
-                target="_blank"
+            <div className={`flex flex-col sm:flex-row gap-4 pt-6 border-t border-border ${isEven ? 'md:justify-end' : ''}`}>
+              <Link
+                href={`/work/${project.slug}`}
                 className="group flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-neon-cyan hover:text-foreground transition-colors"
               >
-                LAUNCH SYSTEM <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
+                CASE STUDY <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href={project.link}
+                target="_blank"
+                className="group flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
+              >
+                LIVE SITE <ExternalLink size={12} />
               </Link>
               {project.githubLink && (
-                <Link 
+                <Link
                   href={project.githubLink}
                   target="_blank"
-                  className="group flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
+                  className="group flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
                 >
-                  SOURCE <Github size={14} />
+                  SOURCE <Github size={12} />
                 </Link>
               )}
             </div>
@@ -132,7 +138,7 @@ const Projects = () => {
 
         <div className="container  text-center">
           <Link
-            href="/projects"
+            href="/work"
             className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-foreground/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"
           >
             <span className="font-mono text-sm tracking-[0.3em] uppercase">Initialize Full Archive Access</span>

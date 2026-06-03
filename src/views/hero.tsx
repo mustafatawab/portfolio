@@ -82,7 +82,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-6 mt-4 w-full sm:w-auto"
           >
             <Link
-              href="/projects"
+              href="/work"
               className="group relative px-10 py-4 bg-neon-cyan text-background font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] active:scale-95 flex items-center justify-center gap-2"
             >
               EXPLORE SYSTEMS{" "}
