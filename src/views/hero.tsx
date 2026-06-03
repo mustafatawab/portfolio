@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, DownloadIcon } from "lucide-react";
+import { TechBackground } from "@/components/TechBackground";
 
 const HeroSection = () => {
   return (
@@ -13,20 +14,9 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen w-full relative flex items-center justify-center overflow-hidden py-20 bg-background transition-colors duration-500"
     >
-      {/* Background with cinematic depth */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10" />
-        <Image
-          src="/bg.webp"
-          fill
-          priority
-          alt=""
-          className="object-cover scale-110 animate-pulse-slow dark:opacity-40 opacity-10"
-        />
-        {/* Neural blur orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-cyan/10 blur-[120px] rounded-full animate-blob" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/10 blur-[120px] rounded-full animate-blob animation-delay-2000" />
-      </div>
+      
+
+      <TechBackground />
 
       <div className="container relative z-20 mt-7">
         <div className="flex flex-col justify-center items-center text-center gap-8 max-w-4xl mx-auto">
