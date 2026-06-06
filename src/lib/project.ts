@@ -10,6 +10,7 @@ import farsightsysmte from '@/assets/project/farsight.png'
 import rukun from '@/assets/project/rukun.png'
 import maktab from "@/assets/project/maktab-one.png"
 import pharmacy from "@/assets/project/pharmacy.png"
+import farazPharmacy from "@/assets/project/faraz-pharmacy.png"
 
 interface Testimonial {
   quote: string;
@@ -25,7 +26,7 @@ interface ProjectType {
     githubLink? : string,
     link : string,
     more? : string[],
-    category: "Management Systems" | "Full-Stack Apps" | "Enterprise & Agency" | "Digital Experiences",
+    category: "Management Systems" | "Full-Stack Apps" | "Websites"  | "Custom Software",
     problem?: string,
     solution?: string,
     results?: string[],
@@ -88,6 +89,34 @@ export const projects : ProjectType[] = [
         role: "Full-Stack Developer",
         duration: "6 months"
     },
+
+    {
+        image : farazPharmacy,
+        title : "Faraz Pharmacy",
+        slug: "faraz-pharmacy",
+        description : "Faraz Pharmacy is a modern pharmacy management system designed to streamline inventory management, sales tracking, and customer interactions for pharmacies of all sizes. With a user-friendly interface and robust features, Faraz Pharmacy helps pharmacists efficiently manage their operations while providing excellent service to their customers.",
+        githubLink : "",
+        tags : ["Next.js" , "FastAPI" , "SQLModel" , "TanStack Query" , "Typescript"],
+        link : "https://faraz-pharmacy.vercel.app",
+        category: "Custom Software",
+        problem: "Pharmacies struggle with fragmented inventory management, leading to stockouts of critical medications, expired stock losses, and inefficient point-of-sale operations.",
+        solution: "Built a multi-tenant pharmacy management platform with centralized inventory tracking, expiry monitoring, supplier management, and an integrated POS system.",
+        results: [
+          "Centralized inventory management across multiple locations",
+          "Real-time stock alerts preventing stockouts and overstocking",
+          "Expiry date tracking reducing medication waste"
+        ],
+        features: [
+          "Multi-tenant architecture for independent pharmacy accounts",
+          "Inventory management with batch and expiry tracking",
+          "Integrated Point of Sale (POS) system",
+          "Supplier and purchase order management",
+          "Role-based access for pharmacists and cashiers"
+        ],
+        role: "Software Developer",
+        duration: "2 months"
+    },
+    
     {
         image : pharmacy,
         title : "Pharmacy Management System",
@@ -95,7 +124,7 @@ export const projects : ProjectType[] = [
         description : "Pharmacy Managment System is Multi-Tenant system for Pharmacy to manage all their Inventory and perform all POS actions using this custom software.",
         githubLink : "https://github.com/mustafatawab/pharmacy_management_system",
         tags : ["Next.js" , "FastAPI" , "SQLModel" , "TanStack Query" , "Typescript"],
-        link : "https://pharmacy-management-system-beta.vercel.app/login",
+        link : "https://faraz-pharmacy.vercel.app",
         category: "Management Systems",
         problem: "Pharmacies struggle with fragmented inventory management, leading to stockouts of critical medications, expired stock losses, and inefficient point-of-sale operations.",
         solution: "Built a multi-tenant pharmacy management platform with centralized inventory tracking, expiry monitoring, supplier management, and an integrated POS system.",
@@ -124,7 +153,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'nextjs' , 'Payload CMS', 'typescript' , 'node'],
         more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
         link : "https://www.tritoncg.com/",
-        category: "Enterprise & Agency",
+        category: "Websites",
         problem: "Managing a growing portfolio of client websites independently was becoming unsustainable — updates were duplicated, branding inconsistent, and maintenance costs were climbing.",
         solution: "Architected a centralized CMS ecosystem using Payload CMS that powers and manages multiple client websites from a single administration panel, enabling consistent branding and efficient updates.",
         results: [
@@ -149,7 +178,7 @@ export const projects : ProjectType[] = [
         githubLink: "",
         tags: ['tailwind css', 'nextjs', "framer motion", "shadcn",'typescript'],
         link: "https://rukun-al-zuhab.vercel.app/",
-        category: "Digital Experiences",
+        category: "Websites",
         problem: "An established industrial supply company in Saudi Arabia lacked a modern digital presence that reflected their credibility and the quality of their infrastructure components.",
         solution: "Designed and developed a high-performance corporate showcase site with polished animations, a professional brand identity, and a seamless user experience.",
         results: [
@@ -174,7 +203,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'css' , "html" , "javascript"],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://www.farsightsystem.com",
-        category: "Enterprise & Agency",
+        category: "Websites",
         problem: "A growing software agency needed a website that clearly communicates their full spectrum of services — from AI and web development to custom software — to attract diverse clients.",
         solution: "Created a clean, conversion-focused agency website with clear service sections, portfolio highlights, and streamlined lead capture.",
         results: [
@@ -199,7 +228,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'css' , "html" , "javascript"],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://uswah-saeed.vercel.app/",
-        category: "Digital Experiences",
+        category: "Websites",
         problem: "A game designer with a computer science background needed a portfolio that bridges their technical expertise with their creative game design work.",
         solution: "Built a visually rich landing page that presents game design projects alongside technical capabilities in a cohesive, engaging layout.",
         results: [
@@ -223,7 +252,7 @@ export const projects : ProjectType[] = [
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
         link : "https://mal-blogs.vercel.app",
-        category: "Digital Experiences",
+        category: "Websites",
         problem: "Blogging platforms like Medium and WordPress are cluttered with distractions, ads, and complex editors — neither the writer nor the reader gets a clean experience.",
         solution: "Built a minimalistic, distraction-free blog platform with MDX support, syntax highlighting, and a razor focus on reading experience and content creation.",
         results: [
@@ -326,7 +355,7 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         tags : ['nexjts', 'typescript', 'tailwind css'],
         link : "https://mustafatawab.vercel.app",
-        category: "Digital Experiences",
+        category: "Websites",
         problem: "Developers and designers need a professional online presence that showcases their skills, projects, and personality in a way that resonates with potential clients or employers.",
         solution: "Built a modern, minimalist portfolio landing page with a clean layout, project showcase, and clear call-to-action for contact.",
         results: [

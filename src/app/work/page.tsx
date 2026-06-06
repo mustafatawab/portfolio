@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-const categories = ["All", "Management Systems", "Full-Stack Apps", "Enterprise & Agency", "Digital Experiences"];
+const categories = ["All", "Management Systems" , "Full-Stack Apps" , "Websites"  , "Custom Software",];
 
 // Helper to determine categorization
 const getProjectCategory = (project: any) => {
