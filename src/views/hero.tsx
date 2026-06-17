@@ -1,12 +1,14 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, DownloadIcon } from "lucide-react";
-import { TechBackground } from "@/components/TechBackground";
+import dynamic from "next/dynamic";
+
+const TechBackground = dynamic(() => import("@/components/TechBackground").then((m) => ({ default: m.TechBackground })), { ssr: false });
 
 const HeroSection = () => {
   return (

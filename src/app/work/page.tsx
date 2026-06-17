@@ -65,7 +65,7 @@ const ProjectsPage = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden ${
+                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden ${
                   filter === cat ? "text-background" : "text-foreground/40 hover:text-foreground"
                 }`}
               >
@@ -80,7 +80,7 @@ const ProjectsPage = () => {
                 
                 <span className="relative z-10 flex items-center gap-2">
                   {cat}
-                  <span className={`text-[8px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
+                  <span className={`text-[10px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
                     [{count}]
                   </span>
                 </span>

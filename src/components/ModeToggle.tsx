@@ -64,7 +64,7 @@ export function ModeToggle() {
       </AnimatePresence>
       
       {/* Tooltip hint */}
-      <span className="absolute -bottom-10 scale-0 group-hover:scale-100 transition-all duration-200 bg-foreground/80 text-[8px] font-mono tracking-widest text-background px-2 py-1 rounded border border-border whitespace-nowrap">
+      <span className="absolute -bottom-10 scale-0 group-hover:scale-100 transition-all duration-200 bg-foreground/80 text-[10px] font-mono tracking-widest text-background px-2 py-1 rounded border border-border whitespace-nowrap">
         MODE: {theme?.toUpperCase()}
       </span>
     </button>

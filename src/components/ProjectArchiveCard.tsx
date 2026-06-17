@@ -10,7 +10,7 @@ interface ProjectArchiveCardProps {
 
 const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
   return (
-    <div className="group flex flex-col h-full rounded-[1.5rem] overflow-hidden border border-border bg-foreground/5 hover:border-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+    <div className="group flex flex-col h-full rounded-[1.5rem] overflow-hidden border border-border bg-foreground/5 hover:border-neon-cyan/20 transition-all duration-500 hover:-translate-y-2 active:scale-[0.98]">
       {/* Link wraps image + content (not the action buttons) */}
       <Link href={`/work/${project.slug}`} className="flex flex-col flex-1">
         <div className="relative aspect-video overflow-hidden">
@@ -18,11 +18,11 @@ const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[0.5] group-hover:grayscale-0"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute top-4 left-4 flex gap-2">
-            <span className="bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-border text-[9px] font-mono text-neon-cyan/60 uppercase tracking-widest">
+            <span className="bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-border text-[10px] font-mono text-neon-cyan/60 uppercase tracking-widest">
               NODE_0{index + 1}
             </span>
           </div>
@@ -41,7 +41,7 @@ const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
           <div className="space-y-4 pt-4 border-t border-border">
             <div className="flex flex-wrap gap-2">
               {project.tags.slice(0, 3).map((tag: string, i: number) => (
-                <span key={i} className="text-[9px] font-mono tracking-tighter uppercase text-foreground/30 px-2 py-0.5 border border-border rounded-md">
+                <span key={i} className="text-[10px] font-mono tracking-tighter uppercase text-foreground/30 px-2 py-0.5 border border-border rounded-md">
                   {tag}
                 </span>
               ))}

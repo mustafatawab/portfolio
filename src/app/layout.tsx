@@ -41,8 +41,14 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className="noise-overlay" />
+            <a
+              href="#main-content"
+              className="fixed -top-40 left-4 z-[100] p-4 bg-background border border-neon-cyan text-neon-cyan font-mono text-sm tracking-wider rounded-xl transition-all focus:top-4 focus:outline-2 focus:outline-neon-cyan"
+            >
+              Skip to main content
+            </a>
             <Navbar />
-            <main className="relative z-10">
+            <main id="main-content" className="relative z-10">
               {children}
             </main>
             <Footer />

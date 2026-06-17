@@ -58,12 +58,24 @@
     @apply scroll-smooth;
   }
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-neon-cyan;
   }
   body {
     @apply bg-background text-foreground selection:bg-neon-cyan/30;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

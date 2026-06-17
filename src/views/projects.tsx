@@ -48,7 +48,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
               src={project.image} 
               fill 
               alt={project.title} 
-              className="object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              className="object-cover group-hover:scale-105 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
           </div>
@@ -76,7 +76,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
 
             <div className={`flex flex-wrap gap-2 pt-2 ${isEven ? 'md:justify-end' : ''}`}>
               {project.tags.slice(0, 5).map((tag: string, i: number) => (
-                <Badge key={i} className="bg-foreground/5 border-border text-[9px] md:text-[10px] font-mono tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 text-foreground/40">
+                <Badge key={i} className="bg-foreground/5 border-border text-[10px] font-mono tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 text-foreground/40">
                   {tag}
                 </Badge>
               ))}

@@ -84,7 +84,7 @@ export default function BlogArticle({ post }: { post: Post }) {
               className="space-y-4"
             >
               <div className="flex flex-wrap items-center gap-4 text-[10px] font-mono text-neon-cyan uppercase tracking-[0.3em]">
-                <Badge className="bg-neon-cyan/10 text-neon-cyan border-neon-cyan/20 text-[9px] font-mono tracking-widest uppercase">
+                <Badge className="bg-neon-cyan/10 text-neon-cyan border-neon-cyan/20 text-[10px] font-mono tracking-widest uppercase">
                   {post.category}
                 </Badge>
                 <span className="flex items-center gap-1">

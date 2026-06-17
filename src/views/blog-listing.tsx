@@ -161,7 +161,7 @@ function FeaturedCard({ post, index }: { post: PostMeta; index: number }) {
       <Link href={`/blogs/${post.slug}`} className="group block h-full">
         <div className="glass-card h-full rounded-[2rem] overflow-hidden border-border hover:neon-glow-cyan transition-all duration-500 flex flex-col p-8 md:p-10">
           <div className="flex items-center gap-3 mb-6">
-            <Badge className="bg-neon-cyan/10 text-neon-cyan border-neon-cyan/20 text-[9px] font-mono tracking-widest uppercase">
+            <Badge className="bg-neon-cyan/10 text-neon-cyan border-neon-cyan/20 text-[10px] font-mono tracking-widest uppercase">
               Featured
             </Badge>
             <span className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">{post.category}</span>
@@ -215,7 +215,7 @@ function ArticleCard({ post, index }: { post: PostMeta; index: number }) {
             {post.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 rounded-md bg-foreground/5 text-[9px] font-mono text-foreground/40 uppercase tracking-wider"
+                className="px-2 py-1 rounded-md bg-foreground/5 text-[10px] font-mono text-foreground/40 uppercase tracking-wider"
               >
                 {tag}
               </span>

@@ -110,7 +110,7 @@ const Education = () => {
                             {edu.achievements.map((achievement, i) => (
                                 <Badge
                                     key={i}
-                                    className="bg-foreground/5 border-border text-[9px] md:text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-foreground/50 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
+                                    className="bg-foreground/5 border-border text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-foreground/50 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
                                 >
                                     {achievement}
                                 </Badge>

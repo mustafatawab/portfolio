@@ -71,16 +71,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
               <div className="space-y-4 max-w-3xl">
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-neon-cyan bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-neon-cyan/20">
+                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-neon-cyan bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-neon-cyan/20">
                     {project.category}
                   </span>
                   {project.role && (
-                    <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
+                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
                       {project.role}
                     </span>
                   )}
                   {project.duration && (
-                    <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
+                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
                       {project.duration}
                     </span>
                   )}
@@ -246,7 +246,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 href={`/work/${prevProject.slug}`}
                 className="group flex flex-col items-start gap-1"
               >
-                <span className="text-[8px] font-mono tracking-[0.3em] uppercase text-foreground/30">
+                <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/30">
                   Previous
                 </span>
                 <span className="text-sm font-mono text-foreground/60 group-hover:text-neon-cyan transition-colors">
@@ -261,7 +261,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 href={`/work/${nextProject.slug}`}
                 className="group flex flex-col items-end gap-1 text-right"
               >
-                <span className="text-[8px] font-mono tracking-[0.3em] uppercase text-foreground/30">
+                <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/30">
                   Next
                 </span>
                 <span className="text-sm font-mono text-foreground/60 group-hover:text-neon-cyan transition-colors">

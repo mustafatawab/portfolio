@@ -34,7 +34,7 @@ const ProjectCard = ({ project } : {project : ProjectPropType}) => {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-700 ease-out grayscale-[0.5] group-hover:grayscale-0"
+            className="object-cover transition-transform duration-700 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
           

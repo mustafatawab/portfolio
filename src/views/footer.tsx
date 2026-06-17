@@ -51,10 +51,15 @@ const Footer = () => {
           <div>
             <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-foreground/20 mb-8">Navigation</h4>
             <ul className="space-y-4">
-              {['About', 'Work', 'Tech', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href={`/#${item.toLowerCase()}`} className="text-sm font-mono text-foreground/60 hover:text-neon-cyan transition-colors uppercase tracking-widest">
-                    {item}
+              {[
+                { label: 'About', url: '/#about' },
+                { label: 'Work', url: '/work' },
+                { label: 'Tech', url: '/#skills' },
+                { label: 'Contact', url: '/#contact' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.url} className="text-sm font-mono text-foreground/60 hover:text-neon-cyan transition-colors uppercase tracking-widest">
+                    {item.label}
                   </a>
                 </li>
               ))}
