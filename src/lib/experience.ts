@@ -19,7 +19,7 @@ interface ExperieceType  {
       dotColor: "bg-purple-600",
     },
     {
-      title: "Lead Frontend Developer",
+      title: "Frontend Developer",
       company: "Nodesol Corp Pvt Ltd",
       location : "Mingora, Swat, Pakistan",
       period: "1 Year",
