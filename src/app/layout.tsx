@@ -17,8 +17,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mustafa Tawab | Senior Full Stack Engineer",
+  metadataBase: new URL("https://mustafatawab.vercel.app"),
+  title: {
+    default: "Mustafa Tawab | Senior Full Stack Engineer",
+    template: "%s | Mustafa Tawab",
+  },
   description: "Specializing in high-performance digital architectures and AI-driven development.",
+  openGraph: {
+    title: "Mustafa Tawab | Senior Full Stack Engineer",
+    description: "Specializing in high-performance digital architectures and AI-driven development.",
+    url: "https://mustafatawab.vercel.app",
+    siteName: "Mustafa Tawab Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mustafa Tawab | Senior Full Stack Engineer",
+    description: "Specializing in high-performance digital architectures and AI-driven development.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,10 +49,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Mustafa Tawab",
+    jobTitle: "Senior Full Stack Engineer",
+    url: "https://mustafatawab.vercel.app",
+    sameAs: [
+      "https://github.com/mustafatawab",
+      "https://www.linkedin.com/in/mustafa-tawab/",
+    ],
+    knowsAbout: [
+      "React", "Next.js", "Vue.js", "TypeScript", "Node.js",
+      "FastAPI", "PostgreSQL", "AI", "Full Stack Development",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden transition-colors duration-500`}>
           <ThemeProvider
