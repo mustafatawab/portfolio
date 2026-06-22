@@ -138,6 +138,10 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-foreground to-neon-purple;
   }
+
+  .will-change-transform {
+    will-change: transform;
+  }
 }
 
 
