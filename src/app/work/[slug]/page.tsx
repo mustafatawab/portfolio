@@ -2,7 +2,7 @@ import { projects } from "@/lib/project";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ExternalLink, Github, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export async function generateStaticParams() {
@@ -205,6 +205,15 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             >
               Visit Live Site <ExternalLink size={14} />
             </Link>
+            {project.demoLink && (
+              <Link
+                href={project.demoLink}
+                target="_blank"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-neon-purple text-white font-bold rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] active:scale-95 text-[10px] font-mono tracking-[0.3em] uppercase"
+              >
+                Watch Demo <Play size={14} fill="currentColor" />
+              </Link>
+            )}
             {project.githubLink && (
               <Link
                 href={project.githubLink}
