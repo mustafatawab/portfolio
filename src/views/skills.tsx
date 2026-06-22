@@ -52,7 +52,7 @@ const Skills = () => {
   const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
 
   return (
-    <section id="skills" className="lg:py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="skills" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-4 mb-20">
           <motion.h3 
@@ -103,12 +103,12 @@ const Skills = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg group-hover:text-neon-cyan transition-colors text-foreground">{skill.name}</h4>
-                    <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-tighter">{skill.category}</span>
+                    <span className="text-[11px] font-mono text-foreground/40 uppercase tracking-tighter">{skill.category}</span>
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <div className="flex justify-between text-[10px] font-mono text-foreground/40">
+                  <div className="flex justify-between text-[11px] font-mono text-foreground/40">
                     <span>PROFICIENCY</span>
                     <span>{skill.level}%</span>
                   </div>

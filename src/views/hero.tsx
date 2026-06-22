@@ -85,9 +85,9 @@ const HeroSection = () => {
           >
             <Link
               href="/work"
-              className="group relative px-10 py-4 bg-neon-cyan text-background font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] active:scale-95 flex items-center justify-center gap-2"
+              className="group relative px-10 py-4 bg-neon-cyan text-background font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-cyan-lg)] active:scale-95 flex items-center justify-center gap-2"
             >
-              EXPLORE SYSTEMS{" "}
+              VIEW PROJECTS{" "}
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-1 transition-transform"
@@ -99,7 +99,7 @@ const HeroSection = () => {
               href="https://docs.google.com/document/d/1hFqLu_I3RAWGwAgBD5rlCzXeCb2znjKzLJGglznKfaU/edit?usp=sharing"
               className="px-10 py-4 border border-border hover:border-foreground/30 bg-foreground/5 backdrop-blur-md text-foreground font-bold rounded-full transition-all duration-300 hover:bg-foreground/10 hover:scale-[1.03] flex items-center justify-center gap-2 group"
             >
-              INTEL BRIEF{" "}
+              RESUME{" "}
               <DownloadIcon
                 size={18}
                 className="group-hover:translate-y-0.5 transition-transform"
@@ -116,8 +116,8 @@ const HeroSection = () => {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/30 font-mono">
-          Decipher Scroll
+        <span className="text-[11px] uppercase tracking-[0.3em] text-foreground/30 font-mono">
+          Scroll
         </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-neon-cyan to-transparent animate-bounce-slow" />
       </motion.div>

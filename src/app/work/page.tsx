@@ -65,7 +65,7 @@ const ProjectsPage = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden ${
+                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden cursor-pointer ${
                   filter === cat ? "text-background" : "text-foreground/40 hover:text-foreground"
                 }`}
               >
@@ -73,21 +73,21 @@ const ProjectsPage = () => {
                 {filter === cat && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-neon-cyan shadow-[0_0_20px_rgba(0,242,255,0.3)] rounded-sm"
+                    className="absolute inset-0 bg-neon-cyan shadow-[var(--glow-cyan-md)] rounded-sm"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 
                 <span className="relative z-10 flex items-center gap-2">
                   {cat}
-                  <span className={`text-[10px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
+                  <span className={`text-[11px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
                     [{count}]
                   </span>
                 </span>
 
                 {/* Hover Glow effect for inactive tabs */}
                 {filter !== cat && (
-                  <div className="absolute inset-0 bg-neon-cyan/0 group-hover:bg-neon-cyan/5 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-neon-cyan/0 group-hover:bg-neon-cyan/10 transition-colors duration-300" />
                 )}
               </button>
             );

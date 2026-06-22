@@ -16,7 +16,7 @@ export default function Error({
           <h1 className="text-8xl font-black font-display text-gradient tracking-tighter">
             ERROR
           </h1>
-          <p className="text-foreground/40 text-[10px] font-mono tracking-[0.4em] uppercase">
+          <p className="text-foreground/40 text-[11px] font-mono tracking-[0.4em] uppercase">
             System Malfunction
           </p>
         </div>
@@ -26,13 +26,13 @@ export default function Error({
         <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={reset}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-neon-cyan text-background font-bold rounded-full text-[10px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)]"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-neon-cyan text-background font-bold rounded-full text-[11px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-cyan-lg)]"
           >
             Retry
           </button>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground/60 rounded-full text-[10px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground"
+            className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground/60 rounded-full text-[11px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground"
           >
             Return to Base
           </Link>

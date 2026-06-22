@@ -70,11 +70,11 @@ const Footer = () => {
             <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-foreground/20 mb-8">Base of Operations</h4>
             <div className="space-y-6 font-mono text-sm">
               <div className="space-y-1">
-                <div className="text-foreground/20 uppercase text-[10px]">Transmission</div>
+                <div className="text-foreground/20 uppercase text-[11px]">Transmission</div>
                 <div className="text-foreground/60 hover:text-neon-cyan transition-colors">mustafa.tawab.dev@gmail.com</div>
               </div>
               <div className="space-y-1">
-                <div className="text-foreground/20 uppercase text-[10px]">Coordinate</div>
+                <div className="text-foreground/20 uppercase text-[11px]">Coordinate</div>
                 <div className="text-foreground/60">Islamabad, PK</div>
               </div>
             </div>
@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-foreground/20">
+          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-foreground/20">
             <span>© {currentYear} MUSTAFA TAWAB</span>
             <span className="w-1 h-1 bg-neon-purple rounded-full mx-2" />
             <span>ENCRYPTED PORTFOLIO</span>
@@ -91,7 +91,7 @@ const Footer = () => {
           
           <button
             onClick={scrollToTop}
-            className="group flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-foreground/40 hover:text-neon-cyan transition-colors"
+            className="group flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-foreground/40 hover:text-neon-cyan transition-colors"
           >
             Terminal Top <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
           </button>

@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <div className="container pt-32 pb-8">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/40 hover:text-neon-cyan transition-colors group"
+            className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.3em] uppercase text-foreground/40 hover:text-neon-cyan transition-colors group"
           >
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             Back to Archive
@@ -71,16 +71,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
               <div className="space-y-4 max-w-3xl">
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-neon-cyan bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-neon-cyan/20">
+                  <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-neon-cyan bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-neon-cyan/20">
                     {project.category}
                   </span>
                   {project.role && (
-                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
+                    <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
                       {project.role}
                     </span>
                   )}
                   {project.duration && (
-                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
+                    <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-foreground/60 bg-background/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-border">
                       {project.duration}
                     </span>
                   )}
@@ -98,7 +98,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* Problem */}
           {project.problem && (
             <section className="pb-16">
-              <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+              <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
                 The Problem
               </h2>
               <p className="text-lg md:text-xl text-foreground/80 leading-relaxed font-sans">
@@ -110,7 +110,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* Solution */}
           {project.solution && (
             <section className="pb-16">
-              <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+              <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
                 The Solution
               </h2>
               <p className="text-lg md:text-xl text-foreground/80 leading-relaxed font-sans">
@@ -122,7 +122,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* Features */}
           {project.features && project.features.length > 0 && (
             <section className="pb-16">
-              <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+              <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
                 Key Features
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,7 +142,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* Results */}
           {project.results && project.results.length > 0 && (
             <section className="pb-16">
-              <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+              <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
                 Results & Impact
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -181,14 +181,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {/* Tech Stack */}
           <section className="pb-16">
-            <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+            <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
               Technology Stack
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, i) => (
                 <Badge
                   key={i}
-                  className="bg-foreground/5 border-border text-[10px] font-mono tracking-widest uppercase px-4 py-1.5 text-foreground/60"
+                  className="bg-foreground/5 border-border text-[11px] font-mono tracking-widest uppercase px-4 py-1.5 text-foreground/60"
                 >
                   {tag}
                 </Badge>
@@ -201,7 +201,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <Link
               href={project.link}
               target="_blank"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-neon-cyan text-background font-bold rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] active:scale-95 text-[10px] font-mono tracking-[0.3em] uppercase"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-neon-cyan text-background font-bold rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-cyan-lg)] active:scale-95 text-[11px] font-mono tracking-[0.3em] uppercase"
             >
               Visit Live Site <ExternalLink size={14} />
             </Link>
@@ -209,7 +209,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <Link
                 href={project.demoLink}
                 target="_blank"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-neon-purple text-white font-bold rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] active:scale-95 text-[10px] font-mono tracking-[0.3em] uppercase"
+                className="inline-flex items-center gap-3 px-8 py-4 border border-border text-foreground/60 rounded-full transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground text-[11px] font-mono tracking-[0.3em] uppercase"
               >
                 Watch Demo <Play size={14} fill="currentColor" />
               </Link>
@@ -218,7 +218,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <Link
                 href={project.githubLink}
                 target="_blank"
-                className="inline-flex items-center gap-3 px-8 py-4 border border-border text-foreground/60 rounded-full transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground text-[10px] font-mono tracking-[0.3em] uppercase"
+                className="inline-flex items-center gap-3 px-8 py-4 border border-border text-foreground/60 rounded-full transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground text-[11px] font-mono tracking-[0.3em] uppercase"
               >
                 View Source <Github size={14} />
               </Link>
@@ -228,7 +228,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* More Sites (Triton case) */}
           {project.more && project.more.length > 0 && (
             <section className="pb-16">
-              <h2 className="text-[10px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
+              <h2 className="text-[11px] font-mono tracking-[0.4em] uppercase text-neon-cyan mb-6">
                 Additional Sites
               </h2>
               <div className="flex flex-wrap gap-3">
@@ -255,7 +255,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 href={`/work/${prevProject.slug}`}
                 className="group flex flex-col items-start gap-1"
               >
-                <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/30">
+                <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-foreground/30">
                   Previous
                 </span>
                 <span className="text-sm font-mono text-foreground/60 group-hover:text-neon-cyan transition-colors">
@@ -270,7 +270,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 href={`/work/${nextProject.slug}`}
                 className="group flex flex-col items-end gap-1 text-right"
               >
-                <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-foreground/30">
+                <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-foreground/30">
                   Next
                 </span>
                 <span className="text-sm font-mono text-foreground/60 group-hover:text-neon-cyan transition-colors">

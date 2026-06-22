@@ -40,7 +40,7 @@ const Navbar = () => {
     >
       <nav className={`container mx-auto px-6`}>
         <div
-          className={`glass-card rounded-full px-8 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
+          className={`glass-card rounded-full px-6 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
             scrolled
               ? "bg-background/60 scale-95"
               : "bg-transparent border-transparent shadow-none"
@@ -62,7 +62,7 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.url}
-                className="px-5 py-2 text-[10px] font-mono tracking-[0.2em] text-foreground/60 hover:text-neon-cyan transition-colors"
+                className="px-5 py-2 text-[11px] font-mono tracking-[0.2em] text-foreground/60 hover:text-neon-cyan transition-colors"
               >
                 {link.label}
               </a>
@@ -87,7 +87,7 @@ const Navbar = () => {
             >
               <Button
                 variant="outline"
-                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-background transition-all duration-300 px-6 font-mono text-[10px] tracking-widest"
+                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-background transition-all duration-300 px-6 font-mono text-[11px] tracking-widest"
               >
                 HIRE ENGINEER
               </Button>

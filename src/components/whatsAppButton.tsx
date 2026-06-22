@@ -27,10 +27,10 @@ export default function WhatsAppButton({
   const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`
 
   const positionClasses = {
-    "bottom-right": "bottom-24 md:bottom-8 right-6 md:right-8",
-    "bottom-left": "bottom-24 md:bottom-8 left-6 md:left-8",
-    "top-right": "top-6 md:top-8 right-6 md:right-8",
-    "top-left": "top-6 md:top-8 left-6 md:left-8",
+    "bottom-right": "bottom-24 md:bottom-8 right-6",
+    "bottom-left": "bottom-24 md:bottom-8 left-6",
+    "top-right": "top-6 md:top-8 right-6",
+    "top-left": "top-6 md:top-8 left-6",
   }
 
   return (

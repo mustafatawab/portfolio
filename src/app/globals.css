@@ -9,15 +9,21 @@
   --foreground: #0a0a0a;
   --card: rgba(255, 255, 255, 0.7);
   --card-foreground: #0a0a0a;
-  --primary: #009bb0; /* Deep Ink Cyan for visibility */
+  --primary: #009bb0;
   --primary-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.08);
   --ring: #bc13fe;
 
-  /* Neural Palette Base */
-  --neon-cyan: #009bb0; /* Grounded Cyan */
-  --neon-purple: #9d17bd; /* Deepened Purple */
+  --neon-cyan: #009bb0;
+  --neon-purple: #9d17bd;
   --deep-obsidian: #050505;
+
+  --glow-cyan-xs: 0 0 10px rgba(0,155,176,0.3);
+  --glow-cyan-sm: 0 0 15px rgba(0,155,176,0.4);
+  --glow-cyan-md: 0 0 20px rgba(0,155,176,0.3);
+  --glow-cyan-lg: 0 0 30px rgba(0,155,176,0.4);
+  --glow-cyan-xl: 0 0 40px rgba(0,155,176,0.15);
+  --glow-purple-sm: 0 0 40px rgba(157,23,189,0.15);
 }
 
 .dark {
@@ -25,14 +31,20 @@
   --foreground: #f8fafc;
   --card: rgba(15, 15, 20, 0.7);
   --card-foreground: #f8fafc;
-  --primary: #00f2ff; /* Original Neon Cyan */
+  --primary: #00f2ff;
   --primary-foreground: #020202;
   --border: rgba(255, 255, 255, 0.1);
   --ring: #bc13fe;
 
-  /* Re-bind Dark Neon */
   --neon-cyan: #00f2ff;
   --neon-purple: #bc13fe;
+
+  --glow-cyan-xs: 0 0 10px rgba(0,242,255,0.3);
+  --glow-cyan-sm: 0 0 15px rgba(0,242,255,1);
+  --glow-cyan-md: 0 0 20px rgba(0,242,255,0.3);
+  --glow-cyan-lg: 0 0 30px rgba(0,242,255,0.4);
+  --glow-cyan-xl: 0 0 40px rgba(0,242,255,0.15);
+  --glow-purple-sm: 0 0 40px rgba(188,19,254,0.15);
 }
 
 @theme inline {
@@ -98,11 +110,11 @@
   }
 
   .neon-glow-cyan {
-    @apply shadow-[0_0_40px_rgba(0,242,255,0.15)] border-neon-cyan/30 dark:border-neon-cyan/50;
+    @apply shadow-[var(--glow-cyan-xl)] border-neon-cyan/30 dark:border-neon-cyan/50;
   }
 
   .neon-glow-purple {
-    @apply shadow-[0_0_40px_rgba(188,19,254,0.15)] border-neon-purple/30 dark:border-neon-purple/50;
+    @apply shadow-[var(--glow-purple-sm)] border-neon-purple/30 dark:border-neon-purple/50;
   }
 
   .noise-overlay {
@@ -139,7 +151,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-deep-obsidian;
+  @apply bg-foreground/5;
 }
 
 ::-webkit-scrollbar-thumb {

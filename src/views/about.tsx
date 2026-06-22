@@ -21,7 +21,7 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative group w-[90%] md:1/3  aspect-[4/5]"
+            className="relative group w-full md:w-1/3 max-w-sm aspect-[4/5]"
           >
             <div className="absolute inset-0 border-2 border-neon-cyan/30 rounded-2xl -translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
             <div className="absolute inset-0 bg-neon-cyan/10 dark:bg-neon-cyan/20 rounded-2xl mix-blend-overlay z-10" />
@@ -68,7 +68,7 @@ const AboutSection = () => {
                   className="glass-card p-8 rounded-2xl group hover:neon-glow-cyan transition-all duration-500"
                 >
                   <div className="text-4xl font-bold text-foreground mb-2 font-display">{stat.value}</div>
-                  <div className="text-xs font-mono uppercase tracking-widest text-foreground/40 group-hover:text-neon-cyan transition-colors">
+                  <div className="text-[11px] font-mono uppercase tracking-widest text-foreground/40 group-hover:text-neon-cyan transition-colors">
                     {stat.label}
                   </div>
                 </motion.div>

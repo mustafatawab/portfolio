@@ -86,7 +86,7 @@ const Services = () => {
                       {getIcon(services[activeIndex].icon)}
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono text-neon-purple tracking-[0.3em] uppercase mb-1">Status: Operational</div>
+                      <div className="text-[11px] font-mono text-neon-purple tracking-[0.3em] uppercase mb-1">Status: Operational</div>
                       <h4 className="text-3xl font-bold text-foreground uppercase tracking-tight">System Overview</h4>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ const Services = () => {
                     </ul>
                   </div>
 
-                  <div className="pt-8 border-t border-border flex justify-between items-center text-[10px] font-mono text-foreground/20 tracking-widest">
+                  <div className="pt-8 border-t border-border flex justify-between items-center text-[11px] font-mono text-foreground/20 tracking-widest">
                     <span>ARCH_REF: 00{activeIndex + 1}</span>
                     <span>PROTO_TYPE: ALPHA</span>
                   </div>

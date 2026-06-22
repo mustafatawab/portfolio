@@ -41,7 +41,7 @@ const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
           <div className="space-y-4 pt-4 border-t border-border">
             <div className="flex flex-wrap gap-2">
               {project.tags.slice(0, 3).map((tag: string, i: number) => (
-                <span key={i} className="text-[10px] font-mono tracking-tighter uppercase text-foreground/30 px-2 py-0.5 border border-border rounded-md">
+                <span key={i} className="text-[11px] font-mono tracking-tighter uppercase text-foreground/30 px-2 py-0.5 border border-border rounded-md">
                   {tag}
                 </span>
               ))}
@@ -55,7 +55,7 @@ const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
         <Link
           href={project.link}
           target="_blank"
-          className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-neon-cyan hover:text-foreground transition-colors"
+          className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neon-cyan hover:text-foreground transition-colors"
         >
           LAUNCH <ExternalLink size={12} />
         </Link>

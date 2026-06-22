@@ -51,7 +51,7 @@ const TechStack = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[10px] font-mono tracking-widest uppercase text-foreground/30 group-hover:text-neon-cyan transition-colors">
+              <span className="text-[11px] font-mono tracking-widest uppercase text-foreground/30 group-hover:text-neon-cyan transition-colors">
                 {tech.name}
               </span>
             </motion.div>

@@ -136,7 +136,7 @@ const Contact = () => {
                     <link.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-foreground/30 uppercase tracking-[0.2em] mb-1">
+                    <div className="text-[11px] font-mono text-foreground/30 uppercase tracking-[0.2em] mb-1">
                       {link.label}
                     </div>
                     <div className="text-foreground font-mono group-hover:text-neon-cyan transition-colors">
@@ -159,7 +159,7 @@ const Contact = () => {
                   <div className="space-y-3">
                     <Label
                       htmlFor="first_name"
-                      className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                      className="text-[11px] font-mono uppercase tracking-widest text-foreground/40"
                     >
                       First Name
                     </Label>
@@ -176,7 +176,7 @@ const Contact = () => {
                   <div className="space-y-3">
                     <Label
                       htmlFor="last_name"
-                      className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                      className="text-[11px] font-mono uppercase tracking-widest text-foreground/40"
                     >
                       Last Name
                     </Label>
@@ -194,9 +194,9 @@ const Contact = () => {
                 <div className="space-y-3">
                   <Label
                     htmlFor="email"
-                    className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                    className="text-[11px] font-mono uppercase tracking-widest text-foreground/40"
                   >
-                    Return Address (Email)
+                      Email
                   </Label>
                   <Input
                     name="email"
@@ -212,8 +212,8 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
-                      Mission Type
+                    <Label className="text-[11px] font-mono uppercase tracking-widest text-foreground/40">
+                      Project Type
                     </Label>
                     <Select
                       onValueChange={(value) =>
@@ -243,8 +243,8 @@ const Contact = () => {
                   </div>
                   {form.project_type === "Other" && (
                     <div className="space-y-3">
-                      <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
-                        Specify Protocol
+                      <Label className="text-[11px] font-mono uppercase tracking-widest text-foreground/40">
+                        Specify
                       </Label>
                       <Input
                         name="other"
@@ -256,8 +256,8 @@ const Contact = () => {
                     </div>
                   )}
                   <div className="space-y-3">
-                    <Label className="text-[10px] font-mono uppercase tracking-widest text-foreground/40">
-                      Resource Allocation
+                    <Label className="text-[11px] font-mono uppercase tracking-widest text-foreground/40">
+                      Budget
                     </Label>
                     <Select
                       value={form.budget}
@@ -289,9 +289,9 @@ const Contact = () => {
                 <div className="space-y-3">
                   <Label
                     htmlFor="message"
-                    className="text-[10px] font-mono uppercase tracking-widest text-foreground/40"
+                    className="text-[11px] font-mono uppercase tracking-widest text-foreground/40"
                   >
-                    Briefing Message
+                    Message
                   </Label>
                   <Textarea
                     name="message"
@@ -306,7 +306,7 @@ const Contact = () => {
                 <Button
                   disabled={loading}
                   type="submit"
-                  className=" w-full py-4 px-6 bg-neon-cyan text-black font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)]"
+                  className=" w-full py-4 px-6 bg-neon-cyan text-black font-bold text-xs tracking-[0.2em] uppercase rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[var(--glow-cyan-md)] hover:shadow-[var(--glow-cyan-lg)]"
                 >
                   {loading ? (
                     "TRANSMITTING..."

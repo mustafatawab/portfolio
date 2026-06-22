@@ -29,8 +29,8 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={containerRef} className="relative min-h-[70vh]  flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
-      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-5 sm:gap-7 md:gap-10  lg:gap-0`}>
+    <div ref={containerRef} className="relative min-h-[70vh] flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
+      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-5 sm:gap-7 md:gap-10 lg:gap-0`}>
         
         {/* Background Large Title (Decorative) */}
         <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap uppercase text-foreground`}>
@@ -61,7 +61,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
         >
           <div className="glass-card p-8 md:p-12 rounded-[2rem] border-border hover:neon-glow-cyan transition-all duration-500 space-y-6">
             <div className="space-y-3">
-              <div className={`flex items-center gap-2 text-[10px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? ' md:justify-end' : ''}`}>
+              <div className={`flex items-center gap-2 text-[11px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? ' md:justify-end' : ''}`}>
                 <Hash size={12} />
                 <span>Segment 0{index + 1}</span>
               </div>
@@ -85,14 +85,14 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
             <div className={`flex flex-col sm:flex-row gap-4 pt-6 border-t border-border ${isEven ? 'md:justify-end' : ''}`}>
               <Link
                 href={`/work/${project.slug}`}
-                className="group flex items-center justify-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-neon-cyan hover:text-foreground transition-colors"
+                className="group flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase text-neon-cyan hover:text-foreground transition-colors"
               >
                 CASE STUDY <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href={project.link}
                 target="_blank"
-                className="group flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
+                className="group flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
               >
                 LIVE SITE <ExternalLink size={12} />
               </Link>
@@ -100,7 +100,7 @@ const ProjectSection = ({ project, index }: { project: any, index: number }) => 
                 <Link
                   href={project.githubLink}
                   target="_blank"
-                  className="group flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
+                  className="group flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
                 >
                   SOURCE <Github size={12} />
                 </Link>
@@ -125,9 +125,9 @@ const Projects = () => {
           <motion.h3 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4"
-          >
-            Curated Archive
+              className="text-xs font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4"
+            >
+              Projects
           </motion.h3>
           <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">Selected Works</h2>
         </div>
@@ -141,7 +141,7 @@ const Projects = () => {
             href="/work"
             className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-foreground/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"
           >
-            <span className="font-mono text-sm tracking-[0.3em] uppercase">Initialize Full Archive Access</span>
+            <span className="font-mono text-sm tracking-[0.3em] uppercase">Browse All Projects</span>
             <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>

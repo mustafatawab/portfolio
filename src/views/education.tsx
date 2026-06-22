@@ -20,7 +20,7 @@ const Education = () => {
   });
 
   return (
-    <section id="education" ref={containerRef} className="lg:py-30 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="education" ref={containerRef} className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-2 mb-10 md:mb-20">
           <motion.h3 
@@ -40,7 +40,7 @@ const Education = () => {
           {/* <div className=" absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" /> */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
-            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[0_0_15px_rgba(0,242,255,0.5)]" 
+            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[var(--glow-cyan-sm)]" 
           />
           
           <div className="space-y-10">
@@ -62,7 +62,7 @@ const Education = () => {
                   {/* Branching Node */}
                   <div className="absolute left-[20px] md:left-1/2 top-10 md:top-1/2 w-5 h-5 -ml-[10px] md:-mt-[10px] z-30">
                     <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-20" />
-                    <div className="relative w-full h-full bg-background border-2 border-neon-cyan rounded-full shadow-[0_0_10px_#00f2ff]" />
+                    <div className="relative w-full h-full bg-background border-2 border-neon-cyan rounded-full shadow-[var(--glow-cyan-xs)]" />
                   </div>
 
                   {/* Content Container */}
@@ -75,7 +75,7 @@ const Education = () => {
                             <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan flex-shrink-0">
                                 <Icon size={24} />
                             </div>
-                            <div className="text-[10px] font-mono tracking-widest text-foreground/40 uppercase">
+                            <div className="text-[11px] font-mono tracking-widest text-foreground/40 uppercase">
                                 {edu.period}
                             </div>
                         </div>
@@ -97,7 +97,7 @@ const Education = () => {
                                     {edu.degree}
                                 </h3>
                             )}
-                            <p className="text-neon-purple font-mono text-[10px] md:text-xs tracking-widest uppercase italic">
+                            <p className="text-neon-purple font-mono text-[11px] tracking-widest uppercase italic">
                                 {edu.institution}
                             </p>
                         </div>

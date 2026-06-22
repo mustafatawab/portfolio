@@ -6,7 +6,7 @@ import { experiences } from "@/lib/experience";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 mt-10 relative bg-background overflow-hidden transition-colors duration-500">
+    <section id="experience" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       <div className="container relative z-10">
         <div className="text-center space-y-2 mb-10 lg:mb-20">
           <motion.h3 
@@ -40,7 +40,7 @@ const Experience = () => {
                 {/* Glowing Node */}
                 <div className="absolute left-[20px] md:left-1/2 top-0 w-4 h-4 -ml-2 z-20">
                   <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-50" />
-                  <div className="relative w-4 h-4 bg-neon-cyan rounded-full shadow-[0_0_15px_rgba(0,242,255,1)]" />
+                  <div className="relative w-4 h-4 bg-neon-cyan rounded-full shadow-[var(--glow-cyan-sm)]" />
                 </div>
 
                 {/* Content Card */}
@@ -48,7 +48,7 @@ const Experience = () => {
                   <div className="glass-card p-8 rounded-2xl hover:neon-glow-purple transition-all duration-500 group border-border">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
                       <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'} w-full`}>
-                        <span className="text-xs font-mono text-neon-cyan mb-2 tracking-widest">{exp.period}</span>
+                        <span className="text-[11px] font-mono text-neon-cyan mb-2 tracking-widest">{exp.period}</span>
                         <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors text-foreground">{exp.title}</h3>
                         <p className="text-foreground/60 font-mono text-sm uppercase tracking-tight font-semibold">{exp.company}</p>
                         <p className="text-foreground/60 font-mono text-sm capitalize italic">{exp.location}</p>
