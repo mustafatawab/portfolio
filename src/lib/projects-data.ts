@@ -5,7 +5,7 @@ import triton from "@/assets/project/triton.png";
 import rukun from "@/assets/project/rukun.png";
 import elygance from "@/assets/project/elygance.png";
 import msp from "@/assets/project/msp-tech.png";
-import farazPharmacy from "@/assets/project/faraz-pharmacy.png";
+import farazPharmacy from "@/assets/project/faraz-pharmacy.jpeg";
 
 export interface ProjectFeature {
   icon: string;
@@ -182,12 +182,12 @@ export const projectShowcases: ProjectShowcase[] = [
     platform: "Web",
     industry: "Healthcare Technology",
     links: {
-      demo: "https://www.myscribe.us/",
+      demo: "https://www.app.myscribe.us/",
       caseStudy: "/case-studies/my-scribe",
     },
     techStack: {
-      frontend: ["Vue.js", "Bootstrap", "JavaScript"],
-      backend: ["Laravel", "Python", "PHP", "MySQL"],
+      frontend: ["Vue.js", "Quasar.js", "Bootstrap", "JavaScript"],
+      backend: ["Laravel", "GraphQL", "Python", "PHP", "MySQL"],
       database: ["MySQL"],
       infrastructure: ["AWS ECS", "Docker", "Redis"],
       tools: ["OpenAI Whisper", "Llama 2", "AWS KMS"],

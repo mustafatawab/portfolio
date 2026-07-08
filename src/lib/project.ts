@@ -10,7 +10,7 @@ import farsightsysmte from '@/assets/project/farsight.png'
 import rukun from '@/assets/project/rukun.png'
 import maktab from "@/assets/project/maktab-one.png"
 import pharmacy from "@/assets/project/pharmacy.png"
-import farazPharmacy from "@/assets/project/faraz-pharmacy.png"
+import farazPharmacy from "@/assets/project/faraz-pharmacy.jpeg"
 
 interface Testimonial {
   quote: string;
@@ -146,56 +146,6 @@ export const projects : ProjectType[] = [
         duration: "8 months"
     },
     {
-        image: rukun,
-        title: "Rukun Al Zuhab",
-        slug: "rukun-al-zuhab",
-        description: "Rukun Al Zuhab Trading Co is a Saudi Arabian industrial supply company specializing in high-performance components and infrastructure solutions.",
-        githubLink: "",
-        tags: ['tailwind css', 'nextjs', "framer motion", "shadcn",'typescript'],
-        link: "https://rukun-al-zuhab.vercel.app/",
-        category: "Websites",
-        problem: "An established industrial supply company in Saudi Arabia lacked a modern digital presence that reflected their credibility and the quality of their infrastructure components.",
-        solution: "Designed and developed a high-performance corporate showcase site with polished animations, a professional brand identity, and a seamless user experience.",
-        results: [
-          "Established a credible, modern digital presence",
-          "Smooth, engaging experience with Framer Motion animations",
-          "Responsive across all devices and screen sizes"
-        ],
-        features: [
-          "Product catalog with categorized browsing",
-          "Smooth page transitions and scroll-triggered animations",
-          "Mobile-first responsive design",
-          "Contact and inquiry forms"
-        ],
-        role: "Frontend Developer",
-        duration: "2 months"
-    },
-    {
-        image : farsightsysmte,
-        title : "Farsight System",
-        slug: "farsight-system",
-        description : "Software Agency who provides different solutions in the software industry. From AI-powered applications to custom web development, we help businesses transform their operations and achieve their digital goals with cutting-edge technology.",
-        tags : ['tailwind css' , 'css' , "html" , "javascript"],
-        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
-        link : "https://www.farsightsystem.com",
-        category: "Websites",
-        problem: "A growing software agency needed a website that clearly communicates their full spectrum of services - from AI and web development to custom software - to attract diverse clients.",
-        solution: "Created a clean, conversion-focused agency website with clear service sections, portfolio highlights, and streamlined lead capture.",
-        results: [
-          "Clear communication of service offerings",
-          "Improved lead generation through contact forms",
-          "Professional brand identity establishment"
-        ],
-        features: [
-          "Service showcase with detailed descriptions",
-          "Project portfolio section",
-          "Contact and consultation request forms",
-          "Clean, professional typography and layout"
-        ],
-        role: "Frontend Developer",
-        duration: "1.5 months"
-    },
-    {
         image : uswah,
         title : "Portfolio - Uswah Saeed",
         slug: "uswah-saeed-portfolio",
@@ -246,31 +196,6 @@ export const projects : ProjectType[] = [
     },
 
     {
-        image : gallery,
-        title : "Gallery",
-        slug: "gallery",
-        description : "This gallery is not just about displaying images-it elevates visual storytelling by combining clean design, metadata richness, and fast performance. It's a testament to creating intuitive, performant experiences for creative content.",
-        tags : ['tailwind css' , 'nextjs' , 'typescript' , 'supabase'],
-        githubLink : "",
-        link : "https://user-gallery-website.vercel.app/",
-        category: "Full-Stack Apps",
-        problem: "Most image galleries prioritize eye candy over usability - slow load times, poor metadata display, and clunky navigation frustrate users who want to browse visual content efficiently.",
-        solution: "Developed a high-performance image gallery with Supabase backend, rich metadata extraction, and a clean grid layout optimized for visual storytelling.",
-        results: [
-          "Fast image loading with optimized Next.js images",
-          "Rich metadata display enhancing each image's context",
-          "Smooth, responsive grid across all devices"
-        ],
-        features: [
-          "Image upload and management system",
-          "Automatic metadata extraction (EXIF, tags)",
-          "Supabase backend for scalable storage",
-          "Responsive masonry grid layout"
-        ],
-        role: "Full-Stack Developer",
-        duration: "2 months"
-    },
-    {
         image : msp,
         title : "MSP Tech Stack",
         slug: "msp-tech-stack",
@@ -320,32 +245,6 @@ export const projects : ProjectType[] = [
         ],
         role: "Full-Stack Developer",
         duration: "2.5 months"
-    },
-    
-    {
-        image: portfolio,
-        title : "Portfolio Website",
-        slug: "portfolio-website",
-        description : "A portofolio website for developers and designers to showcase their skills. It is just a landing page.",
-        githubLink : "https://github.com/mustafatawab/Nextjs_projects",
-        tags : ['nexjts', 'typescript', 'tailwind css'],
-        link : "https://mustafatawab.vercel.app",
-        category: "Websites",
-        problem: "Developers and designers need a professional online presence that showcases their skills, projects, and personality in a way that resonates with potential clients or employers.",
-        solution: "Built a modern, minimalist portfolio landing page with a clean layout, project showcase, and clear call-to-action for contact.",
-        results: [
-          "Clean, professional online presence",
-          "Clear demonstration of technical skills",
-          "Project showcase with live links"
-        ],
-        features: [
-          "Project showcase with live demos",
-          "Skills and technologies highlight section",
-          "Contact form for inquiries",
-          "Responsive mobile-first design"
-        ],
-        role: "Developer",
-        duration: "1 month"
     },
 
 ]

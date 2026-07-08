@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
 import maktab from "@/assets/project/maktab-one.png";
-import pharmacy from "@/assets/project/pharmacy_management_system.png";
+import pharmacy from "@/assets/project/faraz-pharmacy.jpeg";
 import myscribe from "@/assets/project/myscribe.png";
-import navpoint from "@/assets/project/msp-tech.png";
+import navpoint from "@/assets/project/navpoint.png";
 import triton from "@/assets/project/triton.png";
 
 export interface GalleryImage {
