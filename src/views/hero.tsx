@@ -62,7 +62,7 @@ const HeroSection = () => {
               className="flex flex-wrap gap-3 mt-8"
             >
               <Link
-                href="/work"
+                href="/projects"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97]"
               >
                 View Projects

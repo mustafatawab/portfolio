@@ -23,7 +23,7 @@ const projects: Project[] = [
       "A comprehensive school management system automating fee collection, expense tracking, and student records for mid-level schools.",
     tags: ["Next.js", "Prisma", "Neon DB", "TanStack Query"],
     image: maktab,
-    href: "/work/maktab-one",
+    href: "/projects/maktab-one",
   },
   {
     title: "My Scribe",
@@ -31,7 +31,7 @@ const projects: Project[] = [
       "An AI-powered medical scribe that transcribes patient-clinician conversations and generates SOAP-format clinical notes in real time.",
     tags: ["Vue.js", "Laravel", "AI", "Python"],
     image: myscribe,
-    href: "/work/my-scribe",
+    href: "/projects/my-scribe",
   },
   {
     title: "Farsight System",
@@ -39,7 +39,7 @@ const projects: Project[] = [
       "A software agency website showcasing AI-powered applications and custom web development services with a clean, conversion-focused design.",
     tags: ["Tailwind CSS", "HTML", "JavaScript", "CSS"],
     image: farsight,
-    href: "/work/farsight-system",
+    href: "/projects/farsight-system",
   },
 ];
 
@@ -80,7 +80,7 @@ const ProjectsSection = () => {
             </div>
             <motion.div variants={fadeUp} className="hidden md:block">
               <Link
-                href="/work"
+                href="/projects"
                 className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
               >
                 View all
@@ -137,7 +137,7 @@ const ProjectsSection = () => {
           {/* Mobile "View all" link */}
           <motion.div variants={fadeUp} className="mt-8 text-center md:hidden">
             <Link
-              href="/work"
+              href="/projects"
               className="inline-flex items-center gap-1.5 text-sm text-foreground font-medium hover:text-primary transition-colors duration-[var(--duration-fast)]"
             >
               View all projects

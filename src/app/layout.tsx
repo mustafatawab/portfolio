@@ -17,7 +17,7 @@ const fontMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mustafatawab.vercel.app"),
+  metadataBase: new URL("https://mustafatawab.com"),
   title: {
     default: "Mustafa Tawab - Software Engineer",
     template: "%s - Mustafa Tawab",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Mustafa Tawab - Software Engineer",
     description:
       "Building modern custom software and web applications that solve real business problems.",
-    url: "https://mustafatawab.vercel.app",
+    url: "https://mustafatawab.com",
     siteName: "Mustafa Tawab",
     locale: "en_US",
     type: "website",
@@ -46,18 +46,19 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { websiteSchema } from "@/lib/json-ld";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mustafa Tawab",
     jobTitle: "Software Engineer",
-    url: "https://mustafatawab.vercel.app",
+    url: "https://mustafatawab.com",
     sameAs: [
       "https://github.com/mustafatawab",
       "https://www.linkedin.com/in/mustafa-tawab/",
@@ -75,13 +76,19 @@ export default function RootLayout({
     ],
   };
 
+  const webSiteJsonLd = websiteSchema();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
       </head>
       <body

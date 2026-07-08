@@ -13,7 +13,7 @@ type LinkType = {
 };
 
 const links: LinkType[] = [
-  { label: "Work", url: "/work" },
+  { label: "Projects", url: "/projects" },
   { label: "Case Studies", url: "/case-studies" },
   { label: "About", url: "/#about" },
   { label: "Blog", url: "/blogs" },

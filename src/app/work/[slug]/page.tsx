@@ -10,6 +10,7 @@ import {
   Play,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { JsonLd, breadcrumbSchema } from "@/lib/json-ld";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -47,6 +48,26 @@ export default async function CaseStudyPage({
     notFound();
   }
 
+  const workJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: project.title,
+    description: project.description,
+    url: `https://mustafatawab.com/work/${project.slug}`,
+    programmingLanguage: project.tags.filter((t) =>
+      ["TypeScript", "JavaScript", "Python", "PHP", "SQL"].includes(t),
+    ),
+    runtimePlatform: project.tags.filter((t) =>
+      ["Next.js", "Node.js", "Express.js", "FastAPI", "Laravel", "Docker", "Vercel"].includes(t),
+    ),
+    author: {
+      "@type": "Person",
+      name: "Mustafa Tawab",
+      url: "https://mustafatawab.com",
+    },
+    codeRepository: project.githubLink || undefined,
+  };
+
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =
@@ -55,7 +76,16 @@ export default async function CaseStudyPage({
       : null;
 
   return (
-    <main className="bg-background min-h-screen">
+    <>
+      <JsonLd data={workJsonLd} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "https://mustafatawab.com" },
+          { name: "Work", url: "https://mustafatawab.com/work" },
+          { name: project.title, url: `https://mustafatawab.com/work/${project.slug}` },
+        ])}
+      />
+      <main className="bg-background min-h-screen">
       <div className="pt-28 pb-8">
         <div className="container">
           <Link
@@ -284,6 +314,7 @@ export default async function CaseStudyPage({
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
