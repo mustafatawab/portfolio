@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Error({
   error,
   reset,
@@ -10,33 +8,21 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <main className="min-h-screen bg-background flex items-center justify-center transition-colors duration-500">
-      <div className="container max-w-lg text-center space-y-8">
-        <div className="space-y-2">
-          <h1 className="text-8xl font-black font-display text-gradient tracking-tighter">
-            ERROR
-          </h1>
-          <p className="text-foreground/40 text-[11px] font-mono tracking-[0.4em] uppercase">
-            System Malfunction
-          </p>
-        </div>
-        <p className="text-foreground/60 font-sans leading-relaxed">
-          An unexpected error occurred in the system. Our engineers have been notified.
+    <main className="min-h-screen flex items-center justify-center bg-background">
+      <div className="container max-w-md text-center space-y-6">
+        <div className="text-6xl font-bold text-foreground/10">500</div>
+        <h1 className="text-2xl font-bold text-foreground tracking-tight">
+          Something went wrong
+        </h1>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          An unexpected error occurred. Please try again.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <button
-            onClick={reset}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-neon-cyan text-background font-bold rounded-full text-[11px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-cyan-lg)]"
-          >
-            Retry
-          </button>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground/60 rounded-full text-[11px] font-mono tracking-[0.3em] uppercase transition-all duration-300 hover:border-neon-cyan/20 hover:text-foreground"
-          >
-            Return to Base
-          </Link>
-        </div>
+        <button
+          onClick={reset}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97]"
+        >
+          Try Again
+        </button>
       </div>
     </main>
   );

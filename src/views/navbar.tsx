@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import logo from "../../public/mustafa_logo.png";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ModeToggle } from "@/components/ModeToggle";
@@ -13,126 +12,182 @@ type LinkType = {
   label: string;
 };
 
+const links: LinkType[] = [
+  { label: "Work", url: "/work" },
+  { label: "Case Studies", url: "/case-studies" },
+  { label: "About", url: "/#about" },
+  { label: "Blog", url: "/blogs" },
+  { label: "Contact", url: "/#contact" },
+];
+
+const mobileItemVariants = {
+  hidden: { opacity: 0, x: -12 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: 0.05 * i, duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const },
+  }),
+};
+
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const links: LinkType[] = [
-    { label: "ABOUT", url: "/#about" },
-    { label: "WORK", url: "/work" },
-    { label: "TECH", url: "/#skills" },
-    { label: "CONTACT", url: "/#contact" },
-  ];
+  const pathname = usePathname();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isActive = useCallback(
+    (url: string) => {
+      if (url.startsWith("/#")) return false;
+      return pathname === url;
+    },
+    [pathname],
+  );
+
+  useEffect(() => {
+    if (!toggle) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setToggle(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !mobileMenuRef.current) return;
+      const focusable =
+        mobileMenuRef.current.querySelectorAll<HTMLElement>(
+          'a, button, input, [tabindex]:not([tabindex="-1"])',
+        );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [toggle]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-4" : "py-8"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[var(--duration-normal)] ease-[var(--ease)] ${
+        scrolled
+          ? "py-3 bg-background/80 backdrop-blur-xl shadow-[var(--shadow-sm)]"
+          : "py-5 bg-transparent"
       }`}
     >
-      <nav className={`container mx-auto px-6`}>
-        <div
-          className={`glass-card rounded-full px-6 py-3 flex items-center justify-between border-border shadow-2xl transition-all duration-500 ${
-            scrolled
-              ? "bg-background/60 scale-95"
-              : "bg-transparent border-transparent shadow-none"
-          }`}
-        >
-          <Link href="/" className="relative group">
-            <div className="text-xl font-black font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
-              <span className="text-neon-cyan font-mono">{`{`}</span>
-              <span className="group-hover:text-neon-cyan transition-colors">
-                MUSTAFA
-              </span>
-              <span className="text-neon-cyan font-mono">{`}`}</span>
-            </div>
-            <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan group-hover:w-full transition-all duration-300" />
-          </Link>
+      <nav className="container flex items-center justify-between">
+        <Link href="/" className="relative group">
+          <span className="text-[15px] font-semibold tracking-tight text-foreground">
+            Mustafa Tawab
+          </span>
+        </Link>
 
-          <div className="hidden md:flex items-center gap-2">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.url}
-                className="px-5 py-2 text-[11px] font-mono tracking-[0.2em] text-foreground/60 hover:text-neon-cyan transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            {/* <div className="h-4 w-[1px] bg-foreground/10 mx-4" /> */}
-            {/* <Link 
-              href="https://mustafa-mko4.onrender.com/" 
-              target="_blank"
-              className="text-[10px] font-mono tracking-[0.2em] text-neon-purple hover:text-neon-purple/80 transition-colors"
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.url}
+              className={`relative text-sm transition-colors duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                isActive(link.url)
+                  ? "text-foreground font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              NEURAL BOT
-            </Link> */}
-          </div>
-
-          <div className="flex items-center gap-6">
+              {link.label}
+              <span className={`absolute -bottom-[3px] left-0 right-0 h-[1.5px] bg-foreground/20 scale-x-0 transition-transform duration-[var(--duration-fast)] ease-[var(--ease)] hover:scale-x-100 ${isActive(link.url) ? 'scale-x-100 bg-foreground' : ''}`} />
+            </a>
+          ))}
+          <div className="flex items-center gap-3 pl-4 border-l border-border">
             <ModeToggle />
-            <Link
-              // href="https://www.fiverr.com/mustafatawab/create-interactive-ecommerce-store-with-react-js-next-js-tailwind-css"
-              href={"https://www.linkedin.com/in/mustafa-tawab/"}
-              target="_blank"
-              className="hidden sm:block"
-            >
-              <Button
-                variant="outline"
-                className="rounded-full border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan hover:text-background transition-all duration-300 px-6 font-mono text-[11px] tracking-widest"
-              >
-                HIRE ENGINEER
+            <Link href="/#contact">
+              <Button className="rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm h-9 px-4 shadow-[var(--shadow-xs)]">
+                Hire Me
               </Button>
             </Link>
-
-            <button
-              className="md:hidden text-foreground p-2"
-              onClick={() => setToggle(!toggle)}
-            >
-              {toggle ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
+        </div>
+
+        <div className="flex md:hidden items-center gap-2">
+          <ModeToggle />
+          <button
+            ref={menuButtonRef}
+            className="text-foreground p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-foreground/5 transition-colors"
+            onClick={() => setToggle(!toggle)}
+            aria-label={toggle ? "Close menu" : "Open menu"}
+            aria-expanded={toggle}
+          >
+            {toggle ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {toggle && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            ref={mobileMenuRef}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-6 right-6 mt-4 md:hidden z-[60]"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute top-full left-4 right-4 mt-2 md:hidden z-[60]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
-            <div className="glass-card bg-background/95 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border-border flex flex-col gap-6">
-              {links.map((link) => (
-                <Link
+            <div className="bg-card border border-border rounded-xl shadow-[var(--shadow-lg)] p-5 flex flex-col gap-1">
+              {links.map((link, i) => (
+                <motion.div
                   key={link.label}
-                  href={link.url}
-                  onClick={() => setToggle(false)}
-                  className="text-sm font-mono tracking-[0.3em] text-foreground/60 hover:text-neon-cyan transition-colors"
+                  custom={i}
+                  variants={mobileItemVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={link.url}
+                    onClick={() => setToggle(false)}
+                    className={`block px-4 py-2.5 rounded-lg text-sm transition-colors ${
+                      isActive(link.url)
+                        ? "text-foreground bg-primary-light font-medium"
+                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
-              <div className="h-[1px] w-full bg-foreground/10" />
-              <Link
-                href="https://www.fiverr.com/mustafatawab"
-                target="_blank"
-                className="w-full"
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+                className="h-px bg-border my-2"
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25, duration: 0.3 }}
               >
-                <Button className="w-full bg-neon-cyan text-background font-bold rounded-xl">
-                  HIRE ME
-                </Button>
-              </Link>
+                <Link href="/#contact" onClick={() => setToggle(false)}>
+                  <Button className="w-full bg-primary text-primary-foreground rounded-lg text-sm shadow-[var(--shadow-xs)]">
+                    Hire Me
+                  </Button>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

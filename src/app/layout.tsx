@@ -6,12 +6,12 @@ import Footer from "@/views/footer";
 import WhatsAppButton from "@/components/whatsAppButton";
 import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
+const fontSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const fontMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -19,22 +19,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mustafatawab.vercel.app"),
   title: {
-    default: "Mustafa Tawab | Senior Full Stack Engineer",
-    template: "%s | Mustafa Tawab",
+    default: "Mustafa Tawab - Software Engineer",
+    template: "%s - Mustafa Tawab",
   },
-  description: "Specializing in high-performance digital architectures and AI-driven development.",
+  description:
+    "Building modern custom software and web applications that solve real business problems. Specializing in full-stack development, system design, and SaaS architecture.",
   openGraph: {
-    title: "Mustafa Tawab | Senior Full Stack Engineer",
-    description: "Specializing in high-performance digital architectures and AI-driven development.",
+    title: "Mustafa Tawab - Software Engineer",
+    description:
+      "Building modern custom software and web applications that solve real business problems.",
     url: "https://mustafatawab.vercel.app",
-    siteName: "Mustafa Tawab Portfolio",
+    siteName: "Mustafa Tawab",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mustafa Tawab | Senior Full Stack Engineer",
-    description: "Specializing in high-performance digital architectures and AI-driven development.",
+    title: "Mustafa Tawab - Software Engineer",
+    description:
+      "Building modern custom software and web applications that solve real business problems.",
   },
   robots: {
     index: true,
@@ -53,15 +56,22 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mustafa Tawab",
-    jobTitle: "Senior Full Stack Engineer",
+    jobTitle: "Software Engineer",
     url: "https://mustafatawab.vercel.app",
     sameAs: [
       "https://github.com/mustafatawab",
       "https://www.linkedin.com/in/mustafa-tawab/",
     ],
     knowsAbout: [
-      "React", "Next.js", "Vue.js", "TypeScript", "Node.js",
-      "FastAPI", "PostgreSQL", "AI", "Full Stack Development",
+      "Software Engineering",
+      "Full Stack Development",
+      "System Design",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "FastAPI",
+      "PostgreSQL",
     ],
   };
 
@@ -74,31 +84,33 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden transition-colors duration-500`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+      <body
+        suppressHydrationWarning
+        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <a
+            href="#main-content"
+            className="fixed -top-40 left-4 z-[100] p-4 bg-background border border-accent text-accent font-mono text-sm tracking-wider rounded-xl transition-all focus:top-4 focus:outline-2 focus:outline-accent"
           >
-            <div className="noise-overlay" />
-            <a
-              href="#main-content"
-              className="fixed -top-40 left-4 z-[100] p-4 bg-background border border-neon-cyan text-neon-cyan font-mono text-sm tracking-wider rounded-xl transition-all focus:top-4 focus:outline-2 focus:outline-neon-cyan"
-            >
-              Skip to main content
-            </a>
-            <Navbar />
-            <main id="main-content" className="relative z-10">
-              {children}
-            </main>
-            <Footer />
-            <WhatsAppButton
-              phoneNumber="+923475300572"
-              message="Hello! Can I get more info about your services?."
-            />
-            <Toaster position="bottom-right" />
-          </ThemeProvider>
+            Skip to main content
+          </a>
+          <Navbar />
+          <main id="main-content" className="relative z-10">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppButton
+            phoneNumber="+923475300572"
+            message="Hello! Can I get more info about your services?"
+          />
+          <Toaster position="bottom-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

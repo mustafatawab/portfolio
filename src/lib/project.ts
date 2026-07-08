@@ -70,7 +70,7 @@ export const projects : ProjectType[] = [
         image : myscribe,
         title : "My Scribe",
         slug: "my-scribe",
-        description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems—especially in fast-paced, high-stakes environments like healthcare.",
+        description : "MyScribe is a clinician-focused AI assistant designed to simplify medical documentation by automatically transcribing and summarizing patient interactions. The platform handles the minutiae of note-taking, enabling healthcare providers to prioritize patient care. It improves clinical efficiency and accuracy by reducing the administrative burden of patient note-taking. It reflects my deep interest in applying AI intelligently and ethically to solve real-world problems-especially in fast-paced, high-stakes environments like healthcare.",
         githubLink : "",
         tags : ['bootstrap' , 'vuejs' , 'laravel' , 'ai' , 'php' ,'python'],
         link : "https://www.myscribe.us/",
@@ -120,33 +120,6 @@ export const projects : ProjectType[] = [
     },
     
     {
-        image : pharmacy,
-        title : "Pharmacy Management System",
-        slug: "pharmacy-management-system",
-        description : "Pharmacy Managment System is Multi-Tenant system for Pharmacy to manage all their Inventory and perform all POS actions using this custom software.",
-        githubLink : "https://github.com/mustafatawab/pharmacy_management_system",
-        tags : ["Next.js" , "FastAPI" , "SQLModel" , "TanStack Query" , "Typescript"],
-        link : "https://faraz-pharmacy.vercel.app",
-        category: "Management Systems",
-        problem: "Pharmacies struggle with fragmented inventory management, leading to stockouts of critical medications, expired stock losses, and inefficient point-of-sale operations.",
-        solution: "Built a multi-tenant pharmacy management platform with centralized inventory tracking, expiry monitoring, supplier management, and an integrated POS system.",
-        results: [
-          "Centralized inventory management across multiple locations",
-          "Real-time stock alerts preventing stockouts and overstocking",
-          "Expiry date tracking reducing medication waste"
-        ],
-        features: [
-          "Multi-tenant architecture for independent pharmacy accounts",
-          "Inventory management with batch and expiry tracking",
-          "Integrated Point of Sale (POS) system",
-          "Supplier and purchase order management",
-          "Role-based access for pharmacists and cashiers"
-        ],
-        role: "Full-Stack Developer",
-        duration: "4 months"
-    },
-
-    {
         image : triton,
         title : "Triton",
         slug: "triton",
@@ -156,7 +129,7 @@ export const projects : ProjectType[] = [
         more : ["https://www.rollingvranchwcid1.com/", "https://www.rollingvranchwcid2.com/" , "https://www.rollingvranchwcid3.com/" , "https://www.rollingvranchwcid5.com/" , 'https://www.palomacreek.org/' , 'https://www.mud222.org/' ],
         link : "https://www.tritoncg.com/",
         category: "Websites",
-        problem: "Managing a growing portfolio of client websites independently was becoming unsustainable — updates were duplicated, branding inconsistent, and maintenance costs were climbing.",
+        problem: "Managing a growing portfolio of client websites independently was becoming unsustainable - updates were duplicated, branding inconsistent, and maintenance costs were climbing.",
         solution: "Architected a centralized CMS ecosystem using Payload CMS that powers and manages multiple client websites from a single administration panel, enabling consistent branding and efficient updates.",
         results: [
           "Manages 6+ live client websites from a single CMS",
@@ -206,7 +179,7 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/Nextjs_projects",
         link : "https://www.farsightsystem.com",
         category: "Websites",
-        problem: "A growing software agency needed a website that clearly communicates their full spectrum of services — from AI and web development to custom software — to attract diverse clients.",
+        problem: "A growing software agency needed a website that clearly communicates their full spectrum of services - from AI and web development to custom software - to attract diverse clients.",
         solution: "Created a clean, conversion-focused agency website with clear service sections, portfolio highlights, and streamlined lead capture.",
         results: [
           "Clear communication of service offerings",
@@ -248,14 +221,14 @@ export const projects : ProjectType[] = [
     },
     {
         image : malblogs,
-        title : "Car Finance",
-        slug: "car-finance",
+        title : "MAL-Blogs",
+        slug: "mal-blogs",
         description : "MAL-Blogs is a minimalistic personal blog platform where I share my development journey, technical insights, and experiments with modern tools and frameworks. Built with a clean, distraction-free design, it allows me to focus on creating and publishing content using Markdown/MDX while providing readers with a smooth reading experience.",
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'Contentfull'],
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
         link : "https://mal-blogs.vercel.app",
         category: "Websites",
-        problem: "Blogging platforms like Medium and WordPress are cluttered with distractions, ads, and complex editors — neither the writer nor the reader gets a clean experience.",
+        problem: "Blogging platforms like Medium and WordPress are cluttered with distractions, ads, and complex editors - neither the writer nor the reader gets a clean experience.",
         solution: "Built a minimalistic, distraction-free blog platform with MDX support, syntax highlighting, and a razor focus on reading experience and content creation.",
         results: [
           "Sub-second page loads with Next.js static generation",
@@ -276,12 +249,12 @@ export const projects : ProjectType[] = [
         image : gallery,
         title : "Gallery",
         slug: "gallery",
-        description : "This gallery is not just about displaying images—it elevates visual storytelling by combining clean design, metadata richness, and fast performance. It's a testament to creating intuitive, performant experiences for creative content.",
+        description : "This gallery is not just about displaying images-it elevates visual storytelling by combining clean design, metadata richness, and fast performance. It's a testament to creating intuitive, performant experiences for creative content.",
         tags : ['tailwind css' , 'nextjs' , 'typescript' , 'supabase'],
         githubLink : "",
         link : "https://user-gallery-website.vercel.app/",
         category: "Full-Stack Apps",
-        problem: "Most image galleries prioritize eye candy over usability — slow load times, poor metadata display, and clunky navigation frustrate users who want to browse visual content efficiently.",
+        problem: "Most image galleries prioritize eye candy over usability - slow load times, poor metadata display, and clunky navigation frustrate users who want to browse visual content efficiently.",
         solution: "Developed a high-performance image gallery with Supabase backend, rich metadata extraction, and a clean grid layout optimized for visual storytelling.",
         results: [
           "Fast image loading with optimized Next.js images",
@@ -332,7 +305,7 @@ export const projects : ProjectType[] = [
         githubLink : "https://github.com/mustafatawab/Nextjs_projects/tree/main/elygance",
         link : "https://elygance.vercel.app/",
         category: "Full-Stack Apps",
-        problem: "A premium fragrance brand needed an e-commerce experience that reflects their luxury positioning — generic storefronts undermine the perception of exclusivity and quality.",
+        problem: "A premium fragrance brand needed an e-commerce experience that reflects their luxury positioning - generic storefronts undermine the perception of exclusivity and quality.",
         solution: "Designed a luxury e-commerce platform with elegant typography, refined spacing, a sophisticated color palette, and a frictionless checkout experience.",
         results: [
           "Brand-aligned luxury shopping experience",

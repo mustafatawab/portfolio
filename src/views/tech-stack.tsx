@@ -19,48 +19,38 @@ const TechStack = () => {
   ];
 
   return (
-    <section id="tech-stack" className="py-32 bg-background relative overflow-hidden transition-colors duration-500">
-      <div className="container relative z-10 text-foreground">
-        <div className="text-center space-y-4 mb-20">
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
-          >
-            Core Infrastructure
-          </motion.h3>
-          <h2 className="text-4xl md:text-7xl font-black font-display leading-tight uppercase tracking-tight">
-            TECHNICAL <span className="text-gradient">NETWORK</span>
+    <section id="tech-stack" className="py-32 bg-background">
+      <div className="container">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-5xl font-semibold font-display text-foreground tracking-tight">
+            Technical <span className="text-accent">Stack</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
           {technologies.map((tech, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              transition={{ duration: 0.3, delay: index * 0.03 }}
               viewport={{ once: true }}
-              className="glass-card p-8 flex flex-col items-center justify-center gap-4 group hover:neon-glow-cyan transition-all duration-500 rounded-3xl"
+              className="card-hover p-6 flex flex-col items-center justify-center gap-3"
             >
-              <div className="relative w-12 h-12 grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110">
+              <div className="w-10 h-10 grayscale hover:grayscale-0 transition-all duration-300">
                 <img
                   src={tech.logo}
                   alt={tech.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[11px] font-mono tracking-widest uppercase text-foreground/30 group-hover:text-neon-cyan transition-colors">
+              <span className="text-[10px] font-mono tracking-wider text-foreground/40">
                 {tech.name}
               </span>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Background depth detail */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(188,19,254,0.02),transparent_70%)]" />
     </section>
   );
 };

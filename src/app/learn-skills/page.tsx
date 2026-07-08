@@ -2,9 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, CheckCircle, Clock, Star, Hash } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function LearnSkillsPage() {
   const skills = [
@@ -71,22 +70,16 @@ export default function LearnSkillsPage() {
   ];
 
   return (
-    <main className="bg-background min-h-screen pb-32 transition-colors duration-500">
-      {/* Cinematic Header */}
-      <section className="relative pt-48 pb-20 flex flex-col items-center justify-center overflow-hidden z-10">
-        <div className="fixed inset-0 -z-10 dark:opacity-20 opacity-5">
-          <Image src="/bg.webp" fill alt="" className="object-cover scale-110 animate-pulse-slow" />
-        </div>
-        
-        <div className="container text-center space-y-8 text-foreground uppercase tracking-tight">
+    <main className="bg-background min-h-screen pb-32">
+      <section className="relative pt-40 pb-16 text-center">
+        <div className="container space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase mb-4">Training Protocols</h3>
-            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight uppercase">
-              SKILLS <span className="text-gradient">ACQUISITION</span>
+            <h1 className="text-4xl md:text-6xl font-semibold font-display text-foreground tracking-tight">
+              Skills <span className="text-accent">Acquisition</span>
             </h1>
           </motion.div>
 
@@ -94,55 +87,49 @@ export default function LearnSkillsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-foreground/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
+            className="text-foreground/40 text-sm max-w-xl mx-auto leading-relaxed"
           >
-            Systematic learning paths engineered to master modern full-stack development and AI integration.
+            Systematic learning paths designed to master modern full-stack development and AI integration.
           </motion.p>
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="py-20 relative z-10">
+      <section className="relative">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className="glass-card p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500 flex flex-col"
+                className="card-hover p-6 flex flex-col"
               >
-                <div className="flex items-center gap-4 mb-8">
-                   <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan group-hover:scale-110 transition-transform">
-                      {skill.icon}
-                   </div>
-                   <div className="flex items-center gap-1 text-foreground/20 font-mono text-[10px] tracking-widest">
-                      <Hash size={10} />
-                      <span>MODULE_0{index + 1}</span>
-                   </div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2.5 rounded-lg bg-accent/10 text-accent">
+                    {skill.icon}
+                  </div>
                 </div>
 
-                <div className="space-y-4 flex-1">
-                  <h3 className="text-2xl font-bold text-foreground leading-tight">{skill.title}</h3>
-                  <p className="text-foreground/60 text-sm leading-relaxed font-sans">{skill.description}</p>
-                  
-                  <div className="flex gap-4 pt-2">
-                     <div className="flex items-center gap-1 text-[10px] font-mono text-neon-purple uppercase tracking-widest">
-                        <Star size={12} /> {skill.level}
-                     </div>
-                     <div className="flex items-center gap-1 text-[10px] font-mono text-foreground/30 uppercase tracking-widest">
-                        <Clock size={12} /> {skill.duration}
-                     </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-lg font-semibold text-foreground">{skill.title}</h3>
+                  <p className="text-foreground/50 text-sm leading-relaxed">{skill.description}</p>
+
+                  <div className="flex gap-4 pt-1">
+                    <div className="flex items-center gap-1 text-[10px] font-mono text-accent uppercase tracking-wider">
+                      <Star size={10} /> {skill.level}
+                    </div>
+                    <div className="flex items-center gap-1 text-[10px] font-mono text-foreground/30 uppercase tracking-wider">
+                      <Clock size={10} /> {skill.duration}
+                    </div>
                   </div>
 
-                  <div className="pt-6 border-t border-border space-y-4">
-                    <div className="text-[10px] font-mono text-foreground/20 uppercase tracking-widest">Curriculum Node</div>
-                    <ul className="space-y-2">
+                  <div className="pt-4 border-t border-border">
+                    <ul className="space-y-1.5">
                       {skill.topics.map((topic, i) => (
-                        <li key={i} className="flex items-center gap-2 text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors">
-                          <CheckCircle size={14} className="text-neon-cyan" />
+                        <li key={i} className="flex items-center gap-2 text-xs text-foreground/40">
+                          <CheckCircle size={12} className="text-accent" />
                           {topic}
                         </li>
                       ))}
@@ -150,9 +137,9 @@ export default function LearnSkillsPage() {
                   </div>
                 </div>
 
-                <Link href={skill.link} className="mt-10">
-                  <Button className="w-full bg-neon-cyan text-background font-bold rounded-xl hover:scale-[1.02] transition-transform">
-                    INITIATE LEARNING <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href={skill.link} className="mt-6 block">
+                  <Button className="w-full bg-accent text-background font-semibold hover:bg-accent/90 transition-colors text-sm">
+                    Start Learning <ArrowRight className="ml-2 h-3 w-3" />
                   </Button>
                 </Link>
               </motion.div>
@@ -160,11 +147,6 @@ export default function LearnSkillsPage() {
           </div>
         </div>
       </section>
-
-      {/* Decorative footer element */}
-      <div className="container py-32 flex justify-center">
-         <div className="w-[1px] h-32 bg-gradient-to-b from-neon-purple to-transparent opacity-20" />
-      </div>
     </main>
   );
 }

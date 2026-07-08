@@ -79,7 +79,7 @@ export function contactEmailTemplate(data: ContactEmailProps): string {
                         </td>
                         <td width="50%" style="padding-bottom:16px;">
                           <p style="margin:0 0 4px;font-size:9px;letter-spacing:3px;color:#bbb;text-transform:uppercase;font-family:'Courier New',Courier,monospace;">Last Name</p>
-                          <p style="margin:0;font-size:16px;color:#0a0a0a;font-weight:700;font-family:Georgia,serif;">${last_name ?? "—"}</p>
+                          <p style="margin:0;font-size:16px;color:#0a0a0a;font-weight:700;font-family:Georgia,serif;">${last_name ?? "-"}</p>
                         </td>
                       </tr>
                       <tr>

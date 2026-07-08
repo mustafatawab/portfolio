@@ -25,26 +25,25 @@ import { Button } from "@/components/ui/button";
 interface SkillProps {
   name: string;
   icon: React.ReactNode;
-  level: number;
   category: "Frontend" | "Backend" | "DevOps";
 }
 
 const skills: SkillProps[] = [
-  { name: "React", icon: <SiReact size={24} />, level: 90, category: "Frontend" },
-  { name: "Next.js", icon: <SiNextdotjs size={24} />, level: 95, category: "Backend" },
-  { name: "FastAPI", icon: <SiFastapi size={24} />, level: 85, category: "Backend" },
-  { name: "TypeScript", icon: <SiTypescript size={24} />, level: 88, category: "Frontend" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={24} />, level: 95, category: "Frontend" },
-  { name: "Node.js", icon: <SiNodedotjs size={24} />, level: 85, category: "Backend" },
-  { name: "MongoDB", icon: <SiMongodb size={24} />, level: 80, category: "Backend" },
-  { name: "PostgreSQL", icon: <SiPostgresql size={24} />, level: 85, category: "Backend" },
-  { name: "Docker", icon: <SiDocker size={24} />, level: 85, category: "DevOps" },
-  { name: "Kubernetes", icon: <SiKubernetes size={24} />, level: 75, category: "DevOps" },
-  { name: "Git & Github", icon: <SiGithub size={24} />, level: 95, category: "DevOps" },
-  { name: "Linux", icon: <SiLinux size={24} />, level: 80, category: "DevOps" },
-  { name: "Vercel", icon: <SiVercel size={24} />, level: 90, category: "DevOps" },
-  { name: "Railway", icon: <SiRailway size={24} />, level: 85, category: "DevOps" },
-  { name: "Shadcn UI", icon: <SiShadcnui size={24} />, level: 95, category: "Frontend" },
+  { name: "React", icon: <SiReact size={20} />, category: "Frontend" },
+  { name: "Next.js", icon: <SiNextdotjs size={20} />, category: "Backend" },
+  { name: "FastAPI", icon: <SiFastapi size={20} />, category: "Backend" },
+  { name: "TypeScript", icon: <SiTypescript size={20} />, category: "Frontend" },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={20} />, category: "Frontend" },
+  { name: "Node.js", icon: <SiNodedotjs size={20} />, category: "Backend" },
+  { name: "MongoDB", icon: <SiMongodb size={20} />, category: "Backend" },
+  { name: "PostgreSQL", icon: <SiPostgresql size={20} />, category: "Backend" },
+  { name: "Docker", icon: <SiDocker size={20} />, category: "DevOps" },
+  { name: "Kubernetes", icon: <SiKubernetes size={20} />, category: "DevOps" },
+  { name: "Git & Github", icon: <SiGithub size={20} />, category: "DevOps" },
+  { name: "Linux", icon: <SiLinux size={20} />, category: "DevOps" },
+  { name: "Vercel", icon: <SiVercel size={20} />, category: "DevOps" },
+  { name: "Railway", icon: <SiRailway size={20} />, category: "DevOps" },
+  { name: "Shadcn UI", icon: <SiShadcnui size={20} />, category: "Frontend" },
 ];
 
 const Skills = () => {
@@ -52,29 +51,24 @@ const Skills = () => {
   const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
 
   return (
-    <section id="skills" className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
-      <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-20">
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase"
-          >
-            Capabilities
-          </motion.h3>
-          <h2 className="text-3xl sm:text-4xl md:text-7xl font-black font-display uppercase tracking-tight text-foreground flex flex-col md:block"><span>TECHNICAL</span> <span className="text-gradient">INFRASTRUCTURE</span></h2>
+    <section id="skills" className="py-32 bg-background">
+      <div className="container">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-5xl font-semibold font-display text-foreground tracking-tight">
+            Technical <span className="text-accent">Skills</span>
+          </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {["All", "Frontend", "Backend", "DevOps"].map((cat) => (
             <Button
               key={cat}
               onClick={() => setFilter(cat)}
               variant={filter === cat ? "default" : "outline"}
-              className={`rounded-full px-8 py-6 font-mono text-xs tracking-widest uppercase transition-all duration-300 ${
-                filter === cat 
-                ? "bg-neon-cyan text-background hover:bg-neon-cyan/80" 
-                : "border-border text-foreground/60 hover:border-neon-cyan/50 hover:text-foreground"
+              className={`rounded-full px-6 py-2 text-xs tracking-wider transition-all duration-300 ${
+                filter === cat
+                ? "bg-accent text-background hover:bg-accent/90 shadow-[var(--shadow-sm)]"
+                : "border-border text-foreground/50 hover:border-accent/30 hover:text-foreground"
               }`}
             >
               {cat}
@@ -82,53 +76,34 @@ const Skills = () => {
           ))}
         </div>
 
-        <motion.div 
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
+        <div aria-live="polite" aria-atomic="true" className="sr-only">
+          Showing {filteredSkills.length} {filter} skills
+        </div>
+
+        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           <AnimatePresence mode="popLayout">
-            {filteredSkills.map((skill, index) => (
+            {filteredSkills.map((skill, i) => (
               <motion.div
                 key={skill.name}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className="glass-card p-6 rounded-2xl group hover:neon-glow-cyan transition-all duration-500"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, delay: i * 0.03 }}
+                className="card-hover p-5 flex flex-col items-center text-center gap-3"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan group-hover:scale-110 transition-transform duration-300">
-                    {skill.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg group-hover:text-neon-cyan transition-colors text-foreground">{skill.name}</h4>
-                    <span className="text-[11px] font-mono text-foreground/40 uppercase tracking-tighter">{skill.category}</span>
-                  </div>
+                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent transition-transform duration-300 group-hover:scale-110">
+                  {skill.icon}
                 </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between text-[11px] font-mono text-foreground/40">
-                    <span>PROFICIENCY</span>
-                    <span>{skill.level}%</span>
-                  </div>
-                  <div className="h-1 w-full bg-foreground/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple"
-                    />
-                  </div>
+                <div>
+                  <div className="text-sm font-medium text-foreground">{skill.name}</div>
+                  <div className="text-xs text-foreground/40 font-mono mt-0.5">{skill.category}</div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
-
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent_50%)]" />
     </section>
   );
 };

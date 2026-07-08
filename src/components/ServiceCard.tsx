@@ -36,46 +36,46 @@ interface ServiceCardProps {
 const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "bot": return <Bot size={28} />;
-      case "rocket": return <Rocket size={28} />;
-      case "zap": return <Zap size={28} />;
-      case "server": return <Server size={28} />;
-      case "code": return <Code size={28} />;
-      case "layout": return <Layout size={28} />;
-      case "monitor": return <Monitor size={28} />;
-      case "cpu": return <Cpu size={28} />;
-      case "database": return <Database size={28} />;
-      case "settings": return <Settings size={28} />;
-      case "globe": return <Globe size={28} />;
-      case "chart": return <LineChart size={28} />;
-      case "shield": return <Shield size={28} />;
-      case "smartphone": return <Smartphone size={28} />;
-      case "box": return <Box size={28} />;
-      case "package": return <Package size={28} />;
-      default: return <Code size={28} />;
+      case "bot": return <Bot size={24} />;
+      case "rocket": return <Rocket size={24} />;
+      case "zap": return <Zap size={24} />;
+      case "server": return <Server size={24} />;
+      case "code": return <Code size={24} />;
+      case "layout": return <Layout size={24} />;
+      case "monitor": return <Monitor size={24} />;
+      case "cpu": return <Cpu size={24} />;
+      case "database": return <Database size={24} />;
+      case "settings": return <Settings size={24} />;
+      case "globe": return <Globe size={24} />;
+      case "chart": return <LineChart size={24} />;
+      case "shield": return <Shield size={24} />;
+      case "smartphone": return <Smartphone size={24} />;
+      case "box": return <Box size={24} />;
+      case "package": return <Package size={24} />;
+      default: return <Code size={24} />;
     }
   };
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -4 }}
       className="h-full"
     >
-      <Card className="glass-card border-border h-full p-8 rounded-3xl group hover:neon-glow-cyan transition-all duration-500">
-        <CardHeader className="p-0 mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center mb-6 text-neon-cyan group-hover:scale-110 group-hover:bg-neon-cyan/10 transition-all duration-500">
+      <Card className="card-hover h-full p-6">
+        <CardHeader className="p-0 mb-5">
+          <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-5 text-accent">
             {getIcon(icon)}
           </div>
-          <h3 className="text-2xl font-bold group-hover:text-neon-cyan transition-colors text-foreground">{title}</h3>
-          <p className="text-foreground/60 text-sm leading-relaxed mt-2">{content}</p>
+          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+          <p className="text-foreground/50 text-sm leading-relaxed mt-2">{content}</p>
         </CardHeader>
 
         <CardContent className="p-0">
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {points && points.map((pt, i) => (
-              <li key={i} className="flex items-start gap-3 group/item">
-                <CheckCircle2 size={16} className="text-neon-purple mt-1 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
-                <span className="text-sm text-foreground/70 group-hover/item:text-foreground transition-colors">{pt}</span>
+              <li key={i} className="flex items-start gap-2.5">
+                <CheckCircle2 size={14} className="text-accent mt-0.5 shrink-0" />
+                <span className="text-sm text-foreground/60">{pt}</span>
               </li>
             ))}
           </ul>

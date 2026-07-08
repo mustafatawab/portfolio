@@ -1,129 +1,153 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { projects } from "@/lib/project";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Github, ExternalLink, Hash } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import Image, { StaticImageData } from "next/image";
+import { ChevronRight, ArrowUpRight } from "lucide-react";
+import maktab from "@/assets/project/maktab-one.png";
+import myscribe from "@/assets/project/myscribe.png";
+import farsight from "@/assets/project/farsight.png";
 
-const ProjectSection = ({ project, index }: { project: any, index: number }) => {
-  const isEven = index % 2 === 0;
-
-  return (
-    <div className="relative min-h-[70vh] flex items-center py-16 md:py-20 overflow-hidden bg-background transition-colors duration-500">
-      <div className={`container flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-5 sm:gap-7 md:gap-10 lg:gap-0`}>
-        
-        {/* Background Large Title (Decorative) */}
-        <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} opacity-[0.02] text-[20vw] lg:text-[15vw] font-bold font-display select-none pointer-events-none whitespace-nowrap uppercase text-foreground`}>
-          {project.title}
-        </div>
-
-        {/* Image Stage */}
-        <div className="w-full lg:w-[60%] relative aspect-video group">
-          <div className="absolute inset-0 bg-neon-cyan/20 rounded-2xl md:rounded-[2rem] translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700" />
-          <div className="relative h-full w-full rounded-2xl md:rounded-[2rem] overflow-hidden border border-border shadow-2xl">
-            <Image 
-              src={project.image} 
-              fill 
-              alt={project.title} 
-              className="object-cover group-hover:scale-105 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
-          </div>
-        </div>
-
-        {/* Content Card */}
-        <div className={`w-full lg:w-[45%] lg:-ml-[10%] ${!isEven && 'lg:-mr-[10%] lg:ml-0'} z-20`}>
-          <div className="glass-card p-8 md:p-12 rounded-[2rem] border-border hover:neon-glow-cyan transition-all duration-500 space-y-6">
-            <div className="space-y-3">
-              <div className={`flex items-center gap-2 text-[11px] font-mono tracking-[0.4em] text-neon-purple uppercase ${isEven ? ' md:justify-end' : ''}`}>
-                <Hash size={12} />
-                <span>Segment 0{index + 1}</span>
-              </div>
-              <h3 className={`text-3xl md:text-5xl font-bold font-display tracking-tighter leading-tight group-hover:text-neon-cyan transition-colors ${isEven ? 'lg:text-right' : 'md:text-left'} text-foreground`}>
-                {project.title}
-              </h3>
-            </div>
-
-            <p className={`text-foreground/70 text-sm md:text-lg leading-relaxed font-sans ${isEven ? 'lg:text-right' : ''}`}>
-              {project.description}
-            </p>
-
-            <div className={`flex flex-wrap gap-2 pt-2 ${isEven ? 'md:justify-end' : ''}`}>
-              {project.tags.slice(0, 5).map((tag: string, i: number) => (
-                <Badge key={i} className="bg-foreground/5 border-border text-[10px] font-mono tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 text-foreground/40">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-
-            <div className={`flex flex-col sm:flex-row gap-4 pt-6 border-t border-border ${isEven ? 'md:justify-end' : ''}`}>
-              <Link
-                href={`/work/${project.slug}`}
-                className="group flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase text-neon-cyan hover:text-foreground transition-colors"
-              >
-                CASE STUDY <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href={project.link}
-                target="_blank"
-                className="group flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
-              >
-                LIVE SITE <ExternalLink size={12} />
-              </Link>
-              {project.githubLink && (
-                <Link
-                  href={project.githubLink}
-                  target="_blank"
-                  className="group flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.3em] uppercase text-foreground/40 hover:text-foreground transition-colors"
-                >
-                  SOURCE <Github size={12} />
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  image: StaticImageData;
+  href: string;
 };
 
-const Projects = () => {
+const projects: Project[] = [
+  {
+    title: "Maktab One",
+    description:
+      "A comprehensive school management system automating fee collection, expense tracking, and student records for mid-level schools.",
+    tags: ["Next.js", "Prisma", "Neon DB", "TanStack Query"],
+    image: maktab,
+    href: "/work/maktab-one",
+  },
+  {
+    title: "My Scribe",
+    description:
+      "An AI-powered medical scribe that transcribes patient-clinician conversations and generates SOAP-format clinical notes in real time.",
+    tags: ["Vue.js", "Laravel", "AI", "Python"],
+    image: myscribe,
+    href: "/work/my-scribe",
+  },
+  {
+    title: "Farsight System",
+    description:
+      "A software agency website showcasing AI-powered applications and custom web development services with a clean, conversion-focused design.",
+    tags: ["Tailwind CSS", "HTML", "JavaScript", "CSS"],
+    image: farsight,
+    href: "/work/farsight-system",
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
+  },
+};
+
+const ProjectsSection = () => {
   return (
-    <section id="projects" className="bg-background relative transition-colors duration-500">
-      <div className="absolute top-0 left-0 z-0 h-screen w-full flex items-center justify-center pointer-events-none ">
-         <div className="w-[800px] h-[800px] bg-neon-cyan/5 blur-[150px] rounded-full animate-pulse-slow" />
-      </div>
+    <section id="projects" className="py-24 md:py-32 bg-muted/40">
+      <div className="container">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
+          {/* Header */}
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <motion.span variants={fadeUp} className="section-label">
+                Projects
+              </motion.span>
+              <motion.h2
+                variants={fadeUp}
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+              >
+                Selected work
+              </motion.h2>
+            </div>
+            <motion.div variants={fadeUp} className="hidden md:block">
+              <Link
+                href="/work"
+                className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
+              >
+                View all
+                <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </motion.div>
+          </div>
 
-      <div className="relative z-10 pt-16 md:pt-32">
-        <div className="container text-center mb-10 md:mb-20">
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-              className="text-xs font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4"
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {projects.map((project, i) => (
+              <motion.div key={project.title} variants={fadeUp}>
+                <Link
+                  href={project.href}
+                  className="card-hover block rounded-xl overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring/60 focus-visible:rounded-xl"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease)] group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-foreground">
+                        {project.title}
+                      </h3>
+                      <ArrowUpRight
+                        size={14}
+                        className="text-muted-foreground transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center px-2 py-0.5 rounded-md bg-foreground/[0.04] text-[11px] font-mono text-muted-foreground tracking-tight"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile "View all" link */}
+          <motion.div variants={fadeUp} className="mt-8 text-center md:hidden">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-1.5 text-sm text-foreground font-medium hover:text-primary transition-colors duration-[var(--duration-fast)]"
             >
-              Projects
-          </motion.h3>
-          <h2 className="text-3xl sm:text-4xl md:text-7xl font-bold font-display tracking-tighter leading-none text-foreground uppercase text-gradient">Selected Works</h2>
-        </div>
-
-        {projects && projects.slice(0, 3).map((project, index) => (
-          <ProjectSection key={index} project={project} index={index} />
-        ))}
-
-        <div className="container  text-center">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-4 px-12 py-6 glass-card rounded-full text-foreground/60 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-500 group"
-          >
-            <span className="font-mono text-sm tracking-[0.3em] uppercase">Browse All Projects</span>
-            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-          </Link>
-        </div>
+              View all projects
+              <ChevronRight size={14} />
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Projects;
+export default ProjectsSection;

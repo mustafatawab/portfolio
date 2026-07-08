@@ -2,20 +2,17 @@
 import React, { useState } from "react";
 import { services } from "@/lib/services";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Bot, Rocket, Zap, Server, Code, Cpu, 
-  CheckCircle2, ArrowRight
-} from "lucide-react";
+import { Bot, Rocket, Zap, Server, Code, Cpu, CheckCircle2, ArrowRight } from "lucide-react";
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
-    case "bot": return <Bot  size={40} />;
-    case "rocket": return <Rocket size={40} />;
-    case "zap": return <Zap size={40} />;
-    case "server": return <Server size={40} />;
-    case "code": return <Code size={40} />;
-    case "cpu": return <Cpu size={40} />;
-    default: return <Code size={40} />;
+    case "bot": return <Bot size={24} />;
+    case "rocket": return <Rocket size={24} />;
+    case "zap": return <Zap size={24} />;
+    case "server": return <Server size={24} />;
+    case "code": return <Code size={24} />;
+    case "cpu": return <Cpu size={24} />;
+    default: return <Code size={24} />;
   }
 };
 
@@ -23,98 +20,88 @@ const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="services" className="pt-32 pb-16 bg-background relative min-h-[800px] flex items-center transition-colors duration-500">
-      <div className="container relative z-10">
-        <div className="text-center space-y-4 mb-24 lg:hidden">
-          <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-          <h2 className="text-3xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
+    <section id="services" className="py-32 bg-background relative">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-accent/2 blur-[100px] rounded-full" />
+      </div>
+
+      <div className="container relative">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-5xl font-semibold font-display text-foreground tracking-tight">
+            Service <span className="text-accent">Protocols</span>
+          </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-20 items-start">
-          {/* Left: Command List */}
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
           <div className="w-full lg:w-1/2 space-y-2">
-            <div className="hidden lg:block space-y-4 mb-16">
-              <h3 className="text-sm font-mono tracking-[0.4em] text-neon-purple uppercase">Specializations</h3>
-              <h2 className="text-3xl md:text-7xl font-black font-display leading-tight text-foreground uppercase tracking-tight">SERVICE <span className="text-gradient">PROTOCOLS</span></h2>
-            </div>
-            
             {services.map((service, index) => (
               <motion.div
                 key={index}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                viewport={{ once: true }}
                 onMouseEnter={() => setActiveIndex(index)}
-                className={`relative p-8 cursor-pointer rounded-2xl transition-all duration-500 group ${
-                  activeIndex === index ? 'bg-foreground/5 border border-border' : 'opacity-40 hover:opacity-100'
+                onFocus={() => setActiveIndex(index)}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${service.title} details`}
+                className={`relative p-5 cursor-pointer rounded-xl transition-all duration-300 ${
+                  activeIndex === index
+                    ? 'bg-foreground/[0.03] border border-foreground/10 shadow-[var(--shadow-sm)]'
+                    : 'opacity-60 hover:opacity-100'
                 }`}
               >
-                {activeIndex === index && (
-                  <motion.div 
-                    layoutId="active-bg"
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-neon-cyan rounded-full shadow-[0_0_15px_#00f2ff]"
-                  />
-                )}
                 <div className="flex justify-between items-center">
-                  <h3 className={`text-2xl md:text-3xl font-bold tracking-tight transition-colors duration-300 ${
-                    activeIndex === index ? 'text-neon-cyan' : 'text-foreground'
+                  <h3 className={`text-lg font-medium transition-colors duration-300 ${
+                    activeIndex === index ? 'text-accent' : 'text-foreground'
                   }`}>
                     {service.title}
                   </h3>
-                  <ArrowRight className={`text-foreground transition-transform duration-300 ${
-                    activeIndex === index ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                  <ArrowRight className={`w-4 h-4 transition-all duration-300 ${
+                    activeIndex === index
+                      ? 'translate-x-0 opacity-100 text-accent'
+                      : '-translate-x-2 opacity-0 text-foreground'
                   }`} />
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Right: Data Readout */}
-          <div className="w-full lg:w-1/2 lg:sticky lg:top-40">
+          <div className="w-full lg:w-1/2 lg:sticky lg:top-32">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="glass-card p-5 md:p-12 rounded-[2rem] border-border relative overflow-hidden group"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="card-hover p-8"
               >
-                {/* Tech scanline effect */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-neon-cyan/20 animate-scanline" />
-                
-                <div className="relative z-10 space-y-10">
-                  <div className="flex items-center gap-6">
-                    <div className="w-20 h-20 p-2 rounded-3xl bg-neon-cyan/10 flex items-center justify-center text-neon-cyan shadow-[0_0_30px_rgba(0,242,255,0.1)]">
+                <div className="space-y-8">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
                       {getIcon(services[activeIndex].icon)}
                     </div>
-                    <div>
-                      <div className="text-[11px] font-mono text-neon-purple tracking-[0.3em] uppercase mb-1">Status: Operational</div>
-                      <h4 className="text-3xl font-bold text-foreground uppercase tracking-tight">System Overview</h4>
-                    </div>
+                    <h4 className="text-2xl font-semibold text-foreground">{services[activeIndex].title}</h4>
                   </div>
 
-                  <p className="text-foreground/60 text-lg leading-relaxed font-mono italic">
-                    "{services[activeIndex].content}"
+                  <p className="text-foreground/60 leading-relaxed">
+                    {services[activeIndex].content}
                   </p>
 
-                  <div className="space-y-6">
-                    <div className="text-xs font-mono text-foreground/20 uppercase tracking-[0.2em]">Deployment Specs</div>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-4">
+                    <div className="text-xs font-mono text-foreground/30 tracking-wider uppercase">Key capabilities</div>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {services[activeIndex].points.map((pt, i) => (
-                        <li key={i} className="flex items-start gap-3 group/item">
-                          <CheckCircle2 size={16} className="text-neon-cyan mt-1 flex-shrink-0" />
-                          <span className="text-sm text-foreground/50 group-hover/item:text-foreground transition-colors">{pt}</span>
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground/60">{pt}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  <div className="pt-8 border-t border-border flex justify-between items-center text-[11px] font-mono text-foreground/20 tracking-widest">
-                    <span>ARCH_REF: 00{activeIndex + 1}</span>
-                    <span>PROTO_TYPE: ALPHA</span>
-                  </div>
                 </div>
-
-                {/* Decorative background element */}
-                <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-neon-purple/5 rounded-full blur-[80px]" />
               </motion.div>
             </AnimatePresence>
           </div>

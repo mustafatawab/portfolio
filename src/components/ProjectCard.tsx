@@ -1,10 +1,6 @@
-'use client'
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BsGithub } from "react-icons/bs";
 import Image from "next/image";
@@ -12,68 +8,67 @@ import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface ProjectPropType {
-    image : any,
-    title : string,
-    description : string,
-    tags : string[],
-    githubLink? : string,
-    link : string,
-    more? : string[] 
+  image: any;
+  title: string;
+  description: string;
+  tags: string[];
+  githubLink?: string;
+  link: string;
+  more?: string[];
 }
 
-const ProjectCard = ({ project } : {project : ProjectPropType}) => {
+const ProjectCard = ({ project }: { project: ProjectPropType }) => {
   return (
     <motion.div
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
       className="h-full"
     >
-      <Card className="glass-card p-0 border-border h-full overflow-hidden group hover:neon-glow-cyan transition-all duration-500 rounded-3xl">
+      <div className="card-hover h-full overflow-hidden">
         <div className="relative aspect-video overflow-hidden border-b border-border">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-700 ease-out"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
-          
-          <div className="absolute top-4 right-4 flex gap-2">
-            <Link 
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-60" />
+          <div className="absolute top-3 right-3 flex gap-2">
+            <Link
               href={project.githubLink || "https://www.github.com/mustafatawab"}
-              className="p-2 rounded-full bg-background/50 backdrop-blur-md border border-border text-foreground/70 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all"
+              className="p-2 rounded-lg bg-background/60 backdrop-blur-sm border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all"
             >
-              <BsGithub size={18} />
+              <BsGithub size={15} />
             </Link>
-            <Link 
+            <Link
               href={project.link}
-              className="p-2 rounded-full bg-background/50 backdrop-blur-md border border-border text-foreground/70 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all"
+              className="p-2 rounded-lg bg-background/60 backdrop-blur-sm border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all"
             >
-              <FaExternalLinkAlt size={16} />
+              <FaExternalLinkAlt size={13} />
             </Link>
           </div>
         </div>
-
-        <CardContent className="p-8 space-y-4">
-          <div className="space-y-2">
-            <h4 className="text-2xl font-bold tracking-tight group-hover:text-neon-cyan transition-colors text-foreground">{project.title}</h4>
-            <p className="text-foreground/50 text-sm leading-relaxed line-clamp-3 group-hover:text-foreground/70 transition-colors">
+        <div className="p-6 space-y-3">
+          <div className="space-y-1.5">
+            <h4 className="text-lg font-semibold tracking-tight text-foreground">
+              {project.title}
+            </h4>
+            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
               {project.description}
             </p>
           </div>
-          
-          <div className="flex gap-2 flex-wrap pt-2">
+          <div className="flex gap-1.5 flex-wrap pt-1">
             {project.tags.slice(0, 4).map((tag, i) => (
               <Badge
                 key={i}
-                className="bg-foreground/5 text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-foreground/40 border-border group-hover:border-neon-cyan/30 transition-colors"
+                className="bg-foreground/5 text-[10px] font-mono tracking-tight uppercase px-2 py-0.5 text-muted-foreground border-border"
               >
                 {tag}
               </Badge>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 };

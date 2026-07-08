@@ -24,7 +24,7 @@ export function ModeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-10 h-10 flex items-center justify-center rounded-full bg-foreground/5 border border-border hover:border-neon-cyan/50 hover:bg-foreground/10 transition-all duration-300 group"
+      className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-border bg-transparent text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all group"
       aria-label="Toggle Theme"
     >
       <AnimatePresence mode="wait">
@@ -36,7 +36,7 @@ export function ModeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Sun className="h-[18px] w-[18px] text-orange-500" />
+            <Sun className="h-[16px] w-[16px]" />
           </motion.div>
         )}
         {theme === "dark" && (
@@ -47,7 +47,7 @@ export function ModeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Moon className="h-[18px] w-[18px] text-neon-cyan" />
+            <Moon className="h-[16px] w-[16px]" />
           </motion.div>
         )}
         {(theme === "system" || !theme) && (
@@ -58,15 +58,10 @@ export function ModeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Monitor className="h-[18px] w-[18px] text-foreground/50 group-hover:text-foreground" />
+            <Monitor className="h-[16px] w-[16px]" />
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* Tooltip hint */}
-      <span className="absolute -bottom-10 scale-0 group-hover:scale-100 transition-all duration-200 bg-foreground/80 text-[10px] font-mono tracking-widest text-background px-2 py-1 rounded border border-border whitespace-nowrap">
-        MODE: {theme?.toUpperCase()}
-      </span>
     </button>
   );
 }

@@ -1,105 +1,50 @@
-'use client'
-import React from 'react';
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '../../public/mustafa_logo.png'
+"use client";
+import React from "react";
+import Link from "next/link";
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
+
+const socials = [
+  {
+    label: "GitHub",
+    href: "https://github.com/waseem-mustafa-tawab",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/mustafa-tawab-330278293/",
+    icon: Linkedin,
+  },
+  {
+    label: "Email",
+    href: "mailto:waseemmustafatawab239@gmail.com",
+    icon: Mail,
+  },
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/mustafatawab', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/mustafa-tawab/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:mustafa.tawab.dev@gmail.com', label: 'Email' },
-  ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer id="footer" className="py-20 bg-background border-t border-border relative overflow-hidden transition-colors duration-500">
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-16 mb-20">
-          
-          <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="inline-block group">
-              <div className="text-2xl font-black font-display tracking-[0.2em] flex items-center gap-1 transition-all duration-300 group-hover:neon-glow-cyan p-2 rounded-lg text-foreground">
-                <span className="text-neon-cyan font-mono">{`{`}</span>
-                <span className="">MUSTAFA</span>
-                <span className="text-neon-cyan font-mono">{`}`}</span>
-              </div>
-            </Link>
-            <p className="text-foreground/40 leading-relaxed max-w-sm font-mono text-sm">
-              Architecting high-performance digital environments and scalable full-stack ecosystems.
-            </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-foreground/40 hover:text-neon-cyan hover:neon-glow-cyan transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} />
-                </a>
-              ))}
-            </div>
+    <footer className="py-12 border-t border-border bg-background">
+      <div className="container">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            {socials.map((social) => (
+              <Link
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-[var(--duration-fast)] ease-[var(--ease)]"
+              >
+                <social.icon size={18} />
+              </Link>
+            ))}
           </div>
-
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-foreground/20 mb-8">Navigation</h4>
-            <ul className="space-y-4">
-              {[
-                { label: 'About', url: '/#about' },
-                { label: 'Work', url: '/work' },
-                { label: 'Tech', url: '/#skills' },
-                { label: 'Contact', url: '/#contact' },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.url} className="text-sm font-mono text-foreground/60 hover:text-neon-cyan transition-colors uppercase tracking-widest">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-foreground/20 mb-8">Base of Operations</h4>
-            <div className="space-y-6 font-mono text-sm">
-              <div className="space-y-1">
-                <div className="text-foreground/20 uppercase text-[11px]">Transmission</div>
-                <div className="text-foreground/60 hover:text-neon-cyan transition-colors">mustafa.tawab.dev@gmail.com</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-foreground/20 uppercase text-[11px]">Coordinate</div>
-                <div className="text-foreground/60">Islamabad, PK</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-foreground/20">
-            <span>© {currentYear} MUSTAFA TAWAB</span>
-            <span className="w-1 h-1 bg-neon-purple rounded-full mx-2" />
-            <span>ENCRYPTED PORTFOLIO</span>
-            <Heart size={12} className="text-neon-purple animate-pulse ml-2" />
-          </div>
-          
-          <button
-            onClick={scrollToTop}
-            className="group flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-foreground/40 hover:text-neon-cyan transition-colors"
-          >
-            Terminal Top <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
-          </button>
+          <p className="flex items-center gap-1 text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} Mustafa Tawab
+          </p>
         </div>
       </div>
-
-      {/* Background visual detail */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-neon-purple/5 blur-[120px] rounded-full -mb-48 -mr-48" />
     </footer>
   );
 };

@@ -5,43 +5,44 @@ import { Github, ExternalLink } from "lucide-react";
 
 interface ProjectArchiveCardProps {
   project: any;
-  index: number;
 }
 
-const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
+const ProjectArchiveCard = ({ project }: ProjectArchiveCardProps) => {
   return (
-    <div className="group flex flex-col h-full rounded-[1.5rem] overflow-hidden border border-border bg-foreground/5 hover:border-neon-cyan/20 transition-all duration-500 hover:-translate-y-2 active:scale-[0.98]">
-      {/* Link wraps image + content (not the action buttons) */}
+    <div className="group card-hover flex flex-col rounded-xl overflow-hidden">
       <Link href={`/work/${project.slug}`} className="flex flex-col flex-1">
-        <div className="relative aspect-video overflow-hidden">
+        <div className="relative aspect-video overflow-hidden bg-muted">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease)] group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute top-4 left-4 flex gap-2">
-            <span className="bg-background/60 backdrop-blur-md px-3 py-1 rounded-full border border-border text-[10px] font-mono text-neon-cyan/60 uppercase tracking-widest">
-              NODE_0{index + 1}
-            </span>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
 
-        <div className="p-6 flex flex-col flex-1 space-y-4">
-          <div className="space-y-2 flex-1">
-            <h3 className="text-xl font-bold text-foreground group-hover:text-neon-cyan transition-colors">
+        <div className="p-5 flex flex-col flex-1 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono tracking-wider text-primary">
+              {project.category}
+            </span>
+          </div>
+          <div className="space-y-1.5 flex-1">
+            <h3 className="text-base font-semibold text-foreground">
               {project.title}
             </h3>
-            <p className="text-foreground/60 text-xs leading-relaxed line-clamp-2 font-sans group-hover:text-foreground transition-colors">
+            <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
               {project.description}
             </p>
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-border">
-            <div className="flex flex-wrap gap-2">
+          <div className="pt-3 border-t border-border">
+            <div className="flex flex-wrap gap-1.5">
               {project.tags.slice(0, 3).map((tag: string, i: number) => (
-                <span key={i} className="text-[11px] font-mono tracking-tighter uppercase text-foreground/30 px-2 py-0.5 border border-border rounded-md">
+                <span
+                  key={i}
+                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-foreground/[0.04] text-[10px] font-mono text-muted-foreground tracking-tight"
+                >
                   {tag}
                 </span>
               ))}
@@ -50,22 +51,21 @@ const ProjectArchiveCard = ({ project, index }: ProjectArchiveCardProps) => {
         </div>
       </Link>
 
-      {/* Action buttons - separate from the main link */}
-      <div className="px-6 pb-6 flex justify-between items-center">
+      <div className="px-5 pb-5 flex justify-between items-center">
         <Link
           href={project.link}
           target="_blank"
-          className="flex items-center gap-2 text-[11px] font-mono tracking-widest text-neon-cyan hover:text-foreground transition-colors"
+          className="flex items-center gap-1 text-xs font-mono text-primary hover:text-foreground transition-colors duration-[var(--duration-fast)]"
         >
-          LAUNCH <ExternalLink size={12} />
+          Launch <ExternalLink size={10} />
         </Link>
         {project.githubLink && (
           <Link
             href={project.githubLink}
             target="_blank"
-            className="text-foreground/20 hover:text-neon-purple transition-colors"
+            className="text-muted-foreground/40 hover:text-foreground/60 transition-colors duration-[var(--duration-fast)]"
           >
-            <Github size={16} />
+            <Github size={14} />
           </Link>
         )}
       </div>

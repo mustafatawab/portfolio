@@ -3,127 +3,113 @@ import React, { useState } from "react";
 import { projects } from "@/lib/project";
 import ProjectArchiveCard from "@/components/ProjectArchiveCard";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
-const categories = ["All", "Management Systems" , "Full-Stack Apps" , "Websites"  , "Custom Software",];
+const categories = [
+  "All",
+  "Management Systems",
+  "Full-Stack Apps",
+  "Websites",
+  "Custom Software",
+];
 
-// Helper to determine categorization
-const getProjectCategory = (project: any) => {
-    return project.category;
-};
+const getProjectCategory = (project: any) => project.category;
 
 const ProjectsPage = () => {
   const [filter, setFilter] = useState("All");
-
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(p => getProjectCategory(p) === filter);
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((p) => getProjectCategory(p) === filter);
 
   return (
-    <main className="bg-background min-h-screen transition-colors duration-500">
-      {/* Dynamic Background */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.02),transparent_70%)]" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-neon-purple/5 blur-[120px] rounded-full" />
-      </div>
-
-      {/* Header */}
-      <section className="relative pt-48 pb-20 flex flex-col items-center justify-center overflow-hidden z-10">
-        <div className="container text-center space-y-8 text-foreground">
+    <main className="bg-background min-h-screen">
+      <section className="pt-32 pb-12">
+        <div className="container text-center space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <h3 className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase mb-4">Central Database</h3>
-            <h1 className="text-5xl md:text-8xl font-bold font-display tracking-tighter leading-tight uppercase">
-              NEURAL <span className="text-gradient">VAULT</span>
+            <span className="section-label text-center">Work</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+              Project Archive
             </h1>
           </motion.div>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-foreground/40 text-sm md:text-base font-mono max-w-xl mx-auto uppercase tracking-widest leading-relaxed"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-muted-foreground text-sm max-w-xl mx-auto"
           >
-            A high-integrity repository of production architectures and specialized software deployments.
+            A curated collection of production-grade software and applications.
           </motion.p>
         </div>
       </section>
 
-      {/* Filtering */}
-      <section className="sticky top-20 z-30 py-8 backdrop-blur-md border-y border-border bg-background/40">
-        <div className="container flex flex-wrap justify-center gap-2 md:gap-4">
+      <section className="sticky top-16 z-30 py-3 border-y border-border bg-background/80 backdrop-blur-xl">
+        <div className="container flex flex-wrap justify-center gap-2">
           {categories.map((cat) => {
-            const count = cat === "All" 
-              ? projects.length 
-              : projects.filter(p => p.category === cat).length;
-            
+            const count =
+              cat === "All"
+                ? projects.length
+                : projects.filter((p) => p.category === cat).length;
+
             return (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`relative px-4 py-2 md:px-6 md:py-3 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors duration-500 group overflow-hidden cursor-pointer ${
-                  filter === cat ? "text-background" : "text-foreground/40 hover:text-foreground"
+                className={`px-4 py-1.5 text-xs font-mono tracking-wider rounded-lg transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                  filter === cat
+                    ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
+                    : "text-muted-foreground border border-border hover:border-primary/30 hover:text-foreground"
                 }`}
               >
-                {/* Background Highlight */}
-                {filter === cat && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-neon-cyan shadow-[var(--glow-cyan-md)] rounded-sm"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                
-                <span className="relative z-10 flex items-center gap-2">
-                  {cat}
-                  <span className={`text-[11px] opacity-50 ${filter === cat ? "text-background" : "text-neon-cyan"}`}>
-                    [{count}]
-                  </span>
+                {cat}
+                <span
+                  className={`ml-1.5 ${
+                    filter === cat
+                      ? "text-primary-foreground/60"
+                      : "text-primary/60"
+                  }`}
+                >
+                  [{count}]
                 </span>
-
-                {/* Hover Glow effect for inactive tabs */}
-                {filter !== cat && (
-                  <div className="absolute inset-0 bg-neon-cyan/0 group-hover:bg-neon-cyan/10 transition-colors duration-300" />
-                )}
               </button>
             );
           })}
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="py-20 relative z-10">
+      <section className="py-12">
         <div className="container">
-          <motion.div 
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            Showing {filteredProjects.length} {filter} projects
+          </div>
+          <motion.div
             layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
           >
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
+              {filteredProjects.map((project) => (
                 <motion.div
-                    key={project.title}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.4 }}
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <ProjectArchiveCard project={project} index={index} />
+                  <ProjectArchiveCard project={project} />
                 </motion.div>
               ))}
             </AnimatePresence>
           </motion.div>
         </div>
       </section>
-
-      {/* Footer Decoration */}
-      <div className="container py-32 flex justify-center">
-         <div className="w-[1px] h-32 bg-gradient-to-b from-neon-cyan to-transparent opacity-20" />
-      </div>
     </main>
   );
 };

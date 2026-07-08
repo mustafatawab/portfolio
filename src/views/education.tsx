@@ -1,136 +1,98 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { education } from "@/lib/edu";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1, y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
+  },
+};
+
 const Education = () => {
-  const containerRef = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"]
-  });
-
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   return (
-    <section id="education" ref={containerRef} className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
-      <div className="container relative z-10">
-        <div className="text-center space-y-2 mb-10 md:mb-20">
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-sm font-mono tracking-[0.4em] text-neon-cyan uppercase"
-          >
-            Evolutionary Logic
-          </motion.h3>
-          <h2 className="text-4xl md:text-7xl font-black font-display tracking-tighter leading-none text-foreground uppercase">
-            NEURAL <span className="text-gradient">PATH</span>
+    <section id="education" className="py-32 bg-background relative">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/3 w-[300px] h-[300px] bg-accent/2 blur-[80px] rounded-full" />
+      </div>
+
+      <div className="container relative">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl md:text-5xl font-semibold font-display text-foreground tracking-tight">
+            Education & <span className="text-accent">Certifications</span>
           </h2>
         </div>
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Central Neural Spine */}
-          {/* <div className=" absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/5 md:-ml-[1px]" /> */}
-          <motion.div 
-            style={{ scaleY, originY: 0 }}
-            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:-ml-[1px] z-20 shadow-[var(--glow-cyan-sm)]" 
-          />
-          
-          <div className="space-y-10">
-            {education.map((edu, index) => {
-              const Icon = edu.icon;
-              const isEven = index % 2 === 0;
-              
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className={`relative flex flex-col md:flex-row items-start md:items-center ${
-                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  {/* Branching Node */}
-                  <div className="absolute left-[20px] md:left-1/2 top-10 md:top-1/2 w-5 h-5 -ml-[10px] md:-mt-[10px] z-30">
-                    <div className="absolute inset-0 bg-neon-cyan rounded-full animate-ping opacity-20" />
-                    <div className="relative w-full h-full bg-background border-2 border-neon-cyan rounded-full shadow-[var(--glow-cyan-xs)]" />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-4xl mx-auto space-y-6"
+        >
+          {education.map((edu, index) => {
+            const Icon = edu.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="card-hover p-8"
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent flex-shrink-0">
+                    <Icon size={22} />
                   </div>
-
-                  {/* Content Container */}
-                  <div className={`w-full md:w-1/2 pl-10 lg:pl-16 md:pl-0 ${isEven ? 'md:pr-12 lg:pr-24 text-left md:text-right' : 'md:pl-12 lg:pl-24 text-left'}`}>
-                    <div className="group relative">
-                      <div className={`hidden md:block absolute top-1/2 ${isEven ? '-right-4' : '-left-4'} w-8 h-[2px] bg-foreground/10 group-hover:bg-neon-cyan/50 transition-colors`} />
-                      
-                      <div className="glass-card p-6 md:p-10 rounded-2xl md:rounded-[2rem] border-border hover:neon-glow-purple transition-all duration-500 relative overflow-hidden">
-                        <div className={`flex items-center gap-4 mb-4 md:mb-6 ${isEven ? 'md:flex-row-reverse' : ''}`}>
-                            <div className="p-3 rounded-xl bg-foreground/5 text-neon-cyan flex-shrink-0">
-                                <Icon size={24} />
-                            </div>
-                            <div className="text-[11px] font-mono tracking-widest text-foreground/40 uppercase">
-                                {edu.period}
-                            </div>
-                        </div>
-
-                        <div className="space-y-2 md:space-y-4">
-                            {edu.link ? (
-                                <Link 
-                                    href={edu.link} 
-                                    target="_blank" 
-                                    className={`group/link inline-flex items-center gap-2 ${isEven ? 'md:flex-row-reverse' : ''}`}
-                                >
-                                    <h3 className="text-xl md:text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors text-foreground">
-                                        {edu.degree}
-                                    </h3>
-                                    <ExternalLink size={16} className="text-foreground/20 group-hover/link:text-neon-cyan transition-colors" />
-                                </Link>
-                            ) : (
-                                <h3 className="text-xl md:text-2xl font-bold leading-tight group-hover:text-neon-cyan transition-colors text-foreground">
-                                    {edu.degree}
-                                </h3>
-                            )}
-                            <p className="text-neon-purple font-mono text-[11px] tracking-widest uppercase italic">
-                                {edu.institution}
-                            </p>
-                        </div>
-                        
-                        <p className="text-foreground/60 text-sm md:text-base mt-4 md:mt-6 leading-relaxed font-sans">
-                            {edu.description}
-                        </p>
-                        
-                        <div className={`flex flex-wrap gap-2 mt-6 md:mt-8 pt-4 md:pt-6 border-t border-border ${isEven ? 'md:justify-end' : ''}`}>
-                            {edu.achievements.map((achievement, i) => (
-                                <Badge
-                                    key={i}
-                                    className="bg-foreground/5 border-border text-[10px] font-mono tracking-tighter uppercase px-3 py-1 text-foreground/50 hover:text-neon-cyan hover:border-neon-cyan/50 transition-colors"
-                                >
-                                    {achievement}
-                                </Badge>
-                            ))}
-                        </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <span className="text-xs font-mono text-foreground/40 tracking-wider">{edu.period}</span>
+                        {edu.link ? (
+                          <Link href={edu.link} target="_blank" className="inline-flex items-center gap-1.5 group">
+                            <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
+                              {edu.degree}
+                            </h3>
+                            <ExternalLink size={14} className="text-foreground/20 group-hover:text-accent transition-colors" />
+                          </Link>
+                        ) : (
+                          <h3 className="text-lg font-semibold text-foreground">{edu.degree}</h3>
+                        )}
+                        <p className="text-foreground/50 text-sm mt-0.5">{edu.institution}</p>
                       </div>
                     </div>
+                    <p className="text-foreground/60 text-sm mt-4 leading-relaxed">
+                      {edu.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-border">
+                      {edu.achievements.map((achievement, i) => (
+                        <Badge
+                          key={i}
+                          variant="outline"
+                          className="border-border text-foreground/40 text-xs font-mono px-3 py-1"
+                        >
+                          {achievement}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-
-                  {/* Empty space for layout balance */}
-                  <div className="hidden md:block w-1/2" />
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
-
-      {/* Background depth detail */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(188,19,254,0.02),transparent_70%)]" />
     </section>
   );
 };
