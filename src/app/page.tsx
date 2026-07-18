@@ -4,6 +4,7 @@ import WhatIBuild from "@/views/what-i-build";
 import EngagementModels from "@/views/engagement-models";
 import Experience from "@/views/experience";
 import Projects from "@/views/projects";
+import Testimonials from "@/views/testimonials";
 import FAQ from "@/views/faq";
 import Contact from "@/views/contact";
 import { JsonLd, personSchema, breadcrumbSchema } from "@/lib/json-ld";
@@ -23,6 +24,7 @@ export default function Home() {
       <EngagementModels />
       <Experience />
       <Projects />
+      <Testimonials />
       <FAQ />
       <Contact />
     </>
