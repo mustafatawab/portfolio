@@ -140,12 +140,12 @@ export default function WhatIBuild() {
                 {offering.title}
               </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-5">
+              <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
                 {offering.description}
               </p>
 
-              <div className="space-y-2 mb-5">
-                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/40 uppercase">
+              <div className="border-t border-border pt-4 mb-6">
+                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
                   Common Applications
                 </p>
                 <div className="flex flex-wrap gap-1.5">

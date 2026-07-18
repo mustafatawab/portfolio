@@ -35,7 +35,7 @@ const models = [
     icon: Lightbulb,
     title: "Discovery & Consultation",
     description:
-      "We start by understanding your business, goals, and technical constraints. You get a clear roadmap before any commitment.",
+      "A clear roadmap before any commitment — we start by understanding your business goals and technical constraints.",
     deliverables: ["Requirement Gathering", "Technical Recommendations", "Project Scope", "Implementation Roadmap"],
     cta: { label: "Start a conversation", href: "/#contact" },
   },
@@ -83,7 +83,7 @@ export default function EngagementModels() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={stagger}
-          className="mb-24"
+          className="mb-20"
         >
           <motion.span variants={fadeUp} className="section-label">
             How I Work
@@ -96,11 +96,7 @@ export default function EngagementModels() {
             From concept to production, with you every step.
           </motion.h2>
 
-          <motion.div
-            variants={fadeUp}
-            className="relative mt-12"
-          >
-            {/* Connecting line */}
+          <motion.div variants={fadeUp} className="relative mt-12">
             <div className="hidden md:block absolute top-[18px] left-0 right-0 h-px bg-border" />
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-6 md:gap-0">
@@ -116,7 +112,7 @@ export default function EngagementModels() {
                   <div className="relative z-10 w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-primary mb-2.5">
                     <step.icon size={15} />
                   </div>
-                  <span className="text-[11px] font-mono tracking-wider text-muted-foreground leading-tight">
+                  <span className="text-[11px] md:text-xs font-mono tracking-wider text-muted-foreground leading-tight">
                     {step.label}
                   </span>
                 </motion.div>
@@ -148,7 +144,7 @@ export default function EngagementModels() {
             className="mt-4 text-[15.5px] md:text-base text-muted-foreground leading-relaxed max-w-2xl"
           >
             Every project is different. Whether you need a quick discovery session
-            or a long-term engineering partner, there is a model that fits.
+            or a long-term engineering partnership, there is a model that fits.
           </motion.p>
         </motion.div>
 
@@ -157,17 +153,13 @@ export default function EngagementModels() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14"
         >
-          {models.map((model, i) => (
+          {models.map((model) => (
             <motion.div
               key={model.title}
               variants={fadeUp}
-              className={`card-hover p-6 flex flex-col ${
-                i === models.length - 1 && models.length % 3 === 2
-                  ? "lg:col-span-3 lg:max-w-[calc(66.666%-0.75rem)] lg:mx-auto"
-                  : ""
-              }`}
+              className="card-hover p-6 flex flex-col"
             >
               <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-5">
                 <model.icon size={20} />
@@ -177,28 +169,28 @@ export default function EngagementModels() {
                 {model.title}
               </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-5">
+              <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
                 {model.description}
               </p>
 
-              <div className="space-y-2 mb-6">
-                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/40 uppercase">
+              <div className="border-t border-border pt-4 mb-6">
+                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
                   What You Get
                 </p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {model.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="flex items-center gap-2 text-xs text-muted-foreground"
+                      className="flex items-start gap-2.5 text-xs text-muted-foreground leading-snug"
                     >
-                      <span className="w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-[5px] flex-shrink-0" />
                       {d}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-auto">
+              <div className="mt-auto pt-0">
                 <Link
                   href={model.cta.href}
                   className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"

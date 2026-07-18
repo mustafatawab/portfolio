@@ -9,11 +9,20 @@ interface ExperieceType  {
 }
 
  export const experiences: ExperieceType[] = [
+  {
+    title: "Full Stack Developer",
+    company : "Webtronix",
+    location:  "Luxus Mall , Gulberg Green, Islamabad, Pakistan",
+    period: "July 2026 - Present",
+    description: "Building scalable digital platforms and custom software solutions for startups and enterprises. Focusing on full-stack development with Next.js and FastAPI, integrating AI-driven workflows to automate business processes.",
+    tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "TanStack"],
+    dotColor: "bg-purple-600",
+  },
     {
       title: "Full Stack Developer",
       company: "Atlas Solution",
       location : "Gulberg Green, Islamabad, Pakistan",
-      period: "March 2026 - Present",
+      period: "March 2026 - July 2026",
       description: "Building scalable digital platforms and custom software solutions for startups and enterprises. Focusing on full-stack development with Next.js and FastAPI, integrating AI-driven workflows to automate business processes.",
       tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "TanStack"],
       dotColor: "bg-purple-600",
