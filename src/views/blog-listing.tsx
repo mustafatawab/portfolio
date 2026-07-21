@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Clock, Search } from "lucide-react";
@@ -25,6 +25,7 @@ interface BlogListingProps {
 export default function BlogListing({ posts, tags }: BlogListingProps) {
   const [search, setSearch] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
@@ -69,42 +70,50 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
       </section>
 
       <section className="container space-y-10">
-        <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
-          <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50" size={15} />
+        <div className="space-y-4">
+          <div className="relative w-full md:w-72 lg:w-80 mx-auto md:mx-0">
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50 pointer-events-none"
+              size={15}
+            />
             <input
               type="text"
               placeholder="Search articles..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus-ring outline-none"
+              className="w-full pl-9 pr-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus-ring outline-none"
             />
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveTag(null)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
-                activeTag === null
-                  ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
-                  : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20"
-              }`}
+          <div className="flex items-center gap-3">
+            <div
+              ref={scrollRef}
+              className="flex gap-2 overflow-x-auto scrollbar-hide -mx-2 px-2 pb-1 flex-1"
             >
-              All
-            </button>
-            {tags.map((tag) => (
               <button
-                key={tag}
-                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
-                  activeTag === tag
+                onClick={() => setActiveTag(null)}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                  activeTag === null
                     ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
                     : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20"
                 }`}
               >
-                {tag}
+                All
               </button>
-            ))}
+              {tags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                  className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                    activeTag === tag
+                      ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
+                      : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

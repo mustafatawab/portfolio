@@ -213,6 +213,15 @@
     border-color: var(--danger);
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.12);
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* ─── Container ─── */

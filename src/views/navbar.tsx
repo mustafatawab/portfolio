@@ -25,7 +25,11 @@ const mobileItemVariants = {
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: 0.05 * i, duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const },
+    transition: {
+      delay: 0.05 * i,
+      duration: 0.25,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
   }),
 };
 
@@ -59,10 +63,9 @@ const Navbar = () => {
         return;
       }
       if (e.key !== "Tab" || !mobileMenuRef.current) return;
-      const focusable =
-        mobileMenuRef.current.querySelectorAll<HTMLElement>(
-          'a, button, input, [tabindex]:not([tabindex="-1"])',
-        );
+      const focusable = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'a, button, input, [tabindex]:not([tabindex="-1"])',
+      );
       if (focusable.length === 0) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -92,8 +95,10 @@ const Navbar = () => {
     >
       <nav className="container flex items-center justify-between">
         <Link href="/" className="relative group">
-          <span className="text-[15px] font-semibold tracking-tight text-foreground">
-            Mustafa Tawab
+          <span className="text-lg font-semibold tracking-tight text-foreground space-x-[2px]">
+            <span className="text-primary">{"{"}</span>
+            <span>Mustafa Tawab</span>
+            <span className="text-primary">{"}"}</span>
           </span>
         </Link>
 
@@ -109,7 +114,9 @@ const Navbar = () => {
               }`}
             >
               {link.label}
-              <span className={`absolute -bottom-[3px] left-0 right-0 h-[1.5px] bg-foreground/20 scale-x-0 transition-transform duration-[var(--duration-fast)] ease-[var(--ease)] hover:scale-x-100 ${isActive(link.url) ? 'scale-x-100 bg-foreground' : ''}`} />
+              <span
+                className={`absolute -bottom-[3px] left-0 right-0 h-[1.5px] bg-foreground/20 scale-x-0 transition-transform duration-[var(--duration-fast)] ease-[var(--ease)] hover:scale-x-100 ${isActive(link.url) ? "scale-x-100 bg-foreground" : ""}`}
+              />
             </a>
           ))}
           <div className="flex items-center gap-3 pl-4 border-l border-border">

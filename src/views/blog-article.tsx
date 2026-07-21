@@ -170,12 +170,12 @@ export default function BlogArticle({ post }: { post: Post }) {
                     prose-p:text-foreground/80 prose-p:mb-5
                     prose-strong:text-foreground
                     prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    prose-pre:p-0 prose-pre:bg-transparent prose-pre:my-6
+                    prose-pre:overflow-x-auto prose-pre:p-0 prose-pre:bg-transparent prose-pre:my-6
                     prose-code:text-primary prose-code:bg-foreground/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
                     prose-ul:list-disc prose-ol:list-decimal prose-li:text-foreground/80
                     prose-blockquote:border-l-primary prose-blockquote:border-l-2 prose-blockquote:pl-5 prose-blockquote:text-muted-foreground prose-blockquote:italic
-                    prose-table:w-full prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-3 prose-th:text-left prose-th:text-foreground
-                    prose-td:border prose-td:border-border prose-td:p-3 prose-td:text-foreground/80
+                    prose-table:block prose-table:overflow-x-auto prose-table:w-full prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-3 prose-th:text-left prose-th:text-foreground prose-th:whitespace-nowrap
+                    prose-td:border prose-td:border-border prose-td:p-3 prose-td:text-foreground/80 prose-td:whitespace-nowrap
                     prose-hr:border-border"
                   dangerouslySetInnerHTML={{ __html: post.contentHtml }}
                 />
