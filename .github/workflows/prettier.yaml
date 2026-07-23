@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Run Prettier
-        run: npx prettier --write "src/**/*.{js,vue,scss,html,md,json}" --ignore-path .gitignore
+        run: npx prettier --write "**/*.{js,jsx,ts,tsx,css,md,json}" --ignore-path .gitignore
 
       - name: Commit formatted files
         run: |
