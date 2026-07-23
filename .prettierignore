@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Auto-generated
+package-lock.json
+
+# Config files
+*.config.js
+*.config.ts
