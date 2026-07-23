@@ -1,17 +1,17 @@
 interface ContactEmailProps {
-  first_name: string;
-  last_name?: string;
-  email: string;
-  project_type: string;
-  budget: string;
+    first_name: string
+    last_name?: string
+    email: string
+    project_type: string
+    budget: string
 
-  message: string;
+    message: string
 }
 
 export function contactEmailTemplate(data: ContactEmailProps): string {
-  const { first_name, last_name, email, project_type, budget, message } = data;
+    const { first_name, last_name, email, project_type, budget, message } = data
 
-  return `
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,5 +178,5 @@ export function contactEmailTemplate(data: ContactEmailProps): string {
 
 </body>
 </html>
-  `;
+  `
 }

@@ -318,8 +318,8 @@ Note the `output: "standalone"` configuration in `next.config.js`:
 ```js
 // next.config.js
 module.exports = {
-  output: "standalone",
-};
+    output: "standalone",
+}
 ```
 
 This tells Next.js to build a standalone output that includes everything needed to run without `node_modules`.

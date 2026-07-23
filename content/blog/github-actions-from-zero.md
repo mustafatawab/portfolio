@@ -63,36 +63,36 @@ Create `.github/workflows/ci.yml`:
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "npm"
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Run linter
-        run: npm run lint
+            - name: Run linter
+              run: npm run lint
 
-      - name: Run type check
-        run: npm run typecheck
+            - name: Run type check
+              run: npm run typecheck
 
-      - name: Run tests
-        run: npm test
+            - name: Run tests
+              run: npm test
 ```
 
 ### What Happens
@@ -116,25 +116,25 @@ The `on:` block defines when your workflow runs:
 
 ```yaml
 on:
-  # Run on push to specific branches
-  push:
-    branches: [main, develop]
+    # Run on push to specific branches
+    push:
+        branches: [main, develop]
 
-  # Run on pull requests
-  pull_request:
-    branches: [main]
+    # Run on pull requests
+    pull_request:
+        branches: [main]
 
-  # Run on a schedule (cron syntax)
-  schedule:
-    - cron: "0 6 * * 1" # Every Monday at 6 AM UTC
+    # Run on a schedule (cron syntax)
+    schedule:
+        - cron: "0 6 * * 1" # Every Monday at 6 AM UTC
 
-  # Run manually from the GitHub UI
-  workflow_dispatch:
+    # Run manually from the GitHub UI
+    workflow_dispatch:
 
-  # Run when another workflow completes
-  workflow_run:
-    workflows: ["Build"]
-    types: [completed]
+    # Run when another workflow completes
+    workflow_run:
+        workflows: ["Build"]
+        types: [completed]
 ```
 
 ### Common Trigger Patterns
@@ -157,48 +157,48 @@ Real workflows have multiple jobs. Here's a pipeline that tests, builds, and dep
 name: CI/CD
 
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "npm"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: "npm"
+            - run: npm ci
+            - run: npm run lint
+            - run: npm run typecheck
+            - run: npm test
 
-  build:
-    needs: [test]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: dist/
+    build:
+        needs: [test]
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        steps:
+            - uses: actions/checkout@v4
+            - run: npm ci
+            - run: npm run build
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-output
+                  path: dist/
 
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Deploy to server
-        run: |
-          echo "Deploying to production..."
-          # SSH commands go here
+    deploy:
+        needs: [build]
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        steps:
+            - name: Deploy to server
+              run: |
+                  echo "Deploying to production..."
+                  # SSH commands go here
 ```
 
 The `needs:` keyword creates job dependencies:
@@ -217,18 +217,18 @@ Run the same job across multiple environments:
 
 ```yaml
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18, 20, 22]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18, 20, 22]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm ci
+            - run: npm test
 ```
 
 This creates 3 parallel jobs, one for each Node version. All three must pass for the workflow to succeed.
@@ -241,14 +241,14 @@ Never hardcode credentials in your workflow file. Use GitHub secrets:
 
 ```yaml
 steps:
-  - name: Deploy to server
-    env:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      SERVER_HOST: ${{ secrets.SERVER_HOST }}
-    run: |
-      echo "$SSH_PRIVATE_KEY" > ssh_key
-      chmod 600 ssh_key
-      ssh -i ssh_key deploy@$SERVER_HOST "docker compose pull && docker compose up -d"
+    - name: Deploy to server
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      run: |
+          echo "$SSH_PRIVATE_KEY" > ssh_key
+          chmod 600 ssh_key
+          ssh -i ssh_key deploy@$SERVER_HOST "docker compose pull && docker compose up -d"
 ```
 
 Set secrets in your repository: **Settings → Secrets and variables → Actions → New repository secret**.
@@ -303,8 +303,8 @@ The `setup-node` action handles npm caching automatically:
 ```yaml
 - uses: actions/setup-node@v4
   with:
-    node-version: 22
-    cache: "npm"
+      node-version: 22
+      cache: "npm"
 ```
 
 For other package managers:
@@ -313,20 +313,20 @@ For other package managers:
 # Python (pip)
 - uses: actions/setup-python@v5
   with:
-    cache: "pip"
+      cache: "pip"
 
 # Go
 - uses: actions/setup-go@v5
   with:
-    cache: true
+      cache: true
 
 # Generic cache
 - uses: actions/cache@v4
   with:
-    path: ~/.npm
-    key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-    restore-keys: |
-      ${{ runner.os }}-node-
+      path: ~/.npm
+      key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      restore-keys: |
+          ${{ runner.os }}-node-
 ```
 
 ---
@@ -375,40 +375,40 @@ Here's a complete CI workflow for a TypeScript project:
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20, 22]
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [20, 22]
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "npm"
 
-      - run: npm ci
+            - run: npm ci
 
-      - run: npm run lint
-        continue-on-error: true
+            - run: npm run lint
+              continue-on-error: true
 
-      - run: npm run typecheck
+            - run: npm run typecheck
 
-      - run: npm test -- --coverage
+            - run: npm test -- --coverage
 
-      - name: Upload coverage
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-${{ matrix.node-version }}
-          path: coverage/
+            - name: Upload coverage
+              uses: actions/upload-artifact@v4
+              with:
+                  name: coverage-${{ matrix.node-version }}
+                  path: coverage/
 ```
 
 What this does:

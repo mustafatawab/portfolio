@@ -1,60 +1,60 @@
-import { notFound } from "next/navigation";
-import { getCaseStudy, getAllCaseStudies } from "@/lib/case-studies";
-import { CaseStudyDetail } from "@/views/case-studies/case-study-detail";
-import { JsonLd, techArticleSchema, breadcrumbSchema } from "@/lib/json-ld";
+import { notFound } from "next/navigation"
+import { getCaseStudy, getAllCaseStudies } from "@/lib/case-studies"
+import { CaseStudyDetail } from "@/views/case-studies/case-study-detail"
+import { JsonLd, techArticleSchema, breadcrumbSchema } from "@/lib/json-ld"
 
 export async function generateStaticParams() {
-  const studies = getAllCaseStudies();
-  return studies.map((study) => ({ slug: study.slug }));
+    const studies = getAllCaseStudies()
+    return studies.map((study) => ({ slug: study.slug }))
 }
 
 export async function generateMetadata({
-  params,
+    params,
 }: {
-  params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
+    const { slug } = await params
+    const study = getCaseStudy(slug)
 
-  if (!study) return { title: "Case Study Not Found" };
+    if (!study) return { title: "Case Study Not Found" }
 
-  return {
-    title: study.subtitle,
-    description: `Engineering case study: ${study.subtitle}. Architecture, design decisions, trade-offs, and lessons learned.`,
-    openGraph: {
-      title: `${study.title} - Case Study | Mustafa Tawab`,
-      description: `Engineering case study: ${study.subtitle}`,
-    },
-  };
+    return {
+        title: study.subtitle,
+        description: `Engineering case study: ${study.subtitle}. Architecture, design decisions, trade-offs, and lessons learned.`,
+        openGraph: {
+            title: `${study.title} - Case Study | Mustafa Tawab`,
+            description: `Engineering case study: ${study.subtitle}`,
+        },
+    }
 }
 
 export default async function CaseStudyPage({
-  params,
+    params,
 }: {
-  params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
+    const { slug } = await params
+    const study = getCaseStudy(slug)
 
-  if (!study) notFound();
+    if (!study) notFound()
 
-  return (
-    <>
-      <JsonLd data={techArticleSchema(study)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", url: "https://mustafatawab.com" },
-          {
-            name: "Case Studies",
-            url: "https://mustafatawab.com/case-studies",
-          },
-          {
-            name: study.title,
-            url: `https://mustafatawab.com/case-studies/${study.slug}`,
-          },
-        ])}
-      />
-      <CaseStudyDetail study={study} />
-    </>
-  );
+    return (
+        <>
+            <JsonLd data={techArticleSchema(study)} />
+            <JsonLd
+                data={breadcrumbSchema([
+                    { name: "Home", url: "https://mustafatawab.com" },
+                    {
+                        name: "Case Studies",
+                        url: "https://mustafatawab.com/case-studies",
+                    },
+                    {
+                        name: study.title,
+                        url: `https://mustafatawab.com/case-studies/${study.slug}`,
+                    },
+                ])}
+            />
+            <CaseStudyDetail study={study} />
+        </>
+    )
 }

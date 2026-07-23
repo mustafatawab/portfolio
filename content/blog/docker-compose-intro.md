@@ -69,59 +69,59 @@ Let's build a real example: a Next.js frontend + Express API + PostgreSQL databa
 ```yaml
 # compose.yaml
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: my-app-db
-    restart: unless-stopped
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: my_app
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+    postgres:
+        image: postgres:16-alpine
+        container_name: my-app-db
+        restart: unless-stopped
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: app_user
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: my_app
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: my-app-api
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    env_file:
-      - ./api/.env.production
-    environment:
-      DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-      NODE_ENV: production
-    depends_on:
-      postgres:
-        condition: service_healthy
-    volumes:
-      - api-logs:/app/logs
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        container_name: my-app-api
+        restart: unless-stopped
+        ports:
+            - "3000:3000"
+        env_file:
+            - ./api/.env.production
+        environment:
+            DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+            NODE_ENV: production
+        depends_on:
+            postgres:
+                condition: service_healthy
+        volumes:
+            - api-logs:/app/logs
 
-  web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: my-app-web
-    restart: unless-stopped
-    ports:
-      - "8080:3000"
-    environment:
-      NEXT_PUBLIC_API_URL: http://api:3000
-    depends_on:
-      - api
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        container_name: my-app-web
+        restart: unless-stopped
+        ports:
+            - "8080:3000"
+        environment:
+            NEXT_PUBLIC_API_URL: http://api:3000
+        depends_on:
+            - api
 
 volumes:
-  pgdata:
-  api-logs:
+    pgdata:
+    api-logs:
 ```
 
 Run it:
@@ -172,12 +172,12 @@ Volumes persist data across container restarts. Without volumes, database data i
 
 ```yaml
 services:
-  postgres:
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    postgres:
+        volumes:
+            - pgdata:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+    pgdata:
 ```
 
 This creates a named volume `pgdata` managed by Docker. It persists even after `docker compose down`. To destroy it:
@@ -190,10 +190,10 @@ docker compose down -v
 
 ```yaml
 services:
-  api:
-    volumes:
-      - ./api:/app # Development: use local source code
-      - /app/node_modules # Don't override node_modules
+    api:
+        volumes:
+            - ./api:/app # Development: use local source code
+            - /app/node_modules # Don't override node_modules
 ```
 
 Bind mounts are useful in development where you want live code reloading. In production, use named volumes.
@@ -210,15 +210,15 @@ Inline key-value pairs:
 
 ```yaml
 environment:
-  NODE_ENV: production
-  DATABASE_URL: postgres://app_user:password@postgres:5432/my_app
+    NODE_ENV: production
+    DATABASE_URL: postgres://app_user:password@postgres:5432/my_app
 ```
 
 For secrets, use variable references from a `.env` file in the project root:
 
 ```yaml
 environment:
-  DB_PASSWORD: ${DB_PASSWORD}
+    DB_PASSWORD: ${DB_PASSWORD}
 ```
 
 ### `env_file`
@@ -227,7 +227,7 @@ Reference a file containing environment variables:
 
 ```yaml
 env_file:
-  - ./api/.env.production
+    - ./api/.env.production
 ```
 
 ### When to Use Which
@@ -269,29 +269,29 @@ A `docker run` doesn't tell you if your application is actually _working_. It on
 
 ```yaml
 healthcheck:
-  test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-  interval: 10s
-  timeout: 5s
-  retries: 3
-  start_period: 15s
+    test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+    interval: 10s
+    timeout: 5s
+    retries: 3
+    start_period: 15s
 ```
 
 For PostgreSQL, use `pg_isready`:
 
 ```yaml
 healthcheck:
-  test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
-  interval: 5s
-  timeout: 5s
-  retries: 5
+    test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
+    interval: 5s
+    timeout: 5s
+    retries: 5
 ```
 
 Healthchecks are how `depends_on` with conditions works:
 
 ```yaml
 depends_on:
-  postgres:
-    condition: service_healthy
+    postgres:
+        condition: service_healthy
 ```
 
 Without the healthcheck, `depends_on` only waits for the container to start — not for PostgreSQL to be ready to accept connections. PostgreSQL starts in ~1 second but takes 3-5 seconds to be ready for queries. Without a healthcheck condition, your API connects and fails immediately.
@@ -341,25 +341,25 @@ Compose supports merging multiple files. The convention:
 ```yaml
 # compose.yaml (base — shared config)
 services:
-  api:
-    image: my-api
-    ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: production
+    api:
+        image: my-api
+        ports:
+            - "3000:3000"
+        environment:
+            NODE_ENV: production
 ```
 
 ```yaml
 # compose.dev.yaml (development overrides)
 services:
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./api/src:/app/src
-    environment:
-      NODE_ENV: development
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.dev
+        volumes:
+            - ./api/src:/app/src
+        environment:
+            NODE_ENV: development
 ```
 
 Use them together:
@@ -389,7 +389,7 @@ Compose loads this automatically. Reference variables in `compose.yaml`:
 
 ```yaml
 environment:
-  DB_PASSWORD: ${DB_PASSWORD}
+    DB_PASSWORD: ${DB_PASSWORD}
 ```
 
 Add `.env` to `.gitignore`. Create `.env.example` with placeholder values:

@@ -27,8 +27,8 @@ Most developers know `depends_on`. Few know it has three conditions:
 
 ```yaml
 depends_on:
-  <service>:
-    condition: <service_started | service_healthy | service_completed_successfully>
+    <service>:
+        condition: <service_started | service_healthy | service_completed_successfully>
 ```
 
 ### `condition: service_started` (Default)
@@ -37,7 +37,7 @@ This is what `depends_on` does without any condition. It waits for the container
 
 ```yaml
 depends_on:
-  - postgres
+    - postgres
 ```
 
 **Problem:** PostgreSQL container starts in ~1 second but takes 3-5 seconds to be ready for queries. Your API starts, tries to connect, fails, and exits. The restart policy restarts the API, and it retries. This works eventually but wastes time and generates noise in logs.
@@ -48,21 +48,21 @@ This is what you want for databases. It waits for the service to pass its health
 
 ```yaml
 depends_on:
-  postgres:
-    condition: service_healthy
+    postgres:
+        condition: service_healthy
 ```
 
 With a proper healthcheck defined on the PostgreSQL service:
 
 ```yaml
 postgres:
-  image: postgres:16-alpine
-  healthcheck:
-    test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
-    interval: 3s
-    timeout: 3s
-    retries: 10
-    start_period: 10s
+    image: postgres:16-alpine
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
+        interval: 3s
+        timeout: 3s
+        retries: 10
+        start_period: 10s
 ```
 
 Compose does not start the API until PostgreSQL passes its healthcheck. Zero connection errors, zero restarts.
@@ -73,24 +73,24 @@ This waits for a service to run and exit with code 0. It's perfect for one-off t
 
 ```yaml
 services:
-  migrations:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    command: npx prisma migrate deploy
-    env_file:
-      - ./api/.env.production
-    depends_on:
-      postgres:
-        condition: service_healthy
+    migrations:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        command: npx prisma migrate deploy
+        env_file:
+            - ./api/.env.production
+        depends_on:
+            postgres:
+                condition: service_healthy
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        depends_on:
+            migrations:
+                condition: service_completed_successfully
 ```
 
 The flow:
@@ -116,61 +116,61 @@ Here's the production pattern:
 
 ```yaml
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: prod-db
-    restart: unless-stopped
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: my_app
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
-      interval: 3s
-      timeout: 3s
-      retries: 10
-      start_period: 10s
+    postgres:
+        image: postgres:16-alpine
+        container_name: prod-db
+        restart: unless-stopped
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: app_user
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: my_app
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
+            interval: 3s
+            timeout: 3s
+            retries: 10
+            start_period: 10s
 
-  migrations:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: prod-migrations
-    env_file:
-      - ./api/.env.production
-    environment:
-      DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: npx prisma migrate deploy
+    migrations:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        container_name: prod-migrations
+        env_file:
+            - ./api/.env.production
+        environment:
+            DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+        depends_on:
+            postgres:
+                condition: service_healthy
+        command: npx prisma migrate deploy
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: prod-api
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    env_file:
-      - ./api/.env.production
-    environment:
-      DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-      NODE_ENV: production
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        container_name: prod-api
+        restart: unless-stopped
+        ports:
+            - "3000:3000"
+        env_file:
+            - ./api/.env.production
+        environment:
+            DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+            NODE_ENV: production
+        depends_on:
+            migrations:
+                condition: service_completed_successfully
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 15s
 ```
 
 ### Why This Pattern Works
@@ -192,20 +192,20 @@ Add a preview service that runs migrations in dry-run mode:
 
 ```yaml
 preview-migrations:
-  build:
-    context: ./api
-    dockerfile: Dockerfile
-  env_file:
-    - ./api/.env.production
-  environment:
-    DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-  depends_on:
-    postgres:
-      condition: service_healthy
-  command: npx prisma migrate status
+    build:
+        context: ./api
+        dockerfile: Dockerfile
+    env_file:
+        - ./api/.env.production
+    environment:
+        DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+    depends_on:
+        postgres:
+            condition: service_healthy
+    command: npx prisma migrate status
 
-  profiles:
-    - preview
+    profiles:
+        - preview
 ```
 
 Run it to check migration status before deploying:
@@ -251,98 +251,98 @@ Here's the complete production file for a Next.js + Express + PostgreSQL stack:
 
 ```yaml
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: prod-db
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:5432:5432"
-    environment:
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: my_app
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
-      interval: 3s
-      timeout: 3s
-      retries: 10
-      start_period: 10s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    postgres:
+        image: postgres:16-alpine
+        container_name: prod-db
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:5432:5432"
+        environment:
+            POSTGRES_USER: app_user
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: my_app
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U app_user -d my_app"]
+            interval: 3s
+            timeout: 3s
+            retries: 10
+            start_period: 10s
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
 
-  migrations:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: prod-migrations
-    env_file:
-      - ./api/.env.production
-    environment:
-      DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: npx prisma migrate deploy
+    migrations:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        container_name: prod-migrations
+        env_file:
+            - ./api/.env.production
+        environment:
+            DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+        depends_on:
+            postgres:
+                condition: service_healthy
+        command: npx prisma migrate deploy
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: prod-api
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:3000:3000"
-    env_file:
-      - ./api/.env.production
-    environment:
-      DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
-      NODE_ENV: production
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        container_name: prod-api
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:3000:3000"
+        env_file:
+            - ./api/.env.production
+        environment:
+            DATABASE_URL: postgres://app_user:${DB_PASSWORD}@postgres:5432/my_app
+            NODE_ENV: production
+        depends_on:
+            migrations:
+                condition: service_completed_successfully
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 15s
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
 
-  web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: prod-web
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:3000"
-    environment:
-      NEXT_PUBLIC_API_URL: http://api:3000
-    depends_on:
-      - api
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        container_name: prod-web
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:8080:3000"
+        environment:
+            NEXT_PUBLIC_API_URL: http://api:3000
+        depends_on:
+            - api
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:3000"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 15s
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
 
 volumes:
-  pgdata:
+    pgdata:
 ```
 
 ### What Changed from the Dev Compose

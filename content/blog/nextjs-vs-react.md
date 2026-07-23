@@ -28,33 +28,33 @@ React is a declarative, component-based library for building user interfaces. It
 Here's a typical React component:
 
 ```tsx
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 interface UserProps {
-  userId: string;
+    userId: string
 }
 
 export default function UserProfile({ userId }: UserProps) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetch(`/api/users/${userId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      });
-  }, [userId]);
+    useEffect(() => {
+        fetch(`/api/users/${userId}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setUser(data)
+                setLoading(false)
+            })
+    }, [userId])
 
-  if (loading) return <div className="animate-pulse">Loading...</div>;
+    if (loading) return <div className="animate-pulse">Loading...</div>
 
-  return (
-    <div className="p-6 rounded-xl bg-card">
-      <h2 className="text-2xl font-bold">{user.name}</h2>
-      <p className="text-muted">{user.email}</p>
-    </div>
-  );
+    return (
+        <div className="p-6 rounded-xl bg-card">
+            <h2 className="text-2xl font-bold">{user.name}</h2>
+            <p className="text-muted">{user.email}</p>
+        </div>
+    )
 }
 ```
 
@@ -71,21 +71,21 @@ React renders on the client by default. Next.js can pre-render pages on the serv
 ```tsx
 // app/users/[id]/page.tsx
 export default async function UserPage({
-  params,
+    params,
 }: {
-  params: Promise<{ id: string }>;
+    params: Promise<{ id: string }>
 }) {
-  const { id } = await params;
-  const user = await fetch(`https://api.example.com/users/${id}`).then((res) =>
-    res.json(),
-  );
+    const { id } = await params
+    const user = await fetch(`https://api.example.com/users/${id}`).then(
+        (res) => res.json()
+    )
 
-  return (
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
-    </div>
-  );
+    return (
+        <div>
+            <h1>{user.name}</h1>
+            <p>{user.email}</p>
+        </div>
+    )
 }
 ```
 
@@ -98,27 +98,27 @@ For content that doesn't change frequently, Next.js builds HTML at compile time:
 ```tsx
 // app/blog/page.tsx
 export async function generateStaticParams() {
-  const posts = await fetch("https://api.example.com/posts").then((res) =>
-    res.json(),
-  );
-  return posts.map((post: any) => ({ slug: post.slug }));
+    const posts = await fetch("https://api.example.com/posts").then((res) =>
+        res.json()
+    )
+    return posts.map((post: any) => ({ slug: post.slug }))
 }
 
 export default async function BlogPage() {
-  const posts = await fetch("https://api.example.com/posts").then((res) =>
-    res.json(),
-  );
+    const posts = await fetch("https://api.example.com/posts").then((res) =>
+        res.json()
+    )
 
-  return (
-    <div className="grid gap-6">
-      {posts.map((post: any) => (
-        <article key={post.slug} className="p-6 border rounded-lg">
-          <h2>{post.title}</h2>
-          <p>{post.excerpt}</p>
-        </article>
-      ))}
-    </div>
-  );
+    return (
+        <div className="grid gap-6">
+            {posts.map((post: any) => (
+                <article key={post.slug} className="p-6 border rounded-lg">
+                    <h2>{post.title}</h2>
+                    <p>{post.excerpt}</p>
+                </article>
+            ))}
+        </div>
+    )
 }
 ```
 
@@ -146,21 +146,21 @@ React Server Components (RSC) let you run React components on the server with ze
 
 ```tsx
 // This component NEVER ships JavaScript to the client
-import { db } from "@/lib/database";
+import { db } from "@/lib/database"
 
 export default async function Dashboard() {
-  const stats = await db.query(`
+    const stats = await db.query(`
     SELECT COUNT(*) as total_users,
            AVG(session_duration) as avg_duration
     FROM analytics
-  `);
+  `)
 
-  return (
-    <div>
-      <p>Total Users: {stats.total_users}</p>
-      <p>Avg Session: {stats.avg_duration}s</p>
-    </div>
-  );
+    return (
+        <div>
+            <p>Total Users: {stats.total_users}</p>
+            <p>Avg Session: {stats.avg_duration}s</p>
+        </div>
+    )
 }
 ```
 
@@ -191,27 +191,27 @@ Example: A real-time collaborative code editor. The entire app is client-side in
 ```tsx
 // Pure React makes sense here
 export default function CodeEditor() {
-  const [code, setCode] = useState("");
-  const [cursor, setCursor] = useState({ line: 0, col: 0 });
+    const [code, setCode] = useState("")
+    const [cursor, setCursor] = useState({ line: 0, col: 0 })
 
-  // WebSocket connection for real-time collaboration
-  useEffect(() => {
-    const ws = new WebSocket("wss://collab.example.com");
-    ws.onmessage = (event) => {
-      const update = JSON.parse(event.data);
-      applyRemoteChange(update);
-    };
-    return () => ws.close();
-  }, []);
+    // WebSocket connection for real-time collaboration
+    useEffect(() => {
+        const ws = new WebSocket("wss://collab.example.com")
+        ws.onmessage = (event) => {
+            const update = JSON.parse(event.data)
+            applyRemoteChange(update)
+        }
+        return () => ws.close()
+    }, [])
 
-  return (
-    <Editor
-      value={code}
-      onChange={setCode}
-      onCursorChange={setCursor}
-      theme="dark"
-    />
-  );
+    return (
+        <Editor
+            value={code}
+            onChange={setCode}
+            onCursorChange={setCursor}
+            theme="dark"
+        />
+    )
 }
 ```
 
@@ -229,26 +229,26 @@ Example: This portfolio site. Every page needs to load fast, rank well, and rend
 
 ```tsx
 // Next.js Server Component for a blog
-import { getPostBySlug } from "@/lib/posts";
-import { notFound } from "next/navigation";
+import { getPostBySlug } from "@/lib/posts"
+import { notFound } from "next/navigation"
 
 export default async function PostPage({
-  params,
+    params,
 }: {
-  params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+    const { slug } = await params
+    const post = await getPostBySlug(slug)
 
-  if (!post) notFound();
+    if (!post) notFound()
 
-  return (
-    <article className="max-w-3xl mx-auto">
-      <h1 className="text-5xl font-bold">{post.title}</h1>
-      <time className="text-muted">{post.date}</time>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-    </article>
-  );
+    return (
+        <article className="max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold">{post.title}</h1>
+            <time className="text-muted">{post.date}</time>
+            <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        </article>
+    )
 }
 ```
 
@@ -259,28 +259,28 @@ Modern Next.js lets you mix strategies per page:
 ```tsx
 // app/layout.tsx — Server Component (default)
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>{children}</body>
+        </html>
+    )
 }
 
 // app/dashboard/page.tsx — Client Component
-("use client");
+;("use client")
 
 export default function Dashboard() {
-  const [data, setData] = useState([]);
+    const [data, setData] = useState([])
 
-  useEffect(() => {
-    fetchData().then(setData);
-  }, []);
+    useEffect(() => {
+        fetchData().then(setData)
+    }, [])
 
-  return <Chart data={data} />;
+    return <Chart data={data} />
 }
 ```
 

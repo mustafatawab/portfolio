@@ -79,53 +79,53 @@ Create `.github/workflows/deploy.yml`:
 name: Deploy
 
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+    REGISTRY: ghcr.io
+    IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+    build-and-deploy:
+        runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: write
+        permissions:
+            contents: read
+            packages: write
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: ./api
-          file: ./api/Dockerfile
-          push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v6
+              with:
+                  context: ./api
+                  file: ./api/Dockerfile
+                  push: true
+                  tags: |
+                      ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                      ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
-      - name: Deploy to production
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /app
-            docker compose pull
-            docker compose up -d --remove-orphans
-            docker image prune -f
+            - name: Deploy to production
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd /app
+                      docker compose pull
+                      docker compose up -d --remove-orphans
+                      docker image prune -f
 ```
 
 ### What This Does
@@ -133,8 +133,8 @@ jobs:
 1. **Checkout** — Pulls the code
 2. **Login** — Authenticates with GHCR using the built-in `GITHUB_TOKEN` (no manual secret setup)
 3. **Build & Push** — Builds the Docker image and pushes it with two tags:
-   - `latest` — always points to the current production version
-   - `${{ github.sha }}` — the commit hash, for rollback
+    - `latest` — always points to the current production version
+    - `${{ github.sha }}` — the commit hash, for rollback
 4. **Deploy** — SSHes into the server, pulls the new image, and restarts containers
 
 ---
@@ -147,64 +147,64 @@ For a multi-service application, build and push each image separately:
 name: Deploy
 
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 
 env:
-  REGISTRY: ghcr.io
+    REGISTRY: ghcr.io
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
 
-    strategy:
-      matrix:
-        service:
-          - name: api
-            context: ./api
-            dockerfile: ./api/Dockerfile
-          - name: web
-            context: ./web
-            dockerfile: ./web/Dockerfile
+        strategy:
+            matrix:
+                service:
+                    - name: api
+                      context: ./api
+                      dockerfile: ./api/Dockerfile
+                    - name: web
+                      context: ./web
+                      dockerfile: ./web/Dockerfile
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push ${{ matrix.service.name }}
-        uses: docker/build-push-action@v6
-        with:
-          context: ${{ matrix.service.context }}
-          file: ${{ matrix.service.dockerfile }}
-          push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{ github.sha }}
+            - name: Build and push ${{ matrix.service.name }}
+              uses: docker/build-push-action@v6
+              with:
+                  context: ${{ matrix.service.context }}
+                  file: ${{ matrix.service.dockerfile }}
+                  push: true
+                  tags: |
+                      ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:latest
+                      ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{ github.sha }}
 
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to production
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /app
-            docker compose pull
-            docker compose up -d --remove-orphans
-            docker image prune -f
+    deploy:
+        needs: [build]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to production
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd /app
+                      docker compose pull
+                      docker compose up -d --remove-orphans
+                      docker image prune -f
 ```
 
 The `matrix` strategy builds both images in parallel, then deploys once.
@@ -217,34 +217,34 @@ The deployment commands need a `compose.yaml` on the server that uses GHCR image
 
 ```yaml
 services:
-  api:
-    image: ghcr.io/mustafatawab/my-repo/api:latest
-    container_name: prod-api
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:3000:3000"
-    env_file:
-      - .env.production
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
+    api:
+        image: ghcr.io/mustafatawab/my-repo/api:latest
+        container_name: prod-api
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:3000:3000"
+        env_file:
+            - .env.production
+        depends_on:
+            migrations:
+                condition: service_completed_successfully
 
-  web:
-    image: ghcr.io/mustafatawab/my-repo/web:latest
-    container_name: prod-web
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:3000"
+    web:
+        image: ghcr.io/mustafatawab/my-repo/web:latest
+        container_name: prod-web
+        restart: unless-stopped
+        ports:
+            - "127.0.0.1:8080:3000"
 
-  migrations:
-    image: ghcr.io/mustafatawab/my-repo/api:latest
-    container_name: prod-migrations
-    env_file:
-      - .env.production
-    command: npx prisma migrate deploy
-    depends_on:
-      postgres:
-        condition: service_healthy
+    migrations:
+        image: ghcr.io/mustafatawab/my-repo/api:latest
+        container_name: prod-migrations
+        env_file:
+            - .env.production
+        command: npx prisma migrate deploy
+        depends_on:
+            postgres:
+                condition: service_healthy
 ```
 
 Note that `build:` is absent. The images come from GHCR, not from local builds. `docker compose pull` fetches the latest versions.
@@ -295,27 +295,27 @@ Or automate it with a rollback workflow:
 name: Rollback
 
 on:
-  workflow_dispatch:
-    inputs:
-      commit:
-        description: "Commit SHA to roll back to"
-        required: true
+    workflow_dispatch:
+        inputs:
+            commit:
+                description: "Commit SHA to roll back to"
+                required: true
 
 jobs:
-  rollback:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy previous version
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /app
-            sed -i "s/:latest/:${{ github.event.inputs.commit }}/g" compose.yaml
-            docker compose pull
-            docker compose up -d
+    rollback:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy previous version
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd /app
+                      sed -i "s/:latest/:${{ github.event.inputs.commit }}/g" compose.yaml
+                      docker compose pull
+                      docker compose up -d
 ```
 
 Run it from **Actions → Rollback → Run workflow → Enter commit SHA**.
@@ -332,23 +332,23 @@ Get notified when deployments succeed or fail:
   if: failure()
   uses: slackapi/slack-github-action@v1
   with:
-    payload: |
-      {
-        "text": "❌ Deployment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-      }
+      payload: |
+          {
+            "text": "❌ Deployment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }
   env:
-    SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
 - name: Notify on success
   if: success()
   uses: slackapi/slack-github-action@v1
   with:
-    payload: |
-      {
-        "text": "✅ Deployed ${{ github.sha }} to production"
-      }
+      payload: |
+          {
+            "text": "✅ Deployed ${{ github.sha }} to production"
+          }
   env:
-    SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
 Same pattern works for Discord, email, or any webhook.
@@ -363,87 +363,87 @@ Here's the full pipeline combining tests, builds, and deployment:
 name: CI/CD
 
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
 
 env:
-  REGISTRY: ghcr.io
+    REGISTRY: ghcr.io
 
 jobs:
-  test:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "npm"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
+    test:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: "npm"
+            - run: npm ci
+            - run: npm run lint
+            - run: npm run typecheck
+            - run: npm test
 
-  build:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    build:
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
 
-    strategy:
-      matrix:
-        service:
-          - name: api
-            context: ./api
-            dockerfile: ./api/Dockerfile
-          - name: web
-            context: ./web
-            dockerfile: ./web/Dockerfile
+        strategy:
+            matrix:
+                service:
+                    - name: api
+                      context: ./api
+                      dockerfile: ./api/Dockerfile
+                    - name: web
+                      context: ./web
+                      dockerfile: ./web/Dockerfile
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push ${{ matrix.service.name }}
-        uses: docker/build-push-action@v6
-        with:
-          context: ${{ matrix.service.context }}
-          file: ${{ matrix.service.dockerfile }}
-          push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:latest
-            ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{ github.sha }}
+            - name: Build and push ${{ matrix.service.name }}
+              uses: docker/build-push-action@v6
+              with:
+                  context: ${{ matrix.service.context }}
+                  file: ${{ matrix.service.dockerfile }}
+                  push: true
+                  tags: |
+                      ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:latest
+                      ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{ github.sha }}
 
-  deploy:
-    needs: [build]
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to production
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /app
-            docker compose pull
-            docker compose up -d --remove-orphans
-            docker image prune -f
+    deploy:
+        needs: [build]
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to production
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: ${{ secrets.SERVER_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd /app
+                      docker compose pull
+                      docker compose up -d --remove-orphans
+                      docker image prune -f
 
-      - name: Verify deployment
-        run: |
-          sleep 10
-          curl -f https://yourapp.com/api/health || exit 1
+            - name: Verify deployment
+              run: |
+                  sleep 10
+                  curl -f https://yourapp.com/api/health || exit 1
 ```
 
 The flow:
