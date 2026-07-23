@@ -46,7 +46,7 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
             >
-              Building modern software that solves real business problems.
+              Building modern <span className="text-primary">software</span> that <span className="text-primary">solves</span> real business problems.
             </motion.h1>
 
             <motion.p
