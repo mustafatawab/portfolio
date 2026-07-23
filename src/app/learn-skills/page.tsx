@@ -9,16 +9,24 @@ export default function LearnSkillsPage() {
   const skills = [
     {
       title: "Web Development Fundamentals",
-      description: "Learn HTML, CSS, and JavaScript to build the foundation of modern web development.",
+      description:
+        "Learn HTML, CSS, and JavaScript to build the foundation of modern web development.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Beginner",
       duration: "4 weeks",
-      topics: ["HTML5", "CSS3", "JavaScript Basics", "Responsive Design", "Web Accessibility"],
+      topics: [
+        "HTML5",
+        "CSS3",
+        "JavaScript Basics",
+        "Responsive Design",
+        "Web Accessibility",
+      ],
       link: "/#contact",
     },
     {
       title: "React & Next.js Development",
-      description: "Master React and Next.js to build modern, performant web applications.",
+      description:
+        "Master React and Next.js to build modern, performant web applications.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "8 weeks",
@@ -33,38 +41,66 @@ export default function LearnSkillsPage() {
     },
     {
       title: "Vue.js Development",
-      description: "Learn Vue.js to build reactive, component-based web applications.",
+      description:
+        "Learn Vue.js to build reactive, component-based web applications.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "6 weeks",
-      topics: ["Vue.js Fundamentals", "Vue Router", "Vuex", "Composition API", "Vue 3 Features"],
+      topics: [
+        "Vue.js Fundamentals",
+        "Vue Router",
+        "Vuex",
+        "Composition API",
+        "Vue 3 Features",
+      ],
       link: "/#contact",
     },
     {
       title: "Quasar Framework",
-      description: "Build high-performance Vue.js applications with the Quasar Framework.",
+      description:
+        "Build high-performance Vue.js applications with the Quasar Framework.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Intermediate",
       duration: "5 weeks",
-      topics: ["Quasar CLI", "UI Components", "Layouts", "Quasar Plugins", "Mobile Development"],
+      topics: [
+        "Quasar CLI",
+        "UI Components",
+        "Layouts",
+        "Quasar Plugins",
+        "Mobile Development",
+      ],
       link: "/#contact",
     },
     {
       title: "Python Programming",
-      description: "Learn Python for backend development, data analysis, and automation.",
+      description:
+        "Learn Python for backend development, data analysis, and automation.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Beginner to Intermediate",
       duration: "8 weeks",
-      topics: ["Python Basics", "Data Structures", "OOP in Python", "Web Scraping", "API Development"],
+      topics: [
+        "Python Basics",
+        "Data Structures",
+        "OOP in Python",
+        "Web Scraping",
+        "API Development",
+      ],
       link: "/#contact",
     },
     {
       title: "AI Agent Development",
-      description: "Build autonomous AI agents that can perform complex tasks and solve problems.",
+      description:
+        "Build autonomous AI agents that can perform complex tasks and solve problems.",
       icon: <BookOpen className="h-6 w-6" />,
       level: "Advanced",
       duration: "10 weeks",
-      topics: ["Agent Architecture", "LLM Integration", "Tool Use", "Memory Systems", "Multi-agent Systems"],
+      topics: [
+        "Agent Architecture",
+        "LLM Integration",
+        "Tool Use",
+        "Memory Systems",
+        "Multi-agent Systems",
+      ],
       link: "/#contact",
     },
   ];
@@ -89,7 +125,8 @@ export default function LearnSkillsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-foreground/40 text-sm max-w-xl mx-auto leading-relaxed"
           >
-            Systematic learning paths designed to master modern full-stack development and AI integration.
+            Systematic learning paths designed to master modern full-stack
+            development and AI integration.
           </motion.p>
         </div>
       </section>
@@ -113,8 +150,12 @@ export default function LearnSkillsPage() {
                 </div>
 
                 <div className="space-y-3 flex-1">
-                  <h3 className="text-lg font-semibold text-foreground">{skill.title}</h3>
-                  <p className="text-foreground/50 text-sm leading-relaxed">{skill.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {skill.title}
+                  </h3>
+                  <p className="text-foreground/50 text-sm leading-relaxed">
+                    {skill.description}
+                  </p>
 
                   <div className="flex gap-4 pt-1">
                     <div className="flex items-center gap-1 text-[10px] font-mono text-accent uppercase tracking-wider">
@@ -128,7 +169,10 @@ export default function LearnSkillsPage() {
                   <div className="pt-4 border-t border-border">
                     <ul className="space-y-1.5">
                       {skill.topics.map((topic, i) => (
-                        <li key={i} className="flex items-center gap-2 text-xs text-foreground/40">
+                        <li
+                          key={i}
+                          className="flex items-center gap-2 text-xs text-foreground/40"
+                        >
                           <CheckCircle size={12} className="text-accent" />
                           {topic}
                         </li>

@@ -80,10 +80,7 @@ export default function Testimonials() {
               variants={fadeUp}
               className="card-hover rounded-xl border border-border/50 p-6 sm:p-7 flex flex-col"
             >
-              <Quote
-                size={18}
-                className="text-primary/30 mb-4 flex-shrink-0"
-              />
+              <Quote size={18} className="text-primary/30 mb-4 flex-shrink-0" />
               <blockquote className="text-sm text-muted-foreground leading-relaxed flex-1">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>

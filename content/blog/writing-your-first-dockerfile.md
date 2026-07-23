@@ -53,11 +53,11 @@ FROM node:22-alpine AS builder
 
 Alpine Linux is ~5MB vs Debian's ~80MB. The `node:22-alpine` image is ~130MB versus `node:22` at ~900MB.
 
-| Image | Size | Use Case |
-|-------|------|----------|
-| `node:22` | ~900MB | Full Debian, full build toolchain |
-| `node:22-alpine` | ~130MB | Minimal, production, most apps |
-| `node:22-slim` | ~200MB | Smaller than full, has glibc |
+| Image            | Size   | Use Case                          |
+| ---------------- | ------ | --------------------------------- |
+| `node:22`        | ~900MB | Full Debian, full build toolchain |
+| `node:22-alpine` | ~130MB | Minimal, production, most apps    |
+| `node:22-slim`   | ~200MB | Smaller than full, has glibc      |
 
 Always default to `-alpine` unless you need native extensions that require compilation.
 
@@ -99,12 +99,13 @@ RUN npm ci --omit=dev
 
 Why `npm ci` instead of `npm install`?
 
-| Command | Behavior |
-|---------|----------|
-| `npm install` | Writes to `package-lock.json`, different behavior per environment |
-| `npm ci` | Uses `package-lock.json` exactly, fails if they don't match, faster |
+| Command       | Behavior                                                            |
+| ------------- | ------------------------------------------------------------------- |
+| `npm install` | Writes to `package-lock.json`, different behavior per environment   |
+| `npm ci`      | Uses `package-lock.json` exactly, fails if they don't match, faster |
 
 `npm ci` is designed for CI and production. It:
+
 - Deletes `node_modules` and reinstalls from scratch
 - Respects `package-lock.json` exactly — no surprises
 - Is 2-3x faster than `npm install`
@@ -207,13 +208,13 @@ CMD ["npm", "start"]              # ❌ Wrong
 
 Here's why:
 
-| | `npm start` | `node dist/server.js` |
-|---|---|---|
-| **Node version** | Uses system `node` | Uses image `node` |
-| **Signal handling** | npm doesn't forward SIGTERM properly | Node handles signals correctly |
-| **Process ID** | npm is PID 1, not your app | Your app is PID 1 |
-| **Startup time** | npm adds 200-300ms overhead | Direct — no overhead |
-| **Shutdown** | `docker stop` may hang, forcing `docker kill` | Graceful shutdown works |
+|                     | `npm start`                                   | `node dist/server.js`          |
+| ------------------- | --------------------------------------------- | ------------------------------ |
+| **Node version**    | Uses system `node`                            | Uses image `node`              |
+| **Signal handling** | npm doesn't forward SIGTERM properly          | Node handles signals correctly |
+| **Process ID**      | npm is PID 1, not your app                    | Your app is PID 1              |
+| **Startup time**    | npm adds 200-300ms overhead                   | Direct — no overhead           |
+| **Shutdown**        | `docker stop` may hang, forcing `docker kill` | Graceful shutdown works        |
 
 When you run `npm start`, npm becomes PID 1 inside the container. When Docker sends a SIGTERM to stop the container, npm doesn't forward it to your Node.js process. Your app keeps running, Docker waits 10 seconds, then sends SIGKILL. That means dropped connections, unprocessed requests, and corrupted state.
 
@@ -333,15 +334,15 @@ In the next article, we'll use multi-stage builds to shrink a full-stack TypeScr
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| **2. Writing Your First Dockerfile — The Right Way** | ← You are here |
-| 3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB | Coming soon |
-| 4. Docker Compose — Stop Running 10 `docker run` Commands | Coming soon |
-| 5. Docker Compose for Production | Coming soon |
-| 6. Linux Survival Guide for Developers Coming from macOS | Coming soon |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                              | Topic          |
+| -------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)  |                |
+| **2. Writing Your First Dockerfile — The Right Way**                 | ← You are here |
+| 3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB | Coming soon    |
+| 4. Docker Compose — Stop Running 10 `docker run` Commands            | Coming soon    |
+| 5. Docker Compose for Production                                     | Coming soon    |
+| 6. Linux Survival Guide for Developers Coming from macOS             | Coming soon    |
+| 7. GitHub Actions From Zero — Build Your First Pipeline              | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically      | Coming soon    |

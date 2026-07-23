@@ -32,8 +32,16 @@ const skills: SkillProps[] = [
   { name: "React", icon: <SiReact size={20} />, category: "Frontend" },
   { name: "Next.js", icon: <SiNextdotjs size={20} />, category: "Backend" },
   { name: "FastAPI", icon: <SiFastapi size={20} />, category: "Backend" },
-  { name: "TypeScript", icon: <SiTypescript size={20} />, category: "Frontend" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={20} />, category: "Frontend" },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript size={20} />,
+    category: "Frontend",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss size={20} />,
+    category: "Frontend",
+  },
   { name: "Node.js", icon: <SiNodedotjs size={20} />, category: "Backend" },
   { name: "MongoDB", icon: <SiMongodb size={20} />, category: "Backend" },
   { name: "PostgreSQL", icon: <SiPostgresql size={20} />, category: "Backend" },
@@ -48,7 +56,8 @@ const skills: SkillProps[] = [
 
 const Skills = () => {
   const [filter, setFilter] = useState<string>("All");
-  const filteredSkills = filter === "All" ? skills : skills.filter(s => s.category === filter);
+  const filteredSkills =
+    filter === "All" ? skills : skills.filter((s) => s.category === filter);
 
   return (
     <section id="skills" className="py-32 bg-background">
@@ -67,8 +76,8 @@ const Skills = () => {
               variant={filter === cat ? "default" : "outline"}
               className={`rounded-full px-6 py-2 text-xs tracking-wider transition-all duration-300 ${
                 filter === cat
-                ? "bg-accent text-background hover:bg-accent/90 shadow-[var(--shadow-sm)]"
-                : "border-border text-foreground/50 hover:border-accent/30 hover:text-foreground"
+                  ? "bg-accent text-background hover:bg-accent/90 shadow-[var(--shadow-sm)]"
+                  : "border-border text-foreground/50 hover:border-accent/30 hover:text-foreground"
               }`}
             >
               {cat}
@@ -80,7 +89,10 @@ const Skills = () => {
           Showing {filteredSkills.length} {filter} skills
         </div>
 
-        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <motion.div
+          layout
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
+        >
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill, i) => (
               <motion.div
@@ -96,8 +108,12 @@ const Skills = () => {
                   {skill.icon}
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-foreground">{skill.name}</div>
-                  <div className="text-xs text-foreground/40 font-mono mt-0.5">{skill.category}</div>
+                  <div className="text-sm font-medium text-foreground">
+                    {skill.name}
+                  </div>
+                  <div className="text-xs text-foreground/40 font-mono mt-0.5">
+                    {skill.category}
+                  </div>
                 </div>
               </motion.div>
             ))}

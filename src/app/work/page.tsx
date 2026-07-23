@@ -82,11 +82,7 @@ const ProjectsPage = () => {
 
       <section className="py-12">
         <div className="container">
-          <div
-            aria-live="polite"
-            aria-atomic="true"
-            className="sr-only"
-          >
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
             Showing {filteredProjects.length} {filter} projects
           </div>
           <motion.div

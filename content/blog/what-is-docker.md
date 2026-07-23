@@ -10,7 +10,7 @@ featured: true
 
 If you've been in software development for any length of time, you've almost certainly heard someone say:
 
-> *"It works on my machine."*
+> _"It works on my machine."_
 
 This single phrase has caused more production incidents, delayed more deployments, and frustrated more developers than almost anything else in software engineering. Docker exists to eliminate it entirely.
 
@@ -217,11 +217,11 @@ docker rm my-api
 
 ### Understanding the `-d`, `-it`, and `--rm` Flags
 
-| Flag | Meaning | Use When |
-|------|---------|----------|
-| `-d` | Detached (background) | Running services |
-| `-it` | Interactive terminal | Debugging, exploring |
-| `--rm` | Auto-remove on exit | One-off commands |
+| Flag     | Meaning               | Use When                     |
+| -------- | --------------------- | ---------------------------- |
+| `-d`     | Detached (background) | Running services             |
+| `-it`    | Interactive terminal  | Debugging, exploring         |
+| `--rm`   | Auto-remove on exit   | One-off commands             |
 | `--name` | Custom container name | Always — easier to reference |
 
 ---
@@ -271,15 +271,15 @@ In the next article, we'll write a production-ready `Dockerfile` for a Node.js/E
 
 ---
 
-*This article is part of the **DevOps from Zero** series — a hands-on journey from Docker fundamentals to Kubernetes and cloud platforms.*
+_This article is part of the **DevOps from Zero** series — a hands-on journey from Docker fundamentals to Kubernetes and cloud platforms._
 
-| Article | Topic |
-|---------|-------|
-| **1. What is Docker and Why Should You Care?** | ← You are here |
-| 2. Writing Your First Dockerfile — The Right Way | Coming soon |
-| 3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB | Coming soon |
-| 4. Docker Compose — Stop Running 10 `docker run` Commands | Coming soon |
-| 5. Docker Compose for Production | Coming soon |
-| 6. Linux Survival Guide for Developers Coming from macOS | Coming soon |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                              | Topic          |
+| -------------------------------------------------------------------- | -------------- |
+| **1. What is Docker and Why Should You Care?**                       | ← You are here |
+| 2. Writing Your First Dockerfile — The Right Way                     | Coming soon    |
+| 3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB | Coming soon    |
+| 4. Docker Compose — Stop Running 10 `docker run` Commands            | Coming soon    |
+| 5. Docker Compose for Production                                     | Coming soon    |
+| 6. Linux Survival Guide for Developers Coming from macOS             | Coming soon    |
+| 7. GitHub Actions From Zero — Build Your First Pipeline              | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically      | Coming soon    |

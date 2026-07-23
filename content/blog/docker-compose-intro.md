@@ -192,8 +192,8 @@ docker compose down -v
 services:
   api:
     volumes:
-      - ./api:/app          # Development: use local source code
-      - /app/node_modules   # Don't override node_modules
+      - ./api:/app # Development: use local source code
+      - /app/node_modules # Don't override node_modules
 ```
 
 Bind mounts are useful in development where you want live code reloading. In production, use named volumes.
@@ -232,11 +232,11 @@ env_file:
 
 ### When to Use Which
 
-| Approach | Use Case |
-|----------|----------|
-| `environment` | Non-sensitive, short values, or referencing variables |
-| `env_file` | Many variables, environment-specific configs |
-| `.env` file (project root) | Shared variables used across multiple services |
+| Approach                   | Use Case                                              |
+| -------------------------- | ----------------------------------------------------- |
+| `environment`              | Non-sensitive, short values, or referencing variables |
+| `env_file`                 | Many variables, environment-specific configs          |
+| `.env` file (project root) | Shared variables used across multiple services        |
 
 Compose automatically loads a `.env` file from the project root. Variables from `.env` can be referenced with `${VAR_NAME}` syntax in the compose file.
 
@@ -246,12 +246,12 @@ Compose automatically loads a `.env` file from the project root. Variables from 
 
 ## Restart Policies
 
-| Policy | Behavior |
-|--------|----------|
-| `no` | Never restart (default) |
-| `always` | Always restart, even if stopped manually |
-| `unless-stopped` | Restart unless manually stopped (recommended) |
-| `on-failure` | Restart only if container exits with non-zero code |
+| Policy           | Behavior                                           |
+| ---------------- | -------------------------------------------------- |
+| `no`             | Never restart (default)                            |
+| `always`         | Always restart, even if stopped manually           |
+| `unless-stopped` | Restart unless manually stopped (recommended)      |
+| `on-failure`     | Restart only if container exits with non-zero code |
 
 For production services:
 
@@ -265,7 +265,7 @@ This is the safest default. Containers restart on crash or system reboot. Manual
 
 ## Healthchecks
 
-A `docker run` doesn't tell you if your application is actually *working*. It only tells you the process started. Healthchecks solve this:
+A `docker run` doesn't tell you if your application is actually _working_. It only tells you the process started. Healthchecks solve this:
 
 ```yaml
 healthcheck:
@@ -425,15 +425,15 @@ In the next article, we'll take this Compose setup and harden it for production 
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) | |
-| **4. Docker Compose — Stop Running 10 docker run Commands** | ← You are here |
-| 5. Docker Compose for Production | Coming soon |
-| 6. Linux Survival Guide for Developers Coming from macOS | Coming soon |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                                                                  | Topic          |
+| -------------------------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                                      |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile)                 |                |
+| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) |                |
+| **4. Docker Compose — Stop Running 10 docker run Commands**                                              | ← You are here |
+| 5. Docker Compose for Production                                                                         | Coming soon    |
+| 6. Linux Survival Guide for Developers Coming from macOS                                                 | Coming soon    |
+| 7. GitHub Actions From Zero — Build Your First Pipeline                                                  | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically                                          | Coming soon    |

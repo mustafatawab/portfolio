@@ -41,7 +41,11 @@ import {
   Monitor,
   Globe,
 } from "lucide-react";
-import { ProjectShowcase, getRelatedProjects, getPrevNext } from "@/lib/projects-data";
+import {
+  ProjectShowcase,
+  getRelatedProjects,
+  getPrevNext,
+} from "@/lib/projects-data";
 import { Callout } from "@/components/case-studies/callout";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -77,7 +81,9 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-8">
-      <span className="text-xs font-mono tracking-wider text-primary uppercase">{children}</span>
+      <span className="text-xs font-mono tracking-wider text-primary uppercase">
+        {children}
+      </span>
       <span className="h-px flex-1 bg-border" />
     </div>
   );
@@ -87,7 +93,9 @@ function TechGroup({ label, items }: { label: string; items: string[] }) {
   if (items.length === 0) return null;
   return (
     <div>
-      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2">{label}</p>
+      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2">
+        {label}
+      </p>
       <div className="flex flex-wrap gap-1.5">
         {items.map((t) => (
           <span
@@ -121,7 +129,10 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
             href="/projects"
             className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
           >
-            <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft
+              size={14}
+              className="transition-transform group-hover:-translate-x-1"
+            />
             All projects
           </Link>
         </div>
@@ -164,7 +175,11 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                     target="_blank"
                     className="group inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97]"
                   >
-                    Live Demo <ExternalLink size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    Live Demo{" "}
+                    <ExternalLink
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
                   </Link>
                 )}
                 {project.links.github && (
@@ -183,7 +198,10 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                   >
                     <BookOpen size={14} />
                     Read Case Study
-                    <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                    <ChevronRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
                   </Link>
                 )}
               </div>
@@ -205,22 +223,38 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">What it is</p>
-                <p className="text-sm text-foreground/70 leading-relaxed">{project.overview.what}</p>
+                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">
+                  What it is
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {project.overview.what}
+                </p>
               </div>
               <div>
-                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">Who it serves</p>
-                <p className="text-sm text-foreground/70 leading-relaxed">{project.overview.who}</p>
+                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">
+                  Who it serves
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {project.overview.who}
+                </p>
               </div>
             </div>
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">Business value</p>
-                <p className="text-sm text-foreground/70 leading-relaxed">{project.overview.businessValue}</p>
+                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">
+                  Business value
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {project.overview.businessValue}
+                </p>
               </div>
               <div>
-                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">Primary users</p>
-                <p className="text-sm text-foreground/70 leading-relaxed">{project.overview.primaryUsers}</p>
+                <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1">
+                  Primary users
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  {project.overview.primaryUsers}
+                </p>
               </div>
             </div>
           </div>
@@ -245,8 +279,13 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
               { label: "Industry", value: project.industry },
               { label: "Frontend", value: allFrontend[0] || "-" },
             ].map((f) => (
-              <div key={f.label} className="border border-border rounded-lg bg-card p-4">
-                <p className="text-[10px] font-mono tracking-wider text-muted-foreground mb-1">{f.label}</p>
+              <div
+                key={f.label}
+                className="border border-border rounded-lg bg-card p-4"
+              >
+                <p className="text-[10px] font-mono tracking-wider text-muted-foreground mb-1">
+                  {f.label}
+                </p>
                 <p className="text-sm font-medium text-foreground">{f.value}</p>
               </div>
             ))}
@@ -295,8 +334,12 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                 <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-4">
                   {iconMap[f.icon] || <Zap size={22} />}
                 </div>
-                <h3 className="text-sm font-semibold text-foreground mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
+                <h3 className="text-sm font-semibold text-foreground mb-2">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {f.description}
+                </p>
               </div>
             ))}
           </div>
@@ -361,14 +404,21 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
             <SectionHeading>Challenges Solved</SectionHeading>
             <div className="space-y-4">
               {project.challengesSolved.map((c, i) => (
-                <div key={i} className="border border-border rounded-xl bg-card p-5">
+                <div
+                  key={i}
+                  className="border border-border rounded-xl bg-card p-5"
+                >
                   <div className="flex items-start gap-3">
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono shrink-0 mt-0.5">
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-medium text-foreground mb-1">{c.problem}</p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{c.solution}</p>
+                      <p className="text-sm font-medium text-foreground mb-1">
+                        {c.problem}
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {c.solution}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -400,9 +450,17 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
             <SectionHeading>Results</SectionHeading>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.results.map((r, i) => (
-                <div key={i} className="flex items-start gap-2.5 p-4 rounded-lg border border-border bg-card">
-                  <CheckCircle2 size={15} className="text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-foreground/70 leading-relaxed">{r}</span>
+                <div
+                  key={i}
+                  className="flex items-start gap-2.5 p-4 rounded-lg border border-border bg-card"
+                >
+                  <CheckCircle2
+                    size={15}
+                    className="text-primary mt-0.5 shrink-0"
+                  />
+                  <span className="text-sm text-foreground/70 leading-relaxed">
+                    {r}
+                  </span>
                 </div>
               ))}
             </div>
@@ -420,7 +478,10 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
             <SectionHeading>Lessons Learned</SectionHeading>
             <div className="space-y-3">
               {project.lessonsLearned.map((l, i) => (
-                <div key={i} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed p-4 rounded-lg border border-border bg-card">
+                <div
+                  key={i}
+                  className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed p-4 rounded-lg border border-border bg-card"
+                >
                   <span className="flex items-center justify-center w-5 h-5 rounded-full bg-foreground/5 text-muted-foreground text-[10px] font-mono shrink-0 mt-0.5">
                     {i + 1}
                   </span>
@@ -459,25 +520,43 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                 href={`/projects/${prev.slug}`}
                 className="group flex items-center gap-3 max-w-[45%]"
               >
-                <ChevronLeft size={16} className="text-muted-foreground shrink-0 transition-transform group-hover:-translate-x-0.5" />
+                <ChevronLeft
+                  size={16}
+                  className="text-muted-foreground shrink-0 transition-transform group-hover:-translate-x-0.5"
+                />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-mono tracking-wider text-muted-foreground">Previous</p>
-                  <p className="text-sm text-foreground/70 truncate group-hover:text-foreground transition-colors">{prev.title}</p>
+                  <p className="text-[10px] font-mono tracking-wider text-muted-foreground">
+                    Previous
+                  </p>
+                  <p className="text-sm text-foreground/70 truncate group-hover:text-foreground transition-colors">
+                    {prev.title}
+                  </p>
                 </div>
               </Link>
-            ) : <div />}
+            ) : (
+              <div />
+            )}
             {next ? (
               <Link
                 href={`/projects/${next.slug}`}
                 className="group flex items-center gap-3 text-right max-w-[45%]"
               >
                 <div className="min-w-0">
-                  <p className="text-[10px] font-mono tracking-wider text-muted-foreground">Next</p>
-                  <p className="text-sm text-foreground/70 truncate group-hover:text-foreground transition-colors">{next.title}</p>
+                  <p className="text-[10px] font-mono tracking-wider text-muted-foreground">
+                    Next
+                  </p>
+                  <p className="text-sm text-foreground/70 truncate group-hover:text-foreground transition-colors">
+                    {next.title}
+                  </p>
                 </div>
-                <ChevronRight size={16} className="text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5" />
+                <ChevronRight
+                  size={16}
+                  className="text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5"
+                />
               </Link>
-            ) : <div />}
+            ) : (
+              <div />
+            )}
           </div>
 
           {/* Recommended cards */}
@@ -489,13 +568,25 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                 className="group flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-primary/20 transition-all duration-[var(--duration-fast)]"
               >
                 <div className="relative w-20 h-14 rounded-lg overflow-hidden bg-muted shrink-0">
-                  <Image src={r.image} alt={r.title} fill className="object-cover" />
+                  <Image
+                    src={r.image}
+                    alt={r.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-foreground">{r.title}</p>
-                  <p className="text-xs text-muted-foreground truncate mt-0.5">{r.tagline}</p>
+                  <p className="text-sm font-medium text-foreground">
+                    {r.title}
+                  </p>
+                  <p className="text-xs text-muted-foreground truncate mt-0.5">
+                    {r.tagline}
+                  </p>
                 </div>
-                <ArrowUpRight size={14} className="text-muted-foreground shrink-0 ml-auto transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight
+                  size={14}
+                  className="text-muted-foreground shrink-0 ml-auto transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Link>
             ))}
           </div>
@@ -513,8 +604,8 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
               Interested in building something similar?
             </h2>
             <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
-              I am always open to discussing new projects, technical challenges, and
-              engineering opportunities.
+              I am always open to discussing new projects, technical challenges,
+              and engineering opportunities.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
@@ -530,7 +621,10 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                 >
                   <BookOpen size={14} />
                   Read Case Study
-                  <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                  <ChevronRight
+                    size={14}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
                 </Link>
               )}
             </div>

@@ -2,7 +2,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, LayoutDashboard, Globe, Cloud, Monitor, Server, RefreshCw } from "lucide-react";
+import {
+  ArrowUpRight,
+  LayoutDashboard,
+  Globe,
+  Cloud,
+  Monitor,
+  Server,
+  RefreshCw,
+} from "lucide-react";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -26,7 +34,12 @@ const offerings = [
     title: "Custom Software Development",
     description:
       "Tailored software solutions designed around unique business workflows — from internal platforms to full operational systems that scale with your growth.",
-    useCases: ["Internal Platforms", "CRM & ERP", "Workflow Automation", "Operations Software"],
+    useCases: [
+      "Internal Platforms",
+      "CRM & ERP",
+      "Workflow Automation",
+      "Operations Software",
+    ],
     links: [
       { label: "Triton Consulting", href: "/projects/triton-consulting" },
       { label: "MSP Tech Stack", href: "/projects/msp-tech-stack" },
@@ -37,7 +50,12 @@ const offerings = [
     title: "Web Application Development",
     description:
       "Modern, secure, and scalable web applications built with clean architecture — dashboards, customer portals, booking platforms, and business systems.",
-    useCases: ["Dashboards", "Customer Portals", "Booking Platforms", "Admin Panels"],
+    useCases: [
+      "Dashboards",
+      "Customer Portals",
+      "Booking Platforms",
+      "Admin Panels",
+    ],
     links: [
       { label: "Rukun Al Zuhab", href: "/projects/rukun-al-zuhab" },
       { label: "Elygance", href: "/projects/elygance" },
@@ -48,7 +66,12 @@ const offerings = [
     title: "SaaS Product Development",
     description:
       "Scalable SaaS platforms with multi-tenancy, secure authentication, subscription billing, and cloud-ready architecture deployed on modern infrastructure.",
-    useCases: ["Multi-Tenant Platforms", "Subscription Billing", "Role-Based Access", "Cloud Deployment"],
+    useCases: [
+      "Multi-Tenant Platforms",
+      "Subscription Billing",
+      "Role-Based Access",
+      "Cloud Deployment",
+    ],
     links: [
       { label: "Maktab One", href: "/projects/maktab-one" },
       { label: "Case Study", href: "/case-studies/maktab-one" },
@@ -59,7 +82,12 @@ const offerings = [
     title: "Desktop Application Development",
     description:
       "Offline-first desktop applications using Electron — ideal for environments where connectivity is unreliable and performance on local hardware matters.",
-    useCases: ["Pharmacy Systems", "Inventory Management", "POS Systems", "Billing & Reporting"],
+    useCases: [
+      "Pharmacy Systems",
+      "Inventory Management",
+      "POS Systems",
+      "Billing & Reporting",
+    ],
     links: [
       { label: "Pharmacy System", href: "/projects/faraz-pharmacy" },
       { label: "Case Study", href: "/case-studies/pharmacy-management-system" },
@@ -70,7 +98,12 @@ const offerings = [
     title: "Backend & API Engineering",
     description:
       "Robust backend systems and APIs that power your applications — designed for reliability, security, and performance under real-world traffic.",
-    useCases: ["REST & GraphQL APIs", "Authentication & Authorization", "Third-Party Integrations", "Database Design"],
+    useCases: [
+      "REST & GraphQL APIs",
+      "Authentication & Authorization",
+      "Third-Party Integrations",
+      "Database Design",
+    ],
     links: [
       { label: "MyScribe", href: "/projects/my-scribe" },
       { label: "Case Study", href: "/case-studies/my-scribe" },
@@ -81,7 +114,12 @@ const offerings = [
     title: "Software Modernization",
     description:
       "Upgrade legacy systems into modern, maintainable applications — reduce tech debt, improve security, and unlock new capabilities without rebuilding from scratch.",
-    useCases: ["Legacy Migration", "Tech Debt Reduction", "Performance Optimization", "Security Hardening"],
+    useCases: [
+      "Legacy Migration",
+      "Tech Debt Reduction",
+      "Performance Optimization",
+      "Security Hardening",
+    ],
     links: [
       { label: "NavPoint Health", href: "/projects/navpoint-health" },
       { label: "Case Study", href: "/case-studies/navpoint-health" },
@@ -114,8 +152,9 @@ export default function WhatIBuild() {
             variants={fadeUp}
             className="mt-4 text-[15.5px] md:text-base text-muted-foreground leading-relaxed max-w-2xl"
           >
-            I design and develop modern software that helps businesses streamline
-            operations, improve customer experiences, and scale with confidence.
+            I design and develop modern software that helps businesses
+            streamline operations, improve customer experiences, and scale with
+            confidence.
           </motion.p>
         </motion.div>
 

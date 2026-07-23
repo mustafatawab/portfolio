@@ -58,9 +58,8 @@ const AboutSection = () => {
             className="mt-5 text-[15.5px] md:text-base text-muted-foreground leading-relaxed"
           >
             My typical stack includes TypeScript, Python, React, Next.js, and
-            Node.js, but I pick the right tool for each job. Beyond code, I
-            care about user experience, system reliability, and shipping on
-            time.
+            Node.js, but I pick the right tool for each job. Beyond code, I care
+            about user experience, system reliability, and shipping on time.
           </motion.p>
 
           <motion.div
@@ -70,7 +69,10 @@ const AboutSection = () => {
             <div className="space-y-2.5">
               {values.map((v) => (
                 <div key={v} className="flex items-start gap-2.5">
-                  <CheckCircle size={16} className="text-primary shrink-0 mt-0.5" />
+                  <CheckCircle
+                    size={16}
+                    className="text-primary shrink-0 mt-0.5"
+                  />
                   <span className="text-sm text-muted-foreground leading-relaxed">
                     {v}
                   </span>

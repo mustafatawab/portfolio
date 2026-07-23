@@ -44,12 +44,12 @@ GitHub Container Registry is a Docker registry built into GitHub. It's free for 
 
 **Why GHCR instead of Docker Hub?**
 
-| | Docker Hub | GitHub Container Registry |
-|---|---|---|
-| **Free private repos** | 1 | Unlimited (500MB) |
-| **Rate limits** | 100 pulls/6hr (anonymous) | No per-IP rate limits |
-| **Permissions** | Separate from GitHub | Inherits from GitHub repo |
-| **CI integration** | Manual auth setup | Automatic with `GITHUB_TOKEN` |
+|                        | Docker Hub                | GitHub Container Registry     |
+| ---------------------- | ------------------------- | ----------------------------- |
+| **Free private repos** | 1                         | Unlimited (500MB)             |
+| **Rate limits**        | 100 pulls/6hr (anonymous) | No per-IP rate limits         |
+| **Permissions**        | Separate from GitHub      | Inherits from GitHub repo     |
+| **CI integration**     | Manual auth setup         | Automatic with `GITHUB_TOKEN` |
 
 For most teams, GHCR is the simpler choice because it uses the same authentication as your repository.
 
@@ -464,10 +464,12 @@ Push to main (merge)
 Before this workflow runs successfully, verify:
 
 **On GitHub:**
+
 - [ ] Repository secrets configured: `SERVER_HOST`, `SERVER_USER`, `SSH_PRIVATE_KEY`
 - [ ] `GITHUB_TOKEN` has `packages: write` permission (default, but verify in repo settings)
 
 **On the server:**
+
 - [ ] Docker and Docker Compose installed
 - [ ] User has `docker` group membership (or uses `sudo`)
 - [ ] `compose.yaml` exists at `/app/compose.yaml` with `image:` references
@@ -475,6 +477,7 @@ Before this workflow runs successfully, verify:
 - [ ] Server is logged in to GHCR: `docker login ghcr.io`
 
 **In the repository:**
+
 - [ ] `Dockerfile` at `./api/Dockerfile` (and `./web/Dockerfile`)
 - [ ] `.github/workflows/deploy.yml` exists
 
@@ -495,15 +498,15 @@ That's not "knowing Docker." That's being able to take an application from your 
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) | |
-| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro) | |
-| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) | |
-| 6. [Linux Survival Guide for Developers Coming from macOS](/blogs/linux-survival-guide) | |
-| 7. [GitHub Actions From Zero — Build Your First Pipeline](/blogs/github-actions-from-zero) | |
-| **8. Docker + GitHub Actions — Build, Push & Deploy Automatically** | ← You are here |
+| Article                                                                                                              | Topic          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                                                  |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile)                             |                |
+| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds)             |                |
+| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro)                               |                |
+| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) |                |
+| 6. [Linux Survival Guide for Developers Coming from macOS](/blogs/linux-survival-guide)                              |                |
+| 7. [GitHub Actions From Zero — Build Your First Pipeline](/blogs/github-actions-from-zero)                           |                |
+| **8. Docker + GitHub Actions — Build, Push & Deploy Automatically**                                                  | ← You are here |

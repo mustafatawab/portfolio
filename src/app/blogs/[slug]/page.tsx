@@ -8,7 +8,11 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -22,7 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -37,7 +45,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         data={breadcrumbSchema([
           { name: "Home", url: "https://mustafatawab.com" },
           { name: "Blog", url: "https://mustafatawab.com/blogs" },
-          { name: post.title, url: `https://mustafatawab.com/blogs/${post.slug}` },
+          {
+            name: post.title,
+            url: `https://mustafatawab.com/blogs/${post.slug}`,
+          },
         ])}
       />
       <BlogArticle post={post} />

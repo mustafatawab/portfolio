@@ -1,9 +1,9 @@
-import type { ProjectShowcase } from "@/lib/projects-data"
-import type { CaseStudy } from "@/lib/case-studies"
-import type { Post } from "@/lib/posts"
+import type { ProjectShowcase } from "@/lib/projects-data";
+import type { CaseStudy } from "@/lib/case-studies";
+import type { Post } from "@/lib/posts";
 
-const SITE_URL = "https://mustafatawab.com"
-const AUTHOR_NAME = "Mustafa Tawab"
+const SITE_URL = "https://mustafatawab.com";
+const AUTHOR_NAME = "Mustafa Tawab";
 
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
@@ -11,7 +11,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
-  )
+  );
 }
 
 export function personSchema() {
@@ -62,7 +62,7 @@ export function personSchema() {
       "TanStack Query",
       "Prisma",
     ],
-  }
+  };
 }
 
 export function websiteSchema() {
@@ -81,12 +81,12 @@ export function websiteSchema() {
       },
       "query-input": "required name=search_term_string",
     },
-  }
+  };
 }
 
 interface BreadcrumbItem {
-  name: string
-  url: string
+  name: string;
+  url: string;
 }
 
 export function breadcrumbSchema(items: BreadcrumbItem[]) {
@@ -99,7 +99,7 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
       name: item.name,
       item: item.url,
     })),
-  }
+  };
 }
 
 export function softwareSourceCodeSchema(project: ProjectShowcase) {
@@ -109,19 +109,31 @@ export function softwareSourceCodeSchema(project: ProjectShowcase) {
     ...project.techStack.database,
     ...project.techStack.infrastructure,
     ...project.techStack.tools,
-  ]
+  ];
 
-  const programmingLanguages = [...new Set(
-    allTech.filter((t) =>
-      ["TypeScript", "JavaScript", "Python", "PHP", "SQL"].includes(t),
+  const programmingLanguages = [
+    ...new Set(
+      allTech.filter((t) =>
+        ["TypeScript", "JavaScript", "Python", "PHP", "SQL"].includes(t),
+      ),
     ),
-  )]
+  ];
 
-  const runtimePlatforms = [...new Set(
-    allTech.filter((t) =>
-      ["Node.js", "Next.js", "Express.js", "FastAPI", "Laravel", "Docker", "Vercel"].includes(t),
+  const runtimePlatforms = [
+    ...new Set(
+      allTech.filter((t) =>
+        [
+          "Node.js",
+          "Next.js",
+          "Express.js",
+          "FastAPI",
+          "Laravel",
+          "Docker",
+          "Vercel",
+        ].includes(t),
+      ),
     ),
-  )]
+  ];
 
   return {
     "@context": "https://schema.org",
@@ -146,7 +158,7 @@ export function softwareSourceCodeSchema(project: ProjectShowcase) {
       applicationCategory: "WebApplication",
       operatingSystem: project.platform,
     },
-  }
+  };
 }
 
 export function techArticleSchema(study: CaseStudy) {
@@ -171,7 +183,7 @@ export function techArticleSchema(study: CaseStudy) {
     keywords: study.techStack.join(", "),
     proficiencyLevel: "Expert",
     dependencies: study.techStack.join(", "),
-  }
+  };
 }
 
 export function articleSchema(post: Post) {
@@ -195,5 +207,5 @@ export function articleSchema(post: Post) {
     keywords: post.tags.join(", "),
     wordCount: post.contentHtml.replace(/<[^>]*>/g, "").split(/\s+/).length,
     timeRequired: post.readTime,
-  }
+  };
 }

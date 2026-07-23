@@ -19,7 +19,7 @@ const techColors: Record<string, string> = {
   "Framer Motion": "bg-purple-500/10 text-purple-600 dark:text-purple-400",
   Node: "bg-green-500/10 text-green-600 dark:text-green-400",
   "Node.js": "bg-green-500/10 text-green-600 dark:text-green-400",
-  "JWT": "bg-rose-500/10 text-rose-600 dark:text-rose-400",
+  JWT: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
   "TanStack Query": "bg-red-500/10 text-red-600 dark:text-red-400",
   "Vue.js": "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
   Laravel: "bg-red-500/10 text-red-600 dark:text-red-400",
@@ -32,11 +32,18 @@ const techColors: Record<string, string> = {
   Resend: "bg-black/5 text-black dark:text-white dark:bg-white/10",
 };
 
-export function TechStack({ items, size = "sm" }: { items: string[]; size?: "sm" | "md" }) {
+export function TechStack({
+  items,
+  size = "sm",
+}: {
+  items: string[];
+  size?: "sm" | "md";
+}) {
   return (
     <div className="flex flex-wrap gap-2">
       {items.map((tech) => {
-        const color = techColors[tech] || "bg-foreground/5 text-muted-foreground";
+        const color =
+          techColors[tech] || "bg-foreground/5 text-muted-foreground";
         return (
           <span
             key={tech}

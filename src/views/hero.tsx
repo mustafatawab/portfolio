@@ -46,7 +46,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
             >
-              Building modern <span className="text-primary">software</span> that <span className="text-primary">solves</span> real business problems.
+              Building modern <span className="text-primary">software</span>{" "}
+              that <span className="text-primary">solves</span> real business
+              problems.
             </motion.h1>
 
             <motion.p
@@ -66,14 +68,20 @@ const HeroSection = () => {
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97]"
               >
                 View Projects
-                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Link>
               <Link
                 href="/#about"
                 className="group inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:border-foreground/30 active:scale-[0.97]"
               >
                 More About Me
-                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Link>
             </motion.div>
 

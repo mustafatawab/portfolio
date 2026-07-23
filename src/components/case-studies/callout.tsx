@@ -3,7 +3,10 @@ import { AlertTriangle, Info, Lightbulb, AlertCircle } from "lucide-react";
 
 type CalloutVariant = "info" | "warning" | "tip" | "caution";
 
-const config: Record<CalloutVariant, { icon: React.ReactNode; bg: string; border: string; iconColor: string }> = {
+const config: Record<
+  CalloutVariant,
+  { icon: React.ReactNode; bg: string; border: string; iconColor: string }
+> = {
   info: {
     icon: <Info size={16} />,
     bg: "bg-primary/5",
@@ -41,7 +44,9 @@ export function Callout({
 }) {
   const c = config[variant];
   return (
-    <div className={`flex items-start gap-3 p-4 rounded-xl border ${c.bg} ${c.border} my-6`}>
+    <div
+      className={`flex items-start gap-3 p-4 rounded-xl border ${c.bg} ${c.border} my-6`}
+    >
       <span className={`shrink-0 mt-0.5 ${c.iconColor}`}>{c.icon}</span>
       <div className="min-w-0">
         {title && (

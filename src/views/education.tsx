@@ -17,7 +17,8 @@ const containerVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
-    opacity: 1, y: 0,
+    opacity: 1,
+    y: 0,
     transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
   },
 };
@@ -58,18 +59,31 @@ const Education = () => {
                   <div className="flex-1">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <span className="text-xs font-mono text-foreground/40 tracking-wider">{edu.period}</span>
+                        <span className="text-xs font-mono text-foreground/40 tracking-wider">
+                          {edu.period}
+                        </span>
                         {edu.link ? (
-                          <Link href={edu.link} target="_blank" className="inline-flex items-center gap-1.5 group">
+                          <Link
+                            href={edu.link}
+                            target="_blank"
+                            className="inline-flex items-center gap-1.5 group"
+                          >
                             <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
                               {edu.degree}
                             </h3>
-                            <ExternalLink size={14} className="text-foreground/20 group-hover:text-accent transition-colors" />
+                            <ExternalLink
+                              size={14}
+                              className="text-foreground/20 group-hover:text-accent transition-colors"
+                            />
                           </Link>
                         ) : (
-                          <h3 className="text-lg font-semibold text-foreground">{edu.degree}</h3>
+                          <h3 className="text-lg font-semibold text-foreground">
+                            {edu.degree}
+                          </h3>
                         )}
-                        <p className="text-foreground/50 text-sm mt-0.5">{edu.institution}</p>
+                        <p className="text-foreground/50 text-sm mt-0.5">
+                          {edu.institution}
+                        </p>
                       </div>
                     </div>
                     <p className="text-foreground/60 text-sm mt-4 leading-relaxed">

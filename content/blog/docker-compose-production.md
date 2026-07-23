@@ -12,7 +12,7 @@ In the [previous article](/blogs/docker-compose-intro), we built a working Compo
 
 But production is a different animal:
 
-- **Service startup order** — the API must wait for PostgreSQL to be *ready*, not just *running*
+- **Service startup order** — the API must wait for PostgreSQL to be _ready_, not just _running_
 - **Database migrations** — must run exactly once, before the API starts, without race conditions
 - **Failure recovery** — a crashed service should restart, but a misconfigured one should stay down
 - **Zero-downtime deployments** — the old API must keep serving requests until the new one is healthy
@@ -347,14 +347,14 @@ volumes:
 
 ### What Changed from the Dev Compose
 
-| | Dev | Production |
-|---|---|---|
-| **Port binding** | `5432:5432` (all interfaces) | `127.0.0.1:5432:5432` (localhost only) |
-| **Healthchecks** | None | Every service has one |
-| **Logging** | Default | Rotating JSON logs |
-| **Migration service** | None | Explicit migration step |
-| **depends_on** | Simple | Conditional |
-| **Restart** | Default | `unless-stopped` on everything |
+|                       | Dev                          | Production                             |
+| --------------------- | ---------------------------- | -------------------------------------- |
+| **Port binding**      | `5432:5432` (all interfaces) | `127.0.0.1:5432:5432` (localhost only) |
+| **Healthchecks**      | None                         | Every service has one                  |
+| **Logging**           | Default                      | Rotating JSON logs                     |
+| **Migration service** | None                         | Explicit migration step                |
+| **depends_on**        | Simple                       | Conditional                            |
+| **Restart**           | Default                      | `unless-stopped` on everything         |
 
 ---
 
@@ -425,15 +425,15 @@ The next article bridges that gap: a survival guide for macOS developers deployi
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) | |
-| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro) | |
-| **5. Docker Compose for Production — depends_on, Healthchecks & Migration Patterns** | ← You are here |
-| 6. Linux Survival Guide for Developers Coming from macOS | Coming soon |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                                                                  | Topic          |
+| -------------------------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                                      |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile)                 |                |
+| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) |                |
+| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro)                   |                |
+| **5. Docker Compose for Production — depends_on, Healthchecks & Migration Patterns**                     | ← You are here |
+| 6. Linux Survival Guide for Developers Coming from macOS                                                 | Coming soon    |
+| 7. GitHub Actions From Zero — Build Your First Pipeline                                                  | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically                                          | Coming soon    |

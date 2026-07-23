@@ -1,11 +1,11 @@
 interface Stack {
-  label : string,
-  tooltip : string,
+  label: string;
+  tooltip: string;
 }
 
 interface SkillType {
-  label : string,
-  stack : Stack[],
+  label: string;
+  stack: Stack[];
 }
 export const skills: SkillType[] = [
   {
@@ -38,7 +38,6 @@ export const skills: SkillType[] = [
         label: "Vue.js",
         tooltip: "Frontend developement",
       },
-
 
       {
         label: "Shadcn UI",
@@ -78,26 +77,26 @@ export const skills: SkillType[] = [
   },
 
   {
-    label : "Artificial Intelligence",
-    stack : [
+    label: "Artificial Intelligence",
+    stack: [
       {
-        label : "Generative AI",
-        tooltip : "Generative AI"
+        label: "Generative AI",
+        tooltip: "Generative AI",
       },
       {
-        label : "AI Agents",
-        tooltip : "Developing Agents"
+        label: "AI Agents",
+        tooltip: "Developing Agents",
       },
       {
-        label : "Crew AI",
-        tooltip : "Multi Agent Framework"
+        label: "Crew AI",
+        tooltip: "Multi Agent Framework",
       },
 
       {
-        label : "Langchain & Langraph",
-        tooltip : "Agentic Workflow and Agents Development"
-      }
-    ]
+        label: "Langchain & Langraph",
+        tooltip: "Agentic Workflow and Agents Development",
+      },
+    ],
   },
 
   {
@@ -114,8 +113,8 @@ export const skills: SkillType[] = [
       },
 
       {
-        label : "Pincorn",
-        tooltip : "Vector database for AI"
+        label: "Pincorn",
+        tooltip: "Vector database for AI",
       },
 
       {

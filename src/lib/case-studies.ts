@@ -92,8 +92,17 @@ export const caseStudies: CaseStudy[] = [
     status: "Production",
     image: maktab,
     techStack: [
-      "Next.js", "Express.js", "PostgreSQL", "Prisma", "TypeScript",
-      "Docker", "JWT", "TanStack Query", "shadcn/ui", "Tailwind CSS", "Vercel",
+      "Next.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "TypeScript",
+      "Docker",
+      "JWT",
+      "TanStack Query",
+      "shadcn/ui",
+      "Tailwind CSS",
+      "Vercel",
     ],
     links: {
       demo: "https://schoola.maktabone.org/",
@@ -208,24 +217,30 @@ export const caseStudies: CaseStudy[] = [
         ],
         decisions: [
           {
-            title: "Shared schema with tenantId vs. separate databases per tenant",
-            detail: "We chose a shared schema with row-level tenant isolation over separate databases per tenant. This decision was driven by operational simplicity: a single database is easier to manage, backup, and migrate. The trade-off is that a query without a tenantId filter could leak data across tenants. We mitigated this by making tenantId required in every service function and adding automated tests that verify tenant isolation at the integration level.",
+            title:
+              "Shared schema with tenantId vs. separate databases per tenant",
+            detail:
+              "We chose a shared schema with row-level tenant isolation over separate databases per tenant. This decision was driven by operational simplicity: a single database is easier to manage, backup, and migrate. The trade-off is that a query without a tenantId filter could leak data across tenants. We mitigated this by making tenantId required in every service function and adding automated tests that verify tenant isolation at the integration level.",
           },
           {
             title: "Prisma ORM vs. raw SQL or Drizzle",
-            detail: "Prisma was chosen for its type-safe query builder, automated migration generation, and excellent developer experience. The Prisma schema serves as a single source of truth for the database structure. The trade-off is that Prisma adds latency for complex join queries compared to raw SQL. We mitigated this by using raw queries for the few performance-critical reports and Prisma for the remaining 95% of queries.",
+            detail:
+              "Prisma was chosen for its type-safe query builder, automated migration generation, and excellent developer experience. The Prisma schema serves as a single source of truth for the database structure. The trade-off is that Prisma adds latency for complex join queries compared to raw SQL. We mitigated this by using raw queries for the few performance-critical reports and Prisma for the remaining 95% of queries.",
           },
           {
             title: "Monolithic Express API vs. microservices",
-            detail: "A monolithic Express.js API was the pragmatic choice for the current scale. The application has a bounded domain (school management) with tight coupling between features - fees depend on students, expenses depend on fee collection, etc. Microservices would add network overhead, data consistency challenges, and deployment complexity without proportional benefit at this stage. The codebase is structured in domain modules, making it straightforward to split into services if scale demands it.",
+            detail:
+              "A monolithic Express.js API was the pragmatic choice for the current scale. The application has a bounded domain (school management) with tight coupling between features - fees depend on students, expenses depend on fee collection, etc. Microservices would add network overhead, data consistency challenges, and deployment complexity without proportional benefit at this stage. The codebase is structured in domain modules, making it straightforward to split into services if scale demands it.",
           },
           {
             title: "TanStack Query vs. Redux or Zustand",
-            detail: "TanStack Query was chosen over state management libraries because the application's state is primarily server-derived. TanStack Query handles caching, background refetching, optimistic updates, and error handling with minimal boilerplate. This eliminated an entire class of bugs related to stale data and race conditions that would be common with a manual state management approach.",
+            detail:
+              "TanStack Query was chosen over state management libraries because the application's state is primarily server-derived. TanStack Query handles caching, background refetching, optimistic updates, and error handling with minimal boilerplate. This eliminated an entire class of bugs related to stale data and race conditions that would be common with a manual state management approach.",
           },
           {
             title: "PDF generation at the API layer vs. client-side",
-            detail: "PDF receipts are generated server-side using a headless approach rather than in the browser. Server-side generation ensures consistent output regardless of the client device or browser, supports batch generation for bulk operations, and produces smaller file sizes. The trade-off is increased server load during receipt generation, but this is acceptable given the infrequent nature of individual receipt generation.",
+            detail:
+              "PDF receipts are generated server-side using a headless approach rather than in the browser. Server-side generation ensures consistent output regardless of the client device or browser, supports batch generation for bulk operations, and produces smaller file sizes. The trade-off is increased server load during receipt generation, but this is acceptable given the infrequent nature of individual receipt generation.",
           },
         ],
       },
@@ -233,69 +248,90 @@ export const caseStudies: CaseStudy[] = [
         {
           tech: "Next.js",
           why: "Next.js provides server-side rendering for initial page loads (critical for SEO and perceived performance), API routes for lightweight backend endpoints, and file-based routing that keeps the codebase organized. Its support for React Server Components allows fee data to be fetched at the server level, reducing client-side JavaScript bundle size.",
-          tradeoff: "Next.js adds build-time complexity compared to a plain React app. The dual runtime (server + client) requires careful consideration of where code executes, especially for features like real-time notifications that need WebSocket connections.",
+          tradeoff:
+            "Next.js adds build-time complexity compared to a plain React app. The dual runtime (server + client) requires careful consideration of where code executes, especially for features like real-time notifications that need WebSocket connections.",
         },
         {
           tech: "Express.js",
           why: "Express.js was chosen for the API layer because of its ecosystem maturity, middleware pattern that maps cleanly to our authentication and validation needs, and minimal overhead for REST endpoint definition. The Node.js event loop handles concurrent requests efficiently without the threading complexity of alternatives like Django or Spring Boot.",
-          tradeoff: "Express.js requires more manual setup for request validation, error handling, and middleware ordering compared to opinionated frameworks. Without careful discipline, Express.js applications can devolve into callback spaghetti, which we mitigated through a layered architecture pattern.",
+          tradeoff:
+            "Express.js requires more manual setup for request validation, error handling, and middleware ordering compared to opinionated frameworks. Without careful discipline, Express.js applications can devolve into callback spaghetti, which we mitigated through a layered architecture pattern.",
         },
         {
           tech: "PostgreSQL",
           why: "PostgreSQL was selected for its robust support for concurrent transactions (essential for fee processing), JSONB columns for storing flexible configuration data per tenant, and powerful indexing capabilities that keep query performance predictable under load. Its ecosystem includes excellent tooling for backup, replication, and monitoring.",
-          tradeoff: "PostgreSQL requires more operational expertise than managed alternatives like Firebase or MongoDB Atlas. Schema migrations must be carefully planned for zero-downtime deployments, and connection pooling configuration is critical at scale.",
+          tradeoff:
+            "PostgreSQL requires more operational expertise than managed alternatives like Firebase or MongoDB Atlas. Schema migrations must be carefully planned for zero-downtime deployments, and connection pooling configuration is critical at scale.",
         },
         {
           tech: "Prisma",
           why: "Prisma's type-safe query builder eliminates an entire category of runtime errors from malformed queries. Its migration system makes schema evolution reviewable in pull requests. The Prisma Studio provides a visual interface for ad-hoc data exploration during development and debugging.",
-          tradeoff: "Prisma generates a client that adds ~15MB to the node_modules size. The abstraction layer adds single-digit millisecond overhead per query compared to raw SQL. For reporting queries that scan thousands of rows, we fall back to raw SQL through Prisma's $queryRaw.",
+          tradeoff:
+            "Prisma generates a client that adds ~15MB to the node_modules size. The abstraction layer adds single-digit millisecond overhead per query compared to raw SQL. For reporting queries that scan thousands of rows, we fall back to raw SQL through Prisma's $queryRaw.",
         },
         {
           tech: "Docker",
           why: "Docker ensures consistency across development, staging, and production environments. Docker Compose allows the entire stack (API, database, reverse proxy) to run locally with a single command, reducing onboarding time for new developers. Containers simplify the CI/CD pipeline by providing a reproducible build artifact.",
-          tradeoff: "Docker adds resource overhead compared to bare-metal deployment. The image build process adds 2-3 minutes to the deployment pipeline. For a single-server deployment, Docker's isolation benefits are marginal but the consistency guarantee across environments is valuable.",
+          tradeoff:
+            "Docker adds resource overhead compared to bare-metal deployment. The image build process adds 2-3 minutes to the deployment pipeline. For a single-server deployment, Docker's isolation benefits are marginal but the consistency guarantee across environments is valuable.",
         },
         {
           tech: "Vercel",
           why: "Vercel provides global CDN distribution for static assets, automatic SSL certificate management, and seamless integration with the Next.js framework. Its edge functions handle authentication token verification at the network edge, reducing latency for API calls.",
-          tradeoff: "Vercel's serverless functions have cold start latency and execution time limits that make them unsuitable for long-running operations like PDF generation. We use a VPS for the Express.js API to avoid these limitations while keeping Vercel for the frontend.",
+          tradeoff:
+            "Vercel's serverless functions have cold start latency and execution time limits that make them unsuitable for long-running operations like PDF generation. We use a VPS for the Express.js API to avoid these limitations while keeping Vercel for the frontend.",
         },
       ],
       features: [
         {
           name: "Multi-Tenant Fee Management",
-          problem: "Schools needed to configure unique fee structures - different amounts per grade, optional fees for transport/lunch, late payment penalties, and scholarship discounts. Existing solutions either forced a rigid structure or required custom development per school.",
-          solution: "We built a configurable fee engine that allows administrators to define fee slabs by class and category. Each slab supports base amount, optional add-ons, discount rules, and due date scheduling. The engine auto-calculates totals, applies proration for mid-term admissions, and generates payment schedules for the entire academic year.",
-          challenges: "The most complex challenge was handling mid-term adjustments: a student joining in November should only be billed for remaining months, with transport fees prorated differently than tuition. We implemented a date-range-aware calculation system where each fee slab specifies its applicable period, and the engine computes proportional amounts based on the student's enrollment window within that period.",
+          problem:
+            "Schools needed to configure unique fee structures - different amounts per grade, optional fees for transport/lunch, late payment penalties, and scholarship discounts. Existing solutions either forced a rigid structure or required custom development per school.",
+          solution:
+            "We built a configurable fee engine that allows administrators to define fee slabs by class and category. Each slab supports base amount, optional add-ons, discount rules, and due date scheduling. The engine auto-calculates totals, applies proration for mid-term admissions, and generates payment schedules for the entire academic year.",
+          challenges:
+            "The most complex challenge was handling mid-term adjustments: a student joining in November should only be billed for remaining months, with transport fees prorated differently than tuition. We implemented a date-range-aware calculation system where each fee slab specifies its applicable period, and the engine computes proportional amounts based on the student's enrollment window within that period.",
         },
         {
           name: "Role-Based Access Control",
-          problem: "A school management system serves four distinct user types: administrators who need full access, accountants focused on financial data, teachers who view attendance-linked information, and parents who should only see their own children's records. Each role has different data access needs within and across modules.",
-          solution: "We implemented a hierarchical RBAC system with 12 granular permissions mapped to user roles. Permissions follow a {module}:{action} pattern (e.g., fees:create, students:read). Roles are configurable per school, allowing each tenant to customize access for their staff structure. The middleware layer evaluates permissions on every API request, returning 403 immediately if the user lacks access.",
-          challenges: "The main challenge was balancing granularity with usability. Too many permissions made role configuration confusing for school administrators. We compromised by defining 4 default roles with sensible defaults (admin, accountant, teacher, guardian) while allowing super-admins to create custom roles with specific permission combinations.",
+          problem:
+            "A school management system serves four distinct user types: administrators who need full access, accountants focused on financial data, teachers who view attendance-linked information, and parents who should only see their own children's records. Each role has different data access needs within and across modules.",
+          solution:
+            "We implemented a hierarchical RBAC system with 12 granular permissions mapped to user roles. Permissions follow a {module}:{action} pattern (e.g., fees:create, students:read). Roles are configurable per school, allowing each tenant to customize access for their staff structure. The middleware layer evaluates permissions on every API request, returning 403 immediately if the user lacks access.",
+          challenges:
+            "The main challenge was balancing granularity with usability. Too many permissions made role configuration confusing for school administrators. We compromised by defining 4 default roles with sensible defaults (admin, accountant, teacher, guardian) while allowing super-admins to create custom roles with specific permission combinations.",
         },
         {
           name: "Automated Notification System",
-          problem: "Schools needed to communicate fee due dates, overdue reminders, and payment confirmations to parents. Manual communication via phone calls or paper notices was inconsistent and time-consuming. Parents expected digital notifications but many did not use smartphone apps.",
-          solution: "We built a multi-channel notification system that sends fee reminders via email (through Resend) and SMS (through a local SMS gateway provider) based on configurable triggers: 7 days before due date, on the due date, and 3/7/14 days after missed payment. Payment confirmations are sent immediately after recording a payment, including a link to download the receipt.",
-          challenges: "SMS delivery in Pakistan is unreliable - messages can be delayed by hours or silently dropped. We implemented a delivery tracking system that marks notifications as sent/pending/failed, with automatic retry after 30 minutes for failed SMS deliveries. Email serves as the reliable fallback channel. We also added a notification preference system so guardians can choose their preferred channel.",
+          problem:
+            "Schools needed to communicate fee due dates, overdue reminders, and payment confirmations to parents. Manual communication via phone calls or paper notices was inconsistent and time-consuming. Parents expected digital notifications but many did not use smartphone apps.",
+          solution:
+            "We built a multi-channel notification system that sends fee reminders via email (through Resend) and SMS (through a local SMS gateway provider) based on configurable triggers: 7 days before due date, on the due date, and 3/7/14 days after missed payment. Payment confirmations are sent immediately after recording a payment, including a link to download the receipt.",
+          challenges:
+            "SMS delivery in Pakistan is unreliable - messages can be delayed by hours or silently dropped. We implemented a delivery tracking system that marks notifications as sent/pending/failed, with automatic retry after 30 minutes for failed SMS deliveries. Email serves as the reliable fallback channel. We also added a notification preference system so guardians can choose their preferred channel.",
         },
       ],
       challenges: [
         {
           problem: "Tenant data isolation while maintaining a shared schema",
-          solution: "We implemented a middleware layer that injects the tenant context into every request automatically. All database queries include a mandatory `schoolId` filter that is validated by Prisma's middleware hook. We added integration tests that verify tenant isolation: creating data as Tenant A and asserting Tenant B cannot access it. This catches isolation violations at the CI level before they reach production.",
-          tradeoff: "The shared schema approach means that a schema migration affects all tenants simultaneously. We mitigated this by making all schema changes backward-compatible (adding columns as nullable, never removing columns without a deprecation period) and running migrations during off-peak hours.",
+          solution:
+            "We implemented a middleware layer that injects the tenant context into every request automatically. All database queries include a mandatory `schoolId` filter that is validated by Prisma's middleware hook. We added integration tests that verify tenant isolation: creating data as Tenant A and asserting Tenant B cannot access it. This catches isolation violations at the CI level before they reach production.",
+          tradeoff:
+            "The shared schema approach means that a schema migration affects all tenants simultaneously. We mitigated this by making all schema changes backward-compatible (adding columns as nullable, never removing columns without a deprecation period) and running migrations during off-peak hours.",
         },
         {
           problem: "PDF receipt generation at scale",
-          solution: "Receipt generation was initially a synchronous operation that blocked the API response for 2-3 seconds. For batch operations (generating 50 receipts at end-of-month), this caused request timeouts. We moved receipt generation to a background job queue with the following architecture: the API immediately returns a 202 response with a job ID, a worker process generates the PDF asynchronously, and the frontend polls for completion. Receipts are cached on disk after first generation.",
-          tradeoff: "Async receipt generation adds complexity to the frontend: the UI must handle loading states for pending receipts and refresh when generation completes. For single receipt generation (the common case), the synchronous approach was simpler but we standardized on async for consistency.",
+          solution:
+            "Receipt generation was initially a synchronous operation that blocked the API response for 2-3 seconds. For batch operations (generating 50 receipts at end-of-month), this caused request timeouts. We moved receipt generation to a background job queue with the following architecture: the API immediately returns a 202 response with a job ID, a worker process generates the PDF asynchronously, and the frontend polls for completion. Receipts are cached on disk after first generation.",
+          tradeoff:
+            "Async receipt generation adds complexity to the frontend: the UI must handle loading states for pending receipts and refresh when generation completes. For single receipt generation (the common case), the synchronous approach was simpler but we standardized on async for consistency.",
         },
         {
           problem: "Database query performance for aggregated fee reports",
-          solution: "School owners frequently request reports like total outstanding fees per class or monthly collection trends. These aggregate queries scan thousands of fee ledger rows and were taking 3-5 seconds to complete. We introduced a materialized view that pre-computes daily snapshots of fee summaries by class, grade, and status. The reporting API queries this materialized view instead of scanning the raw ledger. The view refreshes every 15 minutes via a cron job, which is acceptable for reporting use cases.",
-          tradeoff: "Materialized views introduce data staleness - reports always show data up to 15 minutes old. For operational decisions (e.g., 'how much cash is in the bank right now'), stale data is problematic. For these cases, we kept a separate real-time query path that hits the raw ledger but is limited to the current month's data, keeping scan ranges small.",
+          solution:
+            "School owners frequently request reports like total outstanding fees per class or monthly collection trends. These aggregate queries scan thousands of fee ledger rows and were taking 3-5 seconds to complete. We introduced a materialized view that pre-computes daily snapshots of fee summaries by class, grade, and status. The reporting API queries this materialized view instead of scanning the raw ledger. The view refreshes every 15 minutes via a cron job, which is acceptable for reporting use cases.",
+          tradeoff:
+            "Materialized views introduce data staleness - reports always show data up to 15 minutes old. For operational decisions (e.g., 'how much cash is in the bank right now'), stale data is problematic. For these cases, we kept a separate real-time query path that hits the raw ledger but is limited to the current month's data, keeping scan ranges small.",
         },
       ],
       performance: [
@@ -343,8 +379,15 @@ export const caseStudies: CaseStudy[] = [
     status: "Production",
     image: pharmacy,
     techStack: [
-      "Electron", "React", "Next.js", "Prisma", "SQLite",
-      "TypeScript", "Tailwind CSS", "Node.js", "TanStack Query",
+      "Electron",
+      "React",
+      "Next.js",
+      "Prisma",
+      "SQLite",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "TanStack Query",
     ],
     links: {
       demo: "",
@@ -457,23 +500,28 @@ export const caseStudies: CaseStudy[] = [
         decisions: [
           {
             title: "Electron vs. Tauri vs. React Native Desktop",
-            detail: "Electron was chosen over Tauri (which offers smaller bundle sizes) because of its mature ecosystem for printing (critical for pharmacy receipts), broader printer driver compatibility, and simpler native module integration (required for SQLite and barcode scanning). The larger bundle size (≈150MB) is acceptable for a desktop application installed on dedicated pharmacy computers.",
+            detail:
+              "Electron was chosen over Tauri (which offers smaller bundle sizes) because of its mature ecosystem for printing (critical for pharmacy receipts), broader printer driver compatibility, and simpler native module integration (required for SQLite and barcode scanning). The larger bundle size (≈150MB) is acceptable for a desktop application installed on dedicated pharmacy computers.",
           },
           {
             title: "SQLite vs. PostgreSQL vs. local JSON storage",
-            detail: "SQLite was the only viable choice for an offline-first application. It provides ACID compliance without a separate server process, has zero configuration overhead, and supports the full SQL feature set needed for reporting. The trade-off is limited concurrent write capacity, but with 2-5 concurrent users, this is well within SQLite's capabilities (up to 50 concurrent writers).",
+            detail:
+              "SQLite was the only viable choice for an offline-first application. It provides ACID compliance without a separate server process, has zero configuration overhead, and supports the full SQL feature set needed for reporting. The trade-off is limited concurrent write capacity, but with 2-5 concurrent users, this is well within SQLite's capabilities (up to 50 concurrent writers).",
           },
           {
             title: "Peer-to-peer sync vs. central server sync",
-            detail: "We chose peer-to-peer LAN synchronization over a central server model because pharmacies do not have a dedicated server machine. In a P2P model, any machine can initiate or receive sync, and the system continues to function even if some machines are offline. The trade-off is more complex conflict resolution and the need for UDP discovery, which can be unreliable on some network configurations.",
+            detail:
+              "We chose peer-to-peer LAN synchronization over a central server model because pharmacies do not have a dedicated server machine. In a P2P model, any machine can initiate or receive sync, and the system continues to function even if some machines are offline. The trade-off is more complex conflict resolution and the need for UDP discovery, which can be unreliable on some network configurations.",
           },
           {
             title: "Prisma with SQLite vs. Drizzle ORM",
-            detail: "Prisma was chosen for consistency with our other projects, but Drizzle ORM would have been a better technical choice for this specific use case. Drizzle has a smaller bundle size (important for Electron), better SQLite support, and lower overhead for simple queries. The Prisma client adds ~15MB to the Electron bundle that is largely unnecessary for a local-only application.",
+            detail:
+              "Prisma was chosen for consistency with our other projects, but Drizzle ORM would have been a better technical choice for this specific use case. Drizzle has a smaller bundle size (important for Electron), better SQLite support, and lower overhead for simple queries. The Prisma client adds ~15MB to the Electron bundle that is largely unnecessary for a local-only application.",
           },
           {
             title: "IPC communication pattern in Electron",
-            detail: "We use a request-response IPC pattern for CRUD operations and a streaming pattern for real-time sync events. The main process serves as the database gateway, preventing direct database access from the renderer process. This architecture adds IPC overhead but provides a clean security boundary and simplifies testing - the database layer can be tested independently of the UI.",
+            detail:
+              "We use a request-response IPC pattern for CRUD operations and a streaming pattern for real-time sync events. The main process serves as the database gateway, preventing direct database access from the renderer process. This architecture adds IPC overhead but provides a clean security boundary and simplifies testing - the database layer can be tested independently of the UI.",
           },
         ],
       },
@@ -481,53 +529,69 @@ export const caseStudies: CaseStudy[] = [
         {
           tech: "Electron",
           why: "Electron provides the desktop runtime necessary for local file system access (SQLite database), printer integration (receipt printing), and native OS integration (system tray, auto-start). Its Chromium-based renderer ensures consistent CSS and JavaScript behavior across Windows and macOS, eliminating browser compatibility concerns that would plague a web-based solution.",
-          tradeoff: "Electron's memory usage (150-300MB idle) is high for a pharmacy management application. On older pharmacy computers with 2GB RAM, this is noticeable. Tauri would use significantly less memory but lacks the printer and barcode ecosystem maturity.",
+          tradeoff:
+            "Electron's memory usage (150-300MB idle) is high for a pharmacy management application. On older pharmacy computers with 2GB RAM, this is noticeable. Tauri would use significantly less memory but lacks the printer and barcode ecosystem maturity.",
         },
         {
           tech: "SQLite",
           why: "SQLite is embedded directly in the application - no database server to install, configure, or maintain. A pharmacy installs one application and everything works. SQLite's ACID compliance ensures that even if the power goes out during a billing transaction, the database remains consistent. Zero configuration was the deciding factor.",
-          tradeoff: "SQLite does not support concurrent writes well (≈50 concurrent writers max). For a multi-location pharmacy chain, this would be a scaling bottleneck. The application also needs careful management of database file size - without VACUUM and proper cleanup, the database can grow to multiple GB over years of use.",
+          tradeoff:
+            "SQLite does not support concurrent writes well (≈50 concurrent writers max). For a multi-location pharmacy chain, this would be a scaling bottleneck. The application also needs careful management of database file size - without VACUUM and proper cleanup, the database can grow to multiple GB over years of use.",
         },
         {
           tech: "React",
           why: "React provides the component model needed for the complex, stateful UI of a pharmacy application - where multiple panels (billing, inventory search, customer lookup) are simultaneously visible and interactive. React's unidirectional data flow makes it predictable to reason about the application state as the user moves between billing, inventory, and reporting.",
-          tradeoff: "React's bundle size and runtime overhead are noticeable on low-end hardware compared to lighter alternatives like Svelte or Preact. For a desktop application where initial load time matters, Svelte would have provided a faster first-paint experience.",
+          tradeoff:
+            "React's bundle size and runtime overhead are noticeable on low-end hardware compared to lighter alternatives like Svelte or Preact. For a desktop application where initial load time matters, Svelte would have provided a faster first-paint experience.",
         },
         {
           tech: "Prisma",
           why: "Prisma provides type-safe database access that catches schema mismatches at compile time. In a desktop application where database migrations must be carefully managed (no rollback is possible once deployed to a user's machine), Prisma's migration system provides the safety net needed for confident updates.",
-          tradeoff: "Prisma adds approximately 15MB to the Electron application bundle, much of which is the Prisma engine binary. For a desktop application that users download once, this is a one-time cost, but it does increase download time and disk usage.",
+          tradeoff:
+            "Prisma adds approximately 15MB to the Electron application bundle, much of which is the Prisma engine binary. For a desktop application that users download once, this is a one-time cost, but it does increase download time and disk usage.",
         },
       ],
       features: [
         {
           name: "Barcode-Based Billing",
-          problem: "Pharmacies dispense hundreds of medicines daily. Manual entry of medicine names is slow, error-prone, and impractical during rush hours. Cashiers need to process a customer in under 60 seconds including payment and receipt.",
-          solution: "The billing module supports barcode scanning using USB barcode scanners (which appear as HID keyboards). Scanning a medicine immediately looks up the product by barcode, retrieves the current selling price, checks stock availability, and adds it to the bill. The cashier enters quantity and the system auto-calculates totals, taxes, and discounts.",
-          challenges: "Medicine barcodes in Pakistan are not standardized. Some medicines use GTIN-12, others use GTIN-13, and some use custom pharmacy-assigned codes. We implemented a flexible barcode matching system that normalizes input codes by stripping non-numeric characters and matching against multiple barcode formats stored per product. Pharmacies can also print their own barcode labels for products without manufacturer barcodes.",
+          problem:
+            "Pharmacies dispense hundreds of medicines daily. Manual entry of medicine names is slow, error-prone, and impractical during rush hours. Cashiers need to process a customer in under 60 seconds including payment and receipt.",
+          solution:
+            "The billing module supports barcode scanning using USB barcode scanners (which appear as HID keyboards). Scanning a medicine immediately looks up the product by barcode, retrieves the current selling price, checks stock availability, and adds it to the bill. The cashier enters quantity and the system auto-calculates totals, taxes, and discounts.",
+          challenges:
+            "Medicine barcodes in Pakistan are not standardized. Some medicines use GTIN-12, others use GTIN-13, and some use custom pharmacy-assigned codes. We implemented a flexible barcode matching system that normalizes input codes by stripping non-numeric characters and matching against multiple barcode formats stored per product. Pharmacies can also print their own barcode labels for products without manufacturer barcodes.",
         },
         {
           name: "Expiry Date Management",
-          problem: "Expired medicine is a significant financial loss for pharmacies. Manual expiry tracking is impractical for thousands of SKUs. Pharmacies need to know which medicines are approaching expiry so they can return them to suppliers, offer discounts, or stop ordering.",
-          solution: "The system tracks expiry dates at the batch level. When receiving stock from a supplier, the pharmacist enters the batch number and expiry date. The system automatically generates alerts for medicines expiring within configurable thresholds (60/30/7 days). Expired stock is automatically quarantined in the system and flagged in red during inventory lookups.",
-          challenges: "The most complex challenge was handling batch-level inventory. The same medicine arriving on different dates has different batches with different expiry dates. When a cashier sells a medicine, which batch should be dispatched? We implemented a FIFO (First-In-First-Out) picking algorithm that automatically selects the batch closest to expiry for each sale, minimizing the risk of expiry losses.",
+          problem:
+            "Expired medicine is a significant financial loss for pharmacies. Manual expiry tracking is impractical for thousands of SKUs. Pharmacies need to know which medicines are approaching expiry so they can return them to suppliers, offer discounts, or stop ordering.",
+          solution:
+            "The system tracks expiry dates at the batch level. When receiving stock from a supplier, the pharmacist enters the batch number and expiry date. The system automatically generates alerts for medicines expiring within configurable thresholds (60/30/7 days). Expired stock is automatically quarantined in the system and flagged in red during inventory lookups.",
+          challenges:
+            "The most complex challenge was handling batch-level inventory. The same medicine arriving on different dates has different batches with different expiry dates. When a cashier sells a medicine, which batch should be dispatched? We implemented a FIFO (First-In-First-Out) picking algorithm that automatically selects the batch closest to expiry for each sale, minimizing the risk of expiry losses.",
         },
       ],
       challenges: [
         {
           problem: "Synchronization conflict resolution",
-          solution: "With multiple computers operating independently, conflicts are inevitable. Two cashiers might adjust the stock of the same medicine simultaneously on different machines. We implemented a timestamp-based last-writer-wins strategy: each record carries a `updatedAt` timestamp and the sync engine compares timestamps when merging changes. For inventory count conflicts (both machines adjust stock of the same item), we use a merge strategy that takes the delta approach: instead of syncing the absolute stock count, we sync inventory adjustment transactions and replay them on each machine.",
-          tradeoff: "Last-writer-wins can silently overwrite valid data if clock skew exists between machines. We mitigate this by syncing system time via NTP on application startup and displaying a warning if clock skew exceeds 30 seconds. The delta approach for inventory prevents lost updates but can result in negative stock counts if reconciliation is delayed.",
+          solution:
+            "With multiple computers operating independently, conflicts are inevitable. Two cashiers might adjust the stock of the same medicine simultaneously on different machines. We implemented a timestamp-based last-writer-wins strategy: each record carries a `updatedAt` timestamp and the sync engine compares timestamps when merging changes. For inventory count conflicts (both machines adjust stock of the same item), we use a merge strategy that takes the delta approach: instead of syncing the absolute stock count, we sync inventory adjustment transactions and replay them on each machine.",
+          tradeoff:
+            "Last-writer-wins can silently overwrite valid data if clock skew exists between machines. We mitigate this by syncing system time via NTP on application startup and displaying a warning if clock skew exceeds 30 seconds. The delta approach for inventory prevents lost updates but can result in negative stock counts if reconciliation is delayed.",
         },
         {
           problem: "Printer compatibility across Windows versions",
-          solution: "Receipt printing in pharmacies is notoriously inconsistent. Different pharmacies use different printers (thermal receipt printers, dot matrix, laser), each with unique driver requirements. Electron's built-in printing API does not handle receipt printers well because they require raw ESC/POS commands rather than standard paper formatting. We implemented a dual printing approach: for standard printers, we use Electron's webContents.print() with a formatted HTML template. For thermal receipt printers, we generate ESC/POS commands directly and send them to the printer port using a Node.js native addon.",
-          tradeoff: "ESC/POS direct printing requires a native Node.js addon that must be compiled for each platform. This added significant complexity to the build pipeline. We also had to maintain a database of printer configurations for different thermal printer models, which is difficult to keep comprehensive.",
+          solution:
+            "Receipt printing in pharmacies is notoriously inconsistent. Different pharmacies use different printers (thermal receipt printers, dot matrix, laser), each with unique driver requirements. Electron's built-in printing API does not handle receipt printers well because they require raw ESC/POS commands rather than standard paper formatting. We implemented a dual printing approach: for standard printers, we use Electron's webContents.print() with a formatted HTML template. For thermal receipt printers, we generate ESC/POS commands directly and send them to the printer port using a Node.js native addon.",
+          tradeoff:
+            "ESC/POS direct printing requires a native Node.js addon that must be compiled for each platform. This added significant complexity to the build pipeline. We also had to maintain a database of printer configurations for different thermal printer models, which is difficult to keep comprehensive.",
         },
         {
           problem: "Performance of full-text search on large datasets",
-          solution: "Barcode scanning requires instant results. SQLite's LIKE-based search on medicine names was taking 2-3 seconds on 8,000+ SKUs - unacceptable for a fast-paced billing environment. We implemented SQLite FTS5 full-text search indexes on product names, categories, and manufacturer fields. This reduced search latency from 2 seconds to under 50ms. The FTS index is rebuilt incrementally on each product insert/update to keep it current without expensive full rebuilds.",
-          tradeoff: "FTS indexes increase database size by approximately 30% and add latency to write operations (each product insert triggers an index update). For a read-heavy workload like pharmacy billing, this trade-off is strongly in favor of read performance. The incremental index rebuild means there is a brief window where newly added products are not searchable via FTS - we fall back to LIKE queries during this window.",
+          solution:
+            "Barcode scanning requires instant results. SQLite's LIKE-based search on medicine names was taking 2-3 seconds on 8,000+ SKUs - unacceptable for a fast-paced billing environment. We implemented SQLite FTS5 full-text search indexes on product names, categories, and manufacturer fields. This reduced search latency from 2 seconds to under 50ms. The FTS index is rebuilt incrementally on each product insert/update to keep it current without expensive full rebuilds.",
+          tradeoff:
+            "FTS indexes increase database size by approximately 30% and add latency to write operations (each product insert triggers an index update). For a read-heavy workload like pharmacy billing, this trade-off is strongly in favor of read performance. The incremental index rebuild means there is a brief window where newly added products are not searchable via FTS - we fall back to LIKE queries during this window.",
         },
       ],
       performance: [
@@ -574,8 +638,14 @@ export const caseStudies: CaseStudy[] = [
     status: "Production",
     image: myscribe,
     techStack: [
-      "Vue.js", "Laravel", "Python", "Bootstrap",
-      "AI", "PHP", "MySQL", "Tailwind CSS",
+      "Vue.js",
+      "Laravel",
+      "Python",
+      "Bootstrap",
+      "AI",
+      "PHP",
+      "MySQL",
+      "Tailwind CSS",
     ],
     links: {
       demo: "https://www.myscribe.us/",
@@ -682,19 +752,23 @@ export const caseStudies: CaseStudy[] = [
         decisions: [
           {
             title: "Vue.js vs. React for the frontend",
-            detail: "Vue.js was chosen over React because of its gentler learning curve for the team and its built-in transition system for the real-time transcription display. Vue's reactive system naturally handles the streaming data updates without external state management libraries. React would have required additional dependencies (Redux or Zustand) for the same behavior.",
+            detail:
+              "Vue.js was chosen over React because of its gentler learning curve for the team and its built-in transition system for the real-time transcription display. Vue's reactive system naturally handles the streaming data updates without external state management libraries. React would have required additional dependencies (Redux or Zustand) for the same behavior.",
           },
           {
             title: "Real-time streaming via WebSocket vs. periodic polling",
-            detail: "WebSockets were chosen for real-time transcription display because the latency requirements (under 3 seconds) cannot be met with polling. WebSockets maintain a persistent connection for bidirectional streaming, which is essential for sending audio chunks from the browser and receiving transcript segments simultaneously.",
+            detail:
+              "WebSockets were chosen for real-time transcription display because the latency requirements (under 3 seconds) cannot be met with polling. WebSockets maintain a persistent connection for bidirectional streaming, which is essential for sending audio chunks from the browser and receiving transcript segments simultaneously.",
           },
           {
             title: "Laravel vs. Node.js for the backend",
-            detail: "Laravel was chosen for its built-in authentication, ORM, queue system, and ecosystem of packages relevant to healthcare applications. Its queue system (Laravel Horizon) was directly used for orchestrating AI processing jobs. Node.js would have required more manual setup for these features but would have simplified the WebSocket implementation.",
+            detail:
+              "Laravel was chosen for its built-in authentication, ORM, queue system, and ecosystem of packages relevant to healthcare applications. Its queue system (Laravel Horizon) was directly used for orchestrating AI processing jobs. Node.js would have required more manual setup for these features but would have simplified the WebSocket implementation.",
           },
           {
             title: "Fine-tuned Whisper vs. cloud STT API",
-            detail: "We chose a fine-tuned OpenAI Whisper model over cloud STT APIs (like AWS Transcribe or Google STT) for two reasons: accuracy on medical terminology (general models are 10-15% less accurate on medical speech) and data sovereignty (audio never leaves our infrastructure). The trade-off is significant infrastructure cost for GPU hosting versus pay-per-use API pricing.",
+            detail:
+              "We chose a fine-tuned OpenAI Whisper model over cloud STT APIs (like AWS Transcribe or Google STT) for two reasons: accuracy on medical terminology (general models are 10-15% less accurate on medical speech) and data sovereignty (audio never leaves our infrastructure). The trade-off is significant infrastructure cost for GPU hosting versus pay-per-use API pricing.",
           },
         ],
       },
@@ -702,53 +776,70 @@ export const caseStudies: CaseStudy[] = [
         {
           tech: "Vue.js",
           why: "Vue.js was chosen for its reactive data binding that simplifies real-time UI updates. The transcription display needs to update character-by-character as segments arrive from the server, and Vue's reactivity handles this without manual DOM manipulation. Vue's component system maps naturally to the clinic workflow: a Session component contains a TranscriptPanel and a NoteEditor.",
-          tradeoff: "Vue.js has a smaller ecosystem than React, particularly for healthcare-specific UI components. We had to build custom form elements for clinical data entry that would have been available off-the-shelf in React.",
+          tradeoff:
+            "Vue.js has a smaller ecosystem than React, particularly for healthcare-specific UI components. We had to build custom form elements for clinical data entry that would have been available off-the-shelf in React.",
         },
         {
           tech: "Laravel",
           why: "Laravel provides a complete backend framework with authentication, database migrations, queue management (Horizon), and WebSocket support (Laravel Echo). Its Eloquent ORM integrates cleanly with MySQL. The ecosystem includes Spatie packages for permission management and audit logging, both critical for HIPAA compliance.",
-          tradeoff: "Laravel's PHP runtime introduces higher latency per request compared to Node.js or Go. For the AI orchestration layer where requests are long-running (minutes for note generation), this is acceptable. For the WebSocket server handling streaming audio, we use a dedicated Node.js service alongside Laravel.",
+          tradeoff:
+            "Laravel's PHP runtime introduces higher latency per request compared to Node.js or Go. For the AI orchestration layer where requests are long-running (minutes for note generation), this is acceptable. For the WebSocket server handling streaming audio, we use a dedicated Node.js service alongside Laravel.",
         },
         {
           tech: "Python (AI Pipeline)",
           why: "Python was the only viable choice for the AI pipeline due to its dominance in the ML ecosystem: Whisper for STT, HuggingFace Transformers for LLM inference, and PyTorch for model fine-tuning. The Python ecosystem for audio processing (librosa, torchaudio) provides the tooling needed for real-time audio preprocessing.",
-          tradeoff: "Python's Global Interpreter Lock (GIL) limits concurrent threading for audio processing. We mitigated this by running multiple Python worker processes behind a Redis queue, achieving near-linear scaling with CPU core count.",
+          tradeoff:
+            "Python's Global Interpreter Lock (GIL) limits concurrent threading for audio processing. We mitigated this by running multiple Python worker processes behind a Redis queue, achieving near-linear scaling with CPU core count.",
         },
         {
           tech: "Bootstrap",
           why: "Bootstrap was chosen for rapid UI development with accessible components. The medical professional user base includes clinicians who may have visual impairments or use assistive technologies, and Bootstrap's accessibility features (ARIA labels, keyboard navigation, focus management) provide a solid foundation. Bootstrap's responsive grid ensures the application works on clinic desktops, tablets (used during rounds), and mobile devices (used for telehealth).",
-          tradeoff: "Bootstrap sites can feel generic if not customized. We invested in a custom theme with clinic-branded colors, typography, and component styling - avoiding the default Bootstrap look while keeping its accessibility and responsiveness benefits.",
+          tradeoff:
+            "Bootstrap sites can feel generic if not customized. We invested in a custom theme with clinic-branded colors, typography, and component styling - avoiding the default Bootstrap look while keeping its accessibility and responsiveness benefits.",
         },
       ],
       features: [
         {
           name: "Real-Time Transcription with Medical Vocabulary",
-          problem: "General-purpose speech-to-text models fail on medical terminology. Words like 'hypertension', 'myocardial infarction', and medication names are frequently misrecognized, sometimes with clinically significant errors. Clinicians cannot trust real-time transcription if it contains errors.",
-          solution: "We fine-tuned OpenAI's Whisper model on a curated dataset of 5,000 hours of medical conversations covering primary care, cardiology, endocrinology, and pediatrics. The fine-tuned model achieves 94% word accuracy on medical conversations compared to 82% for the base model. We also maintain a custom medical vocabulary dictionary that overrides specific term transcriptions.",
-          challenges: "Building the fine-tuning dataset was the hardest part - medical conversation data is protected health information and cannot be sourced publicly. We partnered with three clinics to record anonymized conversations with explicit patient consent, then had medical transcriptionists manually transcribe them for ground truth. The legal and ethical review process added 3 months to the timeline.",
+          problem:
+            "General-purpose speech-to-text models fail on medical terminology. Words like 'hypertension', 'myocardial infarction', and medication names are frequently misrecognized, sometimes with clinically significant errors. Clinicians cannot trust real-time transcription if it contains errors.",
+          solution:
+            "We fine-tuned OpenAI's Whisper model on a curated dataset of 5,000 hours of medical conversations covering primary care, cardiology, endocrinology, and pediatrics. The fine-tuned model achieves 94% word accuracy on medical conversations compared to 82% for the base model. We also maintain a custom medical vocabulary dictionary that overrides specific term transcriptions.",
+          challenges:
+            "Building the fine-tuning dataset was the hardest part - medical conversation data is protected health information and cannot be sourced publicly. We partnered with three clinics to record anonymized conversations with explicit patient consent, then had medical transcriptionists manually transcribe them for ground truth. The legal and ethical review process added 3 months to the timeline.",
         },
         {
           name: "AI-Powered SOAP Note Generation",
-          problem: "Raw transcription of a patient conversation is just text - it is not a clinical note. Clinicians would still need to manually extract the subjective complaints, objective findings, assessment, and plan from the transcript. The value is in the structured note, not the raw transcript.",
-          solution: "We fine-tuned a large language model (Llama 2 13B) on a dataset of 100,000 clinical notes to generate SOAP-format notes from conversation transcripts. The model identifies the four SOAP sections from the conversation flow and populates each section with clinically relevant content. The generated note includes ICD-10 code suggestions based on the assessment.",
-          challenges: "LLM-generated clinical notes can hallucinate - inventing symptoms or findings that were not mentioned in the conversation. We implemented a factuality verification step that cross-references the generated note against the transcript and flags any content that cannot be directly attributed to the conversation. Flagged content is highlighted in the UI for clinician review.",
+          problem:
+            "Raw transcription of a patient conversation is just text - it is not a clinical note. Clinicians would still need to manually extract the subjective complaints, objective findings, assessment, and plan from the transcript. The value is in the structured note, not the raw transcript.",
+          solution:
+            "We fine-tuned a large language model (Llama 2 13B) on a dataset of 100,000 clinical notes to generate SOAP-format notes from conversation transcripts. The model identifies the four SOAP sections from the conversation flow and populates each section with clinically relevant content. The generated note includes ICD-10 code suggestions based on the assessment.",
+          challenges:
+            "LLM-generated clinical notes can hallucinate - inventing symptoms or findings that were not mentioned in the conversation. We implemented a factuality verification step that cross-references the generated note against the transcript and flags any content that cannot be directly attributed to the conversation. Flagged content is highlighted in the UI for clinician review.",
         },
       ],
       challenges: [
         {
-          problem: "Real-time audio streaming reliability in browser environments",
-          solution: "Browser audio capture is surprisingly unreliable. Microphone permissions, network interruptions, and browser tab throttling all cause audio stream disruptions. We implemented a multi-layer resilience strategy: audio is buffered locally in 5-second chunks and sent with sequence numbers. If the WebSocket connection drops, the frontend buffers audio locally and replays missed chunks when the connection restores. The backend reassembles chunks by sequence number, handling out-of-order delivery and duplicates.",
-          tradeoff: "Local audio buffering adds memory overhead on the client device. For long consultations (30+ minutes), this can reach 50-100MB of buffered audio. We mitigate by clearing confirmed chunks from the buffer and using Opus compression (≈16 kbps) for transmission.",
+          problem:
+            "Real-time audio streaming reliability in browser environments",
+          solution:
+            "Browser audio capture is surprisingly unreliable. Microphone permissions, network interruptions, and browser tab throttling all cause audio stream disruptions. We implemented a multi-layer resilience strategy: audio is buffered locally in 5-second chunks and sent with sequence numbers. If the WebSocket connection drops, the frontend buffers audio locally and replays missed chunks when the connection restores. The backend reassembles chunks by sequence number, handling out-of-order delivery and duplicates.",
+          tradeoff:
+            "Local audio buffering adds memory overhead on the client device. For long consultations (30+ minutes), this can reach 50-100MB of buffered audio. We mitigate by clearing confirmed chunks from the buffer and using Opus compression (≈16 kbps) for transmission.",
         },
         {
           problem: "HIPAA compliance for AI processing",
-          solution: "Running AI models on patient data in the cloud requires HIPAA compliance across the entire pipeline. We configured our AWS infrastructure with HIPAA-eligible services: encrypted EBS volumes, VPC with no public subnets for processing instances, CloudTrail for API auditing, and a Business Associate Agreement (BAA) with AWS. The LLM inference runs on dedicated instances within the VPC that have no outbound internet access - model weights are pre-loaded, and data never leaves the secure environment.",
-          tradeoff: "HIPAA-compliant infrastructure is expensive. Dedicated GPU instances with BAA-compliant configurations cost 3-4x more than equivalent non-compliant instances. For a startup serving small clinics, this pricing pressure was significant.",
+          solution:
+            "Running AI models on patient data in the cloud requires HIPAA compliance across the entire pipeline. We configured our AWS infrastructure with HIPAA-eligible services: encrypted EBS volumes, VPC with no public subnets for processing instances, CloudTrail for API auditing, and a Business Associate Agreement (BAA) with AWS. The LLM inference runs on dedicated instances within the VPC that have no outbound internet access - model weights are pre-loaded, and data never leaves the secure environment.",
+          tradeoff:
+            "HIPAA-compliant infrastructure is expensive. Dedicated GPU instances with BAA-compliant configurations cost 3-4x more than equivalent non-compliant instances. For a startup serving small clinics, this pricing pressure was significant.",
         },
         {
           problem: "Latency of LLM-based note generation",
-          solution: "Initial note generation using Llama 2 13B took 45-60 seconds on a single A10G GPU - too slow for a clinician waiting between patients. We optimized by: (1) using 4-bit quantization to reduce model size (26GB → 7GB) and increase inference speed, (2) implementing a streaming generation approach where the clinician sees the note being written section by section, and (3) caching processed transcripts for repeat visits.",
-          tradeoff: "4-bit quantization reduces model accuracy by 2-3% on clinical note generation benchmarks. We measured this against the time savings and determined the trade-off was acceptable - the clinician always has the final edit. Streaming generation improved perceived latency but added UI complexity for displaying partial notes.",
+          solution:
+            "Initial note generation using Llama 2 13B took 45-60 seconds on a single A10G GPU - too slow for a clinician waiting between patients. We optimized by: (1) using 4-bit quantization to reduce model size (26GB → 7GB) and increase inference speed, (2) implementing a streaming generation approach where the clinician sees the note being written section by section, and (3) caching processed transcripts for repeat visits.",
+          tradeoff:
+            "4-bit quantization reduces model accuracy by 2-3% on clinical note generation benchmarks. We measured this against the time savings and determined the trade-off was acceptable - the clinician always has the final edit. Streaming generation improved perceived latency but added UI complexity for displaying partial notes.",
         },
       ],
       performance: [
@@ -796,8 +887,15 @@ export const caseStudies: CaseStudy[] = [
     status: "Production",
     image: navpoint,
     techStack: [
-      "GraphQL", "React", "TypeScript", "PostgreSQL", "Node.js",
-      "Tailwind CSS", "TanStack Query", "Docker", "shadcn/ui",
+      "GraphQL",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Node.js",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Docker",
+      "shadcn/ui",
     ],
     links: {
       demo: "",
@@ -909,19 +1007,23 @@ export const caseStudies: CaseStudy[] = [
         decisions: [
           {
             title: "GraphQL vs. REST for the API layer",
-            detail: "GraphQL was chosen over REST because the dashboard has dozens of different views, each requiring a different combination of metrics. With REST, each view would need a custom endpoint, leading to dozens of endpoints that each return fixed data shapes. GraphQL allows each view to request exactly the data it needs from a single endpoint, and the schema serves as living documentation.",
+            detail:
+              "GraphQL was chosen over REST because the dashboard has dozens of different views, each requiring a different combination of metrics. With REST, each view would need a custom endpoint, leading to dozens of endpoints that each return fixed data shapes. GraphQL allows each view to request exactly the data it needs from a single endpoint, and the schema serves as living documentation.",
           },
           {
             title: "Background ETL vs. real-time federation queries",
-            detail: "We chose a periodic ETL pipeline over federated queries to the source systems. Real-time queries to hospital EHR systems are unpredictable - some take 10 seconds, others time out entirely. An ETL pipeline provides consistent performance by decoupling dashboard queries from source system latency. The trade-off is data freshness: dashboard data is up to 5 minutes old, which is acceptable for strategic decisions but not for real-time operational responses.",
+            detail:
+              "We chose a periodic ETL pipeline over federated queries to the source systems. Real-time queries to hospital EHR systems are unpredictable - some take 10 seconds, others time out entirely. An ETL pipeline provides consistent performance by decoupling dashboard queries from source system latency. The trade-off is data freshness: dashboard data is up to 5 minutes old, which is acceptable for strategic decisions but not for real-time operational responses.",
           },
           {
             title: "Materialized views vs. live aggregation",
-            detail: "Materialized views pre-compute common dashboard queries, reducing query time from seconds to milliseconds. The trade-off is that materialized views must be refreshed after each ETL cycle, and the refresh can take 30-60 seconds for large datasets. We optimized by using incrementally refreshable materialized views (PostgreSQL 16 feature) that only process new data since the last refresh.",
+            detail:
+              "Materialized views pre-compute common dashboard queries, reducing query time from seconds to milliseconds. The trade-off is that materialized views must be refreshed after each ETL cycle, and the refresh can take 30-60 seconds for large datasets. We optimized by using incrementally refreshable materialized views (PostgreSQL 16 feature) that only process new data since the last refresh.",
           },
           {
             title: "TanStack Query vs. Apollo Client for GraphQL",
-            detail: "TanStack Query was chosen over Apollo Client because it provides more flexible caching and deduplication controls without being tied to GraphQL. The application has a mix of GraphQL queries and REST fallbacks (for source systems without GraphQL support), and TanStack Query handles both through the same hook API.",
+            detail:
+              "TanStack Query was chosen over Apollo Client because it provides more flexible caching and deduplication controls without being tied to GraphQL. The application has a mix of GraphQL queries and REST fallbacks (for source systems without GraphQL support), and TanStack Query handles both through the same hook API.",
           },
         ],
       },
@@ -929,53 +1031,69 @@ export const caseStudies: CaseStudy[] = [
         {
           tech: "GraphQL",
           why: "GraphQL provides a single API endpoint that serves all dashboard views with precise data shapes. The strongly typed schema eliminates the documentation drift problem common with REST APIs - the schema is always the source of truth. Apollo Studio provides schema validation and performance tracing for production queries.",
-          tradeoff: "GraphQL resolver performance is harder to optimize than REST endpoints. The N+1 query problem (resolving a list of hospitals, then resolving each hospital's metrics individually) can cause performance issues. We mitigated this using DataLoader for batching and caching at the resolver level.",
+          tradeoff:
+            "GraphQL resolver performance is harder to optimize than REST endpoints. The N+1 query problem (resolving a list of hospitals, then resolving each hospital's metrics individually) can cause performance issues. We mitigated this using DataLoader for batching and caching at the resolver level.",
         },
         {
           tech: "React + TypeScript",
           why: "React provides the component model for building composable dashboard widgets. TypeScript ensures type safety between the GraphQL schema and the frontend components - we used GraphQL Code Generator to auto-generate TypeScript types from the schema, eliminating manual type definitions for API responses.",
-          tradeoff: "React's rendering model requires careful optimization for dashboard use cases where data updates frequently. We use React.memo, useMemo, and virtualization (TanStack Virtual) to prevent unnecessary re-renders when real-time data pushes updates.",
+          tradeoff:
+            "React's rendering model requires careful optimization for dashboard use cases where data updates frequently. We use React.memo, useMemo, and virtualization (TanStack Virtual) to prevent unnecessary re-renders when real-time data pushes updates.",
         },
         {
           tech: "PostgreSQL",
           why: "PostgreSQL was chosen as the data warehouse for its advanced analytics features: window functions for running calculations like moving averages, CTEs for readable query structures, table partitioning for time-series data, and materialized views for pre-computed aggregations. These features eliminate the need for a separate OLAP database at the current scale.",
-          tradeoff: "PostgreSQL is not a dedicated OLAP database. As the dataset grows beyond 10TB, we would need to migrate to a columnar store like ClickHouse or DuckDB for interactive analytics performance.",
+          tradeoff:
+            "PostgreSQL is not a dedicated OLAP database. As the dataset grows beyond 10TB, we would need to migrate to a columnar store like ClickHouse or DuckDB for interactive analytics performance.",
         },
         {
           tech: "Docker + Kubernetes",
           why: "Containerization ensures the GraphQL API runs identically in development, staging, and production. Kubernetes provides auto-scaling based on CPU utilization and request latency, which is essential for handling the morning peak when hospital executives check their dashboards simultaneously.",
-          tradeoff: "Kubernetes adds significant operational complexity. For a team without dedicated DevOps support, managing EKS clusters, Helm charts, and CI/CD pipelines is a learning investment. A managed container service like App Runner would have simpler operations but less flexible scaling.",
+          tradeoff:
+            "Kubernetes adds significant operational complexity. For a team without dedicated DevOps support, managing EKS clusters, Helm charts, and CI/CD pipelines is a learning investment. A managed container service like App Runner would have simpler operations but less flexible scaling.",
         },
       ],
       features: [
         {
           name: "Real-Time Patient Flow Dashboard",
-          problem: "Hospital administrators had no real-time visibility into patient flow across the health system. ED crowding, boarding (admitted patients waiting in the ED for an inpatient bed), and ambulance diversion were identified after the fact - too late for proactive intervention.",
-          solution: "We built a live patient flow dashboard that displays current census, admissions, discharges, and transfers for each hospital. The dashboard updates every 5 minutes through the ETL pipeline and provides color-coded alerts when metrics exceed configurable thresholds (e.g., ED census > 120% of capacity turns red).",
-          challenges: "The hardest challenge was reconciling patient movement data across different EHR systems. One hospital calls it 'Discharge,' another calls it 'Check-out,' and a third uses 'Transfer to external facility.' We built a normalization layer that maps each system's terminology to a unified event model. This mapping required 200+ rules and collaboration with clinical informatics teams from each hospital.",
+          problem:
+            "Hospital administrators had no real-time visibility into patient flow across the health system. ED crowding, boarding (admitted patients waiting in the ED for an inpatient bed), and ambulance diversion were identified after the fact - too late for proactive intervention.",
+          solution:
+            "We built a live patient flow dashboard that displays current census, admissions, discharges, and transfers for each hospital. The dashboard updates every 5 minutes through the ETL pipeline and provides color-coded alerts when metrics exceed configurable thresholds (e.g., ED census > 120% of capacity turns red).",
+          challenges:
+            "The hardest challenge was reconciling patient movement data across different EHR systems. One hospital calls it 'Discharge,' another calls it 'Check-out,' and a third uses 'Transfer to external facility.' We built a normalization layer that maps each system's terminology to a unified event model. This mapping required 200+ rules and collaboration with clinical informatics teams from each hospital.",
         },
         {
           name: "Multi-Dimensional Report Builder",
-          problem: "Hospital executives needed the ability to create custom reports combining metrics from different domains - for example, 'Show me readmission rates by department, compared to budget, for the last 6 months, filtered by payer type.' Existing tools required IT assistance to build each report.",
-          solution: "We built a drag-and-drop report builder that allows users to select metrics, dimensions, date ranges, and filters from the GraphQL schema. The builder generates a GraphQL query on the fly and renders the results as configurable visualizations (bar charts, line charts, tables, heatmaps). Saved reports appear on the user's dashboard.",
-          challenges: "Making the report builder intuitive for non-technical users while supporting complex queries was a significant UX challenge. A simple report (revenue by month) should be 3 clicks, while an advanced report (readmission rate by diagnosis code, stratified by age group, with year-over-year comparison) required a guided wizard interface. We iterated through 4 UX prototypes with real hospital administrators before landing on the right balance.",
+          problem:
+            "Hospital executives needed the ability to create custom reports combining metrics from different domains - for example, 'Show me readmission rates by department, compared to budget, for the last 6 months, filtered by payer type.' Existing tools required IT assistance to build each report.",
+          solution:
+            "We built a drag-and-drop report builder that allows users to select metrics, dimensions, date ranges, and filters from the GraphQL schema. The builder generates a GraphQL query on the fly and renders the results as configurable visualizations (bar charts, line charts, tables, heatmaps). Saved reports appear on the user's dashboard.",
+          challenges:
+            "Making the report builder intuitive for non-technical users while supporting complex queries was a significant UX challenge. A simple report (revenue by month) should be 3 clicks, while an advanced report (readmission rate by diagnosis code, stratified by age group, with year-over-year comparison) required a guided wizard interface. We iterated through 4 UX prototypes with real hospital administrators before landing on the right balance.",
         },
       ],
       challenges: [
         {
           problem: "Data inconsistency across hospital systems",
-          solution: "Different hospitals in the health system use different EHR vendors, and even hospitals using the same vendor have customized their configurations. 'Discharge date' means different things: the date the physician wrote the order, the date the patient left the room, or the date the bed was cleaned. We built a data quality layer that runs validation rules on incoming data and flags anomalies. When the data pipeline detects an inconsistency (e.g., negative length of stay), it quarantines the record and alerts the data engineering team.",
-          tradeoff: "The normalization and validation layer adds 2-3 minutes to the ETL pipeline runtime. We optimized by running validation in parallel across source systems rather than sequentially.",
+          solution:
+            "Different hospitals in the health system use different EHR vendors, and even hospitals using the same vendor have customized their configurations. 'Discharge date' means different things: the date the physician wrote the order, the date the patient left the room, or the date the bed was cleaned. We built a data quality layer that runs validation rules on incoming data and flags anomalies. When the data pipeline detects an inconsistency (e.g., negative length of stay), it quarantines the record and alerts the data engineering team.",
+          tradeoff:
+            "The normalization and validation layer adds 2-3 minutes to the ETL pipeline runtime. We optimized by running validation in parallel across source systems rather than sequentially.",
         },
         {
           problem: "Handling upstream system outages gracefully",
-          solution: "When a hospital's EHR system goes down, the ETL pipeline for that source fails. We implemented a circuit breaker pattern: if a source system fails 3 consecutive ETL cycles, the data pipeline marks that source as degraded and continues processing other sources. The dashboard shows the most recent available data for the degraded source, with a yellow warning banner indicating stale data. When the source recovers, the ETL processes the missed cycles in catch-up mode.",
-          tradeoff: "Showing stale data during outages could lead to decisions based on outdated information. We decided this was preferable to showing nothing, which would force executives back to manual report compilation. The yellow warning banner makes the data freshness status transparent.",
+          solution:
+            "When a hospital's EHR system goes down, the ETL pipeline for that source fails. We implemented a circuit breaker pattern: if a source system fails 3 consecutive ETL cycles, the data pipeline marks that source as degraded and continues processing other sources. The dashboard shows the most recent available data for the degraded source, with a yellow warning banner indicating stale data. When the source recovers, the ETL processes the missed cycles in catch-up mode.",
+          tradeoff:
+            "Showing stale data during outages could lead to decisions based on outdated information. We decided this was preferable to showing nothing, which would force executives back to manual report compilation. The yellow warning banner makes the data freshness status transparent.",
         },
         {
           problem: "GraphQL query performance with deep nesting",
-          solution: "Executives viewing department-level drill-downs triggered GraphQL queries with 5+ levels of nesting (hospital → department → metric → time series → comparison). These queries took 8-12 seconds to resolve. We implemented a query complexity analysis middleware that estimates query cost before execution. Queries exceeding a complexity threshold are rejected with a suggestion to narrow the scope. We also added DataLoader for automatic batching of resolver calls.",
-          tradeoff: "Rejecting complex queries frustrates power users who need to export large datasets. We added an async export feature where complex queries are submitted, processed as a background job, and delivered as a CSV download via email. This satisfies the use case without degrading real-time dashboard performance.",
+          solution:
+            "Executives viewing department-level drill-downs triggered GraphQL queries with 5+ levels of nesting (hospital → department → metric → time series → comparison). These queries took 8-12 seconds to resolve. We implemented a query complexity analysis middleware that estimates query cost before execution. Queries exceeding a complexity threshold are rejected with a suggestion to narrow the scope. We also added DataLoader for automatic batching of resolver calls.",
+          tradeoff:
+            "Rejecting complex queries frustrates power users who need to export large datasets. We added an async export feature where complex queries are submitted, processed as a background job, and delivered as a CSV download via email. This satisfies the use case without degrading real-time dashboard performance.",
         },
       ],
       performance: [
@@ -1023,8 +1141,16 @@ export const caseStudies: CaseStudy[] = [
     status: "Production",
     image: triton,
     techStack: [
-      "Next.js", "Payload CMS", "TypeScript", "AWS", "Tailwind CSS",
-      "Docker", "Twilio", "Node.js", "PostgreSQL", "Framer Motion",
+      "Next.js",
+      "Payload CMS",
+      "TypeScript",
+      "AWS",
+      "Tailwind CSS",
+      "Docker",
+      "Twilio",
+      "Node.js",
+      "PostgreSQL",
+      "Framer Motion",
     ],
     links: {
       demo: "https://www.tritoncg.com/",
@@ -1135,19 +1261,23 @@ export const caseStudies: CaseStudy[] = [
         decisions: [
           {
             title: "Payload CMS vs. Contentful vs. Strapi",
-            detail: "Payload CMS was chosen over Contentful (SaaS, expensive per-seat pricing for multiple client editors) and Strapi (self-hosted but less mature multi-tenant support). Payload provides native multi-tenancy, a self-hosted option for data sovereignty, and a rich admin UI that content editors found intuitive during evaluation. The Node.js codebase allows backend customization without learning a separate plugin architecture.",
+            detail:
+              "Payload CMS was chosen over Contentful (SaaS, expensive per-seat pricing for multiple client editors) and Strapi (self-hosted but less mature multi-tenant support). Payload provides native multi-tenancy, a self-hosted option for data sovereignty, and a rich admin UI that content editors found intuitive during evaluation. The Node.js codebase allows backend customization without learning a separate plugin architecture.",
           },
           {
             title: "ISR vs. full SSG for content pages",
-            detail: "Incremental Static Regeneration (ISR) was chosen over full static generation because content changes are frequent and unpredictable. With ISR, pages are statically generated on first request and revalidated in the background when content updates. Full SSG would require a complete rebuild for every content change, which is impractical for frequently updated client websites.",
+            detail:
+              "Incremental Static Regeneration (ISR) was chosen over full static generation because content changes are frequent and unpredictable. With ISR, pages are statically generated on first request and revalidated in the background when content updates. Full SSG would require a complete rebuild for every content change, which is impractical for frequently updated client websites.",
           },
           {
             title: "MongoDB vs. PostgreSQL for Payload",
-            detail: "Payload CMS currently uses MongoDB as its primary database. While PostgreSQL would be more familiar and provide stronger relational integrity, MongoDB's schema flexibility aligns with Payload's dynamic content modeling approach - where content structures change as new client requirements emerge. The document model maps naturally to nested page content with heterogeneous block types.",
+            detail:
+              "Payload CMS currently uses MongoDB as its primary database. While PostgreSQL would be more familiar and provide stronger relational integrity, MongoDB's schema flexibility aligns with Payload's dynamic content modeling approach - where content structures change as new client requirements emerge. The document model maps naturally to nested page content with heterogeneous block types.",
           },
           {
             title: "Container-based deployment vs. Vercel",
-            detail: "Self-hosted containers on AWS ECS were chosen over Vercel because of the need to run Payload CMS's Node.js server alongside the Next.js application. Vercel's serverless functions have execution time limits that conflict with Payload's media upload and admin API operations. The trade-off is increased DevOps overhead for managing ECS, but this provides the flexibility needed for the CMS backend.",
+            detail:
+              "Self-hosted containers on AWS ECS were chosen over Vercel because of the need to run Payload CMS's Node.js server alongside the Next.js application. Vercel's serverless functions have execution time limits that conflict with Payload's media upload and admin API operations. The trade-off is increased DevOps overhead for managing ECS, but this provides the flexibility needed for the CMS backend.",
           },
         ],
       },
@@ -1155,53 +1285,69 @@ export const caseStudies: CaseStudy[] = [
         {
           tech: "Next.js",
           why: "Next.js provides both server-side rendering (for dynamic pages like search results) and static generation (for content pages), with ISR bridging the two. File-based routing maps directly to the page hierarchy managed in Payload. The Image component provides automatic optimization for the media-heavy client websites.",
-          tradeoff: "Next.js's ISR requires a running server process, adding operational complexity compared to fully static sites. For simple client websites, a static site generator like Astro or 11ty would have simpler deployment. However, the dynamic capabilities (forms, search, preview) justify Next.js for this use case.",
+          tradeoff:
+            "Next.js's ISR requires a running server process, adding operational complexity compared to fully static sites. For simple client websites, a static site generator like Astro or 11ty would have simpler deployment. However, the dynamic capabilities (forms, search, preview) justify Next.js for this use case.",
         },
         {
           tech: "Payload CMS",
           why: "Payload's headless architecture with a built-in admin panel provides the complete CMS experience without external dependencies. Its multi-tenant support allows all client sites to be managed from a single admin instance, which was the core requirement. Payload's access control system maps user roles to site-level permissions natively.",
-          tradeoff: "Payload has a smaller community than Contentful or Strapi, meaning fewer plugins and community resources. The documentation is comprehensive but less battle-tested for edge cases. We had to build custom plugins for advanced workflows that would have been available off-the-shelf with Contentful.",
+          tradeoff:
+            "Payload has a smaller community than Contentful or Strapi, meaning fewer plugins and community resources. The documentation is comprehensive but less battle-tested for edge cases. We had to build custom plugins for advanced workflows that would have been available off-the-shelf with Contentful.",
         },
         {
           tech: "AWS (ECS, S3, CloudFront)",
           why: "AWS provides the managed infrastructure needed for a multi-tenant CMS: ECS for container orchestration with auto-scaling, S3 for scalable media storage, CloudFront for global CDN distribution, and Certificate Manager for centralized SSL management. The infrastructure can grow with the client portfolio without architectural changes.",
-          tradeoff: "AWS's managed services come with higher costs than running directly on EC2. The ECS Fargate pricing model is per-CPU-hour, which is more expensive than reserved EC2 instances. The operational simplicity and auto-scaling justify the cost premium for a multi-client platform.",
+          tradeoff:
+            "AWS's managed services come with higher costs than running directly on EC2. The ECS Fargate pricing model is per-CPU-hour, which is more expensive than reserved EC2 instances. The operational simplicity and auto-scaling justify the cost premium for a multi-client platform.",
         },
         {
           tech: "Twilio (SendGrid)",
           why: "Twilio SendGrid provides reliable email delivery for contact form submissions, with built-in templating, delivery tracking, and spam filtering. Its API integrates cleanly with Payload's hooks system - when a contact form submission webhook fires, SendGrid sends a formatted email to the client's designated inbox.",
-          tradeoff: "SendGrid's free tier is limited to 100 emails/day, which is sufficient for most client contact forms. For higher-volume clients, the paid tier adds cost that must be passed through. An alternative using SES would have lower costs but requires more setup for deliverability.",
+          tradeoff:
+            "SendGrid's free tier is limited to 100 emails/day, which is sufficient for most client contact forms. For higher-volume clients, the paid tier adds cost that must be passed through. An alternative using SES would have lower costs but requires more setup for deliverability.",
         },
       ],
       features: [
         {
           name: "Multi-Site Content Management",
-          problem: "Managing 6+ independent websites meant logging into 6+ different CMS instances, remembering different interfaces, and duplicating content updates across sites. Content editors spent 30% of their time on administrative overhead rather than actual content work.",
-          solution: "The centralized Payload CMS admin panel shows all client sites in a single interface. Editors switch between sites with a dropdown, and content structures are consistent across sites. Shared content components (testimonials, CTAs) can be created once and used across multiple client sites.",
-          challenges: "The main challenge was balancing content isolation (each client's data must be private) with content sharing (reusable components across sites). Payload's access control system allowed us to implement site-scoped read/write permissions while creating a special 'shared' content scope that all authenticated editors can access.",
+          problem:
+            "Managing 6+ independent websites meant logging into 6+ different CMS instances, remembering different interfaces, and duplicating content updates across sites. Content editors spent 30% of their time on administrative overhead rather than actual content work.",
+          solution:
+            "The centralized Payload CMS admin panel shows all client sites in a single interface. Editors switch between sites with a dropdown, and content structures are consistent across sites. Shared content components (testimonials, CTAs) can be created once and used across multiple client sites.",
+          challenges:
+            "The main challenge was balancing content isolation (each client's data must be private) with content sharing (reusable components across sites). Payload's access control system allowed us to implement site-scoped read/write permissions while creating a special 'shared' content scope that all authenticated editors can access.",
         },
         {
           name: "Drag-and-Drop Page Builder",
-          problem: "Clients wanted to create and modify pages without developer involvement - adding a new service page, updating the homepage layout, or rearranging sections. Traditional CMS interfaces required knowledge of HTML or shortcodes, creating dependency on the development team.",
-          solution: "We built a custom page builder within Payload CMS using its Block component system. Editors compose pages by selecting from pre-built sections (hero, features, testimonials, gallery, CTA, contact form). Each section has configurable options (background color, layout variant, content fields) exposed in the admin panel.",
-          challenges: "The block-based page builder generates deeply nested JSON content. Rendering this efficiently in Next.js required a recursive component system that maps block types to React components. Performance optimization was needed to avoid unnecessary re-renders when blocks share common data sources.",
+          problem:
+            "Clients wanted to create and modify pages without developer involvement - adding a new service page, updating the homepage layout, or rearranging sections. Traditional CMS interfaces required knowledge of HTML or shortcodes, creating dependency on the development team.",
+          solution:
+            "We built a custom page builder within Payload CMS using its Block component system. Editors compose pages by selecting from pre-built sections (hero, features, testimonials, gallery, CTA, contact form). Each section has configurable options (background color, layout variant, content fields) exposed in the admin panel.",
+          challenges:
+            "The block-based page builder generates deeply nested JSON content. Rendering this efficiently in Next.js required a recursive component system that maps block types to React components. Performance optimization was needed to avoid unnecessary re-renders when blocks share common data sources.",
         },
       ],
       challenges: [
         {
           problem: "Multi-tenant content performance at scale",
-          solution: "As the number of client sites grew, Payload CMS queries became slower because all content was in a single MongoDB collection. A query for 'pages where site = X' had to scan rows from all sites. We implemented MongoDB compound indexes on `(site, slug)` and `(site, status, publishedDate)` to keep query times sub-100ms regardless of the total number of documents. Payload's built-in query optimization combined with proper indexing resolved the performance degradation.",
-          tradeoff: "Compound indexes increase write latency by 10-15% because each document insert or update must update multiple indexes. For a content management workload where writes are infrequent compared to reads, this is an acceptable trade-off.",
+          solution:
+            "As the number of client sites grew, Payload CMS queries became slower because all content was in a single MongoDB collection. A query for 'pages where site = X' had to scan rows from all sites. We implemented MongoDB compound indexes on `(site, slug)` and `(site, status, publishedDate)` to keep query times sub-100ms regardless of the total number of documents. Payload's built-in query optimization combined with proper indexing resolved the performance degradation.",
+          tradeoff:
+            "Compound indexes increase write latency by 10-15% because each document insert or update must update multiple indexes. For a content management workload where writes are infrequent compared to reads, this is an acceptable trade-off.",
         },
         {
           problem: "Client-specific customizations vs. platform consistency",
-          solution: "Clients inevitably request custom features that are not available in the shared platform. We implemented a plugin system that allows per-site feature flags and custom components without modifying the core platform code. Customizations are registered as Payload plugins with site-scoped conditions. This allows the platform to evolve in a controlled way while meeting individual client needs.",
-          tradeoff: "The plugin system adds architectural complexity. Each customization increases the surface area for bugs and testing. We limit customization to 20% of feature development per client; beyond that, we evaluate whether the feature belongs in the platform core.",
+          solution:
+            "Clients inevitably request custom features that are not available in the shared platform. We implemented a plugin system that allows per-site feature flags and custom components without modifying the core platform code. Customizations are registered as Payload plugins with site-scoped conditions. This allows the platform to evolve in a controlled way while meeting individual client needs.",
+          tradeoff:
+            "The plugin system adds architectural complexity. Each customization increases the surface area for bugs and testing. We limit customization to 20% of feature development per client; beyond that, we evaluate whether the feature belongs in the platform core.",
         },
         {
           problem: "Content preview workflow with ISR",
-          solution: "Editors need to preview changes before publishing. Payload's draft system stores drafts in the database without publishing. We built a preview route in Next.js that reads draft content directly from Payload's API when a preview query parameter is present. The preview route bypasses the CDN cache and always serves fresh content. Published content continues to use ISR with CDN caching.",
-          tradeoff: "Preview routes bypass all caching, which means they are slower than published pages. For a single editor reviewing their work, the 1-2 second load time is acceptable. Scaling to 50+ concurrent editors previewing would require dedicated preview infrastructure.",
+          solution:
+            "Editors need to preview changes before publishing. Payload's draft system stores drafts in the database without publishing. We built a preview route in Next.js that reads draft content directly from Payload's API when a preview query parameter is present. The preview route bypasses the CDN cache and always serves fresh content. Published content continues to use ISR with CDN caching.",
+          tradeoff:
+            "Preview routes bypass all caching, which means they are slower than published pages. For a single editor reviewing their work, the 1-2 second load time is acceptable. Scaling to 50+ concurrent editors previewing would require dedicated preview infrastructure.",
         },
       ],
       performance: [
