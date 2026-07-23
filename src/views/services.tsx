@@ -2,17 +2,33 @@
 import React, { useState } from "react";
 import { services } from "@/lib/services";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, Rocket, Zap, Server, Code, Cpu, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  Bot,
+  Rocket,
+  Zap,
+  Server,
+  Code,
+  Cpu,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
-    case "bot": return <Bot size={24} />;
-    case "rocket": return <Rocket size={24} />;
-    case "zap": return <Zap size={24} />;
-    case "server": return <Server size={24} />;
-    case "code": return <Code size={24} />;
-    case "cpu": return <Cpu size={24} />;
-    default: return <Code size={24} />;
+    case "bot":
+      return <Bot size={24} />;
+    case "rocket":
+      return <Rocket size={24} />;
+    case "zap":
+      return <Zap size={24} />;
+    case "server":
+      return <Server size={24} />;
+    case "code":
+      return <Code size={24} />;
+    case "cpu":
+      return <Cpu size={24} />;
+    default:
+      return <Code size={24} />;
   }
 };
 
@@ -48,21 +64,25 @@ const Services = () => {
                 aria-label={`View ${service.title} details`}
                 className={`relative p-5 cursor-pointer rounded-xl transition-all duration-300 ${
                   activeIndex === index
-                    ? 'bg-foreground/[0.03] border border-foreground/10 shadow-[var(--shadow-sm)]'
-                    : 'opacity-60 hover:opacity-100'
+                    ? "bg-foreground/[0.03] border border-foreground/10 shadow-[var(--shadow-sm)]"
+                    : "opacity-60 hover:opacity-100"
                 }`}
               >
                 <div className="flex justify-between items-center">
-                  <h3 className={`text-lg font-medium transition-colors duration-300 ${
-                    activeIndex === index ? 'text-accent' : 'text-foreground'
-                  }`}>
+                  <h3
+                    className={`text-lg font-medium transition-colors duration-300 ${
+                      activeIndex === index ? "text-accent" : "text-foreground"
+                    }`}
+                  >
                     {service.title}
                   </h3>
-                  <ArrowRight className={`w-4 h-4 transition-all duration-300 ${
-                    activeIndex === index
-                      ? 'translate-x-0 opacity-100 text-accent'
-                      : '-translate-x-2 opacity-0 text-foreground'
-                  }`} />
+                  <ArrowRight
+                    className={`w-4 h-4 transition-all duration-300 ${
+                      activeIndex === index
+                        ? "translate-x-0 opacity-100 text-accent"
+                        : "-translate-x-2 opacity-0 text-foreground"
+                    }`}
+                  />
                 </div>
               </motion.div>
             ))}
@@ -83,7 +103,9 @@ const Services = () => {
                     <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
                       {getIcon(services[activeIndex].icon)}
                     </div>
-                    <h4 className="text-2xl font-semibold text-foreground">{services[activeIndex].title}</h4>
+                    <h4 className="text-2xl font-semibold text-foreground">
+                      {services[activeIndex].title}
+                    </h4>
                   </div>
 
                   <p className="text-foreground/60 leading-relaxed">
@@ -91,12 +113,19 @@ const Services = () => {
                   </p>
 
                   <div className="space-y-4">
-                    <div className="text-xs font-mono text-foreground/30 tracking-wider uppercase">Key capabilities</div>
+                    <div className="text-xs font-mono text-foreground/30 tracking-wider uppercase">
+                      Key capabilities
+                    </div>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {services[activeIndex].points.map((pt, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-foreground/60">{pt}</span>
+                          <CheckCircle2
+                            size={15}
+                            className="text-accent mt-0.5 flex-shrink-0"
+                          />
+                          <span className="text-sm text-foreground/60">
+                            {pt}
+                          </span>
                         </li>
                       ))}
                     </ul>

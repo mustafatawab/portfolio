@@ -126,7 +126,7 @@ on:
 
   # Run on a schedule (cron syntax)
   schedule:
-    - cron: "0 6 * * 1"  # Every Monday at 6 AM UTC
+    - cron: "0 6 * * 1" # Every Monday at 6 AM UTC
 
   # Run manually from the GitHub UI
   workflow_dispatch:
@@ -139,13 +139,13 @@ on:
 
 ### Common Trigger Patterns
 
-| Scenario | Trigger |
-|----------|---------|
-| Test every PR | `pull_request: { branches: [main] }` |
-| Deploy on merge | `push: { branches: [main] }` |
-| Nightly builds | `schedule: [{ cron: "0 2 * * *" }]` |
-| Manual deploy | `workflow_dispatch:` |
-| Tagged releases | `push: { tags: ["v*"] }` |
+| Scenario        | Trigger                              |
+| --------------- | ------------------------------------ |
+| Test every PR   | `pull_request: { branches: [main] }` |
+| Deploy on merge | `push: { branches: [main] }`         |
+| Nightly builds  | `schedule: [{ cron: "0 2 * * *" }]`  |
+| Manual deploy   | `workflow_dispatch:`                 |
+| Tagged releases | `push: { tags: ["v*"] }`             |
 
 ---
 
@@ -255,10 +255,10 @@ Set secrets in your repository: **Settings → Secrets and variables → Actions
 
 Common secrets you'll need:
 
-| Secret | Purpose |
-|--------|---------|
-| `SSH_PRIVATE_KEY` | SSH into your server |
-| `SERVER_HOST` | Server IP or domain |
+| Secret            | Purpose                 |
+| ----------------- | ----------------------- |
+| `SSH_PRIVATE_KEY` | SSH into your server    |
+| `SERVER_HOST`     | Server IP or domain     |
 | `DOCKER_USERNAME` | Docker Hub / GHCR login |
 | `DOCKER_PASSWORD` | Docker Hub / GHCR token |
 
@@ -431,15 +431,15 @@ The next article connects everything: build a Docker image in CI, push it to Git
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) | |
-| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro) | |
-| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) | |
-| 6. [Linux Survival Guide for Developers Coming from macOS](/blogs/linux-survival-guide) | |
-| **7. GitHub Actions From Zero — Build Your First Pipeline** | ← You are here |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                                                                              | Topic          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                                                  |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile)                             |                |
+| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds)             |                |
+| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro)                               |                |
+| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) |                |
+| 6. [Linux Survival Guide for Developers Coming from macOS](/blogs/linux-survival-guide)                              |                |
+| **7. GitHub Actions From Zero — Build Your First Pipeline**                                                          | ← You are here |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically                                                      | Coming soon    |

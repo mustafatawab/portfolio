@@ -13,11 +13,13 @@ import {
 const certificationFiles = [
   {
     title: "Agentic AI Mastery",
-    fileUrl: new URL("../assets/Mustafa_Tawab_agentic_ai.pdf", import.meta.url).href,
+    fileUrl: new URL("../assets/Mustafa_Tawab_agentic_ai.pdf", import.meta.url)
+      .href,
   },
   {
     title: "Prompt Engineering Excellence",
-    fileUrl: new URL("../assets/Mustafa_Tawab_prompt-eng.pdf", import.meta.url).href,
+    fileUrl: new URL("../assets/Mustafa_Tawab_prompt-eng.pdf", import.meta.url)
+      .href,
   },
 ];
 

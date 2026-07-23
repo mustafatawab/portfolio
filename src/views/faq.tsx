@@ -112,9 +112,7 @@ export default function FAQ() {
                   )}
                 </AnimatePresence>
 
-                {i < faqs.length - 1 && (
-                  <div className="h-px bg-border" />
-                )}
+                {i < faqs.length - 1 && <div className="h-px bg-border" />}
               </motion.div>
             );
           })}

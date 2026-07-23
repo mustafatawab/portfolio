@@ -14,7 +14,9 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
   const [selected, setSelected] = useState<number | null>(null);
 
   const handlePrev = () => {
-    setSelected((s) => (s !== null ? (s - 1 + images.length) % images.length : null));
+    setSelected((s) =>
+      s !== null ? (s - 1 + images.length) % images.length : null,
+    );
   };
 
   const handleNext = () => {
@@ -65,14 +67,20 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
             {images.length > 1 && (
               <>
                 <button
-                  onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
                   className="absolute left-4 p-2 rounded-full bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
-                  onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
                   className="absolute right-4 p-2 rounded-full bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors"
                   aria-label="Next image"
                 >

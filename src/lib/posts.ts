@@ -61,9 +61,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
+  const processedContent = await remark().use(html).process(content);
 
   const contentHtml = processedContent.toString();
 
@@ -76,7 +74,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     headings.push({
       level,
       text,
-      id: text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-"),
+      id: text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-"),
     });
   }
 

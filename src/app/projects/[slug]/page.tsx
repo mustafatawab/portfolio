@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
-import { getProjectShowcase, getAllProjectShowcases } from "@/lib/projects-data";
+import {
+  getProjectShowcase,
+  getAllProjectShowcases,
+} from "@/lib/projects-data";
 import { ProjectDetail } from "@/views/project-detail";
-import { JsonLd, softwareSourceCodeSchema, breadcrumbSchema } from "@/lib/json-ld";
+import {
+  JsonLd,
+  softwareSourceCodeSchema,
+  breadcrumbSchema,
+} from "@/lib/json-ld";
 
 export async function generateStaticParams() {
   const projects = getAllProjectShowcases();
@@ -43,7 +50,10 @@ export default async function ProjectPage({
         data={breadcrumbSchema([
           { name: "Home", url: "https://mustafatawab.com" },
           { name: "Projects", url: "https://mustafatawab.com/projects" },
-          { name: project.title, url: `https://mustafatawab.com/projects/${project.slug}` },
+          {
+            name: project.title,
+            url: `https://mustafatawab.com/projects/${project.slug}`,
+          },
         ])}
       />
       <ProjectDetail project={project} />

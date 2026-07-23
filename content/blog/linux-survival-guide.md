@@ -47,15 +47,15 @@ apt search nginx
 
 ### Key Differences
 
-| | Homebrew | apt |
-|---|---|---|
-| **Install** | `brew install <pkg>` | `sudo apt install -y <pkg>` |
-| **Update** | `brew update` | `sudo apt update` |
-| **Upgrade** | `brew upgrade` | `sudo apt upgrade -y` |
-| **Remove** | `brew uninstall` | `sudo apt remove` |
-| **Search** | `brew search` | `apt search` |
-| **Info** | `brew info` | `apt show` |
-| **List installed** | `brew list` | `apt list --installed` |
+|                    | Homebrew             | apt                         |
+| ------------------ | -------------------- | --------------------------- |
+| **Install**        | `brew install <pkg>` | `sudo apt install -y <pkg>` |
+| **Update**         | `brew update`        | `sudo apt update`           |
+| **Upgrade**        | `brew upgrade`       | `sudo apt upgrade -y`       |
+| **Remove**         | `brew uninstall`     | `sudo apt remove`           |
+| **Search**         | `brew search`        | `apt search`                |
+| **Info**           | `brew info`          | `apt show`                  |
+| **List installed** | `brew list`          | `apt list --installed`      |
 
 ### Why `sudo`?
 
@@ -363,15 +363,15 @@ For Docker deployments, you usually only need port 80 and 443 open. Everything e
 
 ## File Locations: macOS vs Linux
 
-| What | macOS | Linux (Ubuntu) |
-|------|-------|----------------|
-| Home directory | `/Users/you` | `/home/deploy` |
-| Config files | `~/.zshrc` | `~/.bashrc` |
-| Logs | `~/Library/Logs` | `/var/log` |
-| Application data | `/usr/local/var` | `/var/lib` |
-| System config | `/etc` | `/etc` |
-| Temp files | `/tmp` | `/tmp` |
-| Docker data | `~/Library/Containers/com.docker.docker` | `/var/lib/docker` |
+| What             | macOS                                    | Linux (Ubuntu)    |
+| ---------------- | ---------------------------------------- | ----------------- |
+| Home directory   | `/Users/you`                             | `/home/deploy`    |
+| Config files     | `~/.zshrc`                               | `~/.bashrc`       |
+| Logs             | `~/Library/Logs`                         | `/var/log`        |
+| Application data | `/usr/local/var`                         | `/var/lib`        |
+| System config    | `/etc`                                   | `/etc`            |
+| Temp files       | `/tmp`                                   | `/tmp`            |
+| Docker data      | `~/Library/Containers/com.docker.docker` | `/var/lib/docker` |
 
 ---
 
@@ -411,15 +411,15 @@ The next article automates this with GitHub Actions: test on every PR, build the
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds) | |
-| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro) | |
-| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) | |
-| **6. Linux Survival Guide for Developers Coming from macOS** | ← You are here |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                                                                              | Topic          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                                                  |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile)                             |                |
+| 3. [Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB](/blogs/multi-stage-docker-builds)             |                |
+| 4. [Docker Compose — Stop Running 10 docker run Commands](/blogs/docker-compose-intro)                               |                |
+| 5. [Docker Compose for Production — depends_on, Healthchecks & Migration Patterns](/blogs/docker-compose-production) |                |
+| **6. Linux Survival Guide for Developers Coming from macOS**                                                         | ← You are here |
+| 7. GitHub Actions From Zero — Build Your First Pipeline                                                              | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically                                                      | Coming soon    |

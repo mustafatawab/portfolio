@@ -44,8 +44,14 @@ export default async function CaseStudyPage({
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "https://mustafatawab.com" },
-          { name: "Case Studies", url: "https://mustafatawab.com/case-studies" },
-          { name: study.title, url: `https://mustafatawab.com/case-studies/${study.slug}` },
+          {
+            name: "Case Studies",
+            url: "https://mustafatawab.com/case-studies",
+          },
+          {
+            name: study.title,
+            url: `https://mustafatawab.com/case-studies/${study.slug}`,
+          },
         ])}
       />
       <CaseStudyDetail study={study} />

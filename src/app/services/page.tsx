@@ -25,8 +25,8 @@ const ServicesPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-foreground/50 text-base max-w-xl mx-auto leading-relaxed"
           >
-            Engineering specialized AI solutions and high-performance digital environments
-            tailored for international scale and measurable impact.
+            Engineering specialized AI solutions and high-performance digital
+            environments tailored for international scale and measurable impact.
           </motion.p>
         </div>
       </section>

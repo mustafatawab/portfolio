@@ -28,7 +28,7 @@ React is a declarative, component-based library for building user interfaces. It
 Here's a typical React component:
 
 ```tsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface UserProps {
   userId: string;
@@ -40,8 +40,8 @@ export default function UserProfile({ userId }: UserProps) {
 
   useEffect(() => {
     fetch(`/api/users/${userId}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setUser(data);
         setLoading(false);
       });
@@ -70,9 +70,15 @@ React renders on the client by default. Next.js can pre-render pages on the serv
 
 ```tsx
 // app/users/[id]/page.tsx
-export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
-  const user = await fetch(`https://api.example.com/users/${id}`).then(res => res.json());
+  const user = await fetch(`https://api.example.com/users/${id}`).then((res) =>
+    res.json(),
+  );
 
   return (
     <div>
@@ -92,13 +98,17 @@ For content that doesn't change frequently, Next.js builds HTML at compile time:
 ```tsx
 // app/blog/page.tsx
 export async function generateStaticParams() {
-  const posts = await fetch('https://api.example.com/posts').then(res => res.json());
+  const posts = await fetch("https://api.example.com/posts").then((res) =>
+    res.json(),
+  );
   return posts.map((post: any) => ({ slug: post.slug }));
 }
 
 export default async function BlogPage() {
-  const posts = await fetch('https://api.example.com/posts').then(res => res.json());
-  
+  const posts = await fetch("https://api.example.com/posts").then((res) =>
+    res.json(),
+  );
+
   return (
     <div className="grid gap-6">
       {posts.map((post: any) => (
@@ -136,7 +146,7 @@ React Server Components (RSC) let you run React components on the server with ze
 
 ```tsx
 // This component NEVER ships JavaScript to the client
-import { db } from '@/lib/database';
+import { db } from "@/lib/database";
 
 export default async function Dashboard() {
   const stats = await db.query(`
@@ -158,13 +168,13 @@ The database query runs on the server. Zero KB added to your client bundle.
 
 ## Performance Comparison
 
-| Metric | React (CSR) | Next.js (SSR/SSG) |
-|--------|-------------|-------------------|
-| Initial Load | 2-4s (JS bundle) | 0.5-1.5s (HTML) |
-| Time to First Byte | ~200ms | ~200ms |
-| First Contentful Paint | 1.5-3s | 0.3-0.8s |
-| SEO Friendliness | Poor (requires hydration) | Excellent |
-| Bundle Size | Full React + app code | Only interactive components |
+| Metric                 | React (CSR)               | Next.js (SSR/SSG)           |
+| ---------------------- | ------------------------- | --------------------------- |
+| Initial Load           | 2-4s (JS bundle)          | 0.5-1.5s (HTML)             |
+| Time to First Byte     | ~200ms                    | ~200ms                      |
+| First Contentful Paint | 1.5-3s                    | 0.3-0.8s                    |
+| SEO Friendliness       | Poor (requires hydration) | Excellent                   |
+| Bundle Size            | Full React + app code     | Only interactive components |
 
 ## When to Use Plain React
 
@@ -181,12 +191,12 @@ Example: A real-time collaborative code editor. The entire app is client-side in
 ```tsx
 // Pure React makes sense here
 export default function CodeEditor() {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const [cursor, setCursor] = useState({ line: 0, col: 0 });
 
   // WebSocket connection for real-time collaboration
   useEffect(() => {
-    const ws = new WebSocket('wss://collab.example.com');
+    const ws = new WebSocket("wss://collab.example.com");
     ws.onmessage = (event) => {
       const update = JSON.parse(event.data);
       applyRemoteChange(update);
@@ -219,13 +229,17 @@ Example: This portfolio site. Every page needs to load fast, rank well, and rend
 
 ```tsx
 // Next.js Server Component for a blog
-import { getPostBySlug } from '@/lib/posts';
-import { notFound } from 'next/navigation';
+import { getPostBySlug } from "@/lib/posts";
+import { notFound } from "next/navigation";
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  
+
   if (!post) notFound();
 
   return (
@@ -244,7 +258,11 @@ Modern Next.js lets you mix strategies per page:
 
 ```tsx
 // app/layout.tsx — Server Component (default)
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
@@ -253,11 +271,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 // app/dashboard/page.tsx — Client Component
-'use client';
+("use client");
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
-  
+
   useEffect(() => {
     fetchData().then(setData);
   }, []);

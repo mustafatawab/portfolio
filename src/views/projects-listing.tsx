@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ExternalLink, BookOpen } from "lucide-react";
-import { ProjectShowcase, getAllProjectShowcases, PROJECT_CATEGORIES } from "@/lib/projects-data";
+import {
+  ProjectShowcase,
+  getAllProjectShowcases,
+  PROJECT_CATEGORIES,
+} from "@/lib/projects-data";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -55,8 +59,12 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
           </div>
         </div>
         <div className="p-5">
-          <h3 className="text-base font-semibold text-foreground">{project.title}</h3>
-          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{project.tagline}</p>
+          <h3 className="text-base font-semibold text-foreground">
+            {project.title}
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
+            {project.tagline}
+          </p>
           <p className="text-sm text-foreground/60 leading-relaxed line-clamp-2 mt-2 mb-3">
             {project.summary}
           </p>
@@ -72,7 +80,11 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
           </div>
           <div className="flex items-center gap-3 text-xs text-primary font-medium">
             <span className="inline-flex items-center gap-1 group-hover:gap-1.5 transition-all">
-              View Project <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              View Project{" "}
+              <ArrowUpRight
+                size={12}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </span>
           </div>
         </div>
@@ -90,7 +102,10 @@ export function ProjectsListing() {
   const nonFeatured = allProjects.filter((p) => !p.featured);
 
   const filtered = useMemo(() => {
-    let list = activeCategory === "All" ? nonFeatured : nonFeatured.filter((p) => p.categories.includes(activeCategory));
+    let list =
+      activeCategory === "All"
+        ? nonFeatured
+        : nonFeatured.filter((p) => p.categories.includes(activeCategory));
     if (search.trim()) {
       const q = search.toLowerCase();
       list = list.filter(
@@ -120,8 +135,9 @@ export function ProjectsListing() {
               Building modern software for real businesses.
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mt-4 max-w-2xl">
-              A catalog of SaaS platforms, business applications, desktop software,
-              and enterprise solutions I have designed and built from the ground up.
+              A catalog of SaaS platforms, business applications, desktop
+              software, and enterprise solutions I have designed and built from
+              the ground up.
             </p>
           </motion.div>
         </div>
@@ -182,22 +198,27 @@ export function ProjectsListing() {
         <div className="container">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             <div className="flex flex-wrap gap-2">
-              {PROJECT_CATEGORIES.filter((c) => c !== "All" || true).map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
-                    activeCategory === cat
-                      ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
-                      : "text-muted-foreground border border-border hover:border-primary/30 hover:text-foreground"
-                  }`}
-                >
-                  {cat === "All" ? "All" : cat}
-                </button>
-              ))}
+              {PROJECT_CATEGORIES.filter((c) => c !== "All" || true).map(
+                (cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                      activeCategory === cat
+                        ? "bg-primary text-primary-foreground shadow-[var(--shadow-xs)]"
+                        : "text-muted-foreground border border-border hover:border-primary/30 hover:text-foreground"
+                    }`}
+                  >
+                    {cat === "All" ? "All" : cat}
+                  </button>
+                ),
+              )}
             </div>
             <div className="relative w-full md:w-56">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50" />
+              <Search
+                size={14}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50"
+              />
               <input
                 type="text"
                 placeholder="Search projects..."
@@ -208,7 +229,8 @@ export function ProjectsListing() {
             </div>
           </div>
           <div aria-live="polite" className="sr-only">
-            Showing {filtered.length} {activeCategory === "All" ? "" : activeCategory} projects
+            Showing {filtered.length}{" "}
+            {activeCategory === "All" ? "" : activeCategory} projects
           </div>
         </div>
       </section>

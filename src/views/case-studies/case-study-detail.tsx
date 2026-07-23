@@ -12,7 +12,13 @@ import {
   CheckCircle2,
   ChevronRight,
 } from "lucide-react";
-import { CaseStudy, Feature, Challenge, TechDecision, getRelatedCaseStudies } from "@/lib/case-studies";
+import {
+  CaseStudy,
+  Feature,
+  Challenge,
+  TechDecision,
+  getRelatedCaseStudies,
+} from "@/lib/case-studies";
 import { Callout } from "@/components/case-studies/callout";
 import { TechStack } from "@/components/case-studies/tech-stack";
 
@@ -24,18 +30,30 @@ interface TocItem {
 
 function buildToc(study: CaseStudy): TocItem[] {
   const items: TocItem[] = [];
-  if (study.sections.executiveSummary.length) items.push({ id: "executive-summary", label: "Executive Summary" });
-  if (study.sections.businessProblem.length) items.push({ id: "business-problem", label: "Business Problem" });
-  if (study.sections.goals.business.length) items.push({ id: "goals", label: "Goals" });
-  if (study.sections.requirements.functional.length) items.push({ id: "requirements", label: "Requirements" });
-  if (study.sections.architecture.overview) items.push({ id: "architecture", label: "Architecture" });
-  if (study.sections.techDecisions.length) items.push({ id: "technology-decisions", label: "Technology Decisions" });
-  if (study.sections.features.length) items.push({ id: "features", label: "Features" });
-  if (study.sections.challenges.length) items.push({ id: "challenges", label: "Challenges" });
-  if (study.sections.performance.length) items.push({ id: "performance", label: "Performance" });
-  if (study.sections.security.length) items.push({ id: "security", label: "Security" });
-  if (study.sections.lessonsLearned.length) items.push({ id: "lessons-learned", label: "Lessons Learned" });
-  if (study.sections.futureImprovements.length) items.push({ id: "future-improvements", label: "Future Improvements" });
+  if (study.sections.executiveSummary.length)
+    items.push({ id: "executive-summary", label: "Executive Summary" });
+  if (study.sections.businessProblem.length)
+    items.push({ id: "business-problem", label: "Business Problem" });
+  if (study.sections.goals.business.length)
+    items.push({ id: "goals", label: "Goals" });
+  if (study.sections.requirements.functional.length)
+    items.push({ id: "requirements", label: "Requirements" });
+  if (study.sections.architecture.overview)
+    items.push({ id: "architecture", label: "Architecture" });
+  if (study.sections.techDecisions.length)
+    items.push({ id: "technology-decisions", label: "Technology Decisions" });
+  if (study.sections.features.length)
+    items.push({ id: "features", label: "Features" });
+  if (study.sections.challenges.length)
+    items.push({ id: "challenges", label: "Challenges" });
+  if (study.sections.performance.length)
+    items.push({ id: "performance", label: "Performance" });
+  if (study.sections.security.length)
+    items.push({ id: "security", label: "Security" });
+  if (study.sections.lessonsLearned.length)
+    items.push({ id: "lessons-learned", label: "Lessons Learned" });
+  if (study.sections.futureImprovements.length)
+    items.push({ id: "future-improvements", label: "Future Improvements" });
   return items;
 }
 
@@ -62,7 +80,15 @@ function ReadingProgress() {
 }
 
 // ─── Section wrapper ───
-function Section({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
+function Section({
+  id,
+  children,
+  className = "",
+}: {
+  id: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <section id={id} className={`scroll-mt-24 mb-16 ${className}`}>
       {children}
@@ -73,14 +99,20 @@ function Section({ id, children, className = "" }: { id: string; children: React
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <span className="text-xs font-mono tracking-wider text-primary uppercase">{children}</span>
+      <span className="text-xs font-mono tracking-wider text-primary uppercase">
+        {children}
+      </span>
       <span className="h-px flex-1 bg-border" />
     </div>
   );
 }
 
 function SectionBody({ children }: { children: React.ReactNode }) {
-  return <div className="text-[15.5px] text-foreground/80 leading-relaxed space-y-4">{children}</div>;
+  return (
+    <div className="text-[15.5px] text-foreground/80 leading-relaxed space-y-4">
+      {children}
+    </div>
+  );
 }
 
 function BulletList({ items }: { items: string[] }) {
@@ -89,7 +121,9 @@ function BulletList({ items }: { items: string[] }) {
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-2.5">
           <CheckCircle2 size={15} className="text-primary/70 mt-0.5 shrink-0" />
-          <span className="text-[15.5px] text-foreground/70 leading-relaxed">{item}</span>
+          <span className="text-[15.5px] text-foreground/70 leading-relaxed">
+            {item}
+          </span>
         </li>
       ))}
     </ul>
@@ -100,7 +134,10 @@ function GridList({ items }: { items: string[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       {items.map((item, i) => (
-        <div key={i} className="flex items-start gap-2.5 p-3 rounded-lg border border-border bg-card">
+        <div
+          key={i}
+          className="flex items-start gap-2.5 p-3 rounded-lg border border-border bg-card"
+        >
           <CheckCircle2 size={14} className="text-primary mt-0.5 shrink-0" />
           <span className="text-sm text-foreground/70">{item}</span>
         </div>
@@ -114,19 +151,33 @@ function FeatureCard({ feature }: { feature: Feature }) {
   return (
     <div className="border border-border rounded-xl bg-card overflow-hidden">
       <div className="p-6">
-        <h3 className="text-base font-semibold text-foreground mb-4">{feature.name}</h3>
+        <h3 className="text-base font-semibold text-foreground mb-4">
+          {feature.name}
+        </h3>
         <div className="space-y-4">
           <div>
-            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">Problem</p>
-            <p className="text-sm text-foreground/70 leading-relaxed">{feature.problem}</p>
+            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">
+              Problem
+            </p>
+            <p className="text-sm text-foreground/70 leading-relaxed">
+              {feature.problem}
+            </p>
           </div>
           <div>
-            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">Solution</p>
-            <p className="text-sm text-foreground/70 leading-relaxed">{feature.solution}</p>
+            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">
+              Solution
+            </p>
+            <p className="text-sm text-foreground/70 leading-relaxed">
+              {feature.solution}
+            </p>
           </div>
           <div>
-            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">Engineering Challenges</p>
-            <p className="text-sm text-foreground/70 leading-relaxed">{feature.challenges}</p>
+            <p className="text-xs font-mono tracking-wider text-muted-foreground mb-1.5 uppercase">
+              Engineering Challenges
+            </p>
+            <p className="text-sm text-foreground/70 leading-relaxed">
+              {feature.challenges}
+            </p>
           </div>
         </div>
       </div>
@@ -138,9 +189,13 @@ function FeatureCard({ feature }: { feature: Feature }) {
 function ChallengeCard({ challenge }: { challenge: Challenge }) {
   return (
     <div className="border border-border rounded-xl bg-card p-6">
-      <h3 className="text-base font-semibold text-foreground mb-4">{challenge.problem}</h3>
+      <h3 className="text-base font-semibold text-foreground mb-4">
+        {challenge.problem}
+      </h3>
       <div className="space-y-3">
-        <p className="text-sm text-foreground/70 leading-relaxed">{challenge.solution}</p>
+        <p className="text-sm text-foreground/70 leading-relaxed">
+          {challenge.solution}
+        </p>
         <Callout variant="caution" title="Trade-off">
           {challenge.tradeoff}
         </Callout>
@@ -158,7 +213,9 @@ function TechDecisionCard({ decision }: { decision: TechDecision }) {
           {decision.tech}
         </span>
       </div>
-      <p className="text-sm text-foreground/70 leading-relaxed mb-3">{decision.why}</p>
+      <p className="text-sm text-foreground/70 leading-relaxed mb-3">
+        {decision.why}
+      </p>
       <Callout variant="warning" title="Trade-off">
         {decision.tradeoff}
       </Callout>
@@ -167,7 +224,13 @@ function TechDecisionCard({ decision }: { decision: TechDecision }) {
 }
 
 // ─── Architecture decision ───
-function ArchDecisionCard({ title, detail }: { title: string; detail: string }) {
+function ArchDecisionCard({
+  title,
+  detail,
+}: {
+  title: string;
+  detail: string;
+}) {
   return (
     <div className="border border-border rounded-xl bg-card p-6">
       <h4 className="text-sm font-semibold text-foreground mb-2">{title}</h4>
@@ -177,7 +240,13 @@ function ArchDecisionCard({ title, detail }: { title: string; detail: string }) 
 }
 
 // ─── TOC sidebar ───
-function TableOfContents({ items, activeId }: { items: TocItem[]; activeId: string }) {
+function TableOfContents({
+  items,
+  activeId,
+}: {
+  items: TocItem[];
+  activeId: string;
+}) {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -217,7 +286,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
           }
         }
       },
-      { rootMargin: "-100px 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-100px 0px -60% 0px", threshold: 0 },
     );
 
     toc.forEach(({ id }) => {
@@ -241,7 +310,10 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
             href="/case-studies"
             className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
           >
-            <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft
+              size={14}
+              className="transition-transform group-hover:-translate-x-1"
+            />
             All case studies
           </Link>
         </div>
@@ -293,7 +365,11 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                   target="_blank"
                   className="group inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-xs font-medium transition-all duration-[var(--duration-normal)] hover:bg-primary/90 hover:shadow-[var(--shadow-sm)]"
                 >
-                  Live Demo <ExternalLink size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  Live Demo{" "}
+                  <ExternalLink
+                    size={12}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
                 </Link>
               )}
               {study.links.github && (
@@ -355,25 +431,33 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
             )}
 
             {/* 3. Goals */}
-            {(s.goals.business.length > 0 || s.goals.technical.length > 0 || s.goals.user.length > 0) && (
+            {(s.goals.business.length > 0 ||
+              s.goals.technical.length > 0 ||
+              s.goals.user.length > 0) && (
               <Section id="goals">
                 <SectionHeading>Goals</SectionHeading>
                 <div className="space-y-6">
                   {s.goals.business.length > 0 && (
                     <div>
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">Business Goals</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">
+                        Business Goals
+                      </p>
                       <BulletList items={s.goals.business} />
                     </div>
                   )}
                   {s.goals.technical.length > 0 && (
                     <div>
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">Technical Goals</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">
+                        Technical Goals
+                      </p>
                       <BulletList items={s.goals.technical} />
                     </div>
                   )}
                   {s.goals.user.length > 0 && (
                     <div>
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">User Goals</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">
+                        User Goals
+                      </p>
                       <BulletList items={s.goals.user} />
                     </div>
                   )}
@@ -387,49 +471,90 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 <SectionHeading>Requirements</SectionHeading>
                 <div className="space-y-6">
                   <div>
-                    <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">Functional</p>
+                    <p className="text-xs font-mono tracking-wider text-muted-foreground mb-2 uppercase">
+                      Functional
+                    </p>
                     <GridList items={s.requirements.functional} />
                   </div>
                   <div>
-                    <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">Non‑Functional</p>
+                    <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">
+                      Non‑Functional
+                    </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {s.requirements.nonFunctional.performance.length > 0 && (
                         <div className="border border-border rounded-lg p-4 bg-card">
-                          <p className="text-xs font-semibold text-foreground mb-2">Performance</p>
+                          <p className="text-xs font-semibold text-foreground mb-2">
+                            Performance
+                          </p>
                           <ul className="space-y-1">
-                            {s.requirements.nonFunctional.performance.map((r, i) => (
-                              <li key={i} className="text-sm text-muted-foreground">• {r}</li>
-                            ))}
+                            {s.requirements.nonFunctional.performance.map(
+                              (r, i) => (
+                                <li
+                                  key={i}
+                                  className="text-sm text-muted-foreground"
+                                >
+                                  • {r}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       )}
                       {s.requirements.nonFunctional.security.length > 0 && (
                         <div className="border border-border rounded-lg p-4 bg-card">
-                          <p className="text-xs font-semibold text-foreground mb-2">Security</p>
+                          <p className="text-xs font-semibold text-foreground mb-2">
+                            Security
+                          </p>
                           <ul className="space-y-1">
-                            {s.requirements.nonFunctional.security.map((r, i) => (
-                              <li key={i} className="text-sm text-muted-foreground">• {r}</li>
-                            ))}
+                            {s.requirements.nonFunctional.security.map(
+                              (r, i) => (
+                                <li
+                                  key={i}
+                                  className="text-sm text-muted-foreground"
+                                >
+                                  • {r}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       )}
                       {s.requirements.nonFunctional.scalability.length > 0 && (
                         <div className="border border-border rounded-lg p-4 bg-card">
-                          <p className="text-xs font-semibold text-foreground mb-2">Scalability</p>
+                          <p className="text-xs font-semibold text-foreground mb-2">
+                            Scalability
+                          </p>
                           <ul className="space-y-1">
-                            {s.requirements.nonFunctional.scalability.map((r, i) => (
-                              <li key={i} className="text-sm text-muted-foreground">• {r}</li>
-                            ))}
+                            {s.requirements.nonFunctional.scalability.map(
+                              (r, i) => (
+                                <li
+                                  key={i}
+                                  className="text-sm text-muted-foreground"
+                                >
+                                  • {r}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       )}
-                      {s.requirements.nonFunctional.maintainability.length > 0 && (
+                      {s.requirements.nonFunctional.maintainability.length >
+                        0 && (
                         <div className="border border-border rounded-lg p-4 bg-card">
-                          <p className="text-xs font-semibold text-foreground mb-2">Maintainability</p>
+                          <p className="text-xs font-semibold text-foreground mb-2">
+                            Maintainability
+                          </p>
                           <ul className="space-y-1">
-                            {s.requirements.nonFunctional.maintainability.map((r, i) => (
-                              <li key={i} className="text-sm text-muted-foreground">• {r}</li>
-                            ))}
+                            {s.requirements.nonFunctional.maintainability.map(
+                              (r, i) => (
+                                <li
+                                  key={i}
+                                  className="text-sm text-muted-foreground"
+                                >
+                                  • {r}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       )}
@@ -444,16 +569,19 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
               <Section id="architecture">
                 <SectionHeading>Architecture</SectionHeading>
                 <SectionBody>
-                  <Callout variant="info">
-                    {s.architecture.overview}
-                  </Callout>
+                  <Callout variant="info">{s.architecture.overview}</Callout>
 
                   {s.architecture.systemFlow.length > 0 && (
                     <div>
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 mt-6 uppercase">System Flow</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 mt-6 uppercase">
+                        System Flow
+                      </p>
                       <ol className="space-y-3">
                         {s.architecture.systemFlow.map((step, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed">
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed"
+                          >
                             <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono shrink-0 mt-0.5">
                               {i + 1}
                             </span>
@@ -466,10 +594,15 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
 
                   {s.architecture.databaseDesign.length > 0 && (
                     <div className="mt-6">
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">Database Design</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">
+                        Database Design
+                      </p>
                       <ul className="space-y-3">
                         {s.architecture.databaseDesign.map((item, i) => (
-                          <li key={i} className="text-[15px] text-foreground/70 leading-relaxed pl-4 border-l-2 border-primary/30">
+                          <li
+                            key={i}
+                            className="text-[15px] text-foreground/70 leading-relaxed pl-4 border-l-2 border-primary/30"
+                          >
                             {item}
                           </li>
                         ))}
@@ -479,10 +612,15 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
 
                   {s.architecture.requestFlow.length > 0 && (
                     <div className="mt-6">
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">Request Flow</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">
+                        Request Flow
+                      </p>
                       <ol className="space-y-3">
                         {s.architecture.requestFlow.map((step, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed">
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed"
+                          >
                             <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono shrink-0 mt-0.5">
                               {i + 1}
                             </span>
@@ -495,10 +633,15 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
 
                   {s.architecture.deploymentFlow.length > 0 && (
                     <div className="mt-6">
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">Deployment Flow</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">
+                        Deployment Flow
+                      </p>
                       <ol className="space-y-3">
                         {s.architecture.deploymentFlow.map((step, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed">
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed"
+                          >
                             <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono shrink-0 mt-0.5">
                               {i + 1}
                             </span>
@@ -511,10 +654,16 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
 
                   {s.architecture.decisions.length > 0 && (
                     <div className="mt-6">
-                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">Architectural Decisions</p>
+                      <p className="text-xs font-mono tracking-wider text-muted-foreground mb-3 uppercase">
+                        Architectural Decisions
+                      </p>
                       <div className="space-y-3">
                         {s.architecture.decisions.map((d, i) => (
-                          <ArchDecisionCard key={i} title={d.title} detail={d.detail} />
+                          <ArchDecisionCard
+                            key={i}
+                            title={d.title}
+                            detail={d.detail}
+                          />
                         ))}
                       </div>
                     </div>
@@ -566,8 +715,13 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 <SectionBody>
                   <ul className="space-y-2">
                     {s.performance.map((item, i) => (
-                      <li key={i} className="text-[15px] text-foreground/70 leading-relaxed flex items-start gap-2.5">
-                        <span className="text-primary text-sm mt-0.5 shrink-0">&#9656;</span>
+                      <li
+                        key={i}
+                        className="text-[15px] text-foreground/70 leading-relaxed flex items-start gap-2.5"
+                      >
+                        <span className="text-primary text-sm mt-0.5 shrink-0">
+                          &#9656;
+                        </span>
                         {item}
                       </li>
                     ))}
@@ -583,8 +737,13 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 <SectionBody>
                   <ul className="space-y-2">
                     {s.security.map((item, i) => (
-                      <li key={i} className="text-[15px] text-foreground/70 leading-relaxed flex items-start gap-2.5">
-                        <span className="text-primary text-sm mt-0.5 shrink-0">&#9656;</span>
+                      <li
+                        key={i}
+                        className="text-[15px] text-foreground/70 leading-relaxed flex items-start gap-2.5"
+                      >
+                        <span className="text-primary text-sm mt-0.5 shrink-0">
+                          &#9656;
+                        </span>
                         {item}
                       </li>
                     ))}
@@ -600,7 +759,10 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 <SectionBody>
                   <ul className="space-y-3">
                     {s.lessonsLearned.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed p-4 rounded-lg border border-border bg-card">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed p-4 rounded-lg border border-border bg-card"
+                      >
                         <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-mono shrink-0">
                           {i + 1}
                         </span>
@@ -618,11 +780,15 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 <SectionHeading>Future Improvements</SectionHeading>
                 <SectionBody>
                   <Callout variant="tip" title="Roadmap">
-                    These improvements are prioritized based on user feedback and business impact.
+                    These improvements are prioritized based on user feedback
+                    and business impact.
                   </Callout>
                   <ul className="space-y-3 mt-4">
                     {s.futureImprovements.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-[15px] text-foreground/70 leading-relaxed"
+                      >
                         <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground/5 text-muted-foreground text-xs font-mono shrink-0">
                           {i + 1}
                         </span>
@@ -646,13 +812,25 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                       className="group flex items-center gap-3 p-4 rounded-xl border border-border bg-card hover:border-primary/20 transition-all duration-[var(--duration-fast)]"
                     >
                       <div className="relative w-16 h-12 rounded-lg overflow-hidden bg-muted shrink-0">
-                        <Image src={r.image} alt={r.title} fill className="object-cover" />
+                        <Image
+                          src={r.image}
+                          alt={r.title}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-medium text-foreground truncate">{r.title}</p>
-                        <p className="text-xs text-muted-foreground truncate">{r.subtitle}</p>
+                        <p className="text-sm font-medium text-foreground truncate">
+                          {r.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {r.subtitle}
+                        </p>
                       </div>
-                      <ChevronRight size={14} className="text-muted-foreground shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" />
+                      <ChevronRight
+                        size={14}
+                        className="text-muted-foreground shrink-0 ml-auto transition-transform group-hover:translate-x-0.5"
+                      />
                     </Link>
                   ))}
                 </div>
@@ -666,8 +844,8 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                   Want to discuss this project?
                 </h2>
                 <p className="text-sm text-muted-foreground mb-5 max-w-lg mx-auto">
-                  I am always happy to talk about engineering decisions, architecture, or
-                  how I can help with your next project.
+                  I am always happy to talk about engineering decisions,
+                  architecture, or how I can help with your next project.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   {study.links.website && (

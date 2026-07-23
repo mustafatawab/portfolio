@@ -2,7 +2,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Search, ClipboardList, Palette, Code, CheckCircle2, Rocket, TrendingUp, Briefcase, Lightbulb, Hammer, Handshake } from "lucide-react";
+import {
+  ArrowUpRight,
+  Search,
+  ClipboardList,
+  Palette,
+  Code,
+  CheckCircle2,
+  Rocket,
+  TrendingUp,
+  Briefcase,
+  Lightbulb,
+  Hammer,
+  Handshake,
+} from "lucide-react";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -36,7 +49,12 @@ const models = [
     title: "Discovery & Consultation",
     description:
       "A clear roadmap before any commitment — we start by understanding your business goals and technical constraints.",
-    deliverables: ["Requirement Gathering", "Technical Recommendations", "Project Scope", "Implementation Roadmap"],
+    deliverables: [
+      "Requirement Gathering",
+      "Technical Recommendations",
+      "Project Scope",
+      "Implementation Roadmap",
+    ],
     cta: { label: "Start a conversation", href: "/#contact" },
   },
   {
@@ -44,7 +62,12 @@ const models = [
     title: "MVP Development",
     description:
       "A production-ready minimum viable product shipped fast — validated with real users before investing in full-scale development.",
-    deliverables: ["Core Feature Set", "Working Prototype", "User Testing", "Iteration Plan"],
+    deliverables: [
+      "Core Feature Set",
+      "Working Prototype",
+      "User Testing",
+      "Iteration Plan",
+    ],
     cta: { label: "See an example", href: "/projects/maktab-one" },
   },
   {
@@ -52,7 +75,12 @@ const models = [
     title: "Full Product Development",
     description:
       "End-to-end engineering from architecture and design through deployment — a complete product built for production.",
-    deliverables: ["System Architecture", "Full Implementation", "CI/CD Pipeline", "Production Deployment"],
+    deliverables: [
+      "System Architecture",
+      "Full Implementation",
+      "CI/CD Pipeline",
+      "Production Deployment",
+    ],
     cta: { label: "View case studies", href: "/case-studies" },
   },
   {
@@ -60,7 +88,12 @@ const models = [
     title: "System Modernization",
     description:
       "Refactor or rebuild existing systems with modern technologies — reduce tech debt, improve performance, and strengthen security.",
-    deliverables: ["Codebase Assessment", "Migration Plan", "Modernized Architecture", "Performance Benchmarks"],
+    deliverables: [
+      "Codebase Assessment",
+      "Migration Plan",
+      "Modernized Architecture",
+      "Performance Benchmarks",
+    ],
     cta: { label: "Read the approach", href: "/case-studies/navpoint-health" },
   },
   {
@@ -68,7 +101,12 @@ const models = [
     title: "Long-Term Engineering Partnership",
     description:
       "Ongoing development, feature enhancements, and scaling support — I become an extension of your team without the overhead.",
-    deliverables: ["Sprint-Based Delivery", "Feature Development", "Maintenance & Support", "Scalability Planning"],
+    deliverables: [
+      "Sprint-Based Delivery",
+      "Feature Development",
+      "Maintenance & Support",
+      "Scalability Planning",
+    ],
     cta: { label: "Let's talk", href: "/#contact" },
   },
 ];
@@ -143,8 +181,9 @@ export default function EngagementModels() {
             variants={fadeUp}
             className="mt-4 text-[15.5px] md:text-base text-muted-foreground leading-relaxed max-w-2xl"
           >
-            Every project is different. Whether you need a quick discovery session
-            or a long-term engineering partnership, there is a model that fits.
+            Every project is different. Whether you need a quick discovery
+            session or a long-term engineering partnership, there is a model
+            that fits.
           </motion.p>
         </motion.div>
 

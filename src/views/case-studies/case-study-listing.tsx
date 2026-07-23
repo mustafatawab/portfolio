@@ -47,10 +47,22 @@ function deriveTopics(study: CaseStudy): string[] {
   if (cat.includes("enterprise")) topics.add("Enterprise");
   if (study.sections.performance.length > 0) topics.add("Performance");
   if (study.sections.security.length > 0) topics.add("Security");
-  if (study.sections.architecture.decisions.some((d) => /database|mongo|postgres|sql/.test(d.detail.toLowerCase()))) topics.add("Database");
-  if (study.sections.architecture.decisions.some((d) => /auth|jwt|session|oauth/.test(d.detail.toLowerCase()))) topics.add("Authentication");
   if (
-    study.techStack.some((t) => /next|vercel|docker|ci\/cd|deploy/.test(t.toLowerCase())) ||
+    study.sections.architecture.decisions.some((d) =>
+      /database|mongo|postgres|sql/.test(d.detail.toLowerCase()),
+    )
+  )
+    topics.add("Database");
+  if (
+    study.sections.architecture.decisions.some((d) =>
+      /auth|jwt|session|oauth/.test(d.detail.toLowerCase()),
+    )
+  )
+    topics.add("Authentication");
+  if (
+    study.techStack.some((t) =>
+      /next|vercel|docker|ci\/cd|deploy/.test(t.toLowerCase()),
+    ) ||
     study.sections.architecture.deploymentFlow.length > 0
   )
     topics.add("Deployment");
@@ -188,14 +200,19 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
   const nonFeatured = studies.filter((s) => s.slug !== "maktab-one");
 
   const filtered = useMemo(() => {
-    let list = activeTopic === "All" ? nonFeatured : nonFeatured.filter((s) => deriveTopics(s).includes(activeTopic));
+    let list =
+      activeTopic === "All"
+        ? nonFeatured
+        : nonFeatured.filter((s) => deriveTopics(s).includes(activeTopic));
     if (search.trim()) {
       const q = search.toLowerCase();
       list = list.filter(
         (s) =>
           s.title.toLowerCase().includes(q) ||
           s.subtitle.toLowerCase().includes(q) ||
-          s.sections.executiveSummary.some((e) => e.toLowerCase().includes(q)) ||
+          s.sections.executiveSummary.some((e) =>
+            e.toLowerCase().includes(q),
+          ) ||
           s.techStack.some((t) => t.toLowerCase().includes(q)),
       );
     }
@@ -253,7 +270,10 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
               ))}
             </div>
             <div className="relative w-full md:w-56">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50" />
+              <Search
+                size={14}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50"
+              />
               <input
                 type="text"
                 placeholder="Search case studies..."
@@ -264,7 +284,8 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
             </div>
           </div>
           <div aria-live="polite" className="sr-only">
-            Showing {filtered.length} {activeTopic === "All" ? "" : activeTopic} case studies
+            Showing {filtered.length} {activeTopic === "All" ? "" : activeTopic}{" "}
+            case studies
           </div>
         </div>
       </section>

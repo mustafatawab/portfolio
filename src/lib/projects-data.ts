@@ -27,8 +27,13 @@ export interface ProjectTechStack {
 }
 
 export const PROJECT_CATEGORIES = [
-  "All", "SaaS Platforms", "Business Applications", "Desktop Software",
-  "Enterprise Solutions", "Healthcare", "Education",
+  "All",
+  "SaaS Platforms",
+  "Business Applications",
+  "Desktop Software",
+  "Enterprise Solutions",
+  "Healthcare",
+  "Education",
 ] as const;
 export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];
 
@@ -93,7 +98,13 @@ export const projectShowcases: ProjectShowcase[] = [
       caseStudy: "/case-studies/maktab-one",
     },
     techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS", "TanStack Query", "shadcn/ui"],
+      frontend: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "TanStack Query",
+        "shadcn/ui",
+      ],
       backend: ["Express.js", "Node.js", "Prisma", "JWT"],
       database: ["PostgreSQL"],
       infrastructure: ["Docker", "VPS", "Nginx", "Vercel"],
@@ -102,8 +113,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A cloud-based school management system that handles fee management, student records, expense tracking, and parent communication from a single dashboard.",
       who: "Mid-tier private schools in developing markets that need affordable, reliable school management software without dedicated IT staff.",
-      businessValue: "Reduces administrative overhead by 80%, eliminates fee tracking errors, and gives school owners real-time financial visibility across their institution.",
-      primaryUsers: "School administrators, accountants, teachers, and parents/guardians.",
+      businessValue:
+        "Reduces administrative overhead by 80%, eliminates fee tracking errors, and gives school owners real-time financial visibility across their institution.",
+      primaryUsers:
+        "School administrators, accountants, teachers, and parents/guardians.",
     },
     businessProblem:
       "Mid-level private schools in Pakistan operate on thin margins and cannot afford enterprise systems like SAP or Oracle. They rely on paper ledgers for fee tracking, which causes errors, lost records, and hours of manual reconciliation each week. School owners have no real-time view of their financial health.",
@@ -111,22 +124,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "Banknote",
         title: "Configurable Fee Engine",
-        description: "Multi-tier fee structures with support for grade-based slabs, transport fees, late penalties, and scholarship discounts. Auto-calculates totals and prorates for mid-term admissions.",
+        description:
+          "Multi-tier fee structures with support for grade-based slabs, transport fees, late penalties, and scholarship discounts. Auto-calculates totals and prorates for mid-term admissions.",
       },
       {
         icon: "Users",
         title: "Multi-Role Portal",
-        description: "Role-specific dashboards for administrators, accountants, teachers, and parents. Each role sees exactly the data and actions they need, secured by hierarchical RBAC.",
+        description:
+          "Role-specific dashboards for administrators, accountants, teachers, and parents. Each role sees exactly the data and actions they need, secured by hierarchical RBAC.",
       },
       {
         icon: "Receipt",
         title: "Automated Receipt Generation",
-        description: "One-click PDF receipt generation with school branding. Receipts are auto-numbered, stored permanently, and accessible to parents through the guardian portal.",
+        description:
+          "One-click PDF receipt generation with school branding. Receipts are auto-numbered, stored permanently, and accessible to parents through the guardian portal.",
       },
       {
         icon: "Bell",
         title: "Multi-Channel Notifications",
-        description: "Automated fee reminders via email and SMS. Payment confirmations are sent immediately. Configurable reminder schedules ensure parents never miss a due date.",
+        description:
+          "Automated fee reminders via email and SMS. Payment confirmations are sent immediately. Configurable reminder schedules ensure parents never miss a due date.",
       },
     ],
     architecturePreview: {
@@ -135,16 +152,22 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Ensuring tenant A can never access tenant B's data in a shared database schema.",
-        solution: "Built middleware that injects schoolId into every query automatically. Prisma middleware hooks validate the filter exists. Integration tests verify isolation at the CI level.",
+        problem:
+          "Ensuring tenant A can never access tenant B's data in a shared database schema.",
+        solution:
+          "Built middleware that injects schoolId into every query automatically. Prisma middleware hooks validate the filter exists. Integration tests verify isolation at the CI level.",
       },
       {
-        problem: "PDF receipt generation blocking API responses for 2-3 seconds per request.",
-        solution: "Moved receipt generation to a background job queue. The API returns immediately with a job ID, a worker generates the PDF asynchronously, and the frontend polls for completion.",
+        problem:
+          "PDF receipt generation blocking API responses for 2-3 seconds per request.",
+        solution:
+          "Moved receipt generation to a background job queue. The API returns immediately with a job ID, a worker generates the PDF asynchronously, and the frontend polls for completion.",
       },
       {
-        problem: "Aggregated fee reports scanning thousands of records, taking 3-5 seconds to complete.",
-        solution: "Introduced materialized views that pre-compute daily fee summaries. Reports query the pre-computed view instead of raw ledger data, reducing query time to under 100ms.",
+        problem:
+          "Aggregated fee reports scanning thousands of records, taking 3-5 seconds to complete.",
+        solution:
+          "Introduced materialized views that pre-compute daily fee summaries. Reports query the pre-computed view instead of raw ledger data, reducing query time to under 100ms.",
       },
     ],
     results: [
@@ -195,8 +218,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "An AI-powered medical scribe that listens to patient-clinician conversations in real-time, automatically generates structured SOAP clinical notes, and integrates into existing healthcare workflows.",
       who: "Independent clinicians, small clinics, and telehealth providers who cannot afford human medical scribes but need accurate, HIPAA-compliant documentation.",
-      businessValue: "Reduces documentation time by 70%, allowing clinicians to see more patients and reduce burnout. Costs a fraction of human scribe services.",
-      primaryUsers: "Physicians, nurse practitioners, physician assistants, and telehealth providers.",
+      businessValue:
+        "Reduces documentation time by 70%, allowing clinicians to see more patients and reduce burnout. Costs a fraction of human scribe services.",
+      primaryUsers:
+        "Physicians, nurse practitioners, physician assistants, and telehealth providers.",
     },
     businessProblem:
       "Clinicians spend 30-50% of their work hours on documentation. Existing solutions are either expensive transcription services with 24-hour lag or general speech-to-text tools that fail on medical terminology. Small clinics cannot afford $30,000/year for human scribes.",
@@ -204,22 +229,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "Mic",
         title: "Real-Time Medical Transcription",
-        description: "Fine-tuned Whisper model achieves 94% accuracy on medical conversations. Captures terminology, medication names, and clinical context that general STT models miss.",
+        description:
+          "Fine-tuned Whisper model achieves 94% accuracy on medical conversations. Captures terminology, medication names, and clinical context that general STT models miss.",
       },
       {
         icon: "FileText",
         title: "AI-Generated SOAP Notes",
-        description: "Automatically structures conversation transcripts into Subjective, Objective, Assessment, and Plan format. Includes ICD-10 code suggestions based on the clinical assessment.",
+        description:
+          "Automatically structures conversation transcripts into Subjective, Objective, Assessment, and Plan format. Includes ICD-10 code suggestions based on the clinical assessment.",
       },
       {
         icon: "Shield",
         title: "HIPAA-Compliant Architecture",
-        description: "End-to-end encryption for all audio data. AI processing runs on dedicated instances within a VPC with no outbound internet access. BAA-compliant infrastructure.",
+        description:
+          "End-to-end encryption for all audio data. AI processing runs on dedicated instances within a VPC with no outbound internet access. BAA-compliant infrastructure.",
       },
       {
         icon: "Pencil",
         title: "Editable Notes with Audit Trail",
-        description: "Clinicians can review and edit AI-generated notes before saving. All changes are tracked with version history for compliance and quality assurance.",
+        description:
+          "Clinicians can review and edit AI-generated notes before saving. All changes are tracked with version history for compliance and quality assurance.",
       },
     ],
     architecturePreview: {
@@ -228,16 +257,22 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "General speech-to-text models fail on medical terminology, causing clinically significant errors.",
-        solution: "Fine-tuned Whisper on 5,000 hours of medical conversations. Built a custom medical vocabulary dictionary for term override. Achieved 94% accuracy vs 82% baseline.",
+        problem:
+          "General speech-to-text models fail on medical terminology, causing clinically significant errors.",
+        solution:
+          "Fine-tuned Whisper on 5,000 hours of medical conversations. Built a custom medical vocabulary dictionary for term override. Achieved 94% accuracy vs 82% baseline.",
       },
       {
-        problem: "LLM-based note generation took 45-60 seconds per patient visit, too slow for clinical workflow.",
-        solution: "Applied 4-bit quantization reducing model size from 26GB to 7GB. Implemented streaming generation where clinicians see notes written section by section.",
+        problem:
+          "LLM-based note generation took 45-60 seconds per patient visit, too slow for clinical workflow.",
+        solution:
+          "Applied 4-bit quantization reducing model size from 26GB to 7GB. Implemented streaming generation where clinicians see notes written section by section.",
       },
       {
-        problem: "HIPAA compliance for cloud AI processing required data never leaving secure infrastructure.",
-        solution: "Deployed dedicated GPU instances within a VPC with no outbound internet. Pre-loaded model weights. All processing stays within the secure environment.",
+        problem:
+          "HIPAA compliance for cloud AI processing required data never leaving secure infrastructure.",
+        solution:
+          "Deployed dedicated GPU instances within a VPC with no outbound internet. Pre-loaded model weights. All processing stays within the secure environment.",
       },
     ],
     results: [
@@ -288,8 +323,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A pharmacy management platform that centralizes inventory control, sales tracking, customer relationships, and supplier management into a single interface.",
       who: "Independent pharmacies and small pharmacy chains that need to manage inventory, billing, and customer data without expensive enterprise software.",
-      businessValue: "Centralizes inventory management across locations, prevents stockouts of critical medications, and reduces losses from expired stock.",
-      primaryUsers: "Pharmacists, pharmacy technicians, cashiers, and inventory managers.",
+      businessValue:
+        "Centralizes inventory management across locations, prevents stockouts of critical medications, and reduces losses from expired stock.",
+      primaryUsers:
+        "Pharmacists, pharmacy technicians, cashiers, and inventory managers.",
     },
     businessProblem:
       "Pharmacies juggle fragmented inventory management, leading to stockouts of critical medications, expired stock waste, and inefficient point-of-sale operations. Staff often duplicate data entry across separate systems for inventory, billing, and customer management.",
@@ -297,22 +334,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "Pill",
         title: "Inventory with Batch Tracking",
-        description: "Track medicines by batch number and expiry date. Receive automated alerts for approaching expiry. FIFO picking algorithm automatically selects the batch closest to expiry at sale time.",
+        description:
+          "Track medicines by batch number and expiry date. Receive automated alerts for approaching expiry. FIFO picking algorithm automatically selects the batch closest to expiry at sale time.",
       },
       {
         icon: "ShoppingCart",
         title: "Integrated Point of Sale",
-        description: "Barcode-based billing with instant product lookup. Auto-calculates totals, taxes, and discounts. Prints formatted receipts with medicine details and dosage instructions.",
+        description:
+          "Barcode-based billing with instant product lookup. Auto-calculates totals, taxes, and discounts. Prints formatted receipts with medicine details and dosage instructions.",
       },
       {
         icon: "BarChart3",
         title: "Sales Analytics",
-        description: "Daily, weekly, and monthly sales reports with filters by product, category, and cashier. Identify top-selling medicines, slow-moving stock, and peak hours.",
+        description:
+          "Daily, weekly, and monthly sales reports with filters by product, category, and cashier. Identify top-selling medicines, slow-moving stock, and peak hours.",
       },
       {
         icon: "Truck",
         title: "Supplier Management",
-        description: "Digital purchase orders with automatic stock receipt. Track supplier performance, payment terms, and order history. Reorder suggestions based on sales velocity.",
+        description:
+          "Digital purchase orders with automatic stock receipt. Track supplier performance, payment terms, and order history. Reorder suggestions based on sales velocity.",
       },
     ],
     architecturePreview: {
@@ -321,12 +362,16 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Medicine names and barcodes are not standardized in local markets, causing lookup failures.",
-        solution: "Implemented flexible barcode matching that normalizes input codes and supports multiple barcode formats per product. Pharmacies can print custom barcode labels.",
+        problem:
+          "Medicine names and barcodes are not standardized in local markets, causing lookup failures.",
+        solution:
+          "Implemented flexible barcode matching that normalizes input codes and supports multiple barcode formats per product. Pharmacies can print custom barcode labels.",
       },
       {
-        problem: "Pharmacy staff need sub-second search across thousands of SKUs during busy hours.",
-        solution: "PostgreSQL full-text search indexes on product names and categories reduced lookup time from 2 seconds to under 50ms.",
+        problem:
+          "Pharmacy staff need sub-second search across thousands of SKUs during busy hours.",
+        solution:
+          "PostgreSQL full-text search indexes on product names and categories reduced lookup time from 2 seconds to under 50ms.",
       },
     ],
     results: [
@@ -376,8 +421,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A multi-tenant CMS platform that manages content for multiple client websites through a single admin panel. Each site operates independently with its own domain, branding, and content structure.",
       who: "Web agencies and consulting firms that manage websites for multiple clients and need to eliminate duplicate maintenance while preserving each client's brand identity.",
-      businessValue: "Reduces new client onboarding from 40 hours to under 10 hours. Eliminates duplicated content management effort across sites. Ensures consistent functionality across the portfolio.",
-      primaryUsers: "Content editors managing multiple client sites, client stakeholders reviewing their site, and site visitors.",
+      businessValue:
+        "Reduces new client onboarding from 40 hours to under 10 hours. Eliminates duplicated content management effort across sites. Ensures consistent functionality across the portfolio.",
+      primaryUsers:
+        "Content editors managing multiple client sites, client stakeholders reviewing their site, and site visitors.",
     },
     businessProblem:
       "Managing 6+ client websites independently meant separate codebases, separate hosting, and separate CMS installations. Updates required duplicated effort, branding was inconsistent, and adding a new client required 40-60 hours of setup.",
@@ -385,22 +432,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "LayoutDashboard",
         title: "Centralized Admin Panel",
-        description: "Manage all client sites from a single dashboard. Switch between sites with a dropdown. Consistent content structures across sites reduce cognitive overhead for editors.",
+        description:
+          "Manage all client sites from a single dashboard. Switch between sites with a dropdown. Consistent content structures across sites reduce cognitive overhead for editors.",
       },
       {
         icon: "Blocks",
         title: "Drag-and-Drop Page Builder",
-        description: "Compose pages from pre-built sections: hero, features, testimonials, galleries, CTAs, and contact forms. Each section has configurable options for layout and content.",
+        description:
+          "Compose pages from pre-built sections: hero, features, testimonials, galleries, CTAs, and contact forms. Each section has configurable options for layout and content.",
       },
       {
         icon: "Palette",
         title: "Per-Site Theming",
-        description: "Each site has independent branding: colors, typography, and layout variants. Shared infrastructure with unique identity. Clients feel their site is exclusively theirs.",
+        description:
+          "Each site has independent branding: colors, typography, and layout variants. Shared infrastructure with unique identity. Clients feel their site is exclusively theirs.",
       },
       {
         icon: "Zap",
         title: "Instant Content Publishing",
-        description: "Content updates go live in seconds through Next.js ISR. Editors see changes immediately after saving. Preview workflow allows reviewing before publishing to production.",
+        description:
+          "Content updates go live in seconds through Next.js ISR. Editors see changes immediately after saving. Preview workflow allows reviewing before publishing to production.",
       },
     ],
     architecturePreview: {
@@ -409,16 +460,22 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Manually setting up a new client site required 40-60 hours of infrastructure and CMS configuration.",
-        solution: "Built a multi-tenant architecture where adding a new site is a configuration change, not a new deployment. New client onboarding reduced to under 10 hours.",
+        problem:
+          "Manually setting up a new client site required 40-60 hours of infrastructure and CMS configuration.",
+        solution:
+          "Built a multi-tenant architecture where adding a new site is a configuration change, not a new deployment. New client onboarding reduced to under 10 hours.",
       },
       {
-        problem: "Multi-tenant MongoDB queries slowed as the number of sites grew beyond 4.",
-        solution: "Added compound indexes on (site, slug) and (site, status). Query times stayed under 100ms regardless of total document count across all sites.",
+        problem:
+          "Multi-tenant MongoDB queries slowed as the number of sites grew beyond 4.",
+        solution:
+          "Added compound indexes on (site, slug) and (site, status). Query times stayed under 100ms regardless of total document count across all sites.",
       },
       {
-        problem: "Content editors needed to preview changes before publishing, but ISR caches published pages.",
-        solution: "Built a preview route that bypasses CDN cache and reads draft content directly from Payload API. Editors review the preview URL before publishing.",
+        problem:
+          "Content editors needed to preview changes before publishing, but ISR caches published pages.",
+        solution:
+          "Built a preview route that bypasses CDN cache and reads draft content directly from Payload API. Editors review the preview URL before publishing.",
       },
     ],
     results: [
@@ -460,7 +517,13 @@ export const projectShowcases: ProjectShowcase[] = [
       caseStudy: "",
     },
     techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+      frontend: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "shadcn/ui",
+      ],
       backend: [],
       database: [],
       infrastructure: ["Vercel"],
@@ -469,8 +532,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A corporate showcase website for an industrial supply company, designed to establish credibility and communicate their product catalog and infrastructure capabilities.",
       who: "An established Saudi Arabian industrial supply company needing a modern digital presence that reflects their quality and reliability.",
-      businessValue: "Establishes a credible, modern digital presence that builds trust with potential clients. Showcases product catalog and infrastructure capabilities.",
-      primaryUsers: "Procurement managers, engineers, and decision-makers in the industrial sector.",
+      businessValue:
+        "Establishes a credible, modern digital presence that builds trust with potential clients. Showcases product catalog and infrastructure capabilities.",
+      primaryUsers:
+        "Procurement managers, engineers, and decision-makers in the industrial sector.",
     },
     businessProblem:
       "An established industrial supply company lacked a modern digital presence. Their existing website did not reflect the quality of their products or the scale of their operations, hindering trust with potential corporate clients.",
@@ -478,22 +543,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "LayoutGrid",
         title: "Product Catalog",
-        description: "Categorized product browsing with detailed specifications. Filtering and search help procurement managers find exactly what they need.",
+        description:
+          "Categorized product browsing with detailed specifications. Filtering and search help procurement managers find exactly what they need.",
       },
       {
         icon: "Sparkles",
         title: "Polished Animations",
-        description: "Smooth page transitions and scroll-triggered animations using Framer Motion. Creates an engaging, premium feel without overwhelming the content.",
+        description:
+          "Smooth page transitions and scroll-triggered animations using Framer Motion. Creates an engaging, premium feel without overwhelming the content.",
       },
       {
         icon: "Smartphone",
         title: "Responsive Design",
-        description: "Mobile-first responsive layout ensures the site works flawlessly on all devices. Critical for decision-makers browsing on the go.",
+        description:
+          "Mobile-first responsive layout ensures the site works flawlessly on all devices. Critical for decision-makers browsing on the go.",
       },
       {
         icon: "Mail",
         title: "Inquiry Forms",
-        description: "Streamlined contact and inquiry forms with validation. Direct routing of inquiries to the appropriate sales team.",
+        description:
+          "Streamlined contact and inquiry forms with validation. Direct routing of inquiries to the appropriate sales team.",
       },
     ],
     architecturePreview: {
@@ -502,8 +571,10 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Needed a premium feel with animations while maintaining sub-second page loads on mobile networks in the region.",
-        solution: "Used Framer Motion with reduced motion preferences respected. Static generation with CDN distribution ensures fast loads regardless of network conditions.",
+        problem:
+          "Needed a premium feel with animations while maintaining sub-second page loads on mobile networks in the region.",
+        solution:
+          "Used Framer Motion with reduced motion preferences respected. Static generation with CDN distribution ensures fast loads regardless of network conditions.",
       },
     ],
     results: [
@@ -547,7 +618,8 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A luxury fragrance e-commerce platform with elegant product presentation, shopping cart functionality, and a streamlined checkout experience.",
       who: "A premium fragrance brand needing an online store that reflects their luxury positioning and provides a shopping experience worthy of their products.",
-      businessValue: "Establishes a brand-aligned online sales channel. Provides customers with a luxury shopping experience that matches the premium product quality.",
+      businessValue:
+        "Establishes a brand-aligned online sales channel. Provides customers with a luxury shopping experience that matches the premium product quality.",
       primaryUsers: "Fragrance enthusiasts, luxury shoppers, and gift buyers.",
     },
     businessProblem:
@@ -556,17 +628,20 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "ShoppingBag",
         title: "Luxury Product Catalog",
-        description: "High-resolution product imagery with elegant zoom. Detailed fragrance notes, concentration levels, and sizing options presented in a clean layout.",
+        description:
+          "High-resolution product imagery with elegant zoom. Detailed fragrance notes, concentration levels, and sizing options presented in a clean layout.",
       },
       {
         icon: "CreditCard",
         title: "Streamlined Checkout",
-        description: "Minimal-step checkout process with real-time cart updates. Guest checkout option for first-time buyers. Order confirmation with tracking.",
+        description:
+          "Minimal-step checkout process with real-time cart updates. Guest checkout option for first-time buyers. Order confirmation with tracking.",
       },
       {
         icon: "Search",
         title: "Product Discovery",
-        description: "Categorized browsing by fragrance family, concentration, and price range. Search with autocomplete helps customers find their perfect scent.",
+        description:
+          "Categorized browsing by fragrance family, concentration, and price range. Search with autocomplete helps customers find their perfect scent.",
       },
     ],
     architecturePreview: {
@@ -575,8 +650,10 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Luxury brands require pixel-perfect design across all devices. A single spacing inconsistency undermines brand perception.",
-        solution: "Implemented a strict design token system with consistent spacing, typography, and color scales. All components reference the design system, ensuring visual consistency.",
+        problem:
+          "Luxury brands require pixel-perfect design across all devices. A single spacing inconsistency undermines brand perception.",
+        solution:
+          "Implemented a strict design token system with consistent spacing, typography, and color scales. All components reference the design system, ensuring visual consistency.",
       },
     ],
     results: [
@@ -608,7 +685,8 @@ export const projectShowcases: ProjectShowcase[] = [
     industry: "B2B / Marketplace",
     links: {
       demo: "https://msp-tech-stack.vercel.app/",
-      github: "https://github.com/mustafatawab/Nextjs_projects/tree/main/MSPTech_Stack",
+      github:
+        "https://github.com/mustafatawab/Nextjs_projects/tree/main/MSPTech_Stack",
       caseStudy: "",
     },
     techStack: {
@@ -621,8 +699,10 @@ export const projectShowcases: ProjectShowcase[] = [
     overview: {
       what: "A dual-portal B2B marketplace where individual buyers and company purchasing departments have separate authentication flows, interfaces, and procurement tools tailored to their needs.",
       who: "B2B companies that need to serve both individual professionals and organizational buyers through a unified marketplace platform.",
-      businessValue: "Serves two distinct user types through a single platform. Company buyers get procurement workflows, while individual buyers get a streamlined shopping experience.",
-      primaryUsers: "Individual professionals making purchases, and company purchasing departments managing organizational procurement.",
+      businessValue:
+        "Serves two distinct user types through a single platform. Company buyers get procurement workflows, while individual buyers get a streamlined shopping experience.",
+      primaryUsers:
+        "Individual professionals making purchases, and company purchasing departments managing organizational procurement.",
     },
     businessProblem:
       "B2B marketplaces typically force all users into a single experience, ignoring the fundamentally different needs of individual buyers versus company purchasing departments with approval workflows, budget tracking, and multi-user accounts.",
@@ -630,22 +710,26 @@ export const projectShowcases: ProjectShowcase[] = [
       {
         icon: "DoorOpen",
         title: "Dual Authentication Portals",
-        description: "Separate login flows for individuals and organizations. JWT-based authentication with role-specific session management and permission controls.",
+        description:
+          "Separate login flows for individuals and organizations. JWT-based authentication with role-specific session management and permission controls.",
       },
       {
         icon: "Building2",
         title: "Company Dashboard",
-        description: "Organizational buyers get procurement dashboards with budget tracking, multi-user account management, purchase order history, and approval workflows.",
+        description:
+          "Organizational buyers get procurement dashboards with budget tracking, multi-user account management, purchase order history, and approval workflows.",
       },
       {
         icon: "User",
         title: "Individual Buyer Portal",
-        description: "Streamlined single-user experience with quick checkout, order history, and personalized recommendations based on past purchases.",
+        description:
+          "Streamlined single-user experience with quick checkout, order history, and personalized recommendations based on past purchases.",
       },
       {
         icon: "Shield",
         title: "Role-Based Access Control",
-        description: "Granular permissions for company accounts: purchasing managers can set budgets, team members can request purchases, and admins can approve orders.",
+        description:
+          "Granular permissions for company accounts: purchasing managers can set budgets, team members can request purchases, and admins can approve orders.",
       },
     ],
     architecturePreview: {
@@ -654,8 +738,10 @@ export const projectShowcases: ProjectShowcase[] = [
     },
     challengesSolved: [
       {
-        problem: "Individual and company users have fundamentally different workflows but share the same product catalog and marketplace infrastructure.",
-        solution: "Built a shared API with role-aware middleware. User type is encoded in the JWT, and all business logic branches based on user type. The frontend renders different interfaces from the same component library.",
+        problem:
+          "Individual and company users have fundamentally different workflows but share the same product catalog and marketplace infrastructure.",
+        solution:
+          "Built a shared API with role-aware middleware. User type is encoded in the JWT, and all business logic branches based on user type. The frontend renders different interfaces from the same component library.",
       },
     ],
     results: [
@@ -684,9 +770,10 @@ export function getRelatedProjects(slugs: string[]): ProjectShowcase[] {
   return projectShowcases.filter((p) => slugs.includes(p.slug));
 }
 
-export function getPrevNext(
-  slug: string,
-): { prev: ProjectShowcase | null; next: ProjectShowcase | null } {
+export function getPrevNext(slug: string): {
+  prev: ProjectShowcase | null;
+  next: ProjectShowcase | null;
+} {
   const idx = projectShowcases.findIndex((p) => p.slug === slug);
   return {
     prev: idx > 0 ? projectShowcases[idx - 1] : null,

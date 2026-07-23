@@ -43,7 +43,7 @@ This builds and runs everything in one image. The problem:
 - **Source code** (`.ts` files) is in the final image — the compiled `.js` is what runs
 - **Prisma CLI** (`prisma generate`) is only needed during build and migrations
 
-A production image should contain *only what's needed to run the application*. Everything else is build-time garbage.
+A production image should contain _only what's needed to run the application_. Everything else is build-time garbage.
 
 ---
 
@@ -53,10 +53,10 @@ This is the clearest way to understand multi-stage builds.
 
 A single-stage build is like cooking dinner in the same pot you serve it in. You chop vegetables, marinate meat, simmer sauce — and then you bring the pot to the table. Every tool, every scrap, every spill is on the table with you.
 
-| Stage | Analogy |
-|-------|---------|
-| Single-stage | Cooking and serving in the same dish |
-| Multi-stage | Using a kitchen to prepare, then plating cleanly |
+| Stage        | Analogy                                          |
+| ------------ | ------------------------------------------------ |
+| Single-stage | Cooking and serving in the same dish             |
+| Multi-stage  | Using a kitchen to prepare, then plating cleanly |
 
 A multi-stage build has two kitchens:
 
@@ -118,13 +118,14 @@ RUN npm run build
 ```
 
 Key points:
+
 - `npm ci` installs everything including dev dependencies — the builder needs TypeScript
 - `prisma generate` runs before the build so the generated client is available when TypeScript compiles
 - `COPY prisma ./prisma` is before `COPY src ./src` — Prisma schema changes less often than source code, so this caches better
 
 ### Step 2: The Runner Stage (Production)
 
-This stage is clean. It copies *only* what's needed to run.
+This stage is clean. It copies _only_ what's needed to run.
 
 ```dockerfile
 # ============================================
@@ -177,7 +178,7 @@ app/
 ├── package.json
 ```
 
-What's *not* in the final image?
+What's _not_ in the final image?
 
 ```
 ✗ node_modules/.bin/tsc                 → Build tool, not needed
@@ -243,16 +244,16 @@ From ~900MB to ~180MB. That's an 80% reduction.
 
 Let's see exactly where the savings come from:
 
-| Component | Single-stage | Multi-stage |
-|-----------|-------------|-------------|
-| Base image (`node:22`) | 900MB | — |
-| Base image (`node:22-alpine`) | 130MB | 130MB |
-| Dev dependencies | 400MB | — |
-| TypeScript source | 2MB | — |
-| Compiled output | 1MB | 1MB |
-| Production dependencies | 50MB | 50MB |
-| Prisma client (compiled) | 1MB | 1MB |
-| **Total** | **~1.5GB** | **~182MB** |
+| Component                     | Single-stage | Multi-stage |
+| ----------------------------- | ------------ | ----------- |
+| Base image (`node:22`)        | 900MB        | —           |
+| Base image (`node:22-alpine`) | 130MB        | 130MB       |
+| Dev dependencies              | 400MB        | —           |
+| TypeScript source             | 2MB          | —           |
+| Compiled output               | 1MB          | 1MB         |
+| Production dependencies       | 50MB         | 50MB        |
+| Prisma client (compiled)      | 1MB          | 1MB         |
+| **Total**                     | **~1.5GB**   | **~182MB**  |
 
 The 130MB Alpine base + 50MB production deps + 1MB compiled code = 181MB. The remaining 1MB is overhead from the filesystem.
 
@@ -345,15 +346,15 @@ Real applications need databases, caches, queues, and multiple services. Running
 
 ---
 
-*This article is part of the **DevOps from Zero** series.*
+_This article is part of the **DevOps from Zero** series._
 
-| Article | Topic |
-|---------|-------|
-| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker) | |
-| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) | |
-| **3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB** | ← You are here |
-| 4. Docker Compose — Stop Running 10 `docker run` Commands | Coming soon |
-| 5. Docker Compose for Production | Coming soon |
-| 6. Linux Survival Guide for Developers Coming from macOS | Coming soon |
-| 7. GitHub Actions From Zero — Build Your First Pipeline | Coming soon |
-| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically | Coming soon |
+| Article                                                                                  | Topic          |
+| ---------------------------------------------------------------------------------------- | -------------- |
+| 1. [What is Docker and Why Should You Care?](/blogs/what-is-docker)                      |                |
+| 2. [Writing Your First Dockerfile — The Right Way](/blogs/writing-your-first-dockerfile) |                |
+| **3. Multi-Stage Docker Builds — Shrink Your Image from 900MB to 180MB**                 | ← You are here |
+| 4. Docker Compose — Stop Running 10 `docker run` Commands                                | Coming soon    |
+| 5. Docker Compose for Production                                                         | Coming soon    |
+| 6. Linux Survival Guide for Developers Coming from macOS                                 | Coming soon    |
+| 7. GitHub Actions From Zero — Build Your First Pipeline                                  | Coming soon    |
+| 8. Docker + GitHub Actions — Build, Push & Deploy Automatically                          | Coming soon    |

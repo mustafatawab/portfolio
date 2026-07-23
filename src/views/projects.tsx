@@ -84,7 +84,10 @@ const ProjectsSection = () => {
                 className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
               >
                 View all
-                <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                <ChevronRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
               </Link>
             </motion.div>
           </div>

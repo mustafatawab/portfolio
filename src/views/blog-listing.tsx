@@ -53,7 +53,9 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="section-label text-center">Engineering Journal</span>
+            <span className="section-label text-center">
+              Engineering Journal
+            </span>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
               Technical Articles
             </h1>
@@ -64,7 +66,8 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-muted-foreground text-sm max-w-xl mx-auto"
           >
-            Architecture deep dives, engineering patterns, and production insights.
+            Architecture deep dives, engineering patterns, and production
+            insights.
           </motion.p>
         </div>
       </section>
@@ -120,7 +123,9 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
         {featuredPosts.length > 0 && (
           <div className="space-y-5">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-mono tracking-wider text-primary">Featured</span>
+              <span className="text-xs font-mono tracking-wider text-primary">
+                Featured
+              </span>
               <div className="h-px flex-1 bg-border" />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -134,7 +139,9 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
         {regularPosts.length > 0 && (
           <div className="space-y-5">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-mono tracking-wider text-muted-foreground">All Articles</span>
+              <span className="text-xs font-mono tracking-wider text-muted-foreground">
+                All Articles
+              </span>
               <div className="h-px flex-1 bg-border" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
