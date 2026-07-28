@@ -1,6 +1,7 @@
 <div align="center">
 
 # Mustafa Tawab
+
 **Full Stack Engineer · AI Integration**
 
 [![Profile views](https://komarev.com/ghpvc/?username=mustafatawab&color=6366f1&style=flat-square)](https://github.com/mustafatawab)
@@ -17,7 +18,6 @@
 I'm a Full Stack Engineer based in Islamabad, Pakistan, with 3+ years of professional experience building production web applications and AI-integrated systems. I work at **Webtronix** as a Full Stack Developer with AI-Driven Development.
 
 My focus is on building things that actually ship: scalable APIs, modern frontends, multi-tenant SaaS systems, and intelligent agent-driven workflows. I'm currently deepening my expertise in **DevOps and Cloud Engineering** (AWS, Kubernetes, CI/CD) as my current major direction.
-
 
 - 🏗️ Currently building & Testing: **[Maktab One](https://schoola.maktabone.org/)** — a school fee management system (Next.js + Node.js + Prisma)
 - 🌱 Currently learning: AWS, Docker Compose, GitHub Actions, Kubernetes
@@ -55,7 +55,7 @@ My focus is on building things that actually ship: scalable APIs, modern fronten
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS_(learning)-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
+![AWS](<https://img.shields.io/badge/AWS_(learning)-FF9900?style=flat-square&logo=amazonaws&logoColor=white>)
 
 **AI & Agents**
 ![OpenAI](https://img.shields.io/badge/OpenAI_Agents_SDK-412991?style=flat-square&logo=openai&logoColor=white)
@@ -66,13 +66,15 @@ My focus is on building things that actually ship: scalable APIs, modern fronten
 ## 🚀 Projects
 
 ### 🏫 Maktab One — School Fee Management System
+
 > Next.js · Node.js/Express · Prisma · PostgreSQL · JWT · BullMQ · Typescript · Docker
 
 A production-grade, single-tenant school management system with full auth (JWT access/refresh tokens, OTP device verification, Remember Me), RBAC with dynamic roles, student enrollment, guardian account automation, and fee tracking. Each school gets its own deployed instance.
 
 ---
 
-### 💊 Pharmacy Management System *(in progress)*
+### 💊 Pharmacy Management System _(in progress)_
+
 > Electron.js · Node.js · Express.js · Prisma ORM · PostgreSQL · Offline Software · Worked on Multiple Machines using LAN
 
 A robust, desktop-based offline solution designed for pharmacies to manage inventory, sales, and billing without requiring an active internet connection. Built to operate seamlessly across multiple local machines using a LAN setup, ensuring data synchronization and high availability in low-connectivity environments.
@@ -80,6 +82,7 @@ A robust, desktop-based offline solution designed for pharmacies to manage inven
 ---
 
 ### 🏢 TaskFlow
+
 > Next.js 14 · Tailwind CSS · TypeScript · Framer Motion · Resend · Node.js · Express · Postgres · Docker
 
 A Multi-Tenant Task Management System with per-tenant data isolation, RBAC (Admin , Team Members) , Task CRUD and Memebers CRUD operations
@@ -91,7 +94,6 @@ A Multi-Tenant Task Management System with per-tenant data isolation, RBAC (Admi
 - ✅ **Agentic AI Certified** — Panaversity · [View credential](https://panaversity.org/p/tawab05-vr5v)
 - 🏗️ Shipped 20+ production sites using Payload CMS, AWS, and Vercel
 - 🔐 Implemented full auth systems from scratch: JWT, OTP, RBAC, multi-tenancy
-
 
 ---
 
