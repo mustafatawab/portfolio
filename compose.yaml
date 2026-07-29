@@ -1,0 +1,25 @@
+
+name: portfolio
+
+services:
+  portfolio:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    env_file:
+     - ./.env
+    ports:
+     - "3000:3000"
+    
+
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf
+    depends_on:
+      portfolio:
+        condition: service_started
