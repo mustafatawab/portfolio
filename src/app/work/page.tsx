@@ -47,7 +47,7 @@ const ProjectsPage = () => {
                 </div>
             </section>
 
-            <section className="sticky top-16 z-30 py-3 border-y border-border bg-background/80 backdrop-blur-xl">
+            <section className="sticky top-16 z-[var(--z-sticky)] py-3 border-y border-border bg-background/80 backdrop-blur-xl">
                 <div className="container flex flex-wrap justify-center gap-2">
                     {categories.map((cat) => {
                         const count =

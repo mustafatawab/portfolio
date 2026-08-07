@@ -112,7 +112,7 @@ const HeroSection = () => {
                             <Image
                                 src={me}
                                 fill
-                                alt="Mustafa Tawab"
+                                alt="Portrait of Mustafa Tawab, Software Engineer based in Islamabad"
                                 className="rounded-2xl object-cover relative z-10"
                                 priority
                             />

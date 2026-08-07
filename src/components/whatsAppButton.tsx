@@ -39,7 +39,7 @@ export default function WhatsAppButton({
 
     return (
         <div
-            className={`fixed ${positionClasses[position]} z-50 flex items-end gap-2`}
+            className={`fixed ${positionClasses[position]} z-[var(--z-toast)] flex items-end gap-2`}
         >
             <a
                 href={whatsappUrl}

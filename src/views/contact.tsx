@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from "react"
 import { motion } from "framer-motion"
+import toast from "react-hot-toast"
+import { Loader2 } from "lucide-react"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -21,8 +23,9 @@ const budgetOptions = [
 
 const ContactSection = () => {
     const [errors, setErrors] = useState<Record<string, string>>({})
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.currentTarget
         const formData = new FormData(form)
@@ -35,22 +38,35 @@ const ContactSection = () => {
             newErrors.email = "Invalid email address"
         setErrors(newErrors)
         if (Object.keys(newErrors).length > 0) return
+
         const formUrl = form.getAttribute("action")
-        if (formUrl) {
+        if (!formUrl) return
+
+        setIsSubmitting(true)
+        try {
             const formBody = new URLSearchParams()
             Array.from(formData.entries()).forEach(([key, value]) => {
                 formBody.append(key, value.toString())
             })
-            fetch(formUrl, {
+            await fetch(formUrl, {
                 method: "POST",
                 body: formBody,
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
-            }).then(() => {
-                form.reset()
-                alert("Message sent! I will get back to you soon.")
             })
+            form.reset()
+            toast.success("Message sent! I will get back to you soon.", {
+                duration: 4000,
+                position: "bottom-right",
+            })
+        } catch {
+            toast.error("Something went wrong. Please try again.", {
+                duration: 4000,
+                position: "bottom-right",
+            })
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -186,9 +202,17 @@ const ContactSection = () => {
 
                         <button
                             type="submit"
-                            className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97]"
+                            disabled={isSubmitting}
+                            className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
                         >
-                            Send Message
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 size={16} className="animate-spin" />
+                                    Sending...
+                                </>
+                            ) : (
+                                "Send Message"
+                            )}
                         </button>
                     </motion.form>
                 </motion.div>

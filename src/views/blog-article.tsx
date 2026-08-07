@@ -68,7 +68,7 @@ export default function BlogArticle({ post }: { post: Post }) {
 
     return (
         <main className="bg-background min-h-screen">
-            <div className="fixed top-0 left-0 w-full h-[2px] z-50 bg-border">
+            <div className="fixed top-0 left-0 w-full h-[2px] z-[var(--z-overlay)] bg-border">
                 <motion.div
                     className="h-full bg-primary"
                     style={{ width: `${progress}%` }}

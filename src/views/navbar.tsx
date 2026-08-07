@@ -88,7 +88,7 @@ const Navbar = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[var(--duration-normal)] ease-[var(--ease)] ${
+            className={`fixed top-0 left-0 right-0 z-[var(--z-sticky)] transition-all duration-[var(--duration-normal)] ease-[var(--ease)] ${
                 scrolled
                     ? "py-3 bg-background/80 backdrop-blur-xl shadow-[var(--shadow-sm)]"
                     : "py-5 bg-transparent"
@@ -155,7 +155,7 @@ const Navbar = () => {
                             duration: 0.25,
                             ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        className="absolute top-full left-4 right-4 mt-2 md:hidden z-[60]"
+                        className="absolute top-full left-4 right-4 mt-2 md:hidden z-[var(--z-modal)]"
                         role="dialog"
                         aria-modal="true"
                         aria-label="Navigation menu"

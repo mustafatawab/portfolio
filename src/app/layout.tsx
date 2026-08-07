@@ -107,7 +107,7 @@ export default function RootLayout({
                 >
                     <a
                         href="#main-content"
-                        className="fixed -top-40 left-4 z-[100] p-4 bg-background border border-accent text-accent font-mono text-sm tracking-wider rounded-xl transition-all focus:top-4 focus:outline-2 focus:outline-accent"
+                        className="fixed -top-40 left-4 z-[var(--z-tooltip)] p-4 bg-background border border-accent text-accent font-mono text-sm tracking-wider rounded-xl transition-all focus:top-4 focus:outline-2 focus:outline-accent"
                     >
                         Skip to main content
                     </a>

@@ -73,7 +73,7 @@ function ReadingProgress() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
     return (
-        <div className="fixed top-0 left-0 w-full h-[2px] z-50 bg-border">
+        <div className="fixed top-0 left-0 w-full h-[2px] z-[var(--z-overlay)] bg-border">
             <motion.div
                 className="h-full bg-primary"
                 style={{ width: `${progress}%` }}
