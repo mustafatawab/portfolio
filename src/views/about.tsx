@@ -2,8 +2,17 @@
 import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { CheckCircle } from "lucide-react"
+import { CheckCircle, Code, Server, Database, Cloud, Cpu } from "lucide-react"
 import me from "@/assets/mustafa.png"
+
+const orbitItems = [
+    { icon: Code, angle: 0, radius: 140, speed: 12, size: 32, delay: 0 },
+    { icon: Server, angle: 60, radius: 150, speed: 16, size: 28, delay: 0.5 },
+    { icon: Database, angle: 120, radius: 135, speed: 20, size: 30, delay: 1 },
+    { icon: Cloud, angle: 180, radius: 145, speed: 14, size: 26, delay: 1.5 },
+    { icon: Cpu, angle: 240, radius: 155, speed: 18, size: 28, delay: 2 },
+    { icon: Code, angle: 300, radius: 140, speed: 22, size: 24, delay: 2.5 },
+]
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -38,6 +47,59 @@ const AboutSection = () => {
                         className="order-2 lg:order-1"
                     >
                         <div className="relative w-full aspect-[4/5] max-w-sm mx-auto">
+                            {/* Rotating dashed ring */}
+                            <div
+                                className="absolute inset-[-12px] rounded-full border border-dashed border-primary/20"
+                                style={{ animation: "pulse-ring 30s linear infinite" }}
+                            />
+
+                            {/* Orbiting dots */}
+                            {[
+                                { top: "10%", left: "85%", delay: 0, dur: 3 },
+                                { top: "80%", left: "90%", delay: 1, dur: 4 },
+                                { top: "45%", left: "95%", delay: 0.5, dur: 3.5 },
+                                { top: "15%", left: "5%", delay: 1.5, dur: 4.5 },
+                                { top: "75%", left: "2%", delay: 2, dur: 3.2 },
+                            ].map((dot, i) => (
+                                <div
+                                    key={i}
+                                    className="absolute w-1.5 h-1.5 rounded-full bg-primary/40"
+                                    style={{
+                                        top: dot.top,
+                                        left: dot.left,
+                                        animation: `float ${dot.dur}s ease-in-out ${dot.delay}s infinite`,
+                                    }}
+                                />
+                            ))}
+
+                            {/* Orbiting tech icons */}
+                            {orbitItems.map((item, i) => (
+                                <div
+                                    key={i}
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                                    style={{
+                                        width: 0,
+                                        height: 0,
+                                    }}
+                                >
+                                    <div
+                                        className="flex items-center justify-center rounded-lg bg-card border border-border shadow-[var(--shadow-sm)]"
+                                        style={{
+                                            width: item.size,
+                                            height: item.size,
+                                            animation: `orbit ${item.speed}s linear ${item.delay}s infinite`,
+                                            ["--orbit-radius" as string]: `${item.radius}px`,
+                                        }}
+                                    >
+                                        <item.icon
+                                            size={item.size * 0.5}
+                                            className="text-primary/60"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Main image */}
                             <div className="absolute inset-0 rounded-2xl bg-primary/[0.04] translate-x-3 translate-y-3" />
                             <Image
                                 src={me}

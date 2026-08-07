@@ -21,9 +21,9 @@ export default function Home() {
             <HeroSection />
             <AboutSection />
             <WhatIBuild />
-            <EngagementModels />
             <Experience />
             <Projects />
+            <EngagementModels />
             <Testimonials />
             <FAQ />
             <Contact />
