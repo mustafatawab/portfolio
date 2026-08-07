@@ -52,7 +52,10 @@ const Footer = () => {
                         ))}
                     </div>
 
-                    <nav className="flex items-center gap-4" aria-label="Footer navigation">
+                    <nav
+                        className="flex items-center gap-4"
+                        aria-label="Footer navigation"
+                    >
                         {footerLinks.map((link) => (
                             <Link
                                 key={link.url}
@@ -65,7 +68,8 @@ const Footer = () => {
                     </nav>
 
                     <p className="text-sm text-muted-foreground">
-                        &copy; {new Date().getFullYear()} Mustafa Tawab. All rights reserved.
+                        &copy; {new Date().getFullYear()} Mustafa Tawab. All
+                        rights reserved.
                     </p>
                 </div>
             </div>

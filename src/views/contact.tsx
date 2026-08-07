@@ -207,7 +207,10 @@ const ContactSection = () => {
                         >
                             {isSubmitting ? (
                                 <>
-                                    <Loader2 size={16} className="animate-spin" />
+                                    <Loader2
+                                        size={16}
+                                        className="animate-spin"
+                                    />
                                     Sending...
                                 </>
                             ) : (
