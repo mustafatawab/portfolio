@@ -50,15 +50,27 @@ const AboutSection = () => {
                             {/* Rotating dashed ring */}
                             <div
                                 className="absolute inset-[-12px] rounded-full border border-dashed border-primary/20"
-                                style={{ animation: "pulse-ring 30s linear infinite" }}
+                                style={{
+                                    animation: "pulse-ring 30s linear infinite",
+                                }}
                             />
 
                             {/* Orbiting dots */}
                             {[
                                 { top: "10%", left: "85%", delay: 0, dur: 3 },
                                 { top: "80%", left: "90%", delay: 1, dur: 4 },
-                                { top: "45%", left: "95%", delay: 0.5, dur: 3.5 },
-                                { top: "15%", left: "5%", delay: 1.5, dur: 4.5 },
+                                {
+                                    top: "45%",
+                                    left: "95%",
+                                    delay: 0.5,
+                                    dur: 3.5,
+                                },
+                                {
+                                    top: "15%",
+                                    left: "5%",
+                                    delay: 1.5,
+                                    dur: 4.5,
+                                },
                                 { top: "75%", left: "2%", delay: 2, dur: 3.2 },
                             ].map((dot, i) => (
                                 <div
