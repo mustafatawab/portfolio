@@ -6,12 +6,12 @@ import { CheckCircle, Code, Server, Database, Cloud, Cpu } from "lucide-react"
 import me from "@/assets/mustafa.png"
 
 const orbitItems = [
-    { icon: Code, angle: 0, radius: 140, speed: 12, size: 32, delay: 0 },
-    { icon: Server, angle: 60, radius: 150, speed: 16, size: 28, delay: 0.5 },
-    { icon: Database, angle: 120, radius: 135, speed: 20, size: 30, delay: 1 },
-    { icon: Cloud, angle: 180, radius: 145, speed: 14, size: 26, delay: 1.5 },
-    { icon: Cpu, angle: 240, radius: 155, speed: 18, size: 28, delay: 2 },
-    { icon: Code, angle: 300, radius: 140, speed: 22, size: 24, delay: 2.5 },
+    { icon: Code, angle: 0, radius: 140, speed: 12, size: 40, delay: 0 },
+    { icon: Server, angle: 60, radius: 150, speed: 16, size: 36, delay: 0.5 },
+    { icon: Database, angle: 120, radius: 135, speed: 20, size: 38, delay: 1 },
+    { icon: Cloud, angle: 180, radius: 145, speed: 14, size: 34, delay: 1.5 },
+    { icon: Cpu, angle: 240, radius: 155, speed: 18, size: 36, delay: 2 },
+    { icon: Code, angle: 300, radius: 140, speed: 22, size: 32, delay: 2.5 },
 ]
 
 const fadeUp = {
@@ -47,30 +47,20 @@ const AboutSection = () => {
                         className="order-2 lg:order-1"
                     >
                         <div className="relative w-full aspect-[4/5] max-w-sm mx-auto">
+                            {/* Outer glow ring */}
+                            <div className="absolute inset-[-20px] rounded-full bg-primary/[0.03] blur-xl" />
+
                             {/* Rotating dashed ring */}
                             <div
-                                className="absolute inset-[-12px] rounded-full border border-dashed border-primary/20"
-                                style={{ animation: "pulse-ring 30s linear infinite" }}
+                                className="absolute inset-[-16px] rounded-full border-[1.5px] border-dashed border-primary/30"
+                                style={{ animation: "pulse-ring 25s linear infinite" }}
                             />
 
-                            {/* Orbiting dots */}
-                            {[
-                                { top: "10%", left: "85%", delay: 0, dur: 3 },
-                                { top: "80%", left: "90%", delay: 1, dur: 4 },
-                                { top: "45%", left: "95%", delay: 0.5, dur: 3.5 },
-                                { top: "15%", left: "5%", delay: 1.5, dur: 4.5 },
-                                { top: "75%", left: "2%", delay: 2, dur: 3.2 },
-                            ].map((dot, i) => (
-                                <div
-                                    key={i}
-                                    className="absolute w-1.5 h-1.5 rounded-full bg-primary/40"
-                                    style={{
-                                        top: dot.top,
-                                        left: dot.left,
-                                        animation: `float ${dot.dur}s ease-in-out ${dot.delay}s infinite`,
-                                    }}
-                                />
-                            ))}
+                            {/* Second counter-rotating ring */}
+                            <div
+                                className="absolute inset-[-6px] rounded-full border border-primary/15"
+                                style={{ animation: "pulse-ring 40s linear infinite reverse" }}
+                            />
 
                             {/* Orbiting tech icons */}
                             {orbitItems.map((item, i) => (
@@ -83,7 +73,7 @@ const AboutSection = () => {
                                     }}
                                 >
                                     <div
-                                        className="flex items-center justify-center rounded-lg bg-card border border-border shadow-[var(--shadow-sm)]"
+                                        className="flex items-center justify-center rounded-xl bg-card border border-primary/20 shadow-[var(--shadow-md)]"
                                         style={{
                                             width: item.size,
                                             height: item.size,
@@ -93,10 +83,32 @@ const AboutSection = () => {
                                     >
                                         <item.icon
                                             size={item.size * 0.5}
-                                            className="text-primary/60"
+                                            className="text-primary"
                                         />
                                     </div>
                                 </div>
+                            ))}
+
+                            {/* Accent dots */}
+                            {[
+                                { top: "5%", left: "50%", size: 8, delay: 0, dur: 2.5 },
+                                { top: "92%", left: "15%", size: 6, delay: 0.8, dur: 3 },
+                                { top: "20%", left: "95%", size: 7, delay: 1.4, dur: 2.8 },
+                                { top: "70%", left: "98%", size: 5, delay: 0.3, dur: 3.2 },
+                                { top: "85%", left: "80%", size: 6, delay: 1.8, dur: 2.6 },
+                                { top: "10%", left: "10%", size: 5, delay: 2.1, dur: 3.5 },
+                            ].map((dot, i) => (
+                                <div
+                                    key={i}
+                                    className="absolute rounded-full bg-primary/50"
+                                    style={{
+                                        top: dot.top,
+                                        left: dot.left,
+                                        width: dot.size,
+                                        height: dot.size,
+                                        animation: `float ${dot.dur}s ease-in-out ${dot.delay}s infinite`,
+                                    }}
+                                />
                             ))}
 
                             {/* Main image */}
