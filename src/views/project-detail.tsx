@@ -140,7 +140,29 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
 
             {/* ── Hero ── */}
             <section className="pb-16">
-                <div className="container max-w-5xl">
+                <div className="container max-w-5xl space-y-5">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+                    <div>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance">
+                            {project.title}
+                        </h1>
+                        <p className="text-base md:text-lg text-foreground/60 mt-2 max-w-2xl">
+                            {project.tagline}
+                        </p>
+                    </div>
+                    <div>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            <span className="inline-flex items-center px-3 py-1 rounded-md bg-primary/10 backdrop-blur-sm border border-primary/20 text-xs font-mono tracking-wider text-primary">
+                                {project.category}
+                            </span>
+                            <span className="inline-flex items-center px-3 py-1 rounded-md bg-background/60 backdrop-blur-sm border border-border text-xs font-mono tracking-wider text-muted-foreground">
+                                {project.status}
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+
                     <div className="relative aspect-[21/10] rounded-xl overflow-hidden border border-border shadow-[var(--shadow-md)]">
                         <Image
                             src={project.image}
@@ -151,7 +173,7 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                            <div className="flex flex-wrap gap-2 mb-4">
+                            {/* <div className="flex flex-wrap gap-2 mb-4">
                                 <span className="inline-flex items-center px-3 py-1 rounded-md bg-primary/10 backdrop-blur-sm border border-primary/20 text-xs font-mono tracking-wider text-primary">
                                     {project.category}
                                 </span>
@@ -167,7 +189,7 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
                             </p>
                             <p className="text-sm text-foreground/50 mt-4 max-w-xl leading-relaxed">
                                 {project.summary}
-                            </p>
+                            </p> */}
                             <div className="flex flex-wrap gap-3 mt-6">
                                 {project.links.demo && (
                                     <Link
