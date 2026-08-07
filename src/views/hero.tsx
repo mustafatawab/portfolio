@@ -10,8 +10,8 @@ const roles = [
     "Software Developer",
     "Software Engineer",
     "Problem Solver",
-    "SaaS Developer",
-    "DevOps & Cloud Specialist",
+    "SaaS MVP Developer",
+    "DevOps Specialist",
     "Software Architect",
 ]
 
@@ -66,22 +66,23 @@ const HeroSection = () => {
                             variants={itemVariants}
                             className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
                         >
-                            Software Engineer
+                            Available to Work
                         </motion.span>
 
                         <motion.h1
                             variants={itemVariants}
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
                         >
-                            I am{" "}
-                            <span
+                            Hi, I am
+                            <div
                                 style={{
                                     backgroundImage:
-                                        "linear-gradient(to right, #063B00, #266210)",
+                                        "linear-gradient(to right, #0d9488, #266210)",
                                     WebkitBackgroundClip: "text",
                                     backgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
-                                    color: "transparent",
+                                    color: "#0d9488",
+                                    
                                 }}
                             >
                                 <TypeAnimation
@@ -90,7 +91,7 @@ const HeroSection = () => {
                                     speed={50}
                                     repeat={Infinity}
                                 />
-                            </span>
+                            </div>
                         </motion.h1>
 
                         <motion.p

@@ -15,7 +15,7 @@ export default function Home() {
             <JsonLd data={personSchema()} />
             <JsonLd
                 data={breadcrumbSchema([
-                    { name: "Home", url: "https://mustafatawab.com" },
+                    { name: "Home", url: "http://mustafatawab.vercel.app" },
                 ])}
             />
             <HeroSection />
