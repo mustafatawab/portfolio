@@ -142,25 +142,24 @@ export function ProjectDetail({ project }: { project: ProjectShowcase }) {
             <section className="pb-16">
                 <div className="container max-w-5xl space-y-5">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-
-                    <div>
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance">
-                            {project.title}
-                        </h1>
-                        <p className="text-base md:text-lg text-foreground/60 mt-2 max-w-2xl">
-                            {project.tagline}
-                        </p>
-                    </div>
-                    <div>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            <span className="inline-flex items-center px-3 py-1 rounded-md bg-primary/10 backdrop-blur-sm border border-primary/20 text-xs font-mono tracking-wider text-primary">
-                                {project.category}
-                            </span>
-                            <span className="inline-flex items-center px-3 py-1 rounded-md bg-background/60 backdrop-blur-sm border border-border text-xs font-mono tracking-wider text-muted-foreground">
-                                {project.status}
-                            </span>
+                        <div>
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance">
+                                {project.title}
+                            </h1>
+                            <p className="text-base md:text-lg text-foreground/60 mt-2 max-w-2xl">
+                                {project.tagline}
+                            </p>
                         </div>
-                    </div>
+                        <div>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                <span className="inline-flex items-center px-3 py-1 rounded-md bg-primary/10 backdrop-blur-sm border border-primary/20 text-xs font-mono tracking-wider text-primary">
+                                    {project.category}
+                                </span>
+                                <span className="inline-flex items-center px-3 py-1 rounded-md bg-background/60 backdrop-blur-sm border border-border text-xs font-mono tracking-wider text-muted-foreground">
+                                    {project.status}
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="relative aspect-[21/10] rounded-xl overflow-hidden border border-border shadow-[var(--shadow-md)]">
