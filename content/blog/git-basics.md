@@ -41,11 +41,11 @@ With Git: one folder + a full history of every meaningful change.
 
 ## Git vs GitHub
 
-|              | Git                                | GitHub                                      |
-| ------------ | ---------------------------------- | ------------------------------------------- |
-| What         | Software on your computer          | Website / cloud service                     |
-| Job          | Track history locally              | Host remotes, PRs, Issues, Actions          |
-| Need internet? | No (for local work)              | Yes (to push/pull/collaborate)              |
+|                | Git                       | GitHub                             |
+| -------------- | ------------------------- | ---------------------------------- |
+| What           | Software on your computer | Website / cloud service            |
+| Job            | Track history locally     | Host remotes, PRs, Issues, Actions |
+| Need internet? | No (for local work)       | Yes (to push/pull/collaborate)     |
 
 ```
 Your laptop (Git)  ←→  GitHub (remote copy + collaboration tools)
@@ -135,11 +135,11 @@ git config --list
 git config --global --list
 ```
 
-| Scope  | Flag                   | Where it applies      |
-| ------ | ---------------------- | --------------------- |
-| System | `--system`             | Whole machine         |
-| Global | `--global`             | Your user account     |
-| Local  | (default in a repo)    | One repository only   |
+| Scope  | Flag                | Where it applies    |
+| ------ | ------------------- | ------------------- |
+| System | `--system`          | Whole machine       |
+| Global | `--global`          | Your user account   |
+| Local  | (default in a repo) | One repository only |
 
 ---
 
@@ -253,11 +253,11 @@ git show a1b2c3d
 
 These are the safe "oops" tools for beginners. Deeper recovery (reset, reflog, recovering lost commits) belongs in a follow-up on advanced Git.
 
-| Goal                              | Command                          |
-| --------------------------------- | -------------------------------- |
-| Unstage a file (keep edits)       | `git restore --staged file.txt`  |
-| Discard unstaged edits in a file  | `git restore file.txt`           |
-| Unstage everything                | `git restore --staged .`         |
+| Goal                             | Command                         |
+| -------------------------------- | ------------------------------- |
+| Unstage a file (keep edits)      | `git restore --staged file.txt` |
+| Discard unstaged edits in a file | `git restore file.txt`          |
+| Unstage everything               | `git restore --staged .`        |
 
 Older docs may show:
 
@@ -354,19 +354,19 @@ chore: bump node to 20 in Dockerfile
 
 ## Quick Cheatsheet
 
-| Need              | Command                         |
-| ----------------- | ------------------------------- |
-| Who am I?         | `git config user.name`          |
-| New repo          | `git init`                      |
-| Copy remote repo  | `git clone <url>`               |
-| What's going on?  | `git status`                    |
-| Stage file        | `git add <file>`                |
-| Commit            | `git commit -m "msg"`           |
-| Unstaged diff     | `git diff`                      |
-| Staged diff       | `git diff --staged`             |
-| History           | `git log --oneline`             |
-| Unstage           | `git restore --staged <file>`   |
-| Discard edits     | `git restore <file>`            |
+| Need             | Command                       |
+| ---------------- | ----------------------------- |
+| Who am I?        | `git config user.name`        |
+| New repo         | `git init`                    |
+| Copy remote repo | `git clone <url>`             |
+| What's going on? | `git status`                  |
+| Stage file       | `git add <file>`              |
+| Commit           | `git commit -m "msg"`         |
+| Unstaged diff    | `git diff`                    |
+| Staged diff      | `git diff --staged`           |
+| History          | `git log --oneline`           |
+| Unstage          | `git restore --staged <file>` |
+| Discard edits    | `git restore <file>`          |
 
 ---
 

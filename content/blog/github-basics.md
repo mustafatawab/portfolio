@@ -20,14 +20,14 @@ Git alone = history on one machine (or bare remotes).
 
 GitHub adds:
 
-| Feature           | Purpose                              |
-| ----------------- | ------------------------------------ |
-| Remote hosting    | Backup + single source of truth      |
-| Pull Requests     | Propose + review merges              |
-| Issues            | Track bugs/tasks                     |
-| Actions           | CI/CD pipelines                      |
-| Permissions       | Who can push / merge                 |
-| Releases / Tags UI | Version your software               |
+| Feature            | Purpose                         |
+| ------------------ | ------------------------------- |
+| Remote hosting     | Backup + single source of truth |
+| Pull Requests      | Propose + review merges         |
+| Issues             | Track bugs/tasks                |
+| Actions            | CI/CD pipelines                 |
+| Permissions        | Who can push / merge            |
+| Releases / Tags UI | Version your software           |
 
 ```
 You (git commit / push)
@@ -142,10 +142,10 @@ origin  git@github.com:USER/REPO.git (fetch)
 origin  git@github.com:USER/REPO.git (push)
 ```
 
-| Term         | Meaning                                                      |
-| ------------ | ------------------------------------------------------------ |
-| **origin**   | Default name for "the" GitHub remote                         |
-| **upstream** | Often used in forks = original project you forked from       |
+| Term         | Meaning                                                |
+| ------------ | ------------------------------------------------------ |
+| **origin**   | Default name for "the" GitHub remote                   |
+| **upstream** | Often used in forks = original project you forked from |
 
 ```bash
 git remote add origin git@github.com:USER/REPO.git
@@ -198,11 +198,11 @@ Don't force-push to shared `main`.
 
 ## Clone vs Fork
 
-|        | Clone                            | Fork                                                      |
-| ------ | -------------------------------- | --------------------------------------------------------- |
-| What   | Copy repo to your machine        | Copy repo to **your GitHub account**                      |
-| When   | You have access / own it         | Contributing to someone else's project                    |
-| Remote | `origin` → that repo             | `origin` → your fork; often add `upstream` → original     |
+|        | Clone                     | Fork                                                  |
+| ------ | ------------------------- | ----------------------------------------------------- |
+| What   | Copy repo to your machine | Copy repo to **your GitHub account**                  |
+| When   | You have access / own it  | Contributing to someone else's project                |
+| Remote | `origin` → that repo      | `origin` → your fork; often add `upstream` → original |
 
 Fork workflow:
 
@@ -245,11 +245,11 @@ Write:
 
 ### Merge options on GitHub
 
-| Option               | Result                                          |
-| -------------------- | ----------------------------------------------- |
-| **Merge commit**     | Keeps all commits + a merge commit              |
-| **Squash and merge** | One commit on `main` (clean history)            |
-| **Rebase and merge** | Linear commits without merge commit             |
+| Option               | Result                               |
+| -------------------- | ------------------------------------ |
+| **Merge commit**     | Keeps all commits + a merge commit   |
+| **Squash and merge** | One commit on `main` (clean history) |
+| **Rebase and merge** | Linear commits without merge commit  |
 
 Many teams prefer **squash** for feature branches.
 
@@ -324,10 +324,10 @@ GitHub Actions usually starts from Git events:
 
 ```yaml
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 ```
 
 So:
@@ -348,17 +348,17 @@ Use GitHub **Secrets** for CI credentials.
 
 ## Quick Cheatsheet
 
-| Need               | Command / action                      |
-| ------------------ | ------------------------------------- |
-| Add remote         | `git remote add origin <url>`         |
-| See remotes        | `git remote -v`                       |
-| Download updates   | `git fetch`                           |
-| Update branch      | `git pull`                            |
-| Upload commits     | `git push`                            |
-| First push branch  | `git push -u origin <branch>`         |
-| Open PR            | GitHub UI after push                  |
-| Sync after merge   | `git switch main && git pull`         |
-| SSH test           | `ssh -T git@github.com`               |
+| Need              | Command / action              |
+| ----------------- | ----------------------------- |
+| Add remote        | `git remote add origin <url>` |
+| See remotes       | `git remote -v`               |
+| Download updates  | `git fetch`                   |
+| Update branch     | `git pull`                    |
+| Upload commits    | `git push`                    |
+| First push branch | `git push -u origin <branch>` |
+| Open PR           | GitHub UI after push          |
+| Sync after merge  | `git switch main && git pull` |
+| SSH test          | `ssh -T git@github.com`       |
 
 ---
 
