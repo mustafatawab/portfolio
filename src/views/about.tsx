@@ -53,13 +53,18 @@ const AboutSection = () => {
                             {/* Rotating dashed ring */}
                             <div
                                 className="absolute inset-[-16px] rounded-full border-[1.5px] border-dashed border-primary/30"
-                                style={{ animation: "pulse-ring 25s linear infinite" }}
+                                style={{
+                                    animation: "pulse-ring 25s linear infinite",
+                                }}
                             />
 
                             {/* Second counter-rotating ring */}
                             <div
                                 className="absolute inset-[-6px] rounded-full border border-primary/15"
-                                style={{ animation: "pulse-ring 40s linear infinite reverse" }}
+                                style={{
+                                    animation:
+                                        "pulse-ring 40s linear infinite reverse",
+                                }}
                             />
 
                             {/* Orbiting tech icons */}
@@ -91,12 +96,48 @@ const AboutSection = () => {
 
                             {/* Accent dots */}
                             {[
-                                { top: "5%", left: "50%", size: 8, delay: 0, dur: 2.5 },
-                                { top: "92%", left: "15%", size: 6, delay: 0.8, dur: 3 },
-                                { top: "20%", left: "95%", size: 7, delay: 1.4, dur: 2.8 },
-                                { top: "70%", left: "98%", size: 5, delay: 0.3, dur: 3.2 },
-                                { top: "85%", left: "80%", size: 6, delay: 1.8, dur: 2.6 },
-                                { top: "10%", left: "10%", size: 5, delay: 2.1, dur: 3.5 },
+                                {
+                                    top: "5%",
+                                    left: "50%",
+                                    size: 8,
+                                    delay: 0,
+                                    dur: 2.5,
+                                },
+                                {
+                                    top: "92%",
+                                    left: "15%",
+                                    size: 6,
+                                    delay: 0.8,
+                                    dur: 3,
+                                },
+                                {
+                                    top: "20%",
+                                    left: "95%",
+                                    size: 7,
+                                    delay: 1.4,
+                                    dur: 2.8,
+                                },
+                                {
+                                    top: "70%",
+                                    left: "98%",
+                                    size: 5,
+                                    delay: 0.3,
+                                    dur: 3.2,
+                                },
+                                {
+                                    top: "85%",
+                                    left: "80%",
+                                    size: 6,
+                                    delay: 1.8,
+                                    dur: 2.6,
+                                },
+                                {
+                                    top: "10%",
+                                    left: "10%",
+                                    size: 5,
+                                    delay: 2.1,
+                                    dur: 3.5,
+                                },
                             ].map((dot, i) => (
                                 <div
                                     key={i}
