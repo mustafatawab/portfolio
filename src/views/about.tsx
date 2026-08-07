@@ -52,7 +52,6 @@ const AboutSection = () => {
 
                             {/* Rotating dashed ring */}
                             <div
-<<<<<<< HEAD
                                 className="absolute inset-[-16px] rounded-full border-[1.5px] border-dashed border-primary/30"
                                 style={{ animation: "pulse-ring 25s linear infinite" }}
                             />
@@ -62,42 +61,6 @@ const AboutSection = () => {
                                 className="absolute inset-[-6px] rounded-full border border-primary/15"
                                 style={{ animation: "pulse-ring 40s linear infinite reverse" }}
                             />
-=======
-                                className="absolute inset-[-12px] rounded-full border border-dashed border-primary/20"
-                                style={{
-                                    animation: "pulse-ring 30s linear infinite",
-                                }}
-                            />
-
-                            {/* Orbiting dots */}
-                            {[
-                                { top: "10%", left: "85%", delay: 0, dur: 3 },
-                                { top: "80%", left: "90%", delay: 1, dur: 4 },
-                                {
-                                    top: "45%",
-                                    left: "95%",
-                                    delay: 0.5,
-                                    dur: 3.5,
-                                },
-                                {
-                                    top: "15%",
-                                    left: "5%",
-                                    delay: 1.5,
-                                    dur: 4.5,
-                                },
-                                { top: "75%", left: "2%", delay: 2, dur: 3.2 },
-                            ].map((dot, i) => (
-                                <div
-                                    key={i}
-                                    className="absolute w-1.5 h-1.5 rounded-full bg-primary/40"
-                                    style={{
-                                        top: dot.top,
-                                        left: dot.left,
-                                        animation: `float ${dot.dur}s ease-in-out ${dot.delay}s infinite`,
-                                    }}
-                                />
-                            ))}
->>>>>>> 75b39efc86b321215dfe14620b23ea8adda50d11
 
                             {/* Orbiting tech icons */}
                             {orbitItems.map((item, i) => (
