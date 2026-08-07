@@ -82,7 +82,6 @@ const HeroSection = () => {
                                     backgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                     color: "#0d9488",
-                                    
                                 }}
                             >
                                 <TypeAnimation
