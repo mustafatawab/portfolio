@@ -76,7 +76,8 @@ const HeroSection = () => {
                             I am{" "}
                             <span
                                 style={{
-                                    backgroundImage: "linear-gradient(to right, #063B00, #266210)",
+                                    backgroundImage:
+                                        "linear-gradient(to right, #063B00, #266210)",
                                     WebkitBackgroundClip: "text",
                                     backgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
@@ -175,14 +176,18 @@ const HeroSection = () => {
                                                 {line.text.includes('"') ? (
                                                     <>
                                                         <span className="text-muted-foreground/80">
-                                                            {line.text.split(
-                                                                /(".*?")/
-                                                            )[0]}
+                                                            {
+                                                                line.text.split(
+                                                                    /(".*?")/
+                                                                )[0]
+                                                            }
                                                         </span>
                                                         <span className="text-primary">
-                                                            {line.text.match(
-                                                                /".*?"/
-                                                            )?.[0]}
+                                                            {
+                                                                line.text.match(
+                                                                    /".*?"/
+                                                                )?.[0]
+                                                            }
                                                         </span>
                                                         <span className="text-muted-foreground/80">
                                                             {line.text.split(
@@ -210,7 +215,10 @@ const HeroSection = () => {
                                     <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        transition={{ delay: 1.5, duration: 0.1 }}
+                                        transition={{
+                                            delay: 1.5,
+                                            duration: 0.1,
+                                        }}
                                         className="flex"
                                     >
                                         <span className="select-none text-muted-foreground/30 w-6 text-right mr-4">

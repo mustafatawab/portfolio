@@ -60,7 +60,10 @@ const AboutSection = () => {
                         }}
                         className="order-1 lg:order-2"
                     >
-                        <motion.span variants={fadeUp} className="section-label">
+                        <motion.span
+                            variants={fadeUp}
+                            className="section-label"
+                        >
                             About
                         </motion.span>
 
@@ -93,10 +96,7 @@ const AboutSection = () => {
                             system reliability, and shipping on time.
                         </motion.p>
 
-                        <motion.div
-                            variants={fadeUp}
-                            className="mt-8"
-                        >
+                        <motion.div variants={fadeUp} className="mt-8">
                             <div className="space-y-2.5">
                                 {values.map((v) => (
                                     <div
