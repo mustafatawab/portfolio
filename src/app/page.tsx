@@ -1,4 +1,4 @@
-import HeroSection from "@/views/hero"
+import HeroSection from "@/views/hero2"
 import AboutSection from "@/views/about"
 import WhatIBuild from "@/views/what-i-build"
 import EngagementModels from "@/views/engagement-models"

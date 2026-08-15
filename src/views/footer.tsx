@@ -32,7 +32,7 @@ const footerLinks = [
 const Footer = () => {
     return (
         <footer className="py-12 border-t border-border bg-background">
-            <div className="container">
+            <div className="container ">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-1">
                         {socials.map((social) => (
@@ -53,7 +53,7 @@ const Footer = () => {
                     </div>
 
                     <nav
-                        className="flex items-center gap-4"
+                        className="flex flex-wrap items-center gap-4"
                         aria-label="Footer navigation"
                     >
                         {footerLinks.map((link) => (
@@ -66,11 +66,36 @@ const Footer = () => {
                             </Link>
                         ))}
                     </nav>
+                </div>
 
+                <div
+                    className="py-10 md:py-20 text-center text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-black/30 dark:text-white/20"
+                    // style={{
+                    //     backgroundImage:
+                    //         "linear-gradient(to right, #0d9488, #266210)",
+                    //     WebkitBackgroundClip: "text",
+                    //     backgroundClip: "text",
+                    //     WebkitTextFillColor: "transparent",
+                    //     color: "#0d9488",
+                    // }}
+                >
+                    Mustafa Tawab
+                </div>
+
+                <div className=" justify-between items-center flex-wrap hidden md:flex">
                     <p className="text-sm text-muted-foreground">
                         &copy; {new Date().getFullYear()} Mustafa Tawab. All
                         rights reserved.
                     </p>
+
+                    <div className="flex flex-wrap gap-4 items-center ">
+                        <p className="text-sm text-muted-foreground cursor-pointer">
+                            Terms & Conditions
+                        </p>
+                        <p className="text-sm text-muted-foreground cursor-pointer">
+                            Privacy Policy
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
