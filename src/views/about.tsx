@@ -153,7 +153,7 @@ const AboutSection = () => {
                             ))}
 
                             {/* Main image */}
-                            <div className="absolute inset-0 rounded-2xl bg-primary/[0.04] translate-x-3 translate-y-3" />
+                            <div className="absolute inset-0 rounded-2xl  translate-x-3 translate-y-3" />
                             <Image
                                 src={me}
                                 fill
