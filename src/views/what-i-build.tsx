@@ -131,16 +131,10 @@ const offerings = [
     },
 ]
 
-function GridCard({
-    offering,
-}: {
-    offering: (typeof offerings)[number]
-}) {
+function GridCard({ offering }: { offering: (typeof offerings)[number] }) {
     return (
         <motion.div variants={fadeUp} className="h-full">
-            <div
-                className="relative bg-background p-6 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group"
-            >
+            <div className="relative bg-background p-6 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group">
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
                 <div className="w-10 h-10 rounded-none bg-primary/10 flex items-center justify-center text-primary mb-5 border border-primary/20">
                     <offering.icon size={20} />

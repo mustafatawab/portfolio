@@ -53,13 +53,7 @@ const fadeUp = {
     },
 }
 
-function ProjectCard({
-    project,
-    index,
-}: {
-    project: Project
-    index: number
-}) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
     const cardRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: cardRef,
@@ -81,7 +75,10 @@ function ProjectCard({
                 className="glass-card block rounded-xl overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring/60 focus-visible:rounded-xl group"
             >
                 <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                    <motion.div style={{ scale: imageScale }} className="absolute inset-0">
+                    <motion.div
+                        style={{ scale: imageScale }}
+                        className="absolute inset-0"
+                    >
                         <Image
                             src={project.image}
                             alt={project.title}

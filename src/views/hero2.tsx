@@ -55,7 +55,13 @@ const codeLines = [
     { indent: 0, text: "engineer.ship();" },
 ]
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function AnimatedCounter({
+    target,
+    suffix = "",
+}: {
+    target: number
+    suffix?: string
+}) {
     const ref = useRef<HTMLSpanElement>(null)
     const isInView = useInView(ref, { once: true, margin: "-50px" })
     const [count, setCount] = useState(0)
@@ -147,7 +153,13 @@ const HeroSection = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
+                        style={{
+                            y: useTransform(
+                                scrollYProgress,
+                                [0, 1],
+                                ["0%", "15%"]
+                            ),
+                        }}
                         className="order-2 lg:order-1"
                     >
                         <motion.span
@@ -210,14 +222,24 @@ const HeroSection = () => {
 
                     {/* Code Card */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+                        initial={{
+                            opacity: 0,
+                            scale: 0.95,
+                            filter: "blur(8px)",
+                        }}
                         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                         transition={{
                             duration: 0.8,
                             ease: [0.25, 0.1, 0.25, 1],
                             delay: 0.3,
                         }}
-                        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "25%"]) }}
+                        style={{
+                            y: useTransform(
+                                scrollYProgress,
+                                [0, 1],
+                                ["0%", "25%"]
+                            ),
+                        }}
                         className="order-1 lg:order-2"
                     >
                         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
