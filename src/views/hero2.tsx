@@ -21,23 +21,7 @@ const roles = [
 
 const typeAnimationSequence = roles.flatMap((role) => [role, 2000])
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.12, delayChildren: 0.15 },
-    },
-}
 
-const itemVariants = {
-    hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
-    visible: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
-    },
-}
 
 const codeLines = [
     { indent: 0, text: "const engineer = {" },
@@ -92,75 +76,59 @@ const HeroSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
 
+    useEffect(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
+        
+        tl.from(".gsap-reveal-text", {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.1,
+            delay: 0.2
+        })
+        .from(".gsap-reveal-terminal", {
+            opacity: 0,
+            scale: 0.95,
+            filter: "blur(10px)",
+            duration: 0.8
+        }, "-=0.6")
+        .from(".gsap-reveal-stats", {
+            opacity: 0,
+            y: 10,
+            duration: 0.6,
+            stagger: 0.1
+        }, "-=0.4")
+
+        return () => { tl.kill() }
+    }, [])
+
     return (
         <section
             ref={sectionRef}
             className="relative min-h-screen flex items-center pt-28 pb-16 md:pt-24 bg-background overflow-hidden"
         >
-            {/* Animated gradient mesh background */}
+            {/* HUD Grid Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <motion.div
-                    className="absolute w-[600px] h-[600px] rounded-full bg-primary/8 blur-[120px]"
-                    animate={{
-                        x: ["-20%", "15%", "-10%", "20%", "-20%"],
-                        y: ["-10%", "25%", "-15%", "10%", "-10%"],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    style={{ top: "-10%", right: "-5%" }}
-                />
-                <motion.div
-                    className="absolute w-[500px] h-[500px] rounded-full bg-purple-500/6 blur-[100px]"
-                    animate={{
-                        x: ["20%", "-15%", "25%", "-10%", "20%"],
-                        y: ["15%", "-20%", "10%", "25%", "15%"],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    style={{ bottom: "0%", left: "-5%" }}
-                />
-                <motion.div
-                    className="absolute w-[400px] h-[400px] rounded-full bg-cyan-500/5 blur-[90px]"
-                    animate={{
-                        x: ["-10%", "20%", "-20%", "15%", "-10%"],
-                        y: ["20%", "-10%", "15%", "-15%", "20%"],
-                    }}
-                    transition={{
-                        duration: 22,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    style={{ top: "40%", left: "30%" }}
-                />
+                <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
             </div>
 
             <div className="container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Text */}
                     <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
                         style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
                         className="order-2 lg:order-1"
                     >
                         <motion.span
-                            variants={itemVariants}
-                            className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
+                            className="gsap-reveal-text inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
                         >
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
                             Available to Work
                         </motion.span>
 
                         <motion.h1
-                            variants={itemVariants}
-                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
+                            className="gsap-reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
                         >
                             Hi, I am
                             <div>
@@ -174,16 +142,14 @@ const HeroSection = () => {
                         </motion.h1>
 
                         <motion.p
-                            variants={itemVariants}
-                            className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
+                            className="gsap-reveal-text mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
                         >
                             Building modern software that solves real business
                             problems.
                         </motion.p>
 
                         <motion.div
-                            variants={itemVariants}
-                            className="flex flex-wrap gap-3 mt-8"
+                            className="gsap-reveal-text flex flex-wrap gap-3 mt-8"
                         >
                             <Link
                                 href="/projects"
@@ -210,28 +176,20 @@ const HeroSection = () => {
 
                     {/* Code Card */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.25, 0.1, 0.25, 1],
-                            delay: 0.3,
-                        }}
                         style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "25%"]) }}
-                        className="order-1 lg:order-2"
+                        className="gsap-reveal-terminal order-1 lg:order-2"
                     >
                         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
-                            <div className="absolute inset-0 rounded-2xl bg-primary/[0.04] translate-x-3 translate-y-3" />
-                            <div className="relative z-10 rounded-2xl border border-border bg-card overflow-hidden shadow-[var(--shadow-lg)] glass-card">
+                            <div className="absolute inset-0 border border-primary/20 bg-primary/[0.02] translate-x-3 translate-y-3" />
+                            <div className="relative z-10 border border-border bg-background overflow-hidden group">
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
                                 {/* Title bar */}
-                                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-3 h-3 rounded-full bg-danger/60" />
-                                        <div className="w-3 h-3 rounded-full bg-warning/60" />
-                                        <div className="w-3 h-3 rounded-full bg-success/60" />
-                                    </div>
-                                    <span className="ml-2 text-[11px] font-mono text-muted-foreground/60">
-                                        engineer.ts
+                                <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/30">
+                                    <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-widest">
+                                        System.Terminal
+                                    </span>
+                                    <span className="text-[10px] font-mono text-primary/60">
+                                        v1.0.4
                                     </span>
                                 </div>
 
@@ -315,13 +273,6 @@ const HeroSection = () => {
 
                 {/* Trust Bar with Counter Animations */}
                 <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.5,
-                        delay: 0.6,
-                        ease: [0.25, 0.1, 0.25, 1] as const,
-                    }}
                     className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-border"
                 >
                     {[
@@ -330,7 +281,7 @@ const HeroSection = () => {
                         { value: 25, suffix: "+", label: "Happy Clients" },
                         { value: 3, suffix: "", label: "Industries Served" },
                     ].map((stat) => (
-                        <div key={stat.label}>
+                        <div key={stat.label} className="gsap-reveal-stats">
                             <div className="text-2xl font-bold text-foreground tracking-tight">
                                 <AnimatedCounter
                                     target={stat.value}
