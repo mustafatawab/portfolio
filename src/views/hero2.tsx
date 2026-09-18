@@ -11,12 +11,11 @@ gsap.registerPlugin(ScrollTrigger)
 
 const roles = [
     "Full Stack Developer",
-    "Software Developer",
     "Software Engineer",
+    "Systems Architect",
     "Problem Solver",
-    "SaaS MVP Developer",
-    "DevOps Specialist",
-    "Software Architect",
+    "AI Integration Specialist",
+    "DevOps Engineer",
 ]
 
 const typeAnimationSequence = roles.flatMap((role) => [role, 2000])
@@ -28,7 +27,7 @@ const codeLines = [
     { indent: 1, text: 'name: "Mustafa Tawab",' },
     { indent: 1, text: 'role: "Full Stack Engineer",' },
     { indent: 1, text: "builds: [" },
-    { indent: 2, text: '"SaaS", "AI Apps", "Enterprise"' },
+    { indent: 2, text: '"Fintech", "AI Apps", "Enterprise"' },
     { indent: 1, text: "]," },
     { indent: 1, text: "stack: [" },
     { indent: 2, text: '"Next.js", "FastAPI", "Prisma"' },
