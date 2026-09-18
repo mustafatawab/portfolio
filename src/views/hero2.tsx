@@ -20,8 +20,6 @@ const roles = [
 
 const typeAnimationSequence = roles.flatMap((role) => [role, 2000])
 
-
-
 const codeLines = [
     { indent: 0, text: "const engineer = {" },
     { indent: 1, text: 'name: "Mustafa Tawab",' },
@@ -83,28 +81,38 @@ const HeroSection = () => {
 
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-        
+
         tl.from(".gsap-reveal-text", {
             opacity: 0,
             y: 20,
             duration: 0.8,
             stagger: 0.1,
-            delay: 0.2
+            delay: 0.2,
         })
-        .from(".gsap-reveal-terminal", {
-            opacity: 0,
-            scale: 0.95,
-            filter: "blur(10px)",
-            duration: 0.8
-        }, "-=0.6")
-        .from(".gsap-reveal-stats", {
-            opacity: 0,
-            y: 10,
-            duration: 0.6,
-            stagger: 0.1
-        }, "-=0.4")
+            .from(
+                ".gsap-reveal-terminal",
+                {
+                    opacity: 0,
+                    scale: 0.95,
+                    filter: "blur(10px)",
+                    duration: 0.8,
+                },
+                "-=0.6"
+            )
+            .from(
+                ".gsap-reveal-stats",
+                {
+                    opacity: 0,
+                    y: 10,
+                    duration: 0.6,
+                    stagger: 0.1,
+                },
+                "-=0.4"
+            )
 
-        return () => { tl.kill() }
+        return () => {
+            tl.kill()
+        }
     }, [])
 
     return (
@@ -122,19 +130,21 @@ const HeroSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Text */}
                     <motion.div
-                        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
+                        style={{
+                            y: useTransform(
+                                scrollYProgress,
+                                [0, 1],
+                                ["0%", "15%"]
+                            ),
+                        }}
                         className="order-2 lg:order-1"
                     >
-                        <motion.span
-                            className="gsap-reveal-text inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
-                        >
+                        <motion.span className="gsap-reveal-text inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6">
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
                             Available to Work
                         </motion.span>
 
-                        <motion.h1
-                            className="gsap-reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance"
-                        >
+                        <motion.h1 className="gsap-reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance">
                             Hi, I am
                             <div>
                                 <TypeAnimation
@@ -146,16 +156,12 @@ const HeroSection = () => {
                             </div>
                         </motion.h1>
 
-                        <motion.p
-                            className="gsap-reveal-text mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
-                        >
+                        <motion.p className="gsap-reveal-text mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
                             Building modern software that solves real business
                             problems.
                         </motion.p>
 
-                        <motion.div
-                            className="gsap-reveal-text flex flex-wrap gap-3 mt-8"
-                        >
+                        <motion.div className="gsap-reveal-text flex flex-wrap gap-3 mt-8">
                             <Link
                                 href="/projects"
                                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--glow-md)] active:scale-[0.97]"
@@ -181,7 +187,13 @@ const HeroSection = () => {
 
                     {/* Code Card */}
                     <motion.div
-                        style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "25%"]) }}
+                        style={{
+                            y: useTransform(
+                                scrollYProgress,
+                                [0, 1],
+                                ["0%", "25%"]
+                            ),
+                        }}
                         className="gsap-reveal-terminal order-1 lg:order-2"
                     >
                         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
@@ -277,9 +289,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Trust Bar with Counter Animations */}
-                <motion.div
-                    className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-border"
-                >
+                <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-border">
                     {[
                         { value: 3, suffix: "+", label: "Years of Experience" },
                         { value: 20, suffix: "+", label: "Projects Delivered" },

@@ -4,7 +4,13 @@ import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent } from "framer-motion"
+import {
+    motion,
+    AnimatePresence,
+    useScroll,
+    useSpring,
+    useMotionValueEvent,
+} from "framer-motion"
 import { ModeToggle } from "@/components/ModeToggle"
 
 type LinkType = {
@@ -109,13 +115,15 @@ const Navbar = () => {
         <motion.header
             variants={{
                 visible: { y: 0, x: "-50%" },
-                hidden: { y: "-150%", x: "-50%" }
+                hidden: { y: "-150%", x: "-50%" },
             }}
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className={`fixed top-6 left-1/2 z-[var(--z-sticky)] w-max max-w-[95vw]`}
         >
-            <nav className={`flex items-center justify-between gap-6 md:gap-12 px-6 py-3 rounded-full border bg-background/80 backdrop-blur-xl shadow-[var(--shadow-md)] transition-colors duration-300 ${scrolled ? 'border-border' : 'border-transparent'}`}>
+            <nav
+                className={`flex items-center justify-between gap-6 md:gap-12 px-6 py-3 rounded-full border bg-background/80 backdrop-blur-xl shadow-[var(--shadow-md)] transition-colors duration-300 ${scrolled ? "border-border" : "border-transparent"}`}
+            >
                 <Link href="/" className="relative group">
                     <span className="text-lg font-semibold tracking-tight text-foreground space-x-[2px]">
                         <span className="text-primary">{"{"}</span>
