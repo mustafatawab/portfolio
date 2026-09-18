@@ -37,8 +37,9 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
         <motion.div variants={fadeUp}>
             <Link
                 href={`/projects/${project.slug}`}
-                className="group block rounded-xl overflow-hidden border border-border bg-card transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5"
+                className="group block relative rounded-none border border-border bg-background transition-all duration-300 ease-[var(--ease)] hover:border-primary/30"
             >
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
                 <div className="relative aspect-[16/11] overflow-hidden bg-muted">
                     <Image
                         src={project.image}
@@ -162,7 +163,7 @@ export function ProjectsListing() {
                         >
                             <Link
                                 href={`/projects/${featured.slug}`}
-                                className="group block relative rounded-2xl overflow-hidden border border-border bg-card"
+                                className="group block relative rounded-none border border-border bg-background transition-colors duration-300 hover:border-primary/30"
                             >
                                 <div className="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden bg-muted">
                                     <Image

@@ -5,11 +5,12 @@ import toast from "react-hot-toast"
 import { Loader2 } from "lucide-react"
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
     },
 }
 
@@ -104,7 +105,7 @@ const ContactSection = () => {
                         action="https://formspree.io/f/xkgnlbqg"
                         method="POST"
                         onSubmit={handleSubmit}
-                        className="space-y-5"
+                        className="space-y-5 glass-card p-6 sm:p-8"
                     >
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
@@ -119,10 +120,10 @@ const ContactSection = () => {
                                     name="name"
                                     type="text"
                                     autoComplete="name"
-                                    className={`w-full px-4 py-3 rounded-lg bg-muted border text-foreground text-sm focus-ring outline-none ${
+                                    className={`w-full px-4 py-3 rounded-lg bg-muted border text-foreground text-sm focus-ring outline-none transition-all duration-200 ${
                                         errors.name
                                             ? "border-danger/50 focus-ring-error"
-                                            : "border-border focus-ring"
+                                            : "border-border focus-ring hover:border-primary/30"
                                     }`}
                                     placeholder="Your name"
                                 />
@@ -145,10 +146,10 @@ const ContactSection = () => {
                                     name="email"
                                     type="email"
                                     autoComplete="email"
-                                    className={`w-full px-4 py-3 rounded-lg bg-muted border text-foreground text-sm focus-ring outline-none ${
+                                    className={`w-full px-4 py-3 rounded-lg bg-muted border text-foreground text-sm focus-ring outline-none transition-all duration-200 ${
                                         errors.email
                                             ? "border-danger/50 focus-ring-error"
-                                            : "border-border focus-ring"
+                                            : "border-border focus-ring hover:border-primary/30"
                                     }`}
                                     placeholder="you@example.com"
                                 />
@@ -171,7 +172,7 @@ const ContactSection = () => {
                                 id="project"
                                 name="message"
                                 rows={4}
-                                className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm focus-ring outline-none resize-y"
+                                className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm focus-ring outline-none resize-y hover:border-primary/30 transition-all duration-200"
                                 placeholder="What are you looking to build?"
                             />
                         </div>
@@ -187,7 +188,7 @@ const ContactSection = () => {
                                 id="budget"
                                 name="budget"
                                 defaultValue=""
-                                className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm focus-ring outline-none appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20stroke%3D%22%23737373%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m4%206%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[right_12px_center] bg-no-repeat"
+                                className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground text-sm focus-ring outline-none appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20stroke%3D%22%23737373%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m4%206%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[right_12px_center] bg-no-repeat hover:border-primary/30 transition-all duration-200"
                             >
                                 <option value="" disabled>
                                     Select budget range
@@ -203,7 +204,7 @@ const ContactSection = () => {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--shadow-md)] active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
+                            className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--glow-md)] active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100"
                         >
                             {isSubmitting ? (
                                 <>

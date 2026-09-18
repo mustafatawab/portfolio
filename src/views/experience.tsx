@@ -1,25 +1,63 @@
 "use client"
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { motion } from "framer-motion"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { experiences } from "@/lib/experience"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease },
     },
 }
 
 const stagger = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.08 } },
+    visible: { transition: { staggerChildren: 0.1 } },
 }
 
 export default function Experience() {
+    const timelineRef = useRef<HTMLDivElement>(null)
+    const progressRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const progress = progressRef.current
+        const timeline = timelineRef.current
+        if (!progress || !timeline) return
+
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+        if (prefersReducedMotion) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                progress,
+                { scaleY: 0 },
+                {
+                    scaleY: 1,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: timeline,
+                        start: "top 80%",
+                        end: "bottom 60%",
+                        scrub: 1,
+                    },
+                }
+            )
+        })
+
+        return () => ctx.revert()
+    }, [])
+
     return (
         <section id="experience" className="py-24 md:py-32 bg-muted/40">
             <div className="container max-w-4xl">
@@ -42,14 +80,20 @@ export default function Experience() {
                 </motion.div>
 
                 <motion.div
+                    ref={timelineRef}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
                     className="relative"
                 >
-                    {/* Vertical line — centered on the 100px column boundary */}
-                    <div className="absolute left-[100px] top-0 bottom-0 w-px bg-border hidden sm:block" />
+                    {/* Vertical animated progress line */}
+                    <div className="absolute left-[100px] top-0 bottom-0 w-px bg-border hidden sm:block">
+                        <div
+                            ref={progressRef}
+                            className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary to-primary/60 origin-top"
+                        />
+                    </div>
 
                     {experiences.map((exp, i) => (
                         <motion.div
@@ -65,11 +109,11 @@ export default function Experience() {
                             </div>
 
                             {/* Timeline dot — centered on the line */}
-                            <div className="hidden sm:block absolute left-[100px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-primary -translate-x-1/2 z-10 transition-colors duration-300" />
+                            <div className="hidden sm:block absolute left-[100px] top-1.5 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background -translate-x-1/2 z-10 transition-colors duration-300 shadow-[var(--glow-sm)]" />
 
                             {/* Card — offset from the line */}
                             <div className="sm:pl-[124px]">
-                                <div className="card-hover p-5 sm:p-6">
+                                <div className="glass-card p-5 sm:p-6 hover:shadow-[var(--shadow-lg)] transition-shadow duration-300">
                                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 mb-3">
                                         <div>
                                             <h3 className="text-base sm:text-lg font-semibold text-foreground">

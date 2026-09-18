@@ -5,17 +5,18 @@ import { Quote } from "lucide-react"
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease },
     },
 }
 
 const stagger = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.06 } },
+    visible: { transition: { staggerChildren: 0.1 } },
 }
 
 const testimonials = [
@@ -74,7 +75,7 @@ export default function Testimonials() {
                         <motion.div
                             key={i}
                             variants={fadeUp}
-                            className="card-hover rounded-xl border border-border/50 p-6 sm:p-7 flex flex-col"
+                            className="glass-card p-6 sm:p-7 flex flex-col hover:shadow-[var(--shadow-lg)] transition-shadow duration-300"
                         >
                             <Quote
                                 size={18}

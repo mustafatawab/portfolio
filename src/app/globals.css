@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --radius: 0.75rem;
+    --radius: 0.15rem;
 
     /* Backgrounds & Text */
     --background: #fafafa;
@@ -45,8 +45,14 @@
     --shadow-xl:
         0 16px 48px rgba(15, 23, 42, 0.1), 0 8px 16px rgba(15, 23, 42, 0.06);
 
+    /* Glow */
+    --glow-sm: 0 0 15px rgba(13, 148, 136, 0.2);
+    --glow-md: 0 0 30px rgba(13, 148, 136, 0.3);
+    --glow-lg: 0 0 60px rgba(13, 148, 136, 0.4), 0 0 120px rgba(13, 148, 136, 0.15);
+
     /* Transitions */
     --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --duration-fast: 200ms;
     --duration-normal: 300ms;
     --duration-slow: 500ms;
@@ -81,6 +87,10 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35);
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.4);
+
+    --glow-sm: 0 0 15px rgba(13, 148, 136, 0.3);
+    --glow-md: 0 0 30px rgba(13, 148, 136, 0.4);
+    --glow-lg: 0 0 60px rgba(13, 148, 136, 0.5), 0 0 120px rgba(13, 148, 136, 0.2);
 }
 
 @theme inline {
@@ -103,7 +113,7 @@
     --font-mono: var(--font-geist-mono);
 }
 
-/* ─── Base Layer ─── */
+/* --- Base Layer --- */
 @layer base {
     html {
         @apply scroll-smooth;
@@ -161,39 +171,79 @@
     }
 }
 
-/* ─── Component Utilities ─── */
+/* --- Component Utilities --- */
 @layer utilities {
     .card {
-        background-color: var(--card);
+        background-color: transparent;
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        transition:
-            box-shadow var(--duration-normal) var(--ease),
-            translate var(--duration-normal) var(--ease);
+        transition: border-color var(--duration-normal) var(--ease),
+                    box-shadow var(--duration-normal) var(--ease);
     }
 
     .card-hover {
-        background-color: var(--card);
+        background-color: transparent;
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        transition:
-            box-shadow var(--duration-normal) var(--ease),
-            translate var(--duration-normal) var(--ease);
+        transition: border-color var(--duration-normal) var(--ease),
+                    box-shadow var(--duration-normal) var(--ease);
     }
 
     .card-hover:hover {
-        box-shadow: var(--shadow-md);
-        translate: 0 -2px;
+        border-color: var(--primary);
+        box-shadow: var(--glow-sm);
+    }
+
+    .glass {
+        background: rgba(250, 250, 250, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+    }
+
+    .dark .glass {
+        background: rgba(10, 10, 10, 0.6);
+        border: 1px solid var(--border);
+    }
+
+    .glass-card {
+        background: rgba(250, 250, 250, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color var(--duration-normal) var(--ease),
+                    box-shadow var(--duration-normal) var(--ease);
+    }
+
+    .dark .glass-card {
+        background: rgba(20, 20, 20, 0.4);
+        border: 1px solid var(--border);
+    }
+    
+    .glass-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--glow-sm);
     }
 
     .section-label {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
+        font-size: 0.85rem;
         color: var(--primary);
-        text-transform: uppercase;
         margin-bottom: 1rem;
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .section-label::before {
+        content: "[";
+        color: var(--muted-foreground);
+    }
+    
+    .section-label::after {
+        content: "]";
+        color: var(--muted-foreground);
     }
 
     .text-balance {
@@ -231,12 +281,12 @@
     }
 }
 
-/* ─── Container ─── */
+/* --- Container --- */
 .container {
     @apply mx-auto px-6 max-w-6xl;
 }
 
-/* ─── Z-Index Scale ─── */
+/* --- Z-Index Scale --- */
 :root {
     --z-base: 0;
     --z-dropdown: 10;
@@ -248,7 +298,7 @@
     --z-tooltip: 70;
 }
 
-/* ─── Orbit Animation ─── */
+/* --- Orbit Animation --- */
 @keyframes orbit {
     from {
         transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg);
@@ -286,4 +336,88 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* --- Animated Mesh Gradient --- */
+@keyframes mesh-move {
+    0%,
+    100% {
+        background-position: 0% 0%, 100% 0%, 50% 100%, 0% 50%;
+    }
+    25% {
+        background-position: 20% 20%, 80% 30%, 60% 80%, 10% 60%;
+    }
+    50% {
+        background-position: 10% 40%, 90% 10%, 40% 90%, 30% 40%;
+    }
+    75% {
+        background-position: 30% 10%, 70% 40%, 50% 70%, 20% 30%;
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes aurora {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(10%, -10%) rotate(5deg);
+    }
+    66% {
+        transform: translate(-5%, 5%) rotate(-3deg);
+    }
+    100% {
+        transform: translate(5%, -5%) rotate(2deg);
+    }
+}
+
+@keyframes blob-morph {
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    50% {
+        border-radius: 50% 50% 40% 60% / 40% 50% 60% 50%;
+    }
+    75% {
+        border-radius: 40% 60% 50% 50% / 60% 40% 50% 60%;
+    }
+}
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+    transform-origin: left;
+    will-change: transform;
+}
+
+/* --- Grain Texture Overlay --- */
+.grain-overlay::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+}
+
+/* --- Perspective for 3D card effects --- */
+.perspective-1000 {
+    perspective: 1000px;
 }

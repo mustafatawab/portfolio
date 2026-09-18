@@ -1,6 +1,6 @@
 "use client"
-import React from "react"
-import { motion } from "framer-motion"
+import React, { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import {
     ArrowUpRight,
@@ -15,17 +15,18 @@ import {
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease },
     },
 }
 
 const stagger = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.06 } },
+    visible: { transition: { staggerChildren: 0.08 } },
 }
 
 const offerings = [
@@ -130,10 +131,87 @@ const offerings = [
     },
 ]
 
-export default function WhatIBuild() {
+function GridCard({
+    offering,
+}: {
+    offering: (typeof offerings)[number]
+}) {
     return (
-        <section id="what-i-build" className="py-24 md:py-32 bg-muted/40">
-            <div className="container">
+        <motion.div variants={fadeUp} className="h-full">
+            <div
+                className="relative bg-background p-6 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group"
+            >
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
+                <div className="w-10 h-10 rounded-none bg-primary/10 flex items-center justify-center text-primary mb-5 border border-primary/20">
+                    <offering.icon size={20} />
+                </div>
+
+                <h3 className="text-base font-semibold text-foreground">
+                    {offering.title}
+                </h3>
+
+                <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
+                    {offering.description}
+                </p>
+
+                <div className="border-t border-border/50 pt-4 mb-6">
+                    <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
+                        Common Applications
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                        {offering.useCases.map((uc) => (
+                            <span
+                                key={uc}
+                                className="inline-flex items-center px-2 py-0.5 border border-border/50 bg-muted/30 text-[11px] font-mono text-muted-foreground tracking-tight rounded-none"
+                            >
+                                {uc}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-auto space-y-1.5">
+                    {offering.links.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
+                        >
+                            {link.label}
+                            <ArrowUpRight
+                                size={11}
+                                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            />
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </motion.div>
+    )
+}
+
+export default function WhatIBuild() {
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    })
+
+    const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"])
+
+    return (
+        <section
+            ref={sectionRef}
+            id="what-i-build"
+            className="relative py-24 md:py-32 bg-muted/40 overflow-hidden"
+        >
+            {/* Parallax background shift */}
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-b from-background/50 to-muted/40 pointer-events-none"
+                style={{ y: bgY }}
+            />
+
+            <div className="container relative z-10">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -166,58 +244,10 @@ export default function WhatIBuild() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border mt-16 border border-border"
                 >
                     {offerings.map((offering) => (
-                        <motion.div
-                            key={offering.title}
-                            variants={fadeUp}
-                            className="card-hover p-6 flex flex-col"
-                        >
-                            <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-5">
-                                <offering.icon size={20} />
-                            </div>
-
-                            <h3 className="text-base font-semibold text-foreground">
-                                {offering.title}
-                            </h3>
-
-                            <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
-                                {offering.description}
-                            </p>
-
-                            <div className="border-t border-border pt-4 mb-6">
-                                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
-                                    Common Applications
-                                </p>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {offering.useCases.map((uc) => (
-                                        <span
-                                            key={uc}
-                                            className="inline-flex items-center px-2 py-0.5 rounded-md bg-foreground/[0.04] text-[11px] font-mono text-muted-foreground tracking-tight"
-                                        >
-                                            {uc}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="mt-auto space-y-1.5">
-                                {offering.links.map((link) => (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
-                                    >
-                                        {link.label}
-                                        <ArrowUpRight
-                                            size={11}
-                                            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                        />
-                                    </Link>
-                                ))}
-                            </div>
-                        </motion.div>
+                        <GridCard key={offering.title} offering={offering} />
                     ))}
                 </motion.div>
             </div>

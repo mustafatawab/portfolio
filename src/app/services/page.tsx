@@ -35,7 +35,7 @@ const ServicesPage = () => {
 
             <section className="pb-32">
                 <div className="container">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
                         {services.map((service, i) => (
                             <motion.div
                                 key={i}

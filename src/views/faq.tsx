@@ -6,11 +6,12 @@ import { ChevronDown } from "lucide-react"
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease },
     },
 }
 
@@ -82,7 +83,7 @@ export default function FAQ() {
                                     className="w-full text-left focus:outline-none group"
                                 >
                                     <div className="flex items-center justify-between gap-4 py-5">
-                                        <span className="text-sm sm:text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                                        <span className="text-sm sm:text-base font-medium text-foreground group-hover:text-primary transition-colors duration-200">
                                             {faq.q}
                                         </span>
                                         <ChevronDown

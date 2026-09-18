@@ -1,6 +1,7 @@
 "use client"
-import React from "react"
+import React, { useRef } from "react"
 import Link from "next/link"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Github, Linkedin, Mail } from "lucide-react"
 
 const socials = [
@@ -30,9 +31,22 @@ const footerLinks = [
 ]
 
 const Footer = () => {
+    const footerRef = useRef<HTMLElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: footerRef,
+        offset: ["start end", "end end"],
+    })
+
+    const textY = useTransform(scrollYProgress, [0, 1], ["20%", "0%"])
+    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1])
+    const textScale = useTransform(scrollYProgress, [0, 1], [0.95, 1])
+
     return (
-        <footer className="py-12 border-t border-border bg-background">
-            <div className="container ">
+        <footer
+            ref={footerRef}
+            className="py-12 border-t border-border bg-background"
+        >
+            <div className="container">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-1">
                         {socials.map((social) => (
@@ -68,19 +82,17 @@ const Footer = () => {
                     </nav>
                 </div>
 
-                <div
+                {/* Large parallax text reveal */}
+                <motion.div
+                    style={{
+                        y: textY,
+                        opacity: textOpacity,
+                        scale: textScale,
+                    }}
                     className="py-10 md:py-20 text-center text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-black/30 dark:text-white/20"
-                    // style={{
-                    //     backgroundImage:
-                    //         "linear-gradient(to right, #0d9488, #266210)",
-                    //     WebkitBackgroundClip: "text",
-                    //     backgroundClip: "text",
-                    //     WebkitTextFillColor: "transparent",
-                    //     color: "#0d9488",
-                    // }}
                 >
                     Mustafa Tawab
-                </div>
+                </motion.div>
 
                 <div className=" justify-between items-center flex-wrap hidden md:flex">
                     <p className="text-sm text-muted-foreground">

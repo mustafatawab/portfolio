@@ -1,6 +1,6 @@
 "use client"
-import React from "react"
-import { motion } from "framer-motion"
+import React, { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
 import { ChevronRight, ArrowUpRight } from "lucide-react"
@@ -44,12 +44,81 @@ const projects: Project[] = [
 ]
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
     },
+}
+
+function ProjectCard({
+    project,
+    index,
+}: {
+    project: Project
+    index: number
+}) {
+    const cardRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"],
+    })
+
+    const y = useTransform(scrollYProgress, [0, 1], [30, -30])
+    const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1])
+
+    return (
+        <motion.div
+            ref={cardRef}
+            key={project.title}
+            variants={fadeUp}
+            style={{ y }}
+        >
+            <Link
+                href={project.href}
+                className="glass-card block rounded-xl overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring/60 focus-visible:rounded-xl group"
+            >
+                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                    <motion.div style={{ scale: imageScale }} className="absolute inset-0">
+                        <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-700 ease-[var(--ease)] group-hover:scale-105"
+                        />
+                    </motion.div>
+                    {/* Overlay gradient on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+                <div className="p-5">
+                    <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                            {project.title}
+                        </h3>
+                        <ArrowUpRight
+                            size={14}
+                            className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
+                        />
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                        {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="inline-flex items-center px-2 py-0.5 rounded-md bg-foreground/[0.04] text-[11px] font-mono text-muted-foreground tracking-tight"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </Link>
+        </motion.div>
+    )
 }
 
 const ProjectsSection = () => {
@@ -101,45 +170,11 @@ const ProjectsSection = () => {
                     {/* Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {projects.map((project, i) => (
-                            <motion.div key={project.title} variants={fadeUp}>
-                                <Link
-                                    href={project.href}
-                                    className="card-hover block rounded-xl overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring/60 focus-visible:rounded-xl"
-                                >
-                                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease)] group-hover:scale-105"
-                                        />
-                                    </div>
-                                    <div className="p-5">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <h3 className="font-semibold text-foreground">
-                                                {project.title}
-                                            </h3>
-                                            <ArrowUpRight
-                                                size={14}
-                                                className="text-muted-foreground transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                            />
-                                        </div>
-                                        <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                                            {project.description}
-                                        </p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {project.tags.map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className="inline-flex items-center px-2 py-0.5 rounded-md bg-foreground/[0.04] text-[11px] font-mono text-muted-foreground tracking-tight"
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </Link>
-                            </motion.div>
+                            <ProjectCard
+                                key={project.title}
+                                project={project}
+                                index={i}
+                            />
                         ))}
                     </div>
 

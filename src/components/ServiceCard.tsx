@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+
 import {
     Bot,
     Rocket,
@@ -70,22 +70,22 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
     }
 
     return (
-        <motion.div whileHover={{ y: -4 }} className="h-full">
-            <Card className="card-hover h-full p-6">
-                <CardHeader className="p-0 mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-5 text-accent">
-                        {getIcon(icon)}
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                        {title}
-                    </h3>
-                    <p className="text-foreground/50 text-sm leading-relaxed mt-2">
-                        {content}
-                    </p>
-                </CardHeader>
+        <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="h-full">
+            <div className="relative bg-background p-8 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group">
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
+                
+                <div className="w-12 h-12 rounded-none bg-primary/10 flex items-center justify-center mb-6 text-primary border border-primary/20">
+                    {getIcon(icon)}
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                    {title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                    {content}
+                </p>
 
-                <CardContent className="p-0">
-                    <ul className="space-y-3">
+                <div className="mt-auto">
+                    <ul className="space-y-3 pt-6 border-t border-border/50">
                         {points &&
                             points.map((pt, i) => (
                                 <li
@@ -94,16 +94,16 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
                                 >
                                     <CheckCircle2
                                         size={14}
-                                        className="text-accent mt-0.5 shrink-0"
+                                        className="text-primary mt-0.5 shrink-0 opacity-70"
                                     />
-                                    <span className="text-sm text-foreground/60">
+                                    <span className="text-[13px] text-muted-foreground font-mono tracking-tight">
                                         {pt}
                                     </span>
                                 </li>
                             ))}
                     </ul>
-                </CardContent>
-            </Card>
+                </div>
+            </div>
         </motion.div>
     )
 }

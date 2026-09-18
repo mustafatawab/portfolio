@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
 import { ModeToggle } from "@/components/ModeToggle"
 
 type LinkType = {
@@ -39,6 +39,13 @@ const Navbar = () => {
     const pathname = usePathname()
     const mobileMenuRef = useRef<HTMLDivElement>(null)
     const menuButtonRef = useRef<HTMLButtonElement>(null)
+
+    const { scrollYProgress } = useScroll()
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001,
+    })
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -90,10 +97,16 @@ const Navbar = () => {
         <header
             className={`fixed top-0 left-0 right-0 z-[var(--z-sticky)] transition-all duration-[var(--duration-normal)] ease-[var(--ease)] ${
                 scrolled
-                    ? "py-3 bg-background/80 backdrop-blur-xl shadow-[var(--shadow-sm)]"
+                    ? "py-3 bg-background/70 backdrop-blur-xl shadow-[var(--shadow-sm)]"
                     : "py-5 bg-transparent"
             }`}
         >
+            {/* Scroll progress indicator */}
+            <motion.div
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary/80 to-primary origin-left"
+                style={{ scaleX }}
+            />
+
             <nav className="container flex items-center justify-between">
                 <Link href="/" className="relative group">
                     <span className="text-lg font-semibold tracking-tight text-foreground space-x-[2px]">
@@ -123,7 +136,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-3 pl-4 border-l border-border">
                         <ModeToggle />
                         <Link href="/#contact">
-                            <Button className="rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm h-9 px-4 shadow-[var(--shadow-xs)]">
+                            <Button className="rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm h-9 px-4 shadow-[var(--shadow-xs)] hover:shadow-[var(--glow-sm)] transition-shadow duration-300">
                                 Hire Me
                             </Button>
                         </Link>
@@ -148,9 +161,9 @@ const Navbar = () => {
                 {toggle && (
                     <motion.div
                         ref={mobileMenuRef}
-                        initial={{ opacity: 0, y: -8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
+                        initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
                         transition={{
                             duration: 0.25,
                             ease: [0.25, 0.1, 0.25, 1],
@@ -160,7 +173,7 @@ const Navbar = () => {
                         aria-modal="true"
                         aria-label="Navigation menu"
                     >
-                        <div className="bg-card border border-border rounded-xl shadow-[var(--shadow-lg)] p-5 flex flex-col gap-1">
+                        <div className="glass-card p-5 flex flex-col gap-1 shadow-[var(--shadow-xl)]">
                             {links.map((link, i) => (
                                 <motion.div
                                     key={link.label}
@@ -197,7 +210,7 @@ const Navbar = () => {
                                     href="/#contact"
                                     onClick={() => setToggle(false)}
                                 >
-                                    <Button className="w-full bg-primary text-primary-foreground rounded-lg text-sm shadow-[var(--shadow-xs)]">
+                                    <Button className="w-full bg-primary text-primary-foreground rounded-lg text-sm shadow-[var(--shadow-xs)] hover:shadow-[var(--glow-sm)] transition-shadow duration-300">
                                         Hire Me
                                     </Button>
                                 </Link>

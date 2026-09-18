@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Space_Grotesk, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/views/navbar"
 import Footer from "@/views/footer"
 import WhatsAppButton from "@/components/whatsAppButton"
 import { Toaster } from "react-hot-toast"
 
-const fontSans = Geist({
+const fontSans = Space_Grotesk({
     variable: "--font-geist-sans",
     subsets: ["latin"],
 })
@@ -97,7 +97,7 @@ export default function RootLayout({
             </head>
             <body
                 suppressHydrationWarning
-                className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden`}
+                className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden grain-overlay`}
             >
                 <ThemeProvider
                     attribute="class"

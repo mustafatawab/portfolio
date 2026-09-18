@@ -1,6 +1,6 @@
 "use client"
-import React from "react"
-import { motion } from "framer-motion"
+import React, { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import {
     ArrowUpRight,
@@ -20,11 +20,12 @@ import {
 const ease = [0.25, 0.1, 0.25, 1] as const
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease },
+        filter: "blur(0px)",
+        transition: { duration: 0.6, ease },
     },
 }
 
@@ -115,10 +116,31 @@ const models = [
 ]
 
 export default function EngagementModels() {
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    })
+
+    const blobX = useTransform(scrollYProgress, [0, 1], ["-10%", "15%"])
+    const blobY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"])
+
     return (
-        <section id="engagement" className="py-24 md:py-32 bg-background">
-            <div className="container">
-                {/* ── How We Work — Process Stepper ── */}
+        <section
+            ref={sectionRef}
+            id="engagement"
+            className="relative py-24 md:py-32 bg-background overflow-hidden"
+        >
+            {/* Animated gradient blob */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <motion.div
+                    className="absolute w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]"
+                    style={{ left: blobX, top: blobY }}
+                />
+            </div>
+
+            <div className="container relative z-10">
+                {/* --- How We Work - Process Stepper --- */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -149,12 +171,12 @@ export default function EngagementModels() {
                                     viewport={{ once: true }}
                                     transition={{
                                         duration: 0.4,
-                                        delay: i * 0.07,
+                                        delay: i * 0.08,
                                         ease,
                                     }}
                                     className="flex flex-col items-center text-center relative"
                                 >
-                                    <div className="relative z-10 w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-primary mb-2.5">
+                                    <div className="relative z-10 w-9 h-9 rounded-full bg-card border border-border flex items-center justify-center text-primary mb-2.5 shadow-[var(--shadow-sm)] hover:shadow-[var(--glow-sm)] transition-shadow duration-300">
                                         <step.icon size={15} />
                                     </div>
                                     <span className="text-[11px] md:text-xs font-mono tracking-wider text-muted-foreground leading-tight">
@@ -166,7 +188,7 @@ export default function EngagementModels() {
                     </motion.div>
                 </motion.div>
 
-                {/* ── Engagement Models ── */}
+                {/* --- Engagement Models --- */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -205,7 +227,7 @@ export default function EngagementModels() {
                         <motion.div
                             key={model.title}
                             variants={fadeUp}
-                            className="card-hover p-6 flex flex-col"
+                            className="glass-card p-6 flex flex-col hover:shadow-[var(--shadow-lg)] transition-shadow duration-300"
                         >
                             <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-5">
                                 <model.icon size={20} />
@@ -219,7 +241,7 @@ export default function EngagementModels() {
                                 {model.description}
                             </p>
 
-                            <div className="border-t border-border pt-4 mb-6">
+                            <div className="border-t border-border/50 pt-4 mb-6">
                                 <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
                                     What You Get
                                 </p>

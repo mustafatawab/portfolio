@@ -1,7 +1,7 @@
 "use client"
-import React from "react"
+import React, { useRef } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { CheckCircle, Code, Server, Database, Cloud, Cpu } from "lucide-react"
 import me from "@/assets/mustafa.png"
 
@@ -15,10 +15,11 @@ const orbitItems = [
 ]
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
         opacity: 1,
         y: 0,
+        filter: "blur(0px)",
         transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
     },
 }
@@ -31,24 +32,51 @@ const values = [
 ]
 
 const AboutSection = () => {
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    })
+
+    const blobX1 = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
+    const blobY1 = useTransform(scrollYProgress, [0, 1], ["-10%", "30%"])
+    const blobX2 = useTransform(scrollYProgress, [0, 1], ["20%", "-15%"])
+    const blobY2 = useTransform(scrollYProgress, [0, 1], ["15%", "-20%"])
+
     return (
-        <section id="about" className="py-24 md:py-32 bg-background">
-            <div className="container max-w-6xl">
+        <section
+            ref={sectionRef}
+            id="about"
+            className="relative py-24 md:py-32 bg-background overflow-hidden"
+        >
+            {/* Scroll-linked animated gradient blobs */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <motion.div
+                    className="absolute w-[500px] h-[500px] rounded-full bg-primary/6 blur-[100px]"
+                    style={{ left: blobX1, top: blobY1 }}
+                />
+                <motion.div
+                    className="absolute w-[400px] h-[400px] rounded-full bg-purple-500/5 blur-[80px]"
+                    style={{ right: blobX2, bottom: blobY2 }}
+                />
+            </div>
+
+            <div className="container max-w-6xl relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Photo */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+                        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-80px" }}
                         transition={{
-                            duration: 0.7,
+                            duration: 0.8,
                             ease: [0.25, 0.1, 0.25, 1],
                         }}
                         className="order-2 lg:order-1"
                     >
                         <div className="relative w-full aspect-[4/5] max-w-sm mx-auto">
                             {/* Outer glow ring */}
-                            <div className="absolute inset-[-20px] rounded-full bg-primary/[0.03] blur-xl" />
+                            <div className="absolute inset-[-20px] rounded-full bg-primary/[0.04] blur-xl" />
 
                             {/* Rotating dashed ring */}
                             <div
@@ -153,7 +181,7 @@ const AboutSection = () => {
                             ))}
 
                             {/* Main image */}
-                            <div className="absolute inset-0 rounded-2xl  translate-x-3 translate-y-3" />
+                            <div className="absolute inset-0 rounded-2xl translate-x-3 translate-y-3" />
                             <Image
                                 src={me}
                                 fill
@@ -213,9 +241,17 @@ const AboutSection = () => {
 
                         <motion.div variants={fadeUp} className="mt-8">
                             <div className="space-y-2.5">
-                                {values.map((v) => (
-                                    <div
+                                {values.map((v, i) => (
+                                    <motion.div
                                         key={v}
+                                        initial={{ opacity: 0, x: -12 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: 0.4 + i * 0.08,
+                                            ease: [0.25, 0.1, 0.25, 1],
+                                        }}
                                         className="flex items-start gap-2.5"
                                     >
                                         <CheckCircle
@@ -225,7 +261,7 @@ const AboutSection = () => {
                                         <span className="text-sm text-muted-foreground leading-relaxed">
                                             {v}
                                         </span>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </motion.div>
