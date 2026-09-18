@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent } from "framer-motion"
 import { ModeToggle } from "@/components/ModeToggle"
 
 type LinkType = {
@@ -40,11 +40,23 @@ const Navbar = () => {
     const mobileMenuRef = useRef<HTMLDivElement>(null)
     const menuButtonRef = useRef<HTMLButtonElement>(null)
 
-    const { scrollYProgress } = useScroll()
+    const { scrollY, scrollYProgress } = useScroll()
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001,
+    })
+
+    const [hidden, setHidden] = useState(false)
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious()
+        if (!previous) return
+        if (latest > 150 && latest > previous) {
+            setHidden(true)
+        } else {
+            setHidden(false)
+        }
     })
 
     useEffect(() => {
@@ -94,20 +106,16 @@ const Navbar = () => {
     }, [toggle])
 
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-[var(--z-sticky)] transition-all duration-[var(--duration-normal)] ease-[var(--ease)] ${
-                scrolled
-                    ? "py-3 bg-background/70 backdrop-blur-xl shadow-[var(--shadow-sm)]"
-                    : "py-5 bg-transparent"
-            }`}
+        <motion.header
+            variants={{
+                visible: { y: 0, x: "-50%" },
+                hidden: { y: "-150%", x: "-50%" }
+            }}
+            animate={hidden ? "hidden" : "visible"}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className={`fixed top-6 left-1/2 z-[var(--z-sticky)] w-max max-w-[95vw]`}
         >
-            {/* Scroll progress indicator */}
-            <motion.div
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary/80 to-primary origin-left"
-                style={{ scaleX }}
-            />
-
-            <nav className="container flex items-center justify-between">
+            <nav className={`flex items-center justify-between gap-6 md:gap-12 px-6 py-3 rounded-full border bg-background/80 backdrop-blur-xl shadow-[var(--shadow-md)] transition-colors duration-300 ${scrolled ? 'border-border' : 'border-transparent'}`}>
                 <Link href="/" className="relative group">
                     <span className="text-lg font-semibold tracking-tight text-foreground space-x-[2px]">
                         <span className="text-primary">{"{"}</span>
@@ -219,7 +227,7 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </motion.header>
     )
 }
 
