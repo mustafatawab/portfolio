@@ -65,8 +65,16 @@ const AboutSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Photo */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-                        whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                        initial={{
+                            opacity: 0,
+                            scale: 0.95,
+                            filter: "blur(8px)",
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            scale: 1,
+                            filter: "blur(0px)",
+                        }}
                         viewport={{ once: true, margin: "-80px" }}
                         transition={{
                             duration: 0.8,

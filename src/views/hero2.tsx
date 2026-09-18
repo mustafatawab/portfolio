@@ -38,7 +38,13 @@ const codeLines = [
     { indent: 0, text: "engineer.ship();" },
 ]
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function AnimatedCounter({
+    target,
+    suffix = "",
+}: {
+    target: number
+    suffix?: string
+}) {
     const ref = useRef<HTMLSpanElement>(null)
     const isInView = useInView(ref, { once: true, margin: "-50px" })
     const [count, setCount] = useState(0)
