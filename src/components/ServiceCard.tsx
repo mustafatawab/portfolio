@@ -70,10 +70,13 @@ const ServiceCard = ({ icon, title, content, points }: ServiceCardProps) => {
     }
 
     return (
-        <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="h-full">
+        <motion.div
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="h-full"
+        >
             <div className="relative bg-background p-8 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group">
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
-                
+
                 <div className="w-12 h-12 rounded-none bg-primary/10 flex items-center justify-center mb-6 text-primary border border-primary/20">
                     {getIcon(icon)}
                 </div>
