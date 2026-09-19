@@ -365,11 +365,11 @@ Production bindings should never expose ports to `0.0.0.0`:
 ```yaml
 # ❌ Bad — accessible from any network interface
 ports:
-  - "5432:5432"
+    - "5432:5432"
 
 # ✅ Good — only accessible from the host machine
 ports:
-  - "127.0.0.1:5432:5432"
+    - "127.0.0.1:5432:5432"
 ```
 
 If your database is on the same machine as your API, the API can reach it through the Docker network (via the service name `postgres:5432`). The host binding is only for admin access, backups, and debugging tools. Binding to `127.0.0.1` prevents external access.

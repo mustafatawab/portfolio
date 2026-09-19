@@ -277,19 +277,19 @@ if: github.event_name == 'pull_request'
 
 # Run only on specific file changes
 on:
-  push:
-    paths:
-      - "api/**"
-      - "compose.yaml"
-      - "Dockerfile"
+    push:
+        paths:
+            - "api/**"
+            - "compose.yaml"
+            - "Dockerfile"
 
 # Skip if PR is a draft
 if: github.event.pull_request.draft == false
 
 # Run only for specific event types
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+    pull_request:
+        types: [opened, synchronize, reopened]
 ```
 
 ---
