@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform, useInView, animate } from "framer-moti
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
-
 const codeLines = [
     { indent: 0, text: "const engineer = {" },
     { indent: 1, text: 'name: "Mustafa Tawab",' },

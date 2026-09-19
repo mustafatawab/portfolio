@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { CheckCircle } from "lucide-react"
 import me from "@/assets/mustafa.png"
 
-
 const fadeUp = {
     hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
     visible: {
@@ -94,8 +93,6 @@ const AboutSection = () => {
                                         "pulse-ring 40s linear infinite reverse",
                                 }}
                             />
-
-
 
                             {/* Accent dots */}
                             {[
