@@ -17,7 +17,7 @@ const socials = [
     },
     {
         label: "Email",
-        href: "mailto:waseemmustafatawab239@gmail.com",
+        href: "mailto:mustafa.tawab.dev@gmail.com",
         icon: Mail,
     },
 ]
@@ -89,7 +89,7 @@ const Footer = () => {
                         opacity: textOpacity,
                         scale: textScale,
                     }}
-                    className="py-10 md:py-20 text-center text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-foreground/10 to-transparent select-none pointer-events-none"
+                    className="py-10 md:py-20 text-center text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-primary/20 to-transparent select-none pointer-events-none"
                 >
                     Mustafa Tawab
                 </motion.div>

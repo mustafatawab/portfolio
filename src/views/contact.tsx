@@ -35,8 +35,8 @@ const socials = [
         icon: Linkedin,
     },
     {
-        label: "waseemmustafatawab239@gmail.com",
-        href: "mailto:waseemmustafatawab239@gmail.com",
+        label: "mustafa.tawab.dev@gmail.com",
+        href: "mailto:mustafa.tawab.dev@gmail.com",
         icon: Mail,
     },
 ]
