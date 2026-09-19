@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-
 const codeLines = [
     { indent: 0, text: "const engineer = {" },
     { indent: 1, text: 'name: "Mustafa Tawab",' },
