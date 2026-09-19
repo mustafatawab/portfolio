@@ -30,7 +30,6 @@ const ProjectsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="section-label text-center">Work</span>
                         <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
                             Project Archive
                         </h1>

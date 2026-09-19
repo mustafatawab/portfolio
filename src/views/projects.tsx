@@ -134,12 +134,6 @@ const ProjectsSection = () => {
                     {/* Header */}
                     <div className="flex items-end justify-between mb-12">
                         <div>
-                            <motion.span
-                                variants={fadeUp}
-                                className="section-label"
-                            >
-                                Projects
-                            </motion.span>
                             <motion.h2
                                 variants={fadeUp}
                                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"

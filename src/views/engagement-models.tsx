@@ -148,10 +148,6 @@ export default function EngagementModels() {
                     variants={stagger}
                     className="mb-20"
                 >
-                    <motion.span variants={fadeUp} className="section-label">
-                        How I Work
-                    </motion.span>
-
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mt-2"
@@ -195,10 +191,6 @@ export default function EngagementModels() {
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
                 >
-                    <motion.span variants={fadeUp} className="section-label">
-                        Engagement Models
-                    </motion.span>
-
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance"

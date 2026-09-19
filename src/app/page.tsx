@@ -24,7 +24,7 @@ export default function Home() {
             <Experience />
             <Projects />
             <EngagementModels />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <FAQ />
             <Contact />
         </>
