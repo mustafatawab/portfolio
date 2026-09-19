@@ -34,7 +34,7 @@ const offerings = [
         icon: LayoutDashboard,
         title: "Custom Software Development",
         description:
-            "Tailored software solutions designed around unique business workflows — from internal platforms to full operational systems that scale with your growth.",
+            "Tailored software solutions designed around unique business workflows - from internal platforms to full operational systems that scale with your growth.",
         useCases: [
             "Internal Platforms",
             "CRM & ERP",
@@ -50,7 +50,7 @@ const offerings = [
         icon: Globe,
         title: "Web Application Development",
         description:
-            "Modern, secure, and scalable web applications built with clean architecture — dashboards, customer portals, booking platforms, and business systems.",
+            "Modern, secure, and scalable web applications built with clean architecture - dashboards, customer portals, booking platforms, and business systems.",
         useCases: [
             "Dashboards",
             "Customer Portals",
@@ -82,7 +82,7 @@ const offerings = [
         icon: Monitor,
         title: "Desktop Application Development",
         description:
-            "Offline-first desktop applications using Electron — ideal for environments where connectivity is unreliable and performance on local hardware matters.",
+            "Offline-first desktop applications using Electron - ideal for environments where connectivity is unreliable and performance on local hardware matters.",
         useCases: [
             "Pharmacy Systems",
             "Inventory Management",
@@ -101,7 +101,7 @@ const offerings = [
         icon: Server,
         title: "Backend & API Engineering",
         description:
-            "Robust backend systems and APIs that power your applications — designed for reliability, security, and performance under real-world traffic.",
+            "Robust backend systems and APIs that power your applications - designed for reliability, security, and performance under real-world traffic.",
         useCases: [
             "REST & GraphQL APIs",
             "Authentication & Authorization",
@@ -117,7 +117,7 @@ const offerings = [
         icon: RefreshCw,
         title: "Software Modernization",
         description:
-            "Upgrade legacy systems into modern, maintainable applications — reduce tech debt, improve security, and unlock new capabilities without rebuilding from scratch.",
+            "Upgrade legacy systems into modern, maintainable applications - reduce tech debt, improve security, and unlock new capabilities without rebuilding from scratch.",
         useCases: [
             "Legacy Migration",
             "Tech Debt Reduction",

@@ -70,7 +70,7 @@ export function websiteSchema() {
         "@context": "https://schema.org",
         "@type": "WebSite",
         url: SITE_URL,
-        name: "Mustafa Tawab — Software Engineer",
+        name: "Mustafa Tawab - Software Engineer",
         description:
             "Building modern custom software and web applications that solve real business problems. Specializing in full-stack development, system design, and SaaS architecture.",
         potentialAction: {

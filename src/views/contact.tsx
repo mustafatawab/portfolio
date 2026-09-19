@@ -35,8 +35,8 @@ const socials = [
         icon: Linkedin,
     },
     {
-        label: "waseemmustafatawab239@gmail.com",
-        href: "mailto:waseemmustafatawab239@gmail.com",
+        label: "mustafa.tawab.dev@gmail.com",
+        href: "mailto:mustafa.tawab.dev@gmail.com",
         icon: Mail,
     },
 ]
@@ -257,7 +257,7 @@ const ContactSection = () => {
                         className="mt-8 flex items-center gap-2 flex-wrap"
                     >
                         <span className="text-sm text-muted-foreground mr-2">
-                            Or reach me directly —
+                            Or reach me directly:
                         </span>
                         {socials.map((s) => (
                             <Link

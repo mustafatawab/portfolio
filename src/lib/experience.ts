@@ -25,7 +25,7 @@ export const experiences: ExperieceType[] = [
         location: "Gulberg Green, Islamabad, Pakistan",
         period: "March 2026 - July 2026",
         description:
-            "Led end-to-end development of maktabOne, a School Fee Management ERP — from requirements and UI design through production deployment on a Hostinger VPS with Nginx reverse proxy, SSL, and Docker. Also built 3 client websites including the company's own.",
+            "Led end-to-end development of maktabOne, a School Fee Management ERP - from requirements and UI design through production deployment on a Hostinger VPS with Nginx reverse proxy, SSL, and Docker. Also built 3 client websites including the company's own.",
         tags: ["MongoDB", "Express.js", "React", "Node.js", "Docker", "Nginx"],
         dotColor: "bg-purple-600",
     },

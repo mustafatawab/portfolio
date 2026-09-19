@@ -73,17 +73,17 @@ export default function Experience() {
                             variants={fadeUp}
                             className="relative pb-12 last:pb-0"
                         >
-                            {/* Period — absolutely positioned left of the line */}
+                            {/* Period - absolutely positioned left of the line */}
                             <div className="hidden sm:block absolute left-0 top-1.5 w-[88px] text-right">
                                 <span className="text-xs font-mono text-muted-foreground/60 tracking-tight">
                                     {exp.period}
                                 </span>
                             </div>
 
-                            {/* Timeline dot — centered on the line */}
+                            {/* Timeline dot - centered on the line */}
                             <div className="hidden sm:block absolute left-[100px] top-1.5 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background -translate-x-1/2 z-10 transition-colors duration-300 shadow-[var(--glow-sm)]" />
 
-                            {/* Card — offset from the line */}
+                            {/* Card - offset from the line */}
                             <div className="sm:pl-[124px]">
                                 <div className="glass-card p-5 sm:p-6 hover:shadow-[var(--shadow-lg)] transition-shadow duration-300">
                                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 mb-3">

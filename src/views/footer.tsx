@@ -17,7 +17,7 @@ const socials = [
     },
     {
         label: "Email",
-        href: "mailto:waseemmustafatawab239@gmail.com",
+        href: "mailto:mustafa.tawab.dev@gmail.com",
         icon: Mail,
     },
 ]
@@ -44,7 +44,7 @@ const Footer = () => {
     return (
         <footer
             ref={footerRef}
-            className="py-12 border-t border-border bg-background"
+            className="pt-12 pb-24 md:pb-32 border-t border-border bg-background"
         >
             <div className="container">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -89,18 +89,18 @@ const Footer = () => {
                         opacity: textOpacity,
                         scale: textScale,
                     }}
-                    className="py-10 md:py-20 text-center text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-black/30 dark:text-white/20"
+                    className="py-10 md:py-20 text-center text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-primary/20 to-transparent select-none pointer-events-none"
                 >
                     Mustafa Tawab
                 </motion.div>
 
-                <div className=" justify-between items-center flex-wrap hidden md:flex">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                     <p className="text-sm text-muted-foreground">
                         &copy; {new Date().getFullYear()} Mustafa Tawab. All
                         rights reserved.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 items-center ">
+                    <div className="flex flex-wrap gap-4 items-center justify-center">
                         <p className="text-sm text-muted-foreground cursor-pointer">
                             Terms & Conditions
                         </p>
