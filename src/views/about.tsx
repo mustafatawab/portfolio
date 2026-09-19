@@ -2,17 +2,9 @@
 import React, { useRef } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { CheckCircle, Code, Server, Database, Cloud, Cpu } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 import me from "@/assets/mustafa.png"
 
-const orbitItems = [
-    { icon: Code, angle: 0, radius: 140, speed: 12, size: 40, delay: 0 },
-    { icon: Server, angle: 60, radius: 150, speed: 16, size: 36, delay: 0.5 },
-    { icon: Database, angle: 120, radius: 135, speed: 20, size: 38, delay: 1 },
-    { icon: Cloud, angle: 180, radius: 145, speed: 14, size: 34, delay: 1.5 },
-    { icon: Cpu, angle: 240, radius: 155, speed: 18, size: 36, delay: 2 },
-    { icon: Code, angle: 300, radius: 140, speed: 22, size: 32, delay: 2.5 },
-]
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
@@ -103,32 +95,7 @@ const AboutSection = () => {
                                 }}
                             />
 
-                            {/* Orbiting tech icons */}
-                            {orbitItems.map((item, i) => (
-                                <div
-                                    key={i}
-                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                                    style={{
-                                        width: 0,
-                                        height: 0,
-                                    }}
-                                >
-                                    <div
-                                        className="flex items-center justify-center rounded-xl bg-card border border-primary/20 shadow-[var(--shadow-md)]"
-                                        style={{
-                                            width: item.size,
-                                            height: item.size,
-                                            animation: `orbit ${item.speed}s linear ${item.delay}s infinite`,
-                                            ["--orbit-radius" as string]: `${item.radius}px`,
-                                        }}
-                                    >
-                                        <item.icon
-                                            size={item.size * 0.5}
-                                            className="text-primary"
-                                        />
-                                    </div>
-                                </div>
-                            ))}
+
 
                             {/* Accent dots */}
                             {[
@@ -211,13 +178,6 @@ const AboutSection = () => {
                         }}
                         className="order-1 lg:order-2"
                     >
-                        <motion.span
-                            variants={fadeUp}
-                            className="section-label"
-                        >
-                            About
-                        </motion.span>
-
                         <motion.h2
                             variants={fadeUp}
                             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance"

@@ -10,13 +10,13 @@ interface ExperieceType {
 
 export const experiences: ExperieceType[] = [
     {
-        title: "Full Stack Developer",
+        title: "Software Engineer",
         company: "Webtronix",
-        location: "Luxus Mall , Gulberg Green, Islamabad, Pakistan",
+        location: "Luxus Mall, Gulberg Green, Islamabad, Pakistan",
         period: "July 2026 - Present",
         description:
-            "Building scalable digital platforms and custom software solutions for startups and enterprises. Focusing on full-stack development with Next.js and FastAPI, integrating AI-driven workflows to automate business processes.",
-        tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "TanStack"],
+            "Building AI-driven products and internal tools using Next.js and the MERN stack. Current work includes a School ERP system and an AI Interview Application, with a focus on AI integration and production-grade architecture.",
+        tags: ["Next.js", "Node.js", "AI Integration", "MongoDB", "TanStack"],
         dotColor: "bg-purple-600",
     },
     {
@@ -25,8 +25,8 @@ export const experiences: ExperieceType[] = [
         location: "Gulberg Green, Islamabad, Pakistan",
         period: "March 2026 - July 2026",
         description:
-            "Building scalable digital platforms and custom software solutions for startups and enterprises. Focusing on full-stack development with Next.js and FastAPI, integrating AI-driven workflows to automate business processes.",
-        tags: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "TanStack"],
+            "Led end-to-end development of maktabOne, a School Fee Management ERP — from requirements and UI design through production deployment on a Hostinger VPS with Nginx reverse proxy, SSL, and Docker. Also built 3 client websites including the company's own.",
+        tags: ["MongoDB", "Express.js", "React", "Node.js", "Docker", "Nginx"],
         dotColor: "bg-purple-600",
     },
     {

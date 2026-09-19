@@ -67,10 +67,6 @@ export default function Experience() {
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
                 >
-                    <motion.span variants={fadeUp} className="section-label">
-                        Experience
-                    </motion.span>
-
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mt-2 mb-14"

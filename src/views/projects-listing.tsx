@@ -139,7 +139,6 @@ export function ProjectsListing() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, ease }}
                     >
-                        <span className="section-label">Projects</span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
                             Building modern software for real businesses.
                         </h1>

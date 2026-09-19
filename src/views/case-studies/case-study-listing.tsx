@@ -231,7 +231,6 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
                         transition={{ duration: 0.5, ease }}
                         className="max-w-3xl"
                     >
-                        <span className="section-label">Case Studies</span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
                             Engineering deep dives
                         </h1>

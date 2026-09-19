@@ -174,7 +174,7 @@ export default function BlogArticle({ post }: { post: Post }) {
                                 className="card p-6 md:p-10 lg:p-12"
                             >
                                 <div
-                                    className="prose prose-invert max-w-none text-foreground/80 leading-relaxed text-base
+                                    className="prose dark:prose-invert max-w-none text-foreground/80 leading-relaxed text-base
                     prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
                     prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
                     prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-3

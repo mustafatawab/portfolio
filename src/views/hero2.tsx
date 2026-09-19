@@ -3,22 +3,11 @@ import React, { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { TypeAnimation } from "react-type-animation"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const roles = [
-    "Full Stack Developer",
-    "Software Engineer",
-    "Systems Architect",
-    "Problem Solver",
-    "AI Integration Specialist",
-    "DevOps Engineer",
-]
-
-const typeAnimationSequence = roles.flatMap((role) => [role, 2000])
 
 const codeLines = [
     { indent: 0, text: "const engineer = {" },
@@ -144,21 +133,15 @@ const HeroSection = () => {
                             Available to Work
                         </motion.span>
 
-                        <motion.h1 className="gsap-reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground text-balance">
-                            Hi, I am
-                            <div>
-                                <TypeAnimation
-                                    sequence={typeAnimationSequence}
-                                    wrapper="span"
-                                    speed={50}
-                                    repeat={Infinity}
-                                />
-                            </div>
+                        <motion.h1 className="gsap-reveal-text text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground">
+                            <span className="block">Full-stack engineer.</span>
+                            <span className="block">Built for production.</span>
                         </motion.h1>
 
                         <motion.p className="gsap-reveal-text mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
-                            Building modern software that solves real business
-                            problems.
+                            Fintech platforms, enterprise SaaS, and
+                            AI-integrated software — from architecture to
+                            deployment.
                         </motion.p>
 
                         <motion.div className="gsap-reveal-text flex flex-wrap gap-3 mt-8">
@@ -289,12 +272,11 @@ const HeroSection = () => {
                 </div>
 
                 {/* Trust Bar with Counter Animations */}
-                <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-border">
+                <motion.div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-border">
                     {[
                         { value: 3, suffix: "+", label: "Years of Experience" },
                         { value: 20, suffix: "+", label: "Projects Delivered" },
                         { value: 25, suffix: "+", label: "Happy Clients" },
-                        { value: 3, suffix: "", label: "Industries Served" },
                     ].map((stat) => (
                         <div key={stat.label} className="gsap-reveal-stats">
                             <div className="text-2xl font-bold text-foreground tracking-tight">

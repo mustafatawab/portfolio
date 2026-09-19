@@ -2,7 +2,8 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import toast from "react-hot-toast"
-import { Loader2 } from "lucide-react"
+import { Loader2, Github, Linkedin, Mail } from "lucide-react"
+import Link from "next/link"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
@@ -20,6 +21,24 @@ const budgetOptions = [
     "$5,000–$10,000",
     "$10,000+",
     "Not sure yet",
+]
+
+const socials = [
+    {
+        label: "GitHub",
+        href: "https://github.com/waseem-mustafa-tawab",
+        icon: Github,
+    },
+    {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/mustafa-tawab-330278293/",
+        icon: Linkedin,
+    },
+    {
+        label: "waseemmustafatawab239@gmail.com",
+        href: "mailto:waseemmustafatawab239@gmail.com",
+        icon: Mail,
+    },
 ]
 
 const ContactSection = () => {
@@ -72,8 +91,17 @@ const ContactSection = () => {
     }
 
     return (
-        <section id="contact" className="py-24 md:py-32 bg-background">
-            <div className="container max-w-3xl">
+        <section
+            id="contact"
+            className="relative py-24 md:py-32 bg-background overflow-hidden"
+        >
+            {/* Ambient background blobs */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute -top-20 -right-32 w-[520px] h-[520px] rounded-full bg-primary/8 blur-[120px]" />
+                <div className="absolute -bottom-16 -left-24 w-[380px] h-[380px] rounded-full bg-purple-500/6 blur-[100px]" />
+            </div>
+
+            <div className="container max-w-3xl relative z-10">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -83,9 +111,12 @@ const ContactSection = () => {
                         visible: { transition: { staggerChildren: 0.08 } },
                     }}
                 >
-                    <motion.span variants={fadeUp} className="section-label">
-                        Contact
-                    </motion.span>
+                    {/* Teal accent line */}
+                    <motion.div
+                        variants={fadeUp}
+                        className="w-12 h-0.5 bg-gradient-to-r from-primary to-primary/30 rounded-full mb-6"
+                    />
+
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4"
@@ -219,6 +250,28 @@ const ContactSection = () => {
                             )}
                         </button>
                     </motion.form>
+
+                    {/* Social quick-links */}
+                    <motion.div
+                        variants={fadeUp}
+                        className="mt-8 flex items-center gap-2 flex-wrap"
+                    >
+                        <span className="text-sm text-muted-foreground mr-2">
+                            Or reach me directly —
+                        </span>
+                        {socials.map((s) => (
+                            <Link
+                                key={s.label}
+                                href={s.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+                            >
+                                <s.icon size={13} />
+                                <span>{s.label}</span>
+                            </Link>
+                        ))}
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
