@@ -129,7 +129,7 @@ const HeroSection = () => {
                             className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
                         >
                             Fintech platforms, enterprise SaaS, and
-                            AI-integrated software — from architecture to
+                            AI-integrated software - from architecture to
                             deployment.
                         </motion.p>
 

@@ -49,7 +49,7 @@ const models = [
         icon: Lightbulb,
         title: "Discovery & Consultation",
         description:
-            "A clear roadmap before any commitment — we start by understanding your business goals and technical constraints.",
+            "A clear roadmap before any commitment - we start by understanding your business goals and technical constraints.",
         deliverables: [
             "Requirement Gathering",
             "Technical Recommendations",
@@ -62,7 +62,7 @@ const models = [
         icon: Rocket,
         title: "MVP Development",
         description:
-            "A production-ready minimum viable product shipped fast — validated with real users before investing in full-scale development.",
+            "A production-ready minimum viable product shipped fast - validated with real users before investing in full-scale development.",
         deliverables: [
             "Core Feature Set",
             "Working Prototype",
@@ -75,7 +75,7 @@ const models = [
         icon: Briefcase,
         title: "Full Product Development",
         description:
-            "End-to-end engineering from architecture and design through deployment — a complete product built for production.",
+            "End-to-end engineering from architecture and design through deployment - a complete product built for production.",
         deliverables: [
             "System Architecture",
             "Full Implementation",
@@ -88,7 +88,7 @@ const models = [
         icon: Hammer,
         title: "System Modernization",
         description:
-            "Refactor or rebuild existing systems with modern technologies — reduce tech debt, improve performance, and strengthen security.",
+            "Refactor or rebuild existing systems with modern technologies - reduce tech debt, improve performance, and strengthen security.",
         deliverables: [
             "Codebase Assessment",
             "Migration Plan",
@@ -104,7 +104,7 @@ const models = [
         icon: Handshake,
         title: "Long-Term Engineering Partnership",
         description:
-            "Ongoing development, feature enhancements, and scaling support — I become an extension of your team without the overhead.",
+            "Ongoing development, feature enhancements, and scaling support - I become an extension of your team without the overhead.",
         deliverables: [
             "Sprint-Based Delivery",
             "Feature Development",

@@ -22,10 +22,10 @@ export async function generateMetadata({
     if (!project) return { title: "Project Not Found" }
 
     return {
-        title: `${project.title} — Project`,
+        title: `${project.title} - Project`,
         description: project.summary,
         openGraph: {
-            title: `${project.title} — Project Showcase | Mustafa Tawab`,
+            title: `${project.title} - Project Showcase | Mustafa Tawab`,
             description: project.summary,
         },
     }
