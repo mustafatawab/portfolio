@@ -1,6 +1,12 @@
 "use client"
 import React, { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, animate } from "framer-motion"
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useInView,
+    animate,
+} from "framer-motion"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
@@ -36,7 +42,7 @@ function AnimatedCounter({
         const controls = animate(0, target, {
             duration: 1.5,
             ease: "easeOut",
-            onUpdate: (value) => setCount(Math.round(value))
+            onUpdate: (value) => setCount(Math.round(value)),
         })
         return controls.stop
     }, [isInView, target])
@@ -59,8 +65,6 @@ const HeroSection = () => {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
-
-
 
     return (
         <section
@@ -86,30 +90,42 @@ const HeroSection = () => {
                         }}
                         className="order-2 lg:order-1"
                     >
-                        <motion.span 
+                        <motion.span
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.2,
+                                ease: [0.25, 0.1, 0.25, 1],
+                            }}
                             className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
                         >
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
                             Available to Work
                         </motion.span>
 
-                        <motion.h1 
+                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.3,
+                                ease: [0.25, 0.1, 0.25, 1],
+                            }}
                             className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground"
                         >
                             <span className="block">Full-stack engineer.</span>
                             <span className="block">Built for production.</span>
                         </motion.h1>
 
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.4,
+                                ease: [0.25, 0.1, 0.25, 1],
+                            }}
                             className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
                         >
                             Fintech platforms, enterprise SaaS, and
@@ -117,10 +133,14 @@ const HeroSection = () => {
                             deployment.
                         </motion.p>
 
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.5,
+                                ease: [0.25, 0.1, 0.25, 1],
+                            }}
                             className="flex flex-wrap gap-3 mt-8"
                         >
                             <Link
@@ -156,9 +176,17 @@ const HeroSection = () => {
                             ),
                         }}
                         className="order-1 lg:order-2"
-                        initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                        initial={{
+                            opacity: 0,
+                            scale: 0.95,
+                            filter: "blur(10px)",
+                        }}
                         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                        transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 0.5,
+                            ease: [0.25, 0.1, 0.25, 1],
+                        }}
                     >
                         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
                             <div className="absolute inset-0 border border-primary/20 bg-primary/[0.02] translate-x-3 translate-y-3" />
@@ -259,11 +287,15 @@ const HeroSection = () => {
                         { value: 20, suffix: "+", label: "Projects Delivered" },
                         { value: 25, suffix: "+", label: "Happy Clients" },
                     ].map((stat, i) => (
-                        <motion.div 
+                        <motion.div
                             key={stat.label}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.9 + (i * 0.1), ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.9 + i * 0.1,
+                                ease: [0.25, 0.1, 0.25, 1],
+                            }}
                         >
                             <div className="text-2xl font-bold text-foreground tracking-tight">
                                 <AnimatedCounter
