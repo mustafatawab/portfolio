@@ -1,11 +1,7 @@
 "use client"
-import React, { useRef, useEffect } from "react"
-import { motion } from "framer-motion"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import React, { useRef } from "react"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { experiences } from "@/lib/experience"
-
-gsap.registerPlugin(ScrollTrigger)
 
 const ease = [0.25, 0.1, 0.25, 1] as const
 
@@ -26,37 +22,17 @@ const stagger = {
 
 export default function Experience() {
     const timelineRef = useRef<HTMLDivElement>(null)
-    const progressRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const progress = progressRef.current
-        const timeline = timelineRef.current
-        if (!progress || !timeline) return
+    const { scrollYProgress } = useScroll({
+        target: timelineRef,
+        offset: ["start 80%", "end 60%"],
+    })
 
-        const prefersReducedMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-        if (prefersReducedMotion) return
-
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                progress,
-                { scaleY: 0 },
-                {
-                    scaleY: 1,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: timeline,
-                        start: "top 80%",
-                        end: "bottom 60%",
-                        scrub: 1,
-                    },
-                }
-            )
-        })
-
-        return () => ctx.revert()
-    }, [])
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    })
 
     return (
         <section id="experience" className="py-24 md:py-32 bg-muted/40">
@@ -85,8 +61,8 @@ export default function Experience() {
                 >
                     {/* Vertical animated progress line */}
                     <div className="absolute left-[100px] top-0 bottom-0 w-px bg-border hidden sm:block">
-                        <div
-                            ref={progressRef}
+                        <motion.div
+                            style={{ scaleY }}
                             className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary to-primary/60 origin-top"
                         />
                     </div>

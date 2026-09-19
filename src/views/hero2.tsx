@@ -1,12 +1,8 @@
 "use client"
 import React, { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { motion, useScroll, useTransform, useInView, animate } from "framer-motion"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
 
 
 const codeLines = [
@@ -38,15 +34,12 @@ function AnimatedCounter({
 
     useEffect(() => {
         if (!isInView) return
-        const obj = { value: 0 }
-        gsap.to(obj, {
-            value: target,
+        const controls = animate(0, target, {
             duration: 1.5,
-            ease: "power2.out",
-            onUpdate: () => {
-                setCount(Math.round(obj.value))
-            },
+            ease: "easeOut",
+            onUpdate: (value) => setCount(Math.round(value))
         })
+        return controls.stop
     }, [isInView, target])
 
     return (
@@ -68,41 +61,7 @@ const HeroSection = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
 
-    useEffect(() => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
 
-        tl.from(".gsap-reveal-text", {
-            opacity: 0,
-            y: 20,
-            duration: 0.8,
-            stagger: 0.1,
-            delay: 0.2,
-        })
-            .from(
-                ".gsap-reveal-terminal",
-                {
-                    opacity: 0,
-                    scale: 0.95,
-                    filter: "blur(10px)",
-                    duration: 0.8,
-                },
-                "-=0.6"
-            )
-            .from(
-                ".gsap-reveal-stats",
-                {
-                    opacity: 0,
-                    y: 10,
-                    duration: 0.6,
-                    stagger: 0.1,
-                },
-                "-=0.4"
-            )
-
-        return () => {
-            tl.kill()
-        }
-    }, [])
 
     return (
         <section
@@ -128,23 +87,43 @@ const HeroSection = () => {
                         }}
                         className="order-2 lg:order-1"
                     >
-                        <motion.span className="gsap-reveal-text inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6">
+                        <motion.span 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary tracking-wider mb-6"
+                        >
                             <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
                             Available to Work
                         </motion.span>
 
-                        <motion.h1 className="gsap-reveal-text text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground">
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground"
+                        >
                             <span className="block">Full-stack engineer.</span>
                             <span className="block">Built for production.</span>
                         </motion.h1>
 
-                        <motion.p className="gsap-reveal-text mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
+                        >
                             Fintech platforms, enterprise SaaS, and
                             AI-integrated software — from architecture to
                             deployment.
                         </motion.p>
 
-                        <motion.div className="gsap-reveal-text flex flex-wrap gap-3 mt-8">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="flex flex-wrap gap-3 mt-8"
+                        >
                             <Link
                                 href="/projects"
                                 className="group inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:bg-primary/90 hover:shadow-[var(--glow-md)] active:scale-[0.97]"
@@ -177,7 +156,10 @@ const HeroSection = () => {
                                 ["0%", "25%"]
                             ),
                         }}
-                        className="gsap-reveal-terminal order-1 lg:order-2"
+                        className="order-1 lg:order-2"
+                        initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                        transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                     >
                         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
                             <div className="absolute inset-0 border border-primary/20 bg-primary/[0.02] translate-x-3 translate-y-3" />
@@ -277,8 +259,13 @@ const HeroSection = () => {
                         { value: 3, suffix: "+", label: "Years of Experience" },
                         { value: 20, suffix: "+", label: "Projects Delivered" },
                         { value: 25, suffix: "+", label: "Happy Clients" },
-                    ].map((stat) => (
-                        <div key={stat.label} className="gsap-reveal-stats">
+                    ].map((stat, i) => (
+                        <motion.div 
+                            key={stat.label}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.9 + (i * 0.1), ease: [0.25, 0.1, 0.25, 1] }}
+                        >
                             <div className="text-2xl font-bold text-foreground tracking-tight">
                                 <AnimatedCounter
                                     target={stat.value}
@@ -288,7 +275,7 @@ const HeroSection = () => {
                             <div className="text-sm text-muted-foreground mt-1.5 leading-snug">
                                 {stat.label}
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </motion.div>
             </div>
