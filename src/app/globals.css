@@ -4,29 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --radius: 0.15rem;
+    --radius: 0.5rem;
 
-    /* Backgrounds & Text */
-    --background: #fafafa;
-    --foreground: #0a0a0a;
-    --card: #ffffff;
-    --card-foreground: #0a0a0a;
-    --muted: #f5f5f5;
-    --muted-foreground: #737373;
+    /* Light Theme (Emerald & Bone) */
+    --background: #F7F6F2;
+    --foreground: #14201B;
+    --card: #FFFFFF;
+    --card-foreground: #14201B;
+    --card-elevated: #FFFFFF;
+    --secondary-surface: #EFECE6;
+    --muted: #EFECE6;
+    --muted-foreground: #66736C;
+    --secondary-text: #3F4D46;
 
-    /* Primary (Teal) */
-    --primary: #0d9488;
-    --primary-foreground: #ffffff;
-    --primary-light: rgba(13, 148, 136, 0.08);
+    /* Primary Emerald */
+    --primary: #047857;
+    --primary-hover: #065F46;
+    --primary-foreground: #FFFFFF;
+    --primary-light: #E3F3EC;
 
-    /* Borders */
-    --border: rgba(0, 0, 0, 0.08);
-
-    /* Interactive */
-    --ring: #0d9488;
-
-    /* Deprecated - kept for /services and /learn-skills pages */
-    --accent: var(--primary);
+    /* Accent & Borders */
+    --accent: #087F5B;
+    --accent-hover: #066747;
+    --border: #E7E5DE;
+    --border-strong: #D8D5CC;
+    --ring: #047857;
 
     /* Semantic */
     --success: #16a34a;
@@ -34,22 +36,22 @@
     --danger: #dc2626;
     --info: #0284c7;
 
-    /* Shadows - soft blue-gray for light mode */
-    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(20, 32, 27, 0.04);
     --shadow-sm:
-        0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+        0 1px 3px rgba(20, 32, 27, 0.06), 0 1px 2px rgba(20, 32, 27, 0.04);
     --shadow-md:
-        0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+        0 4px 12px rgba(20, 32, 27, 0.06), 0 2px 4px rgba(20, 32, 27, 0.04);
     --shadow-lg:
-        0 8px 24px rgba(15, 23, 42, 0.08), 0 4px 8px rgba(15, 23, 42, 0.04);
+        0 8px 24px rgba(20, 32, 27, 0.08), 0 4px 8px rgba(20, 32, 27, 0.04);
     --shadow-xl:
-        0 16px 48px rgba(15, 23, 42, 0.1), 0 8px 16px rgba(15, 23, 42, 0.06);
+        0 16px 48px rgba(20, 32, 27, 0.1), 0 8px 16px rgba(20, 32, 27, 0.06);
 
     /* Glow */
-    --glow-sm: 0 0 15px rgba(13, 148, 136, 0.2);
-    --glow-md: 0 0 30px rgba(13, 148, 136, 0.3);
+    --glow-sm: 0 0 15px rgba(4, 120, 87, 0.15);
+    --glow-md: 0 0 30px rgba(4, 120, 87, 0.22);
     --glow-lg:
-        0 0 60px rgba(13, 148, 136, 0.4), 0 0 120px rgba(13, 148, 136, 0.15);
+        0 0 60px rgba(4, 120, 87, 0.3), 0 0 120px rgba(8, 127, 91, 0.12);
 
     /* Transitions */
     --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -60,39 +62,48 @@
 }
 
 .dark {
-    --background: #0a0a0a;
-    --foreground: #fafafa;
-    --card: #141414;
-    --card-foreground: #fafafa;
-    --muted: #1a1a1a;
-    --muted-foreground: #a3a3a3;
+    /* Dark Theme (Signature Emerald-Black Brand) */
+    --background: #06130F;
+    --foreground: #F2F7F4;
+    --card: #0C1D17;
+    --card-foreground: #F2F7F4;
+    --card-elevated: #132A20;
+    --secondary-surface: #132A20;
+    --muted: #132A20;
+    --muted-foreground: #91A99C;
+    --secondary-text: #B4C8BE;
 
-    --primary: #0d9488;
-    --primary-foreground: #ffffff;
-    --primary-light: rgba(13, 148, 136, 0.12);
+    /* Luminous Emerald */
+    --primary: #00D6A0;
+    --primary-hover: #00E6AD;
+    --primary-foreground: #03251B;
+    --primary-light: rgba(0, 214, 160, 0.12);
 
-    --border: rgba(255, 255, 255, 0.08);
+    /* Accent & Borders */
+    --accent: #35E6B4;
+    --accent-hover: #70F0CC;
+    --border: #254438;
+    --border-strong: #355746;
+    --ring: #35E6B4;
 
-    --ring: #0d9488;
-
-    --accent: var(--primary);
-
+    /* Semantic */
     --success: #22c55e;
     --warning: #f59e0b;
     --danger: #ef4444;
     --info: #38bdf8;
 
-    /* Shadows - softer/darker for dark mode */
+    /* Shadows */
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35);
     --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.4);
 
-    --glow-sm: 0 0 15px rgba(13, 148, 136, 0.3);
-    --glow-md: 0 0 30px rgba(13, 148, 136, 0.4);
+    /* Glow */
+    --glow-sm: 0 0 15px rgba(0, 214, 160, 0.25);
+    --glow-md: 0 0 30px rgba(0, 214, 160, 0.35);
     --glow-lg:
-        0 0 60px rgba(13, 148, 136, 0.5), 0 0 120px rgba(13, 148, 136, 0.2);
+        0 0 60px rgba(0, 214, 160, 0.45), 0 0 120px rgba(53, 230, 180, 0.15);
 }
 
 @theme inline {
@@ -100,9 +111,15 @@
     --color-foreground: var(--foreground);
     --color-card: var(--card);
     --color-card-foreground: var(--card-foreground);
+    --color-card-elevated: var(--card-elevated);
+    --color-secondary-surface: var(--secondary-surface);
+    --color-secondary-text: var(--secondary-text);
     --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
     --color-primary-foreground: var(--primary-foreground);
+    --color-primary-light: var(--primary-light);
     --color-border: var(--border);
+    --color-border-strong: var(--border-strong);
     --color-ring: var(--ring);
     --color-muted: var(--muted);
     --color-muted-foreground: var(--muted-foreground);
@@ -111,8 +128,11 @@
     --color-danger: var(--danger);
     --color-info: var(--info);
     --color-accent: var(--accent);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --color-accent-hover: var(--accent-hover);
+    --font-heading: var(--font-jakarta), sans-serif;
+    --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: var(--font-geist-mono), monospace;
+    --font-geist-sans: var(--font-inter), sans-serif;
 }
 
 /* --- Base Layer --- */
@@ -126,21 +146,31 @@
     }
 
     *:focus-visible {
-        @apply outline-2 outline-offset-2 outline-ring/60 rounded-lg;
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+        border-radius: var(--radius);
     }
 
     body {
         @apply bg-background text-foreground antialiased;
+        font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-jakarta), var(--font-inter), sans-serif;
+        letter-spacing: -0.025em;
+    }
+
     ::selection {
-        @apply bg-primary/20 text-foreground;
+        background-color: var(--primary-light);
+        color: var(--primary);
     }
 
     /* Code blocks */
     pre {
         @apply bg-muted border border-border rounded-xl p-4 overflow-x-auto text-sm leading-relaxed;
+        font-family: var(--font-geist-mono), monospace;
     }
 
     code {
@@ -176,53 +206,53 @@
 /* --- Component Utilities --- */
 @layer utilities {
     .card {
-        background-color: transparent;
+        background-color: var(--card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         transition:
             border-color var(--duration-normal) var(--ease),
+            background-color var(--duration-normal) var(--ease),
             box-shadow var(--duration-normal) var(--ease);
     }
 
     .card-hover {
-        background-color: transparent;
+        background-color: var(--card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         transition:
             border-color var(--duration-normal) var(--ease),
+            background-color var(--duration-normal) var(--ease),
             box-shadow var(--duration-normal) var(--ease);
     }
 
     .card-hover:hover {
-        border-color: var(--primary);
-        box-shadow: var(--glow-sm);
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow-md);
     }
 
     .glass {
-        background: rgba(250, 250, 250, 0.4);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: var(--card);
         border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
     }
 
     .dark .glass {
-        background: rgba(10, 10, 10, 0.6);
+        background: rgba(12, 29, 23, 0.75);
         border: 1px solid var(--border);
+        backdrop-filter: blur(16px);
     }
 
     .glass-card {
-        background: rgba(250, 250, 250, 0.4);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: var(--card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         transition:
-            border-color var(--duration-normal) var(--ease),
-            box-shadow var(--duration-normal) var(--ease);
+            border-color var(--duration-fast) var(--ease),
+            box-shadow var(--duration-fast) var(--ease);
     }
 
     .dark .glass-card {
-        background: rgba(20, 20, 20, 0.4);
+        background: var(--card);
         border: 1px solid var(--border);
     }
 

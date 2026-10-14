@@ -98,7 +98,7 @@ const ContactSection = () => {
             {/* Ambient background blobs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute -top-20 -right-32 w-[520px] h-[520px] rounded-full bg-primary/8 blur-[120px]" />
-                <div className="absolute -bottom-16 -left-24 w-[380px] h-[380px] rounded-full bg-purple-500/6 blur-[100px]" />
+                <div className="absolute -bottom-16 -left-24 w-[380px] h-[380px] rounded-full bg-primary/[0.04] blur-[100px]" />
             </div>
 
             <div className="container max-w-3xl relative z-10">
@@ -111,24 +111,28 @@ const ContactSection = () => {
                         visible: { transition: { staggerChildren: 0.08 } },
                     }}
                 >
-                    {/* Teal accent line */}
+                    {/* Category pill */}
                     <motion.div
                         variants={fadeUp}
-                        className="w-12 h-0.5 bg-gradient-to-r from-primary to-primary/30 rounded-full mb-6"
-                    />
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 bg-primary/5 text-primary text-xs font-mono tracking-wider uppercase mb-5"
+                    >
+                        <span>[ 06 // INITIATE COLLABORATION ]</span>
+                    </motion.div>
 
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4"
                     >
-                        Let&apos;s work together
+                        Let&apos;s build something{" "}
+                        <span className="text-primary">extraordinary.</span>
                     </motion.h2>
                     <motion.p
                         variants={fadeUp}
-                        className="text-muted-foreground leading-relaxed mb-10 max-w-lg"
+                        className="text-muted-foreground leading-relaxed mb-10 max-w-lg text-sm md:text-base"
                     >
-                        Tell me a little about your project. I will respond
-                        within 1–2 business days.
+                        Tell me about your product vision, engineering
+                        challenges, or timeline. I typically respond within 1–2
+                        business days.
                     </motion.p>
 
                     <motion.form

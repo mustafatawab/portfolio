@@ -37,9 +37,8 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
         <motion.div variants={fadeUp}>
             <Link
                 href={`/projects/${project.slug}`}
-                className="group block relative rounded-none border border-border bg-background transition-all duration-300 ease-[var(--ease)] hover:border-primary/30"
+                className="group block relative rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 ease-[var(--ease)] hover:border-primary/40 hover:shadow-[var(--shadow-lg)]"
             >
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
                 <div className="relative aspect-[16/11] overflow-hidden bg-muted">
                     <Image
                         src={project.image}
@@ -47,12 +46,12 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
                         fill
                         className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease)] group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                         {project.categories.slice(0, 2).map((cat) => (
                             <span
                                 key={cat}
-                                className="inline-flex items-center px-2 py-0.5 rounded-md bg-background/70 backdrop-blur-sm border border-border text-[10px] font-mono tracking-wider text-muted-foreground"
+                                className="inline-flex items-center px-2 py-0.5 rounded-md bg-card/80 backdrop-blur-md border border-border text-[10px] font-mono tracking-wider text-muted-foreground"
                             >
                                 {cat}
                             </span>
@@ -60,7 +59,7 @@ function ProjectGridCard({ project }: { project: ProjectShowcase }) {
                     </div>
                 </div>
                 <div className="p-5">
-                    <h3 className="text-base font-semibold text-foreground">
+                    <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                     </h3>
                     <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
@@ -139,8 +138,10 @@ export function ProjectsListing() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, ease }}
                     >
+                        <span className="section-label">Selected Portfolio</span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
-                            Building modern software for real businesses.
+                            Building modern software for{" "}
+                            <span className="text-primary">real businesses.</span>
                         </h1>
                         <p className="text-lg text-muted-foreground leading-relaxed mt-4 max-w-2xl">
                             A catalog of SaaS platforms, business applications,
@@ -162,7 +163,7 @@ export function ProjectsListing() {
                         >
                             <Link
                                 href={`/projects/${featured.slug}`}
-                                className="group block relative rounded-none border border-border bg-background transition-colors duration-300 hover:border-primary/30"
+                                className="group block relative rounded-2xl border border-border bg-card overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-xl)]"
                             >
                                 <div className="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden bg-muted">
                                     <Image

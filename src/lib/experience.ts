@@ -1,52 +1,53 @@
-interface ExperieceType {
-    title: String
-    company: String
-    location: String
-    period: String
-    description: String
-    tags: String[]
-    dotColor: String
+export interface ExperienceType {
+    title: string
+    company: string
+    location: string
+    period: string
+    description: string
+    tags: string[]
+    dotColor: string
 }
 
-export const experiences: ExperieceType[] = [
+export const experiences: ExperienceType[] = [
     {
         title: "Software Engineer",
         company: "Webtronix",
         location: "Luxus Mall, Gulberg Green, Islamabad, Pakistan",
-        period: "July 2026 - Present",
+        period: "July 2026 — Present",
         description:
             "Building AI-driven products and internal tools using Next.js and the MERN stack. Current work includes a School ERP system and an AI Interview Application, with a focus on AI integration and production-grade architecture.",
         tags: ["Next.js", "Node.js", "AI Integration", "MongoDB", "TanStack"],
-        dotColor: "bg-purple-600",
+        dotColor: "bg-primary",
     },
     {
         title: "Full Stack Developer",
         company: "Atlas Solution",
         location: "Gulberg Green, Islamabad, Pakistan",
-        period: "March 2026 - July 2026",
+        period: "March 2026 — July 2026",
         description:
-            "Led end-to-end development of maktabOne, a School Fee Management ERP - from requirements and UI design through production deployment on a Hostinger VPS with Nginx reverse proxy, SSL, and Docker. Also built 3 client websites including the company's own.",
+            "Led end-to-end development of maktabOne, a School Fee Management ERP — from requirements and UI design through production deployment on a VPS with Nginx reverse proxy, SSL, and Docker. Also built 3 client websites including the company's own.",
         tags: ["MongoDB", "Express.js", "React", "Node.js", "Docker", "Nginx"],
-        dotColor: "bg-purple-600",
+        dotColor: "bg-primary",
     },
     {
         title: "Frontend Developer",
         company: "Nodesol Corp Pvt Ltd",
         location: "Mingora, Swat, Pakistan",
-        period: "1 Year",
+        period: "2025 — 2026 (1 Year)",
         description:
-            "Leading the frontend developers. Spearheading research in new frontend librariries and design libraries.",
-        tags: ["Vuejs", "Quasar.js", "GraphQL API", "API Integration"],
-        dotColor: "bg-accent-cyan",
+            "Led frontend developers while spearheading research in modern frontend libraries, state architecture, and enterprise design systems.",
+        tags: ["Vue.js", "Quasar.js", "GraphQL API", "API Integration"],
+        dotColor: "bg-primary",
     },
     {
         title: "Web Developer",
         company: "Yodo",
-        period: "3 Months",
         location: "Johar Town, Lahore, Pakistan",
+        period: "2024 (3 Months)",
         description:
-            "Designed websites using custom css and html while using git with the team. Performed wordpress website creation task till deadline. Worked on Wordpress customization using PHP. Worked on Lumen API developement.",
-        tags: ["Wordpress", "HTML/CSS Bootstrap", "Php", "Git & Github"],
-        dotColor: "bg-green-500",
+            "Designed and developed custom web applications with responsive architecture. Worked on WordPress customization and Lumen API development under strict delivery timelines.",
+        tags: ["WordPress", "HTML/CSS", "PHP", "Git & GitHub"],
+        dotColor: "bg-primary",
     },
 ]
+

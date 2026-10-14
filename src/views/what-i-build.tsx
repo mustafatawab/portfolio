@@ -134,13 +134,12 @@ const offerings = [
 function GridCard({ offering }: { offering: (typeof offerings)[number] }) {
     return (
         <motion.div variants={fadeUp} className="h-full">
-            <div className="relative bg-background p-6 flex flex-col h-full transition-all duration-300 ease-[var(--ease)] hover:bg-muted/20 group">
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 pointer-events-none transition-colors duration-300 z-10" />
-                <div className="w-10 h-10 rounded-none bg-primary/10 flex items-center justify-center text-primary mb-5 border border-primary/20">
+            <div className="glass-card p-6 sm:p-7 flex flex-col h-full hover:border-primary/40 hover:shadow-[var(--shadow-lg)] transition-all duration-300 group">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-5 border border-primary/20">
                     <offering.icon size={20} />
                 </div>
 
-                <h3 className="text-base font-semibold text-foreground">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
                     {offering.title}
                 </h3>
 
@@ -148,15 +147,15 @@ function GridCard({ offering }: { offering: (typeof offerings)[number] }) {
                     {offering.description}
                 </p>
 
-                <div className="border-t border-border/50 pt-4 mb-6">
-                    <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
+                <div className="border-t border-border/50 pt-4 mb-6 mt-auto">
+                    <p className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase mb-3">
                         Common Applications
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                         {offering.useCases.map((uc) => (
                             <span
                                 key={uc}
-                                className="inline-flex items-center px-2 py-0.5 border border-border/50 bg-muted/30 text-[11px] font-mono text-muted-foreground tracking-tight rounded-none"
+                                className="inline-flex items-center px-2 py-0.5 rounded-md border border-border/50 bg-foreground/[0.04] text-[11px] font-mono text-muted-foreground tracking-tight"
                             >
                                 {uc}
                             </span>
@@ -164,17 +163,17 @@ function GridCard({ offering }: { offering: (typeof offerings)[number] }) {
                     </div>
                 </div>
 
-                <div className="mt-auto space-y-1.5">
+                <div className="space-y-1.5 pt-2 border-t border-border/40">
                     {offering.links.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
+                            className="group/link inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
                         >
                             {link.label}
                             <ArrowUpRight
                                 size={11}
-                                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                             />
                         </Link>
                     ))}
@@ -234,7 +233,7 @@ export default function WhatIBuild() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border mt-16 border border-border"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16"
                 >
                     {offerings.map((offering) => (
                         <GridCard key={offering.title} offering={offering} />

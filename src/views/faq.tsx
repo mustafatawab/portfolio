@@ -55,11 +55,18 @@ export default function FAQ() {
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
                 >
+                    <motion.div
+                        variants={fadeUp}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 bg-primary/5 text-primary text-xs font-mono tracking-wider uppercase mb-4"
+                    >
+                        <span>[ 05 // FREQUENTLY ASKED ]</span>
+                    </motion.div>
                     <motion.h2
                         variants={fadeUp}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mt-2 mb-14"
+                        className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-12"
                     >
-                        Common questions.
+                        Common questions &{" "}
+                        <span className="text-primary">clarity.</span>
                     </motion.h2>
                 </motion.div>
 

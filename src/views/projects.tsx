@@ -132,14 +132,31 @@ const ProjectsSection = () => {
                     }}
                 >
                     {/* Header */}
-                    <div className="flex items-end justify-between mb-12">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
                         <div>
+                            <motion.div
+                                variants={fadeUp}
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 bg-primary/5 text-primary text-xs font-mono tracking-wider uppercase mb-4"
+                            >
+                                <span>[ 03 // FEATURED DELIVERABLES ]</span>
+                            </motion.div>
                             <motion.h2
                                 variants={fadeUp}
                                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
                             >
-                                Selected work
+                                Selected{" "}
+                                <span className="text-primary">
+                                    Work & Platforms.
+                                </span>
                             </motion.h2>
+                            <motion.p
+                                variants={fadeUp}
+                                className="text-sm md:text-base text-muted-foreground mt-2 max-w-xl"
+                            >
+                                Production software engineered for operational
+                                efficiency, user experience, and measurable
+                                business impact.
+                            </motion.p>
                         </div>
                         <motion.div
                             variants={fadeUp}
@@ -147,12 +164,12 @@ const ProjectsSection = () => {
                         >
                             <Link
                                 href="/projects"
-                                className="group inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-[var(--duration-fast)]"
+                                className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card text-xs font-mono tracking-wider text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-[var(--duration-fast)]"
                             >
-                                View all
+                                View all projects
                                 <ChevronRight
-                                    size={14}
-                                    className="transition-transform group-hover:translate-x-0.5"
+                                    size={13}
+                                    className="transition-transform group-hover:translate-x-0.5 text-primary"
                                 />
                             </Link>
                         </motion.div>

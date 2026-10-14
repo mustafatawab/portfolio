@@ -39,28 +39,33 @@ export default function WhatsAppButton({
 
     return (
         <div
-            className={`fixed ${positionClasses[position]} z-[var(--z-toast)] flex items-end gap-2`}
+            className={`fixed ${positionClasses[position]} z-[var(--z-toast)] flex items-center gap-2`}
         >
             <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 active:scale-90 ${
+                className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary/30 bg-card/90 backdrop-blur-md text-foreground shadow-[var(--shadow-lg)] hover:border-primary hover:shadow-[var(--glow-sm)] transition-all duration-300 transform hover:scale-105 active:scale-95 group ${
                     visible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4 pointer-events-none"
                 }`}
                 aria-label="Chat on WhatsApp"
             >
-                <MessageCircle className="h-6 w-6" />
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <MessageCircle className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
+                <span className="text-xs font-medium tracking-wide">Chat on WhatsApp</span>
             </a>
             {visible && (
                 <button
                     onClick={() => setDismissed(true)}
-                    className="bg-foreground/10 hover:bg-foreground/20 text-foreground/60 p-2 rounded-full transition-colors"
+                    className="bg-card/80 border border-border hover:border-border-strong text-muted-foreground hover:text-foreground p-2 rounded-full transition-colors backdrop-blur-md"
                     aria-label="Dismiss WhatsApp button"
                 >
-                    <X size={14} />
+                    <X size={13} />
                 </button>
             )}
         </div>

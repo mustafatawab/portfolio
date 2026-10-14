@@ -1,19 +1,29 @@
 import type { Metadata } from "next"
-import { Space_Grotesk, Geist_Mono } from "next/font/google"
+import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/views/navbar"
 import Footer from "@/views/footer"
 import WhatsAppButton from "@/components/whatsAppButton"
 import { Toaster } from "react-hot-toast"
 
-const fontSans = Space_Grotesk({
-    variable: "--font-geist-sans",
+const fontHeading = Plus_Jakarta_Sans({
+    variable: "--font-jakarta",
     subsets: ["latin"],
+    display: "swap",
+    weight: ["400", "500", "600", "700", "800"],
+})
+
+const fontSans = Inter({
+    variable: "--font-inter",
+    subsets: ["latin"],
+    display: "swap",
+    weight: ["300", "400", "500", "600", "700"],
 })
 
 const fontMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+    display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -97,7 +107,7 @@ export default function RootLayout({
             </head>
             <body
                 suppressHydrationWarning
-                className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden grain-overlay`}
+                className={`${fontHeading.variable} ${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-background text-foreground relative overflow-x-hidden grain-overlay`}
             >
                 <ThemeProvider
                     attribute="class"

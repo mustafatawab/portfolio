@@ -213,57 +213,75 @@ export default function EngagementModels() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
                     variants={stagger}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-14"
                 >
-                    {models.map((model) => (
-                        <motion.div
-                            key={model.title}
-                            variants={fadeUp}
-                            className="glass-card p-6 flex flex-col hover:shadow-[var(--shadow-lg)] transition-shadow duration-300"
-                        >
-                            <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-5">
-                                <model.icon size={20} />
-                            </div>
+                    {models.map((model, index) => {
+                        const isFlagship = model.title === "Full Product Development"
+                        const colSpan =
+                            index < 3
+                                ? "lg:col-span-2"
+                                : "lg:col-span-3 md:col-span-1"
 
-                            <h3 className="text-base font-semibold text-foreground">
-                                {model.title}
-                            </h3>
+                        return (
+                            <motion.div
+                                key={model.title}
+                                variants={fadeUp}
+                                className={`glass-card p-6 sm:p-7 flex flex-col hover:shadow-[var(--shadow-lg)] transition-all duration-300 relative ${colSpan} ${
+                                    isFlagship
+                                        ? "border-primary/40 bg-gradient-to-b from-card via-card to-primary/[0.03] shadow-[0_0_30px_rgba(0,214,160,0.06)]"
+                                        : ""
+                                }`}
+                            >
+                                {isFlagship && (
+                                    <div className="absolute -top-3 right-5 px-3 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-mono uppercase font-bold tracking-wider shadow-[var(--glow-sm)]">
+                                        Flagship Offering
+                                    </div>
+                                )}
 
-                            <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
-                                {model.description}
-                            </p>
+                                <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center text-primary mb-5 border border-primary/20">
+                                    <model.icon size={20} />
+                                </div>
 
-                            <div className="border-t border-border/50 pt-4 mb-6">
-                                <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mb-3">
-                                    What You Get
+                                <h3 className="text-base sm:text-lg font-semibold text-foreground">
+                                    {model.title}
+                                </h3>
+
+                                <p className="text-sm text-muted-foreground leading-relaxed mt-2 mb-6">
+                                    {model.description}
                                 </p>
-                                <ul className="space-y-2">
-                                    {model.deliverables.map((d) => (
-                                        <li
-                                            key={d}
-                                            className="flex items-start gap-2.5 text-xs text-muted-foreground leading-snug"
-                                        >
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-[5px] flex-shrink-0" />
-                                            {d}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
 
-                            <div className="mt-auto pt-0">
-                                <Link
-                                    href={model.cta.href}
-                                    className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
-                                >
-                                    {model.cta.label}
-                                    <ArrowUpRight
-                                        size={11}
-                                        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                    />
-                                </Link>
-                            </div>
-                        </motion.div>
-                    ))}
+                                <div className="border-t border-border/50 pt-4 mb-6 mt-auto">
+                                    <p className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase mb-3">
+                                        Key Deliverables
+                                    </p>
+                                    <ul className="space-y-2">
+                                        {model.deliverables.map((d) => (
+                                            <li
+                                                key={d}
+                                                className="flex items-start gap-2.5 text-xs text-muted-foreground leading-snug"
+                                            >
+                                                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-[5px] flex-shrink-0" />
+                                                {d}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="pt-2">
+                                    <Link
+                                        href={model.cta.href}
+                                        className="group inline-flex items-center gap-1.5 text-xs text-primary font-medium hover:underline underline-offset-2"
+                                    >
+                                        {model.cta.label}
+                                        <ArrowUpRight
+                                            size={12}
+                                            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        )
+                    })}
                 </motion.div>
             </div>
         </section>
