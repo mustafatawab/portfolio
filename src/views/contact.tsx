@@ -114,17 +114,16 @@ const ContactSection = () => {
                     {/* Category pill */}
                     <motion.div
                         variants={fadeUp}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 bg-primary/5 text-primary text-xs font-mono tracking-wider uppercase mb-5"
+                        className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium mb-5"
                     >
-                        <span>[ 06 // INITIATE COLLABORATION ]</span>
+                        <span>Initiate Collaboration</span>
                     </motion.div>
 
                     <motion.h2
                         variants={fadeUp}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4"
                     >
-                        Let&apos;s build something{" "}
-                        <span className="text-primary">extraordinary.</span>
+                        Let&apos;s build something extraordinary.
                     </motion.h2>
                     <motion.p
                         variants={fadeUp}

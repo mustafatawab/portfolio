@@ -157,7 +157,7 @@ const HeroSection = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
-                            <span className="text-[11px] font-mono tracking-wider uppercase text-foreground/90 font-medium">
+                            <span className="text-xs font-medium text-foreground/90">
                                 Available for Q2 / Q3 Projects
                             </span>
                         </div>

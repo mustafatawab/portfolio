@@ -148,7 +148,7 @@ const AboutSection = () => {
                         {/* Section eyebrow */}
                         <motion.div
                             variants={fadeUp}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/25 bg-primary/5 text-primary text-xs font-mono tracking-wider uppercase mb-5"
+                            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium mb-5"
                         >
                             <span>Engineering Philosophy</span>
                         </motion.div>
@@ -157,10 +157,7 @@ const AboutSection = () => {
                             variants={fadeUp}
                             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance"
                         >
-                            Reliable engineering, clean architecture, and{" "}
-                            <span className="text-primary">
-                                measurable impact.
-                            </span>
+                            Reliable engineering, clean architecture, and measurable impact.
                         </motion.h2>
 
                         <motion.p
