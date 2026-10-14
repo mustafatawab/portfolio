@@ -57,7 +57,9 @@ export default function WhatsAppButton({
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
                 <MessageCircle className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
-                <span className="text-xs font-medium tracking-wide">Chat on WhatsApp</span>
+                <span className="text-xs font-medium tracking-wide">
+                    Chat on WhatsApp
+                </span>
             </a>
             {visible && (
                 <button

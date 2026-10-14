@@ -216,7 +216,8 @@ export default function EngagementModels() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mt-14"
                 >
                     {models.map((model, index) => {
-                        const isFlagship = model.title === "Full Product Development"
+                        const isFlagship =
+                            model.title === "Full Product Development"
                         const colSpan =
                             index < 3
                                 ? "lg:col-span-2"

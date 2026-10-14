@@ -7,27 +7,27 @@
     --radius: 0.5rem;
 
     /* Light Theme (Emerald & Bone) */
-    --background: #F7F6F2;
-    --foreground: #14201B;
-    --card: #FFFFFF;
-    --card-foreground: #14201B;
-    --card-elevated: #FFFFFF;
-    --secondary-surface: #EFECE6;
-    --muted: #EFECE6;
-    --muted-foreground: #66736C;
-    --secondary-text: #3F4D46;
+    --background: #f7f6f2;
+    --foreground: #14201b;
+    --card: #ffffff;
+    --card-foreground: #14201b;
+    --card-elevated: #ffffff;
+    --secondary-surface: #efece6;
+    --muted: #efece6;
+    --muted-foreground: #66736c;
+    --secondary-text: #3f4d46;
 
     /* Primary Emerald */
     --primary: #047857;
-    --primary-hover: #065F46;
-    --primary-foreground: #FFFFFF;
-    --primary-light: #E3F3EC;
+    --primary-hover: #065f46;
+    --primary-foreground: #ffffff;
+    --primary-light: #e3f3ec;
 
     /* Accent & Borders */
-    --accent: #087F5B;
+    --accent: #087f5b;
     --accent-hover: #066747;
-    --border: #E7E5DE;
-    --border-strong: #D8D5CC;
+    --border: #e7e5de;
+    --border-strong: #d8d5cc;
     --ring: #047857;
 
     /* Semantic */
@@ -50,8 +50,7 @@
     /* Glow */
     --glow-sm: 0 0 15px rgba(4, 120, 87, 0.15);
     --glow-md: 0 0 30px rgba(4, 120, 87, 0.22);
-    --glow-lg:
-        0 0 60px rgba(4, 120, 87, 0.3), 0 0 120px rgba(8, 127, 91, 0.12);
+    --glow-lg: 0 0 60px rgba(4, 120, 87, 0.3), 0 0 120px rgba(8, 127, 91, 0.12);
 
     /* Transitions */
     --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -63,28 +62,28 @@
 
 .dark {
     /* Dark Theme (Signature Emerald-Black Brand) */
-    --background: #06130F;
-    --foreground: #F2F7F4;
-    --card: #0C1D17;
-    --card-foreground: #F2F7F4;
-    --card-elevated: #132A20;
-    --secondary-surface: #132A20;
-    --muted: #132A20;
-    --muted-foreground: #91A99C;
-    --secondary-text: #B4C8BE;
+    --background: #06130f;
+    --foreground: #f2f7f4;
+    --card: #0c1d17;
+    --card-foreground: #f2f7f4;
+    --card-elevated: #132a20;
+    --secondary-surface: #132a20;
+    --muted: #132a20;
+    --muted-foreground: #91a99c;
+    --secondary-text: #b4c8be;
 
     /* Luminous Emerald */
-    --primary: #00D6A0;
-    --primary-hover: #00E6AD;
-    --primary-foreground: #03251B;
+    --primary: #00d6a0;
+    --primary-hover: #00e6ad;
+    --primary-foreground: #03251b;
     --primary-light: rgba(0, 214, 160, 0.12);
 
     /* Accent & Borders */
-    --accent: #35E6B4;
-    --accent-hover: #70F0CC;
+    --accent: #35e6b4;
+    --accent-hover: #70f0cc;
     --border: #254438;
     --border-strong: #355746;
-    --ring: #35E6B4;
+    --ring: #35e6b4;
 
     /* Semantic */
     --success: #22c55e;
@@ -130,7 +129,9 @@
     --color-accent: var(--accent);
     --color-accent-hover: var(--accent-hover);
     --font-heading: var(--font-jakarta), sans-serif;
-    --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sans:
+        var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
     --font-mono: var(--font-geist-mono), monospace;
     --font-geist-sans: var(--font-inter), sans-serif;
 }
@@ -153,11 +154,22 @@
 
     body {
         @apply bg-background text-foreground antialiased;
-        font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family:
+            var(--font-inter),
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif;
         font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: var(--font-jakarta), var(--font-inter), sans-serif;
         letter-spacing: -0.025em;
     }

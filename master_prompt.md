@@ -67,45 +67,45 @@ Use the following design tokens as the source of truth. Adapt the existing CSS v
 
 The light theme should feel editorial, warm, clean, and expensive.
 
-| Semantic role | HEX |
-|---|---|
-| Main background | `#F7F6F2` |
-| Main surface | `#FFFFFF` |
-| Secondary surface | `#EFECE6` |
-| Elevated surface | `#FFFFFF` |
-| Primary text | `#14201B` |
-| Secondary text | `#3F4D46` |
-| Muted text | `#66736C` |
-| Primary emerald | `#047857` |
-| Primary hover | `#065F46` |
+| Semantic role        | HEX       |
+| -------------------- | --------- |
+| Main background      | `#F7F6F2` |
+| Main surface         | `#FFFFFF` |
+| Secondary surface    | `#EFECE6` |
+| Elevated surface     | `#FFFFFF` |
+| Primary text         | `#14201B` |
+| Secondary text       | `#3F4D46` |
+| Muted text           | `#66736C` |
+| Primary emerald      | `#047857` |
+| Primary hover        | `#065F46` |
 | Soft emerald surface | `#E3F3EC` |
-| Light accent | `#087F5B` |
-| Accent hover | `#066747` |
-| Border | `#E7E5DE` |
-| Strong border | `#D8D5CC` |
-| Focus ring | `#047857` |
+| Light accent         | `#087F5B` |
+| Accent hover         | `#066747` |
+| Border               | `#E7E5DE` |
+| Strong border        | `#D8D5CC` |
+| Focus ring           | `#047857` |
 
 ### Dark theme
 
 The dark theme is the signature brand experience and should closely match the atmosphere of my LinkedIn banner.
 
-| Semantic role | HEX |
-|---|---|
-| Main background | `#06130F` |
-| Main surface | `#0C1D17` |
-| Secondary surface | `#132A20` |
-| Elevated surface | `#132A20` |
-| Primary text | `#F2F7F4` |
-| Secondary text | `#B4C8BE` |
-| Muted text | `#91A99C` |
-| Primary emerald | `#00D6A0` |
-| Primary hover | `#00E6AD` |
+| Semantic role           | HEX       |
+| ----------------------- | --------- |
+| Main background         | `#06130F` |
+| Main surface            | `#0C1D17` |
+| Secondary surface       | `#132A20` |
+| Elevated surface        | `#132A20` |
+| Primary text            | `#F2F7F4` |
+| Secondary text          | `#B4C8BE` |
+| Muted text              | `#91A99C` |
+| Primary emerald         | `#00D6A0` |
+| Primary hover           | `#00E6AD` |
 | Dark primary foreground | `#03251B` |
-| Accent emerald | `#35E6B4` |
-| Accent hover | `#70F0CC` |
-| Border | `#254438` |
-| Strong border | `#355746` |
-| Focus ring | `#35E6B4` |
+| Accent emerald          | `#35E6B4` |
+| Accent hover            | `#70F0CC` |
+| Border                  | `#254438` |
+| Strong border           | `#355746` |
+| Focus ring              | `#35E6B4` |
 
 ### Color usage rules
 
@@ -144,6 +144,7 @@ It means making deliberate decisions about hierarchy, typography, spacing, compo
 ### Follow these principles
 
 **Composition**
+
 - Use a clear visual hierarchy.
 - Give important content room to breathe.
 - Avoid cramped layouts and unnecessarily dense sections.
@@ -151,6 +152,7 @@ It means making deliberate decisions about hierarchy, typography, spacing, compo
 - Make each major section feel intentionally art-directed.
 
 **Typography**
+
 - Use Plus Jakarta Sans for headings and display typography.
 - Use Inter for body text and interface elements.
 - Preserve the existing Urdu font support.
@@ -160,6 +162,7 @@ It means making deliberate decisions about hierarchy, typography, spacing, compo
 - Avoid overly bold typography everywhere.
 
 **Spacing**
+
 - Establish a consistent spacing scale.
 - Use generous section spacing on desktop.
 - Maintain comfortable spacing on mobile.
@@ -167,18 +170,21 @@ It means making deliberate decisions about hierarchy, typography, spacing, compo
 - Avoid arbitrary margins and inconsistent padding.
 
 **Surfaces**
+
 - Use restrained borders and subtle changes in surface color.
 - Avoid placing every element inside its own card.
 - Use cards when they improve grouping, not as a default layout mechanism.
 - Prefer elegant editorial layouts over repetitive grids when appropriate.
 
 **Depth**
+
 - Use soft radial emerald gradients selectively.
 - Use subtle shadows and translucent layers where appropriate.
 - Keep decorative lighting away from important text.
 - Avoid excessive blur, glow, glassmorphism, and animated background effects.
 
 **Consistency**
+
 - Every page must belong to the same visual system.
 - Shared components should behave and look consistently.
 - Project, case-study, and blog detail pages must receive the same level of design attention as the homepage.
@@ -252,6 +258,7 @@ This is the most important section.
 Create an immersive, premium hero inspired by my LinkedIn banner.
 
 Use:
+
 - A deep emerald-black background in dark mode.
 - A warm editorial background in light mode.
 - My real profile portrait when appropriate.
@@ -274,6 +281,7 @@ The existing positioning includes:
 You may refine the wording to fit the design, but do not invent expertise or claims that the repository does not support.
 
 The hero should answer:
+
 - Who am I?
 - What do I build?
 - What distinguishes my approach?
@@ -288,6 +296,7 @@ If the portrait is used, integrate it naturally into the composition. Do not add
 Create an editorial-quality presentation of my strongest existing projects.
 
 Each project should have:
+
 - A clear title.
 - A concise, accurate description.
 - Relevant technology labels.
@@ -338,6 +347,7 @@ Use the brand colors consistently without turning the contact section into a gia
 Redesign the existing projects index route.
 
 Requirements:
+
 - A strong page heading and concise introduction.
 - A clean and responsive project layout.
 - Appropriate filtering or categorization if the existing content supports it.
@@ -389,6 +399,7 @@ Treat case studies as a separate content type from ordinary project cards when t
 ### Listing page
 
 Include:
+
 - A strong introduction.
 - A curated, visually consistent list or grid.
 - Meaningful summaries.
@@ -400,6 +411,7 @@ Include:
 Create a reusable detail template that supports the actual content structure.
 
 Potential sections include:
+
 - Overview.
 - Context and problem.
 - Constraints and requirements.
@@ -427,6 +439,7 @@ Redesign the existing blog index and individual article pages.
 ### Blog listing
 
 Use:
+
 - Clear typography.
 - Well-presented article titles.
 - Readable summaries.
@@ -441,6 +454,7 @@ Avoid oversized card grids that make article discovery feel like shopping.
 Prioritize readability over decoration.
 
 Implement:
+
 - A clear article title and introduction.
 - Author and publication metadata where available.
 - A controlled reading width.
@@ -496,6 +510,7 @@ Avoid unnecessary abstraction. The architecture should remain easy to maintain a
 Use motion to reinforce hierarchy and provide feedback.
 
 Appropriate examples:
+
 - Subtle hero content entrance.
 - Gentle reveal effects for selected sections.
 - Refined button and link transitions.
@@ -507,6 +522,7 @@ Appropriate examples:
 Keep animations restrained and purposeful.
 
 Avoid:
+
 - Continuous large background animations.
 - Aggressive parallax.
 - Constantly moving gradients.
@@ -532,6 +548,7 @@ Dark mode should express the signature emerald brand.
 Light mode should express the same identity through bone-colored surfaces and forest-green accents.
 
 Requirements:
+
 - Every route must render correctly in both themes.
 - All cards, borders, buttons, forms, menus, code blocks, and metadata must use the correct tokens.
 - No hardcoded colors should accidentally break the active theme.
@@ -556,6 +573,7 @@ The experience must work on:
 - Large desktop monitors.
 
 Requirements:
+
 - Responsive typography.
 - Appropriate container widths.
 - No horizontal overflow.
@@ -580,12 +598,14 @@ Prioritize existing authentic portfolio assets.
 Use real project screenshots and imagery wherever available.
 
 For the profile portrait:
+
 - Preserve natural proportions.
 - Use an intentional crop.
 - Avoid unnecessary filters or visual effects.
 - Ensure the image works against both themes.
 
 For the banner-inspired graphics:
+
 - Reproduce the visual language of the abstract emerald curves and lighting with lightweight CSS or SVG when practical.
 - Keep decorative elements behind the content.
 - Avoid adding large background images when simple vector shapes or gradients can achieve the same result.
@@ -604,6 +624,7 @@ Do not use generic stock imagery to fill gaps when genuine project assets are av
 Preserve and improve the existing technical architecture.
 
 Requirements:
+
 - Keep the existing framework unless there is a compelling reason to change it.
 - Reuse installed dependencies where practical.
 - Avoid adding large libraries for trivial visual effects.
@@ -627,6 +648,7 @@ Do not add decorative complexity at the expense of performance or maintainabilit
 ## 18. Accessibility and SEO
 
 Implement or preserve:
+
 - Semantic landmarks.
 - Logical heading hierarchy.
 - Keyboard-accessible navigation.
@@ -659,6 +681,7 @@ If a form currently submits to an API or third-party service, preserve that inte
 Do not replace working functionality with a visually attractive but nonfunctional component.
 
 Ensure:
+
 - Forms validate correctly.
 - Submission and error states are clear.
 - External links work.
@@ -704,6 +727,7 @@ Verify mobile navigation, theme switching, hover and focus states, responsive im
 ### Phase 7 — Validation
 
 Run the project's available checks, including:
+
 - Production build.
 - Linting.
 - Type checking.

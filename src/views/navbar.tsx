@@ -128,10 +128,16 @@ const Navbar = () => {
                         : "border-border/60 bg-card/60 backdrop-blur-md shadow-[var(--shadow-sm)]"
                 }`}
             >
-                <Link href="/" className="relative group flex items-center gap-2.5">
+                <Link
+                    href="/"
+                    className="relative group flex items-center gap-2.5"
+                >
                     <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
                     <span className="font-heading font-bold tracking-tight text-sm sm:text-base text-foreground">
-                        MUSTAFA <span className="text-primary font-extrabold">TAWAB</span>
+                        MUSTAFA{" "}
+                        <span className="text-primary font-extrabold">
+                            TAWAB
+                        </span>
                     </span>
                 </Link>
 
@@ -149,7 +155,9 @@ const Navbar = () => {
                             {link.label}
                             <span
                                 className={`absolute -bottom-[4px] left-0 right-0 h-[2px] bg-primary scale-x-0 transition-transform duration-[var(--duration-fast)] ${
-                                    isActive(link.url) ? "scale-x-100" : "group-hover:scale-x-100"
+                                    isActive(link.url)
+                                        ? "scale-x-100"
+                                        : "group-hover:scale-x-100"
                                 }`}
                             />
                         </a>
