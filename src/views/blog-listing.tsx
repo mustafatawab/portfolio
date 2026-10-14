@@ -56,11 +56,14 @@ export default function BlogListing({ posts, tags }: BlogListingProps) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="section-label text-center">
+                        <span className="section-label">
                             Engineering Journal
                         </span>
-                        <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-                            Technical Articles
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight text-balance">
+                            Technical insights &{" "}
+                            <span className="text-primary">
+                                systems architecture.
+                            </span>
                         </h1>
                     </motion.div>
                     <motion.p

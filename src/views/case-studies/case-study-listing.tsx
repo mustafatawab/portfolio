@@ -77,7 +77,7 @@ function CaseStudyArticleCard({ study }: { study: CaseStudy }) {
         <motion.div variants={fadeUp}>
             <Link
                 href={`/case-studies/${study.slug}`}
-                className="group block rounded-xl border border-border bg-card p-6 transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5"
+                className="group block rounded-xl border border-border bg-card p-6 transition-all duration-[var(--duration-normal)] ease-[var(--ease)] hover:border-primary/40 hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5"
             >
                 <div className="flex items-start justify-between mb-3">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-foreground/[0.04] border border-border text-[10px] font-mono tracking-wider text-muted-foreground">
@@ -138,11 +138,11 @@ function FeaturedArticle({ study }: { study: CaseStudy }) {
         >
             <Link
                 href={`/case-studies/${study.slug}`}
-                className="group block relative rounded-2xl overflow-hidden border border-border bg-card"
+                className="group block relative rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/40 hover:shadow-[var(--shadow-xl)] transition-all duration-300"
             >
                 <div className="p-8 md:p-10">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-[10px] font-mono tracking-wider text-primary mb-4">
-                        Featured Article
+                        Featured Case Study
                     </span>
 
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
@@ -231,8 +231,14 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
                         transition={{ duration: 0.5, ease }}
                         className="max-w-3xl"
                     >
+                        <span className="section-label">
+                            Engineering Deep Dives
+                        </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
-                            Engineering deep dives
+                            Architecture, trade-offs &{" "}
+                            <span className="text-primary">
+                                production systems.
+                            </span>
                         </h1>
                         <p className="text-lg text-muted-foreground leading-relaxed mt-4">
                             Detailed technical case studies on architecture,

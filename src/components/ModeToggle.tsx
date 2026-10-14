@@ -24,7 +24,7 @@ export function ModeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-border bg-transparent text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all group"
+            className="relative w-8 h-8 flex items-center justify-center rounded-full border border-border/80 bg-background/50 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-200 group"
             aria-label="Toggle Theme"
         >
             <AnimatePresence mode="wait">

@@ -119,40 +119,53 @@ const Navbar = () => {
             }}
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className={`fixed top-6 left-1/2 z-[var(--z-sticky)] w-max max-w-[95vw]`}
+            className={`fixed top-5 left-1/2 z-[var(--z-sticky)] w-max max-w-[95vw]`}
         >
             <nav
-                className={`flex items-center justify-between gap-6 md:gap-12 px-6 py-3 rounded-full border bg-background/80 backdrop-blur-xl shadow-[var(--shadow-md)] transition-colors duration-300 ${scrolled ? "border-border" : "border-transparent"}`}
+                className={`flex items-center justify-between gap-6 md:gap-10 px-6 py-2.5 rounded-full border transition-all duration-300 ${
+                    scrolled
+                        ? "border-border-strong bg-card/85 backdrop-blur-xl shadow-[var(--shadow-lg)]"
+                        : "border-border/60 bg-card/60 backdrop-blur-md shadow-[var(--shadow-sm)]"
+                }`}
             >
-                <Link href="/" className="relative group">
-                    <span className="text-lg font-semibold tracking-tight text-foreground space-x-[2px]">
-                        <span className="text-primary">{"{"}</span>
-                        <span>Mustafa Tawab</span>
-                        <span className="text-primary">{"}"}</span>
+                <Link
+                    href="/"
+                    className="relative group flex items-center gap-2.5"
+                >
+                    <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
+                    <span className="font-heading font-bold tracking-tight text-sm sm:text-base text-foreground">
+                        MUSTAFA{" "}
+                        <span className="text-primary font-extrabold">
+                            TAWAB
+                        </span>
                     </span>
                 </Link>
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-7">
                     {links.map((link) => (
                         <a
                             key={link.label}
                             href={link.url}
-                            className={`relative text-sm transition-colors duration-[var(--duration-fast)] ease-[var(--ease)] ${
+                            className={`relative text-xs tracking-wide uppercase transition-colors duration-[var(--duration-fast)] ${
                                 isActive(link.url)
-                                    ? "text-foreground font-medium"
+                                    ? "text-primary font-semibold"
                                     : "text-muted-foreground hover:text-foreground"
                             }`}
                         >
                             {link.label}
                             <span
-                                className={`absolute -bottom-[3px] left-0 right-0 h-[1.5px] bg-foreground/20 scale-x-0 transition-transform duration-[var(--duration-fast)] ease-[var(--ease)] hover:scale-x-100 ${isActive(link.url) ? "scale-x-100 bg-foreground" : ""}`}
+                                className={`absolute -bottom-[4px] left-0 right-0 h-[2px] bg-primary scale-x-0 transition-transform duration-[var(--duration-fast)] ${
+                                    isActive(link.url)
+                                        ? "scale-x-100"
+                                        : "group-hover:scale-x-100"
+                                }`}
                             />
                         </a>
                     ))}
-                    <div className="flex items-center gap-3 pl-4 border-l border-border">
+                    <div className="flex items-center gap-3 pl-3 border-l border-border">
                         <ModeToggle />
                         <Link href="/#contact">
-                            <Button className="rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm h-9 px-4 shadow-[var(--shadow-xs)] hover:shadow-[var(--glow-sm)] transition-shadow duration-300">
+                            <Button className="rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary-hover text-xs tracking-wider uppercase h-8 px-4 shadow-[var(--shadow-xs)] hover:shadow-[var(--glow-sm)] transition-all duration-200">
                                 Hire Me
                             </Button>
                         </Link>
@@ -163,12 +176,12 @@ const Navbar = () => {
                     <ModeToggle />
                     <button
                         ref={menuButtonRef}
-                        className="text-foreground p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-foreground/5 transition-colors"
+                        className="text-foreground p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-foreground/5 transition-colors"
                         onClick={() => setToggle(!toggle)}
                         aria-label={toggle ? "Close menu" : "Open menu"}
                         aria-expanded={toggle}
                     >
-                        {toggle ? <X size={20} /> : <Menu size={20} />}
+                        {toggle ? <X size={18} /> : <Menu size={18} />}
                     </button>
                 </div>
             </nav>
@@ -184,7 +197,7 @@ const Navbar = () => {
                             duration: 0.25,
                             ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        className="absolute top-full left-4 right-4 mt-2 md:hidden z-[var(--z-modal)]"
+                        className="absolute top-full left-0 right-0 mt-2 md:hidden z-[var(--z-modal)] min-w-[260px]"
                         role="dialog"
                         aria-modal="true"
                         aria-label="Navigation menu"
