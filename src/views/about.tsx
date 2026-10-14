@@ -157,7 +157,8 @@ const AboutSection = () => {
                             variants={fadeUp}
                             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-balance"
                         >
-                            Reliable engineering, clean architecture, and measurable impact.
+                            Reliable engineering, clean architecture, and
+                            measurable impact.
                         </motion.h2>
 
                         <motion.p
