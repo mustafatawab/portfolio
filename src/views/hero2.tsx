@@ -1,8 +1,22 @@
 "use client"
 import React, { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, animate } from "framer-motion"
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useInView,
+    animate,
+} from "framer-motion"
 import Link from "next/link"
-import { ArrowUpRight, ArrowRight, Layers, Cpu, Server, ShieldCheck, Sparkles } from "lucide-react"
+import {
+    ArrowUpRight,
+    ArrowRight,
+    Layers,
+    Cpu,
+    Server,
+    ShieldCheck,
+    Sparkles,
+} from "lucide-react"
 
 function AnimatedCounter({
     target,
@@ -89,19 +103,69 @@ const HeroSection = () => {
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     <defs>
-                        <linearGradient id="emeraldArcGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.8" />
-                            <stop offset="50%" stopColor="var(--accent)" stopOpacity="0.4" />
-                            <stop offset="100%" stopColor="var(--border)" stopOpacity="0.05" />
+                        <linearGradient
+                            id="emeraldArcGrad1"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                        >
+                            <stop
+                                offset="0%"
+                                stopColor="var(--primary)"
+                                stopOpacity="0.8"
+                            />
+                            <stop
+                                offset="50%"
+                                stopColor="var(--accent)"
+                                stopOpacity="0.4"
+                            />
+                            <stop
+                                offset="100%"
+                                stopColor="var(--border)"
+                                stopOpacity="0.05"
+                            />
                         </linearGradient>
-                        <linearGradient id="emeraldArcGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.5" />
-                            <stop offset="100%" stopColor="var(--primary)" stopOpacity="0.02" />
+                        <linearGradient
+                            id="emeraldArcGrad2"
+                            x1="100%"
+                            y1="0%"
+                            x2="0%"
+                            y2="100%"
+                        >
+                            <stop
+                                offset="0%"
+                                stopColor="var(--primary)"
+                                stopOpacity="0.5"
+                            />
+                            <stop
+                                offset="100%"
+                                stopColor="var(--primary)"
+                                stopOpacity="0.02"
+                            />
                         </linearGradient>
-                        <linearGradient id="glassRibbonFill" x1="0%" y1="0%" x2="100%" y2="80%">
-                            <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.08" />
-                            <stop offset="60%" stopColor="var(--card)" stopOpacity="0.02" />
-                            <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+                        <linearGradient
+                            id="glassRibbonFill"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="80%"
+                        >
+                            <stop
+                                offset="0%"
+                                stopColor="var(--primary)"
+                                stopOpacity="0.08"
+                            />
+                            <stop
+                                offset="60%"
+                                stopColor="var(--card)"
+                                stopOpacity="0.02"
+                            />
+                            <stop
+                                offset="100%"
+                                stopColor="transparent"
+                                stopOpacity="0"
+                            />
                         </linearGradient>
                     </defs>
 
@@ -132,12 +196,18 @@ const HeroSection = () => {
                 {/* 4x6 Technical dot grids from the banner */}
                 <div className="hidden lg:grid grid-cols-6 gap-2.5 absolute top-28 right-16 opacity-25">
                     {Array.from({ length: 24 }).map((_, i) => (
-                        <span key={i} className="w-1 h-1 rounded-full bg-primary" />
+                        <span
+                            key={i}
+                            className="w-1 h-1 rounded-full bg-primary"
+                        />
                     ))}
                 </div>
                 <div className="hidden lg:grid grid-cols-6 gap-2.5 absolute bottom-28 left-12 opacity-20">
                     {Array.from({ length: 24 }).map((_, i) => (
-                        <span key={i} className="w-1 h-1 rounded-full bg-primary" />
+                        <span
+                            key={i}
+                            className="w-1 h-1 rounded-full bg-primary"
+                        />
                     ))}
                 </div>
             </div>
@@ -148,7 +218,10 @@ const HeroSection = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                        transition={{
+                            duration: 0.8,
+                            ease: [0.25, 0.1, 0.25, 1],
+                        }}
                         className="lg:col-span-7 flex flex-col items-start"
                     >
                         {/* Status eyebrow */}
@@ -179,7 +252,10 @@ const HeroSection = () => {
 
                         {/* Value proposition paragraph */}
                         <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                            Building scalable software, SaaS architectures, and AI-powered production systems. I take products from architectural design to high-throughput cloud deployment.
+                            Building scalable software, SaaS architectures, and
+                            AI-powered production systems. I take products from
+                            architectural design to high-throughput cloud
+                            deployment.
                         </p>
 
                         {/* Strategic CTAs */}
@@ -228,7 +304,11 @@ const HeroSection = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.96 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: [0.25, 0.1, 0.25, 1],
+                        }}
                         className="lg:col-span-5"
                     >
                         <div className="relative">
@@ -251,29 +331,33 @@ const HeroSection = () => {
 
                                 {/* Architectural Pillars Grid */}
                                 <div className="space-y-4">
-                                    {architecturalPillars.map((pillar, index) => (
-                                        <div
-                                            key={pillar.title}
-                                            className="group p-3.5 rounded-xl border border-border/60 bg-secondary-surface/40 hover:border-primary/40 hover:bg-secondary-surface transition-all duration-200"
-                                        >
-                                            <div className="flex items-start gap-3">
-                                                <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0 group-hover:scale-105 transition-transform">
-                                                    <pillar.icon size={16} />
-                                                </div>
-                                                <div className="min-w-0">
-                                                    <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                                                        {pillar.title}
-                                                    </h3>
-                                                    <p className="text-xs font-mono text-primary/90 mt-0.5 truncate">
-                                                        {pillar.stack}
-                                                    </p>
-                                                    <p className="text-xs text-muted-foreground mt-1 leading-normal">
-                                                        {pillar.detail}
-                                                    </p>
+                                    {architecturalPillars.map(
+                                        (pillar, index) => (
+                                            <div
+                                                key={pillar.title}
+                                                className="group p-3.5 rounded-xl border border-border/60 bg-secondary-surface/40 hover:border-primary/40 hover:bg-secondary-surface transition-all duration-200"
+                                            >
+                                                <div className="flex items-start gap-3">
+                                                    <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0 group-hover:scale-105 transition-transform">
+                                                        <pillar.icon
+                                                            size={16}
+                                                        />
+                                                    </div>
+                                                    <div className="min-w-0">
+                                                        <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                            {pillar.title}
+                                                        </h3>
+                                                        <p className="text-xs font-mono text-primary/90 mt-0.5 truncate">
+                                                            {pillar.stack}
+                                                        </p>
+                                                        <p className="text-xs text-muted-foreground mt-1 leading-normal">
+                                                            {pillar.detail}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        )
+                                    )}
                                 </div>
 
                                 {/* Card Footer Trust Callout */}
@@ -292,7 +376,11 @@ const HeroSection = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    transition={{
+                        duration: 0.6,
+                        delay: 0.4,
+                        ease: [0.25, 0.1, 0.25, 1],
+                    }}
                     className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 pt-10 border-t border-border/80"
                 >
                     {[
@@ -300,24 +388,33 @@ const HeroSection = () => {
                             value: 3,
                             suffix: "+",
                             label: "Years of Production Experience",
-                            description: "Designing, building, and deploying real-world platforms",
+                            description:
+                                "Designing, building, and deploying real-world platforms",
                         },
                         {
                             value: 20,
                             suffix: "+",
                             label: "Projects & Platforms Shipped",
-                            description: "From custom ERPs to AI medical scribe integrations",
+                            description:
+                                "From custom ERPs to AI medical scribe integrations",
                         },
                         {
                             value: 100,
                             suffix: "%",
                             label: "End-to-End Ownership",
-                            description: "From database modeling to cloud VPS infrastructure",
+                            description:
+                                "From database modeling to cloud VPS infrastructure",
                         },
                     ].map((stat) => (
-                        <div key={stat.label} className="p-4 rounded-xl bg-card/40 border border-border/40">
+                        <div
+                            key={stat.label}
+                            className="p-4 rounded-xl bg-card/40 border border-border/40"
+                        >
                             <div className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight flex items-baseline gap-1">
-                                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                                <AnimatedCounter
+                                    target={stat.value}
+                                    suffix={stat.suffix}
+                                />
                             </div>
                             <div className="text-sm font-semibold text-foreground/90 mt-1">
                                 {stat.label}

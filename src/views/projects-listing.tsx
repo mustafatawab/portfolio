@@ -138,10 +138,14 @@ export function ProjectsListing() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, ease }}
                     >
-                        <span className="section-label">Selected Portfolio</span>
+                        <span className="section-label">
+                            Selected Portfolio
+                        </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
                             Building modern software for{" "}
-                            <span className="text-primary">real businesses.</span>
+                            <span className="text-primary">
+                                real businesses.
+                            </span>
                         </h1>
                         <p className="text-lg text-muted-foreground leading-relaxed mt-4 max-w-2xl">
                             A catalog of SaaS platforms, business applications,

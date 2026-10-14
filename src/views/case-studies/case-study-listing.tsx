@@ -231,10 +231,14 @@ export function CaseStudyListing({ studies }: { studies: CaseStudy[] }) {
                         transition={{ duration: 0.5, ease }}
                         className="max-w-3xl"
                     >
-                        <span className="section-label">Engineering Deep Dives</span>
+                        <span className="section-label">
+                            Engineering Deep Dives
+                        </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance mt-2">
                             Architecture, trade-offs &{" "}
-                            <span className="text-primary">production systems.</span>
+                            <span className="text-primary">
+                                production systems.
+                            </span>
                         </h1>
                         <p className="text-lg text-muted-foreground leading-relaxed mt-4">
                             Detailed technical case studies on architecture,
