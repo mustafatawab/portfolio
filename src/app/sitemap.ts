@@ -52,12 +52,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }))
 
-    const showcasePages: MetadataRoute.Sitemap = getAllProjectShowcases().map((p) => ({
-        url: `${baseUrl}/projects/${p.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.6,
-    }))
+    const showcasePages: MetadataRoute.Sitemap = getAllProjectShowcases().map(
+        (p) => ({
+            url: `${baseUrl}/projects/${p.slug}`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.6,
+        })
+    )
 
     const blogSlugs = getAllPostSlugs()
     const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

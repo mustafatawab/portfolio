@@ -772,7 +772,8 @@ export const projectShowcases: ProjectShowcase[] = [
     {
         slug: "developer-portfolio",
         title: "Developer Portfolio",
-        tagline: "High-performance interactive portfolio built with Next.js 15 & React 19",
+        tagline:
+            "High-performance interactive portfolio built with Next.js 15 & React 19",
         summary:
             "A modern, high-performance personal portfolio built with Next.js 15 App Router, React 19, and Tailwind CSS. Features dynamic typewriter role animations, an interactive orbital technology stack visualization, theme synchronization, and automated inquiry dispatch via Resend.",
         image: developerPortfolio,
@@ -877,7 +878,8 @@ export const projectShowcases: ProjectShowcase[] = [
     {
         slug: "mal-blogs",
         title: "MAL Blogs & Finance",
-        tagline: "Dynamic headless blog & car finance platform built with Next.js 14 & Contentful CMS",
+        tagline:
+            "Dynamic headless blog & car finance platform built with Next.js 14 & Contentful CMS",
         summary:
             "A dynamic publishing and automotive finance platform built with Next.js 14 App Router, TypeScript, and Contentful CMS. Features dynamic headless blog delivery with rich-text rendering, interactive finance calculation tools, and optimized responsive layouts.",
         image: malblogs,
