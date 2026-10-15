@@ -189,23 +189,32 @@ export function techArticleSchema(study: CaseStudy) {
 export function articleSchema(post: Post) {
     return {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         headline: post.title,
         description: post.description,
+        url: `${SITE_URL}/blogs/${post.slug}`,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/blogs/${post.slug}`,
+        },
+        image: post.coverImage
+            ? `${SITE_URL}${post.coverImage}`
+            : `${SITE_URL}/assets/mustafa-portrait-green.jpg`,
         author: {
+            "@type": "Person",
+            name: post.author?.name || AUTHOR_NAME,
+            url: post.author?.url || SITE_URL,
+        },
+        datePublished: post.date,
+        dateModified: post.updatedDate || post.date,
+        publisher: {
             "@type": "Person",
             name: AUTHOR_NAME,
             url: SITE_URL,
         },
-        datePublished: post.date,
-        dateModified: post.date,
-        publisher: {
-            "@type": "Person",
-            name: AUTHOR_NAME,
-        },
-        about: post.category,
+        articleSection: post.category,
         keywords: post.tags.join(", "),
-        wordCount: post.contentHtml.replace(/<[^>]*>/g, "").split(/\s+/).length,
+        wordCount: post.wordCount,
         timeRequired: post.readTime,
     }
 }
