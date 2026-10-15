@@ -6,6 +6,8 @@ import rukun from "@/assets/project/rukun.png"
 import elygance from "@/assets/project/elygance.png"
 import msp from "@/assets/project/msp-tech.png"
 import farazPharmacy from "@/assets/project/faraz-pharmacy.jpeg"
+import developerPortfolio from "@/assets/project/developer-portfolio.png"
+import malblogs from "@/assets/project/mal-blogs.png"
 
 export interface ProjectFeature {
     icon: string
@@ -29,6 +31,7 @@ export interface ProjectTechStack {
 export const PROJECT_CATEGORIES = [
     "All",
     "SaaS Platforms",
+    "Web Applications",
     "Business Applications",
     "Desktop Software",
     "Enterprise Solutions",
@@ -765,6 +768,220 @@ export const projectShowcases: ProjectShowcase[] = [
             "Company purchasing workflows are surprisingly varied. Building in configurability from the start would have reduced per-client customization work.",
         ],
         relatedSlugs: ["elygance", "maktab-one"],
+    },
+    {
+        slug: "developer-portfolio",
+        title: "Developer Portfolio",
+        tagline: "High-performance interactive portfolio built with Next.js 15 & React 19",
+        summary:
+            "A modern, high-performance personal portfolio built with Next.js 15 App Router, React 19, and Tailwind CSS. Features dynamic typewriter role animations, an interactive orbital technology stack visualization, theme synchronization, and automated inquiry dispatch via Resend.",
+        image: developerPortfolio,
+        category: "Web Application",
+        categories: ["Web Applications", "Business Applications"],
+        status: "Production",
+        role: "Full-Stack Developer",
+        timeline: "2 months",
+        teamSize: "Solo",
+        platform: "Web",
+        industry: "Developer Tools / Portfolio",
+        links: {
+            demo: "https://mustafatawabbb.vercel.app/",
+            github: "https://github.com/mustafatawab/projects-work/tree/main/my-portfolio",
+            caseStudy: "",
+        },
+        techStack: {
+            frontend: [
+                "Next.js 15",
+                "React 19",
+                "TypeScript",
+                "Tailwind CSS",
+                "Framer Motion",
+                "Radix UI",
+            ],
+            backend: ["Next.js App Router", "Resend API", "Contentful SDK"],
+            database: ["Contentful CMS"],
+            infrastructure: ["Vercel"],
+            tools: ["Git", "GitHub", "pnpm", "ESLint", "PostCSS"],
+        },
+        overview: {
+            what: "An interactive portfolio web application showcasing full-stack capabilities, animated skill ecosystems, project archives, and automated communication workflows.",
+            who: "Hiring managers, engineering leaders, and clients evaluating technical depth in Next.js, React, and modern UI engineering.",
+            businessValue:
+                "Delivers a memorable, polished first impression with 90+ Lighthouse performance scores, fluid micro-interactions, responsive design, and frictionless contact channels.",
+            primaryUsers:
+                "Recruiters, founders, and engineering teams reviewing technical projects, architecture standards, and code quality.",
+        },
+        businessProblem:
+            "Standard developer portfolios often rely on static templates that fail to demonstrate real engineering proficiency, interactive UI craftsmanship, and modern performance optimization standards.",
+        features: [
+            {
+                icon: "Sparkles",
+                title: "Interactive Hero & Orbiting Stack",
+                description:
+                    "Dynamic typewriter headline coupled with an orbital visual display of core technologies rotating smoothly around the developer profile.",
+            },
+            {
+                icon: "Palette",
+                title: "Dual Theme Engine",
+                description:
+                    "Flawless dark and light mode toggle with smooth theme transitions, tailored contrast ratios, and persistent system preference synchronization.",
+            },
+            {
+                icon: "LayoutDashboard",
+                title: "Modular Project & Skills Showcase",
+                description:
+                    "Interactive project gallery and categorized technical capabilities with smooth hover states, tags, and direct repository links.",
+            },
+            {
+                icon: "Mail",
+                title: "Direct Contact System",
+                description:
+                    "Fully functional inquiry workflow powered by Resend API and toast notifications for real-time validation and message dispatch.",
+            },
+        ],
+        architecturePreview: {
+            explanation:
+                "Next.js 15 App Router architecture with React 19 Server and Client Components. Styled using Tailwind CSS with animations powered by Framer Motion. Content and email delivery are handled via Contentful SDK and server-side Resend API routes.",
+        },
+        challengesSolved: [
+            {
+                problem:
+                    "Maintaining smooth 60fps animations across complex circular orbits and typewriter effects without layout shift or Lighthouse degradation.",
+                solution:
+                    "Utilized CSS transforms and hardware-accelerated Framer Motion variants alongside Next.js image optimization, maintaining 90+ Lighthouse scores.",
+            },
+            {
+                problem:
+                    "Preventing theme flicker and hydration mismatches across server-rendered pages during client mount.",
+                solution:
+                    "Integrated Next Themes with class-based transitions and zero-flash layout mounting to guarantee crisp rendering in both modes.",
+            },
+        ],
+        results: [
+            "90+ Lighthouse performance score on desktop and mobile",
+            "Smooth 60fps micro-interactions with zero layout shift",
+            "Automated contact workflow delivering messages via Resend",
+            "Responsive, accessible design across all screen viewports",
+        ],
+        lessonsLearned: [
+            "Combining Framer Motion with CSS custom properties allows for flexible, high-performance interactive animations.",
+            "Structuring modular presentation views keeps App Router layouts clean and easily maintainable.",
+        ],
+        metrics: [
+            { label: "Lighthouse Score", value: "90+" },
+            { label: "Framework", value: "Next.js 15" },
+            { label: "React Version", value: "v19" },
+        ],
+        relatedSlugs: ["maktab-one", "msp-tech-stack"],
+    },
+    {
+        slug: "mal-blogs",
+        title: "MAL Blogs & Finance",
+        tagline: "Dynamic headless blog & car finance platform built with Next.js 14 & Contentful CMS",
+        summary:
+            "A dynamic publishing and automotive finance platform built with Next.js 14 App Router, TypeScript, and Contentful CMS. Features dynamic headless blog delivery with rich-text rendering, interactive finance calculation tools, and optimized responsive layouts.",
+        image: malblogs,
+        category: "Web Application",
+        categories: ["Web Applications", "Business Applications"],
+        status: "Production",
+        role: "Full-Stack Developer",
+        timeline: "2 months",
+        teamSize: "Solo",
+        platform: "Web",
+        industry: "Publishing / Automotive Finance",
+        links: {
+            demo: "https://mal-blogs.vercel.app/",
+            github: "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
+            caseStudy: "",
+        },
+        techStack: {
+            frontend: [
+                "Next.js 14",
+                "React 18",
+                "TypeScript",
+                "Tailwind CSS",
+                "Radix UI",
+                "Lucide React",
+            ],
+            backend: [
+                "Next.js App Router",
+                "Contentful Content Delivery API",
+                "Axios",
+            ],
+            database: ["Contentful Headless CMS"],
+            infrastructure: ["Vercel", "Edge CDN"],
+            tools: ["Git", "GitHub", "ESLint", "PostCSS"],
+        },
+        overview: {
+            what: "A dynamic web platform combining a headless CMS-powered editorial magazine with an interactive car finance estimation suite and customer quotation workflows.",
+            who: "Automotive buyers, UK car finance applicants, and editorial teams publishing market guides and financial advisory articles.",
+            businessValue:
+                "Empowers marketing teams to publish rich editorial content independently via Contentful without code deploys, while converting readers into finance leads with integrated calculator tools.",
+            primaryUsers:
+                "Vehicle buyers researching finance options, and content managers authoring dynamic automotive articles and guides.",
+        },
+        businessProblem:
+            "Financial services often struggle with disconnected marketing blogs and calculation tools. Hardcoding articles creates developer bottlenecks, while off-the-shelf WordPress setups suffer from sluggish load times and poor lead conversion.",
+        features: [
+            {
+                icon: "FileText",
+                title: "Headless Contentful CMS Pipeline",
+                description:
+                    "Dynamic article delivery using Contentful REST API and rich-text rendering for formatted custom embeds, headings, and imagery.",
+            },
+            {
+                icon: "Receipt",
+                title: "Interactive Finance Calculator",
+                description:
+                    "Client-side loan estimator computing representative APR, monthly repayment schedules, deposit amounts, and total payable values in real time.",
+            },
+            {
+                icon: "LayoutDashboard",
+                title: "Dynamic Magazine Hub",
+                description:
+                    "Categorized article feed with responsive card grid layouts, reading metadata, and SEO-friendly slug-based dynamic routing.",
+            },
+            {
+                icon: "Shield",
+                title: "Compliance & Disclosure Architecture",
+                description:
+                    "Integrated financial disclosures, representative loan examples, and regulatory messaging structured for UK finance guidelines.",
+            },
+        ],
+        architecturePreview: {
+            explanation:
+                "Next.js 14 App Router server components query Contentful's Content Delivery API with on-demand ISR (Incremental Static Regeneration). Client components manage finance slider states and Radix UI accordions with zero server latency.",
+        },
+        challengesSolved: [
+            {
+                problem:
+                    "Rendering complex rich-text payloads with embedded assets and custom formatting without breaking React component hierarchy or styling.",
+                solution:
+                    "Built bespoke renderer options for rich-text handling that map custom node types directly to styled Tailwind components.",
+            },
+            {
+                problem:
+                    "Ensuring precise, real-time financial calculations across variable repayment terms and interest brackets with instantaneous user feedback.",
+                solution:
+                    "Engineered an interactive math engine in TypeScript that computes amortization and APR tiers instantaneously on state change.",
+            },
+        ],
+        results: [
+            "100% headless content authoring enabling non-technical publishing",
+            "Sub-second page transitions via Next.js ISR and Edge CDN",
+            "Real-time interactive loan estimations driving quote requests",
+            "Responsive and accessible across desktop and mobile devices",
+        ],
+        lessonsLearned: [
+            "Decoupling editorial content with a headless CMS dramatically accelerates content operations without degrading frontend velocity.",
+            "Structuring rich-text renderer rules modularly simplifies long-term styling updates as design systems evolve.",
+        ],
+        metrics: [
+            { label: "CMS Engine", value: "Contentful" },
+            { label: "Framework", value: "Next.js 14" },
+            { label: "Rendering", value: "Dynamic / ISR" },
+        ],
+        relatedSlugs: ["developer-portfolio", "maktab-one"],
     },
 ]
 

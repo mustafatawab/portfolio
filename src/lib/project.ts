@@ -11,6 +11,7 @@ import rukun from "@/assets/project/rukun.png"
 import maktab from "@/assets/project/maktab-one.png"
 import pharmacy from "@/assets/project/pharmacy.png"
 import farazPharmacy from "@/assets/project/faraz-pharmacy.jpeg"
+import developerPortfolio from "@/assets/project/developer-portfolio.png"
 
 interface Testimonial {
     quote: string
@@ -212,29 +213,38 @@ export const projects: ProjectType[] = [
     },
     {
         image: malblogs,
-        title: "MAL-Blogs",
+        title: "MAL Blogs & Finance",
         slug: "mal-blogs",
         description:
-            "MAL-Blogs is a minimalistic personal blog platform where I share my development journey, technical insights, and experiments with modern tools and frameworks. Built with a clean, distraction-free design, it allows me to focus on creating and publishing content using Markdown/MDX while providing readers with a smooth reading experience.",
-        tags: ["tailwind css", "nextjs", "typescript", "Contentfull"],
+            "A dynamic publishing and automotive finance platform built with Next.js 14 App Router, TypeScript, and Contentful CMS. Features dynamic headless blog delivery with rich-text rendering, interactive finance calculation tools, and optimized responsive layouts.",
+        tags: [
+            "Next.js 14",
+            "TypeScript",
+            "Tailwind CSS",
+            "Contentful CMS",
+            "Radix UI",
+            "Axios",
+        ],
         githubLink:
             "https://github.com/mustafatawab/Nextjs_projects/tree/main/mal-blogs",
-        link: "https://mal-blogs.vercel.app",
+        demoLink: "https://mal-blogs.vercel.app/",
+        link: "https://mal-blogs.vercel.app/",
         category: "Websites",
         problem:
-            "Blogging platforms like Medium and WordPress are cluttered with distractions, ads, and complex editors - neither the writer nor the reader gets a clean experience.",
+            "Financial services often struggle with disconnected marketing blogs and calculation tools. Hardcoding articles creates developer bottlenecks, while off-the-shelf WordPress setups suffer from sluggish load times and poor lead conversion.",
         solution:
-            "Built a minimalistic, distraction-free blog platform with MDX support, syntax highlighting, and a razor focus on reading experience and content creation.",
+            "Engineered a dynamic publishing suite combining a headless Contentful CMS pipeline with an interactive client-side car finance calculation tool and UK regulatory disclosure standards.",
         results: [
-            "Sub-second page loads with Next.js static generation",
-            "Clean, typography-first reading experience",
-            "Easy content creation via MDX",
+            "100% headless content authoring enabling non-technical publishing",
+            "Sub-second page transitions via Next.js ISR and Edge CDN",
+            "Real-time interactive loan estimations driving quote requests",
+            "Responsive and accessible across desktop and mobile devices",
         ],
         features: [
-            "MDX/Markdown-based content authoring",
-            "Contentful CMS integration for content management",
-            "Code syntax highlighting with Shiki",
-            "Fast static generation with Next.js",
+            "Headless Contentful CMS integration with custom rich-text rendering",
+            "Interactive finance calculator computing loan terms and monthly repayments",
+            "Dynamic magazine article hub with categorized layouts and slug-based routing",
+            "Fully compliant financial disclosure and representative example sections",
         ],
         role: "Full-Stack Developer",
         duration: "2 months",
@@ -305,5 +315,44 @@ export const projects: ProjectType[] = [
         ],
         role: "Full-Stack Developer",
         duration: "2.5 months",
+    },
+    {
+        image: developerPortfolio,
+        title: "Developer Portfolio",
+        slug: "developer-portfolio",
+        description:
+            "A modern, high-performance developer portfolio built with Next.js 15, React 19, and Tailwind CSS. Features animated typewriter hero roles, an interactive orbital technology stack, dual theme support, and automated contact notifications via Resend.",
+        tags: [
+            "Next.js 15",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+            "Radix UI",
+            "Resend",
+        ],
+        githubLink:
+            "https://github.com/mustafatawab/projects-work/tree/main/my-portfolio",
+        demoLink: "https://mustafatawabbb.vercel.app/",
+        link: "https://mustafatawabbb.vercel.app/",
+        category: "Websites",
+        problem:
+            "Standard developer portfolios often rely on static templates that fail to demonstrate real engineering proficiency, interactive UI craftsmanship, and modern performance optimization standards.",
+        solution:
+            "Built a high-performance, accessible portfolio showcasing full-stack capabilities, animated skill ecosystems, and seamless communication workflows with 90+ Lighthouse performance.",
+        results: [
+            "90+ Lighthouse performance score on desktop and mobile",
+            "Smooth 60fps micro-interactions with zero layout shift",
+            "Automated contact workflow delivering messages via Resend",
+            "Responsive, accessible design across all screen viewports",
+        ],
+        features: [
+            "Interactive hero with typewriter role animations and orbiting technology stack",
+            "Dual-theme engine with system preference detection and smooth transitions",
+            "Curated project showcase with responsive galleries and direct repository links",
+            "Direct inquiry form powered by Resend and toast notifications",
+        ],
+        role: "Full-Stack Developer",
+        duration: "2 months",
     },
 ]

@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next"
 import { projects } from "@/lib/project"
+import { getAllProjectShowcases } from "@/lib/projects-data"
 import { getAllPostSlugs } from "@/lib/posts"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 1,
+        },
+        {
+            url: `${baseUrl}/projects`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.9,
         },
         {
             url: `${baseUrl}/work`,
@@ -38,8 +45,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ]
 
-    const projectPages: MetadataRoute.Sitemap = projects.map((p) => ({
+    const workPages: MetadataRoute.Sitemap = projects.map((p) => ({
         url: `${baseUrl}/work/${p.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+    }))
+
+    const showcasePages: MetadataRoute.Sitemap = getAllProjectShowcases().map((p) => ({
+        url: `${baseUrl}/projects/${p.slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.6,
@@ -53,5 +67,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }))
 
-    return [...staticPages, ...projectPages, ...blogPages]
+    return [...staticPages, ...workPages, ...showcasePages, ...blogPages]
 }
