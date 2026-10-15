@@ -3,7 +3,15 @@
 import { useState, useMemo, useRef } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowUpRight, Calendar, Clock, Search, X, BookOpen, Filter } from "lucide-react"
+import {
+    ArrowUpRight,
+    Calendar,
+    Clock,
+    Search,
+    X,
+    BookOpen,
+    Filter,
+} from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import type { PostMeta } from "@/lib/posts"
 
@@ -60,7 +68,8 @@ export default function BlogListing({
         setActiveTag(null)
     }
 
-    const hasActiveFilters = search !== "" || activeCategory !== null || activeTag !== null
+    const hasActiveFilters =
+        search !== "" || activeCategory !== null || activeTag !== null
 
     return (
         <main className="bg-background min-h-screen pb-32 text-foreground">
@@ -86,8 +95,9 @@ export default function BlogListing({
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
                     >
-                        Practical architectural blueprints, containerized deployments, modern
-                        frontend systems, and production engineering lessons from real products.
+                        Practical architectural blueprints, containerized
+                        deployments, modern frontend systems, and production
+                        engineering lessons from real products.
                     </motion.p>
                 </div>
             </section>
@@ -136,7 +146,9 @@ export default function BlogListing({
                             <button
                                 key={cat}
                                 onClick={() =>
-                                    setActiveCategory(activeCategory === cat ? null : cat)
+                                    setActiveCategory(
+                                        activeCategory === cat ? null : cat
+                                    )
                                 }
                                 className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                                     activeCategory === cat
@@ -190,7 +202,8 @@ export default function BlogListing({
                 {/* Article Counter */}
                 <div className="flex items-center justify-between text-xs text-muted-foreground border-b border-border/40 pb-3 pt-2">
                     <span>
-                        Showing {filteredPosts.length} of {posts.length} articles
+                        Showing {filteredPosts.length} of {posts.length}{" "}
+                        articles
                     </span>
                     {hasActiveFilters && (
                         <button
@@ -254,8 +267,8 @@ export default function BlogListing({
                             No articles match your current criteria
                         </p>
                         <p className="text-muted-foreground text-sm max-w-md mx-auto">
-                            Try adjusting your search terms, clearing selected tags, or browsing all
-                            categories.
+                            Try adjusting your search terms, clearing selected
+                            tags, or browsing all categories.
                         </p>
                         <button
                             onClick={handleResetFilters}
@@ -322,11 +335,14 @@ function FeaturedCard({ post, index }: { post: PostMeta; index: number }) {
                         <span className="flex items-center gap-1.5">
                             <Calendar size={13} />
                             <time dateTime={post.date}>
-                                {new Date(post.date).toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
-                                })}
+                                {new Date(post.date).toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        month: "short",
+                                        day: "numeric",
+                                        year: "numeric",
+                                    }
+                                )}
                             </time>
                         </span>
                         <span className="flex items-center gap-1.5">
@@ -384,10 +400,13 @@ function ArticleCard({ post, index }: { post: PostMeta; index: number }) {
                         <span className="flex items-center gap-1.5">
                             <Calendar size={12} />
                             <time dateTime={post.date}>
-                                {new Date(post.date).toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                })}
+                                {new Date(post.date).toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        month: "short",
+                                        day: "numeric",
+                                    }
+                                )}
                             </time>
                         </span>
                         <span className="flex items-center gap-1.5">

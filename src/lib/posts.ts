@@ -271,18 +271,24 @@ export function getAllPostsMeta(): PostMeta[] {
                 title: String(data.title).trim(),
                 description: String(data.description).trim(),
                 date: String(data.date).trim(),
-                updatedDate: data.updatedDate ? String(data.updatedDate) : undefined,
+                updatedDate: data.updatedDate
+                    ? String(data.updatedDate)
+                    : undefined,
                 author,
                 tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
                 category: String(data.category).trim(),
                 readTime,
                 featured: Boolean(data.featured),
-                coverImage: data.coverImage ? String(data.coverImage) : undefined,
+                coverImage: data.coverImage
+                    ? String(data.coverImage)
+                    : undefined,
                 draft: Boolean(data.draft),
             }
         })
         // In production, optionally filter out drafts if needed
-        .filter((post) => (process.env.NODE_ENV === "production" ? !post.draft : true))
+        .filter((post) =>
+            process.env.NODE_ENV === "production" ? !post.draft : true
+        )
 
     return posts.sort((a, b) => (a.date < b.date ? 1 : -1))
 }

@@ -97,7 +97,9 @@ export default function BlogArticle({ post }: { post: Post }) {
 
         const handleCopyClick = async (e: MouseEvent) => {
             const target = e.target as HTMLElement
-            const button = target.closest(".copy-code-btn") as HTMLButtonElement | null
+            const button = target.closest(
+                ".copy-code-btn"
+            ) as HTMLButtonElement | null
             if (!button) return
 
             const wrapper = button.closest("[data-code-block]")
@@ -112,7 +114,11 @@ export default function BlogArticle({ post }: { post: Post }) {
                 const label = button.querySelector(".copy-label")
 
                 if (label) label.textContent = "Copied!"
-                button.classList.add("text-primary", "border-primary/40", "bg-primary/10")
+                button.classList.add(
+                    "text-primary",
+                    "border-primary/40",
+                    "bg-primary/10"
+                )
 
                 setTimeout(() => {
                     if (label) label.textContent = "Copy"
@@ -230,18 +236,27 @@ export default function BlogArticle({ post }: { post: Post }) {
                                 </span>
                             )}
                             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                                <Calendar size={13} className="text-muted-foreground/80" />
+                                <Calendar
+                                    size={13}
+                                    className="text-muted-foreground/80"
+                                />
                                 <time dateTime={post.date}>
-                                    {new Date(post.date).toLocaleDateString("en-US", {
-                                        month: "long",
-                                        day: "numeric",
-                                        year: "numeric",
-                                    })}
+                                    {new Date(post.date).toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            month: "long",
+                                            day: "numeric",
+                                            year: "numeric",
+                                        }
+                                    )}
                                 </time>
                             </span>
                             <span className="text-muted-foreground/40">•</span>
                             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                                <Clock size={13} className="text-muted-foreground/80" />
+                                <Clock
+                                    size={13}
+                                    className="text-muted-foreground/80"
+                                />
                                 <span>{post.readTime}</span>
                             </span>
                         </div>
@@ -290,8 +305,13 @@ export default function BlogArticle({ post }: { post: Post }) {
                             >
                                 {copiedLink ? (
                                     <>
-                                        <Check size={13} className="text-primary" />
-                                        <span className="text-primary">Link Copied!</span>
+                                        <Check
+                                            size={13}
+                                            className="text-primary"
+                                        />
+                                        <span className="text-primary">
+                                            Link Copied!
+                                        </span>
                                     </>
                                 ) : (
                                     <>
@@ -319,7 +339,8 @@ export default function BlogArticle({ post }: { post: Post }) {
                                 <span className="flex items-center gap-2">
                                     <List size={14} className="text-primary" />
                                     <span>
-                                        Table of Contents ({post.headings.length} sections)
+                                        Table of Contents (
+                                        {post.headings.length} sections)
                                     </span>
                                 </span>
                                 <ChevronDown
@@ -338,7 +359,9 @@ export default function BlogArticle({ post }: { post: Post }) {
                                     {post.headings.map((heading) => (
                                         <button
                                             key={heading.id}
-                                            onClick={() => scrollToHeading(heading.id)}
+                                            onClick={() =>
+                                                scrollToHeading(heading.id)
+                                            }
                                             className={`block w-full text-left py-1.5 px-3 rounded-md text-xs transition-colors ${
                                                 activeHeading === heading.id
                                                     ? "text-primary font-semibold bg-primary/10"
@@ -346,7 +369,8 @@ export default function BlogArticle({ post }: { post: Post }) {
                                             }`}
                                             style={{
                                                 paddingLeft: `${
-                                                    (heading.level - 2) * 12 + 12
+                                                    (heading.level - 2) * 12 +
+                                                    12
                                                 }px`,
                                             }}
                                         >
@@ -364,7 +388,10 @@ export default function BlogArticle({ post }: { post: Post }) {
                             <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-28">
                                 <div className="glass-card p-5 rounded-2xl border border-border shadow-xs max-h-[calc(100vh-8rem)] overflow-y-auto">
                                     <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/60">
-                                        <List size={13} className="text-primary" />
+                                        <List
+                                            size={13}
+                                            className="text-primary"
+                                        />
                                         <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                                             Table of Contents
                                         </h3>
@@ -376,7 +403,9 @@ export default function BlogArticle({ post }: { post: Post }) {
                                         {post.headings.map((heading) => (
                                             <button
                                                 key={heading.id}
-                                                onClick={() => scrollToHeading(heading.id)}
+                                                onClick={() =>
+                                                    scrollToHeading(heading.id)
+                                                }
                                                 className={`block w-full text-left py-1.5 px-3 rounded-lg transition-all duration-150 border-l-2 cursor-pointer ${
                                                     activeHeading === heading.id
                                                         ? "text-primary border-primary bg-primary/10 font-medium"
@@ -384,7 +413,9 @@ export default function BlogArticle({ post }: { post: Post }) {
                                                 }`}
                                                 style={{
                                                     paddingLeft: `${
-                                                        (heading.level - 2) * 10 + 10
+                                                        (heading.level - 2) *
+                                                            10 +
+                                                        10
                                                     }px`,
                                                 }}
                                             >
@@ -460,9 +491,11 @@ export default function BlogArticle({ post }: { post: Post }) {
                                             {post.author.name}
                                         </h3>
                                         <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                                            Software Engineer & Product Builder focused on
-                                            scalable SaaS architectures, clean systems
-                                            engineering, and AI-driven workflows.
+                                            Software Engineer & Product Builder
+                                            focused on scalable SaaS
+                                            architectures, clean systems
+                                            engineering, and AI-driven
+                                            workflows.
                                         </p>
                                         <div className="flex items-center justify-center sm:justify-start gap-4 mt-3">
                                             <a
@@ -501,7 +534,9 @@ export default function BlogArticle({ post }: { post: Post }) {
                                                         size={12}
                                                         className="transition-transform group-hover:-translate-x-1"
                                                     />
-                                                    <span>Previous Article</span>
+                                                    <span>
+                                                        Previous Article
+                                                    </span>
                                                 </span>
                                                 <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors mt-2 line-clamp-1">
                                                     {post.prevPost.title}
@@ -533,44 +568,51 @@ export default function BlogArticle({ post }: { post: Post }) {
                             </div>
 
                             {/* Related Articles Showcase */}
-                            {post.relatedPosts && post.relatedPosts.length > 0 && (
-                                <div className="mt-14 pt-10 border-t border-border">
-                                    <div className="flex items-center justify-between mb-6">
-                                        <h3 className="font-heading font-bold text-xl text-foreground tracking-tight">
-                                            Related Articles
-                                        </h3>
-                                        <Link
-                                            href="/blogs"
-                                            className="text-xs font-mono text-primary hover:underline flex items-center gap-1"
-                                        >
-                                            <span>All articles</span>
-                                            <ArrowRight size={12} />
-                                        </Link>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        {post.relatedPosts.map((related) => (
+                            {post.relatedPosts &&
+                                post.relatedPosts.length > 0 && (
+                                    <div className="mt-14 pt-10 border-t border-border">
+                                        <div className="flex items-center justify-between mb-6">
+                                            <h3 className="font-heading font-bold text-xl text-foreground tracking-tight">
+                                                Related Articles
+                                            </h3>
                                             <Link
-                                                key={related.slug}
-                                                href={`/blogs/${related.slug}`}
-                                                className="group block h-full"
+                                                href="/blogs"
+                                                className="text-xs font-mono text-primary hover:underline flex items-center gap-1"
                                             >
-                                                <div className="glass-card p-5 rounded-xl border border-border hover:border-primary/40 transition-all h-full flex flex-col">
-                                                    <span className="text-[10px] font-mono text-primary mb-2">
-                                                        {related.category}
-                                                    </span>
-                                                    <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-2">
-                                                        {related.title}
-                                                    </h4>
-                                                    <p className="text-xs text-muted-foreground line-clamp-2 mt-auto pt-2">
-                                                        {related.description}
-                                                    </p>
-                                                </div>
+                                                <span>All articles</span>
+                                                <ArrowRight size={12} />
                                             </Link>
-                                        ))}
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            {post.relatedPosts.map(
+                                                (related) => (
+                                                    <Link
+                                                        key={related.slug}
+                                                        href={`/blogs/${related.slug}`}
+                                                        className="group block h-full"
+                                                    >
+                                                        <div className="glass-card p-5 rounded-xl border border-border hover:border-primary/40 transition-all h-full flex flex-col">
+                                                            <span className="text-[10px] font-mono text-primary mb-2">
+                                                                {
+                                                                    related.category
+                                                                }
+                                                            </span>
+                                                            <h4 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-2">
+                                                                {related.title}
+                                                            </h4>
+                                                            <p className="text-xs text-muted-foreground line-clamp-2 mt-auto pt-2">
+                                                                {
+                                                                    related.description
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </Link>
+                                                )
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
                         </article>
                     </div>
                 </div>
