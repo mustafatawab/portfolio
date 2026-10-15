@@ -496,3 +496,110 @@
 .perspective-1000 {
     perspective: 1000px;
 }
+
+/* --- Blog & Shiki Dual-Theme Architecture --- */
+.code-block-wrapper {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color var(--duration-fast) var(--ease);
+}
+
+.code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+}
+
+.code-content pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    overflow-x: auto;
+}
+
+.code-content pre code {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    color: inherit !important;
+}
+
+/* Light Theme Code Blocks */
+html:not(.dark) .code-block-wrapper {
+    background-color: #f7f6f2;
+    border: 1px solid #e7e5de;
+}
+html:not(.dark) .code-block-header {
+    background-color: #efece6;
+    border-color: #e7e5de;
+}
+html:not(.dark) .shiki {
+    color: #14201b !important;
+}
+
+/* Dark Theme Code Blocks */
+html.dark .code-block-wrapper {
+    background-color: #0c1d17;
+    border: 1px solid #254438;
+}
+html.dark .code-block-header {
+    background-color: #132a20;
+    border-color: #254438;
+}
+html.dark .shiki {
+    color: var(--shiki-dark, #f2f7f4) !important;
+}
+html.dark .shiki span {
+    color: var(--shiki-dark, inherit) !important;
+}
+
+/* Table Responsive Container */
+.table-responsive {
+    width: 100%;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    overflow-x: auto;
+    border-radius: 0.75rem;
+}
+
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.table-responsive th {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--secondary);
+    color: var(--foreground);
+    white-space: nowrap;
+}
+
+.table-responsive td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
+    opacity: 0.85;
+}
+
+.table-responsive tr:last-child td {
+    border-bottom: none;
+}
+
